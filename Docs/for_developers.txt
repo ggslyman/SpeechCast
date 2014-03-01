@@ -1,0 +1,10 @@
+========== SpeechCast開発者向けドキュメント ==========
+
+SpeechCastはMicrosoft Visual C# 2008 Express Editionで開発されています。
+その他の環境は実行環境に準じます。
+
+ディレクトリ構成は一般的なSubversionの形式に従っています。
+
++branches  実験バージョン。
++tags      リリースごとのスナップショット。
++trunk     本流。最新版はこちらを更新します。
