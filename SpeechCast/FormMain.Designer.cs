@@ -95,6 +95,8 @@
             this.toolStripButtonOpenAsBrowser = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOpenURLFromClipboard = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new SpeechCast.Controls.MyToolStrip();
+            this.toolStripButtonAutoNextThread = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -321,7 +323,9 @@
             this.toolStripButtonAutoUpdate,
             this.toolStripButtonNext,
             this.toolStripButtonLast,
+            this.toolStripSeparator6,
             this.toolStripButtonTurbo,
+            this.toolStripButtonAutoNextThread,
             this.toolStripTrackBarPlayVolume});
             this.toolStrip1.Location = new System.Drawing.Point(0, 26);
             this.toolStrip1.Name = "toolStrip1";
@@ -763,6 +767,22 @@
             this.toolStrip2.TabIndex = 3;
             this.toolStrip2.Text = "toolStrip2";
             // 
+            // toolStripButtonAutoNextThread
+            // 
+            this.toolStripButtonAutoNextThread.CheckOnClick = true;
+            this.toolStripButtonAutoNextThread.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAutoNextThread.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAutoNextThread.Image")));
+            this.toolStripButtonAutoNextThread.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAutoNextThread.Name = "toolStripButtonAutoNextThread";
+            this.toolStripButtonAutoNextThread.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButtonAutoNextThread.Text = "toolStripButtonAutoNextThread";
+            this.toolStripButtonAutoNextThread.Click += new System.EventHandler(this.toolStripButtonAutoNextThread_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 26);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -874,6 +894,8 @@
         private System.Windows.Forms.RichTextBox richTextBoxDefaultCaption;
         private System.Windows.Forms.ToolStripButton toolStripButtonCaptionAutoSmall;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAutoNextThread;
     }
 }
 

@@ -345,6 +345,39 @@ namespace SpeechCast
             return false;
         }
 
+        public string getThreadUrl(string baseURL,string ThreadID)
+        {
+            Match m = Communicator.JBBSBaseRegex.Match(baseURL);
+            string ThreadURL;
+            if (m.Success)
+            {
+                ThreadURL = string.Format("{0}/bbs/read.cgi/{1}/{2}/{3}/"
+                    , m.Groups[1].Value
+                    , m.Groups[2].Value
+                    , m.Groups[3].Value
+                    , ThreadID);
+                return ThreadURL;
+            }
+            m = Communicator.NichanBaseRegex.Match(BaseURL);
+            if (m.Success)
+            {
+                ThreadURL = string.Format("{0}/test/read.cgi/{1}/{2}/"
+                    , m.Groups[1].Value
+                    , m.Groups[2].Value
+                    , ThreadID);
+                return ThreadURL;
+            }
+            m = Communicator.YYBaseRegex.Match(BaseURL);
+            if (m.Success)
+            {
+                ThreadURL = string.Format("{0}/test/read.cgi/{1}/{2}/"
+                    , m.Groups[1].Value
+                    , m.Groups[2].Value
+                    , ThreadID);
+                return ThreadURL;
+            }
+            return "";
+        }
     
     }
 }

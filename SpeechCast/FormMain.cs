@@ -20,6 +20,7 @@ namespace SpeechCast
 {
     public partial class FormMain : Form
     {
+        // webブラウザコントロールのリロード音を消すためのAPI登録
         [DllImport("urlmon.dll"), PreserveSig]
         [return: MarshalAs(UnmanagedType.Error)]
         static extern int CoInternetSetFeatureEnabled(int FeatureEntry, [In, MarshalAs(UnmanagedType.U4)]uint dwFlags, bool fEnable);
@@ -29,39 +30,45 @@ namespace SpeechCast
         public FormMain()
         {
 #if DEBUG
-            //出力ファイルを指定して、StreamWriterオブジェクトを作成
+            // ログのファイル出力周り処理(デバッグビルド時のみ)
+            //  出力ファイルを指定して、StreamWriterオブジェクトを作成
             StreamWriter sw = new StreamWriter("debug.log");
-            //自動的にフラッシュされるようにする
+            //  自動的にフラッシュされるようにする
             sw.AutoFlush = true;
-            //スレッドセーフラッパを作成
+            //  スレッドセーフラッパを作成
             TextWriter tw = TextWriter.Synchronized(sw);
-            //DefaultTraceListenerが必要なければ削除する
+            //  DefaultTraceListenerが必要なければ削除する
             Trace.Listeners.Remove("Default");
-            //名前を LogFile としてTextWriterTraceListenerオブジェクトを作成
-            TextWriterTraceListener twtl =
-                new TextWriterTraceListener(tw, "LogFile");
-            //リスナコレクションに追加する
+            //  名前を LogFile としてTextWriterTraceListenerオブジェクトを作成
+            TextWriterTraceListener twtl = new TextWriterTraceListener(tw, "LogFile");
+            //  リスナコレクションに追加する
             Trace.Listeners.Add(twtl);
 #endif
 
+            // コンポーネントの初期化
             InitializeComponent();
 
+            // インストール済みSSAPI5のボイスリストを取得
             foreach (InstalledVoice voice in synthesizer.GetInstalledVoices())
             {
                 toolStripComboBoxSelectVoice.Items.Add(voice.VoiceInfo.Name);
             }
 
+            // 音声再生関連のコールバック関数の登録
             synthesizer.SpeakProgress += new EventHandler<SpeakProgressEventArgs>(synthesizer_SpeakProgress);
             synthesizer.SpeakCompleted += new EventHandler<SpeakCompletedEventArgs>(synthesizer_SpeakCompleted);
 
+            // 生成されたインスタンスを変数へ代入(別フォームからの操作のため)
             Instance = this;
 
             FormCaption.Instance = new FormCaption();
 
+            // Webブラウザオブジェクトへの新規イベント追加
             this.webBrowser.StatusTextChanged += new EventHandler(webBrowser_StatusTextChanged);
             this.webBrowser.Navigating += new WebBrowserNavigatingEventHandler(webBrowser_Navigating);
         }
 
+        // ブラウザ内リンクのイベント追加
         void webBrowser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
             string url = e.Url.AbsoluteUri;
@@ -918,6 +925,16 @@ namespace SpeechCast
                 listViewResponses.Items[CurrentResNumber - 1].Selected = true;
                 webBrowser.Document.Window.ScrollTo(0, GetResponsesScrollY(CurrentResNumber));
             }
+            else if (openNextThread)
+            {
+                speakingText = string.Format("次スレ候補、{0}を開きます。", threadTitle);
+
+                replacementIndices = null;
+                isSpeakingWarningMessage = true;
+                FormCaption.Instance.IsAAMode = false;
+                synthesizer.Rate = UserConfig.SpeakingRate;
+                synthesizer.SpeakAsync(speakingText);
+            }
             else if (CurrentResNumber > Response.MaxResponseCount)
             {
                 speakingText = string.Format("レス{0}を超えました。\nこれ以上は表示できません。\n次スレを立ててください。", Response.MaxResponseCount);
@@ -1103,6 +1120,7 @@ namespace SpeechCast
         private bool endWebRequest = true;
         private int orgWidth;
         private int orgHeight;
+        private bool openNextThread;
         private void timer_Tick(object sender, EventArgs e)
         {
             TimeSpan diff = System.DateTime.Now - speakingCompletedTime;
@@ -1119,8 +1137,13 @@ namespace SpeechCast
             {
                 if (AutoUpdate)
                 {
-
-                    if (CurrentResNumber > responses.Count)
+                    if (CurrentResNumber > Response.MaxResponseCount && UserConfig.AutoOpenNextThread)
+                    {
+                        if(openNextThreadUrl()){
+                            openNextThread = true;
+                            StartSpeaking();
+                        }
+                    }else if (CurrentResNumber > responses.Count)
                     {
                         int leftSeconds = (UserConfig.AutoGettingWebInvervalMillsec - (int)diffWeb.TotalMilliseconds) / 1000 + 1;
 
@@ -1143,6 +1166,13 @@ namespace SpeechCast
                 }
                 else
                 {
+                    if (openNextThread && !isSpeaking)
+                    {
+                        openNextThread = false;
+                        AutoUpdate = true;
+                        toolStripButtonAutoUpdate.Checked = true;
+                        CurrentResNumber = 0;
+                    }
                     communicationStatusString = "";
                 }
             }
@@ -1157,7 +1187,7 @@ namespace SpeechCast
                 speakingInvervalMillsec = UserConfig.TurboSpeakingInvervalMillsec;
             }
 
-            if (isSpeakingWarningMessage)
+            if (isSpeakingWarningMessage && !UserConfig.AutoOpenNextThread)
             {
                 speakingInvervalMillsec = 20 * 1000;
             }
@@ -1241,6 +1271,7 @@ namespace SpeechCast
                     CoInternetSetFeatureEnabled(FEATURE_DISABLE_NAVIGATION_SOUNDS, SET_FEATURE_ON_PROCESS, !UserConfig.NavigationSound);
 
                     FormCaption.Instance.Visible = UserConfig.CaptionVisible;
+                    toolStripButtonAutoNextThread.Checked = UserConfig.AutoOpenNextThread;
                     toolStripButtonCaption.Checked = UserConfig.CaptionVisible;
                     toolStripButtonTurbo.Checked = UserConfig.TurboMode;
                     toolStripButtonSpeech.Checked = UserConfig.SpeakMode;
@@ -1327,6 +1358,7 @@ namespace SpeechCast
                 if (formSettings.ShowDialog() == DialogResult.OK)
                 {
                     formSettings.GetUserConfig(UserConfig);
+                    toolStripButtonPlaySoundNewResponse.Checked = UserConfig.PlaySoundNewResponse;
                     FormCaption.Instance.Refresh();
                     if (soundPlayerNewResponse != null)
                     {
@@ -1766,5 +1798,119 @@ namespace SpeechCast
             CaptionTextBuffer = this.richTextBoxDefaultCaption.Text;
         }
 
+        private void toolStripButtonAutoNextThread_Click(object sender, EventArgs e)
+        {
+            UserConfig.AutoOpenNextThread = !UserConfig.AutoOpenNextThread;
+        }
+
+        private bool openNextThreadUrl(){
+            System.Text.RegularExpressions.Regex r =
+                new System.Text.RegularExpressions.Regex(
+                    @"[0-9]+",
+                    System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+            string nextUrl = null;
+            try
+            {
+                if (baseURL != null && threadTitle != null)
+                {
+                    // 現在のスレタイから連番と思われる部分を抽出
+
+                    //TextBox1.Text内で正規表現と一致する対象を1つ検索
+                    string searchTitle = zen2han(threadTitle);
+                    System.Text.RegularExpressions.Match m = r.Match(searchTitle);
+                    string nextNumber = null;
+                    while (m.Success)
+                    {
+                        //一致した対象が見つかったときキャプチャした部分文字列を表示
+                        nextNumber = (Int32.Parse(m.Value) + 1).ToString();
+                        //次に一致する対象を検索
+                        m = m.NextMatch();
+                    }
+
+                    // スレッド一覧の取得
+                    string subjectURL = baseURL + "subject.txt";
+                    System.Console.WriteLine(subjectURL);
+                    System.Net.HttpWebRequest webReq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(subjectURL);
+                    FormMain.UserConfig.SetProxy(webReq);
+                    string encodingName = null;
+                    switch (Response.Style)
+                    {
+                        case Response.BBSStyle.jbbs:
+                            encodingName = "EUC-JP";
+                            break;
+                        case Response.BBSStyle.yykakiko:
+                        case Response.BBSStyle.nichan:
+                            encodingName = "Shift_JIS";
+                            break;
+                    }
+                    System.Net.HttpWebResponse webRes = null;
+                    try
+                    {
+                        webRes = (System.Net.HttpWebResponse)webReq.GetResponse();
+                        using (StreamReader reader = new StreamReader(webRes.GetResponseStream(), Encoding.GetEncoding(encodingName)))
+                        {
+                            while (true)
+                            {
+                                string s = reader.ReadLine();
+                                if (s == null)
+                                {
+                                    break;
+                                }
+                                string[] parseSubject = s.Split(',');
+
+                                string searchSubject = zen2han(parseSubject[1]);
+                                System.Text.RegularExpressions.Match m2 = r.Match(searchSubject);
+                                if(m2.Success)
+                                {
+                                    if (m2.Value == nextNumber) {
+                                        //一致した対象が見つかったときキャプチャした部分文字列を表示
+                                        nextUrl = parseSubject[0];
+                                        break;
+                                    }
+                                    //次に一致する対象を検索
+                                }
+                            }
+
+                        }
+                        System.Text.RegularExpressions.Match m3 = r.Match(nextUrl);
+                        string threadId = null;
+                        if (m3.Success)
+                        {
+                            //一致した対象が見つかったときキャプチャした部分文字列を表示
+                            threadId = m3.Value;
+                            //次に一致する対象を検索
+                        }
+                        string threadUrl = Communicator.Instance.getThreadUrl(baseURL, threadId);
+                        if (threadUrl.Length > 0)
+                        {
+                            toolStripTextBoxURL.Text = threadUrl;
+                            GetFromURL();
+                            return true;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(string.Format("エラーが発生しました:{0}", e.Message));
+                    }
+                    finally
+                    {
+                    }
+                }
+            }
+            finally
+            {
+            }
+            return false;
+        }
+        private static string zen2han(string aStr)
+        {
+
+            Regex reZen = new Regex(@"[！＃＄％＆（）＊＋，－．／０-９：；＜＝＞？＠Ａ-Ｚ［］＾＿｀ａ-ｚ｛｜｝～]", RegexOptions.Compiled);
+            string ret = reZen.Replace(aStr, (m) =>
+            {
+                return ((char)((int)(m.Value.ToCharArray())[0] - 65248)).ToString();
+            });
+            return ret.Replace("　", " ");
+        }
     }
 }
