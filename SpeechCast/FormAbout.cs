@@ -19,7 +19,7 @@ namespace SpeechCast
             Assembly asm = Assembly.GetEntryAssembly();
 
             string ver = asm.GetName().Version.ToString();
-
+            System.Console.WriteLine(ver);
             Regex rx = new Regex(@"\.\d+$");
 
             ver = rx.Replace(ver, "");
