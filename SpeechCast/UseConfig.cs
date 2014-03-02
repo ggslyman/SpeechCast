@@ -190,6 +190,11 @@ namespace SpeechCast
         public int AutoGettingWebInvervalMillsec = 10000;
 
         /// <summary>
+        /// 次スレ自動開始
+        /// </summary>
+        public bool AutoOpenNextThread = false;
+
+        /// <summary>
         /// 文字数制限
         /// </summary>
         public int MaxSpeakingCharacterCount = 100;
