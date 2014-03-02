@@ -93,6 +93,7 @@ namespace SpeechCast
                 this.listBoxNewResponseSoundFilePathes.Items.Add(NewResponseSoundFilePath);
             }
             this.NumericUpDownSpeakingInvervalMillsec.Value = userConfig.SpeakingInvervalMillsec;
+            this.NumericUpDownTurboSpeakingInvervalMillsec.Value = userConfig.TurboSpeakingInvervalMillsec;
             this.TrackBarSpeakingRate.Value = userConfig.SpeakingRate;
             this.TrackBarTurboSpeakingRate.Value = userConfig.TurboSpeakingRate;
             this.labelTurboSpeakingRate.Text = userConfig.TurboSpeakingRate.ToString();
@@ -116,7 +117,6 @@ namespace SpeechCast
             this.textBoxSpeakingTextWhenAAMode.Text = userConfig.SpeakingTextWhenAAMode;
             this.checkBoxHideCaptionTitle.Checked = userConfig.HideCaptionTitle;
             this.VoiceVolme = userConfig.SpeakingVolume;
-            this.checkBoxCaptionIndent.Checked = userConfig.CaptionIndent;
     UpdateUI();
         }
 
@@ -128,6 +128,7 @@ namespace SpeechCast
         public void GetUserConfig(UserConfig userConfig)
         {
             userConfig.SpeakingInvervalMillsec = System.Convert.ToInt32(this.NumericUpDownSpeakingInvervalMillsec.Value);
+            userConfig.TurboSpeakingInvervalMillsec = System.Convert.ToInt32(this.NumericUpDownTurboSpeakingInvervalMillsec.Value);
             userConfig.SpeakingRate = this.TrackBarSpeakingRate.Value;
             userConfig.TurboSpeakingRate = this.TrackBarTurboSpeakingRate.Value;
             userConfig.TurboThreshold = System.Convert.ToInt32(this.numericUpDownTurboThreshold.Value);
@@ -137,7 +138,6 @@ namespace SpeechCast
             userConfig.AutoGettingWebInvervalMillsec = System.Convert.ToInt32(this.NumericUpDownAutoGettingWebInverval.Value);
             userConfig.AAModeTextLength = System.Convert.ToInt32(this.numericUpDownAAModeTextLength.Value);
             userConfig.SpeaksResNumber = this.checkBoxSpeaksResNumber.Checked;
-            userConfig.CaptionIndent = this.checkBoxCaptionIndent.Checked;
             userConfig.NGWords.Clear();
             foreach (string ngword in this.TextBoxNGWords.Lines)
             {
@@ -407,9 +407,28 @@ namespace SpeechCast
             listBoxNewResponseSoundFilePathes.Items.Remove(listBoxNewResponseSoundFilePathes.SelectedItem);
         }
 
-        private void checkBoxCaptionIndent_CheckedChanged(object sender, EventArgs e)
+        private void buttonCaptionIndentPaddingLeft_Click(object sender, EventArgs e)
         {
+            FormMain.UserConfig.CaptionIndentLeftPadding--;
+            FormCaption.Instance.Refresh();
+        }
 
+        private void buttonCaptionIndentPaddingRight_Click(object sender, EventArgs e)
+        {
+            FormMain.UserConfig.CaptionIndentLeftPadding++;
+            FormCaption.Instance.Refresh();
+        }
+
+        private void buttonCaptionIndentPaddingUp_Click(object sender, EventArgs e)
+        {
+            FormMain.UserConfig.CaptionIndentTopPadding--;
+            FormCaption.Instance.Refresh();
+        }
+
+        private void buttonCaptionIndentPaddingDown_Click(object sender, EventArgs e)
+        {
+            FormMain.UserConfig.CaptionIndentTopPadding++;
+            FormCaption.Instance.Refresh();
         }
 
      }

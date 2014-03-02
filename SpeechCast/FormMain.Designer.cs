@@ -55,8 +55,10 @@
             this.toolStripButtonSpeech = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonPlaySoundNewResponse = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonClickSound = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonBorder = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSettings = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonCaptionAutoSmall = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonThreads = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonResponse = new System.Windows.Forms.ToolStripButton();
@@ -257,7 +259,7 @@
             this.splitContainer3.Panel2.Controls.Add(this.richTextBoxDefaultCaption);
             this.splitContainer3.Panel2MinSize = 0;
             this.splitContainer3.Size = new System.Drawing.Size(630, 604);
-            this.splitContainer3.SplitterDistance = 600;
+            this.splitContainer3.SplitterDistance = 575;
             this.splitContainer3.TabIndex = 3;
             // 
             // webBrowser
@@ -266,7 +268,7 @@
             this.webBrowser.Location = new System.Drawing.Point(0, 0);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(628, 598);
+            this.webBrowser.Size = new System.Drawing.Size(628, 573);
             this.webBrowser.TabIndex = 3;
             // 
             // richTextBoxDefaultCaption
@@ -274,9 +276,11 @@
             this.richTextBoxDefaultCaption.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxDefaultCaption.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxDefaultCaption.Name = "richTextBoxDefaultCaption";
-            this.richTextBoxDefaultCaption.Size = new System.Drawing.Size(628, 0);
+            this.richTextBoxDefaultCaption.Size = new System.Drawing.Size(628, 23);
             this.richTextBoxDefaultCaption.TabIndex = 0;
             this.richTextBoxDefaultCaption.Text = "";
+            this.richTextBoxDefaultCaption.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBoxDefaultCaption_KeyDown);
+            this.richTextBoxDefaultCaption.Leave += new System.EventHandler(this.richTextBoxDefaultCaption_Leave);
             // 
             // myToolStrip1
             // 
@@ -303,8 +307,10 @@
             this.toolStripButtonSpeech,
             this.toolStripButtonPlaySoundNewResponse,
             this.toolStripButtonClickSound,
+            this.toolStripSeparator5,
             this.toolStripButtonBorder,
             this.toolStripButtonSettings,
+            this.toolStripButtonCaptionAutoSmall,
             this.toolStripSeparator4,
             this.toolStripButtonThreads,
             this.toolStripButtonResponse,
@@ -399,6 +405,11 @@
             this.toolStripButtonClickSound.Text = "リロード音";
             this.toolStripButtonClickSound.Click += new System.EventHandler(this.toolStripButtonClickSound_Click);
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 26);
+            // 
             // toolStripButtonBorder
             // 
             this.toolStripButtonBorder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -420,6 +431,17 @@
             this.toolStripButtonSettings.Size = new System.Drawing.Size(23, 23);
             this.toolStripButtonSettings.Text = "設定";
             this.toolStripButtonSettings.Click += new System.EventHandler(this.toolStripButtonSettings_Click);
+            // 
+            // toolStripButtonCaptionAutoSmall
+            // 
+            this.toolStripButtonCaptionAutoSmall.CheckOnClick = true;
+            this.toolStripButtonCaptionAutoSmall.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonCaptionAutoSmall.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCaptionAutoSmall.Image")));
+            this.toolStripButtonCaptionAutoSmall.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCaptionAutoSmall.Name = "toolStripButtonCaptionAutoSmall";
+            this.toolStripButtonCaptionAutoSmall.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButtonCaptionAutoSmall.Text = "字幕表示エリア自動縮小";
+            this.toolStripButtonCaptionAutoSmall.Click += new System.EventHandler(this.toolStripButtonCaptionAutoSmall_Click);
             // 
             // toolStripSeparator4
             // 
@@ -514,8 +536,9 @@
             // 
             // toolStripButtonTurbo
             // 
+            this.toolStripButtonTurbo.CheckOnClick = true;
             this.toolStripButtonTurbo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonTurbo.Image = global::SpeechCast.Properties.Resources.boost;
+            this.toolStripButtonTurbo.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonTurbo.Image")));
             this.toolStripButtonTurbo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonTurbo.Name = "toolStripButtonTurbo";
             this.toolStripButtonTurbo.Size = new System.Drawing.Size(23, 23);
@@ -849,6 +872,8 @@
         private Controls.MyToolStrip toolStrip2;
         private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.RichTextBox richTextBoxDefaultCaption;
+        private System.Windows.Forms.ToolStripButton toolStripButtonCaptionAutoSmall;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }
 

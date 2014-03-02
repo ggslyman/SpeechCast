@@ -211,14 +211,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app3.ico" />
-    <None Include="Resources\bullhorn.png" />
-    <None Include="Resources\bullhorn.bmp" />
-    <None Include="Resources\boost.png" />
-    <None Include="Resources\20651.png" />
-    <None Include="Resources\play.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

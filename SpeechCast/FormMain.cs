@@ -254,7 +254,7 @@ namespace SpeechCast
 
         Regex jbbsBaseRegex = new System.Text.RegularExpressions.Regex(@"(http://(jbbs.livedoor.jp|jbbs.shitaraba.net)/\w+/\d+/)");
         Regex nichanBaseRegex = new System.Text.RegularExpressions.Regex(@"(http://.+2ch\.net/\w+/)\s*$");
-        Regex yyBaseRegex = new System.Text.RegularExpressions.Regex(@"(http://(yy.+\.60\.kg|yy.+\.kakiko\.com|bbs\.aristocratism\.info)/\w+/$)");
+        Regex yyBaseRegex = new System.Text.RegularExpressions.Regex(@"(http://(yy.+\.60\.kg|yy.+\.kakiko\.com|bbs\.aristocratism\.info|www.+\.atchs\.jp)/\w+/$)");
 
         private bool CheckBaseURL()
         {
@@ -1066,7 +1066,6 @@ namespace SpeechCast
         private void toolStripButtonCaption_Click(object sender, EventArgs e)
         {
             FormCaption.Instance.Visible = !FormCaption.Instance.Visible;
-
             toolStripButtonCaption.Checked = FormCaption.Instance.Visible;
             UserConfig.CaptionVisible = FormCaption.Instance.Visible;
         }
@@ -1109,7 +1108,7 @@ namespace SpeechCast
             TimeSpan diff = System.DateTime.Now - speakingCompletedTime;
             TimeSpan diffWeb = System.DateTime.Now - gettingWebTime;
             if (threadTitle.Length>0) {
-                FormCaption.Instance.setTitle(threadTitle + "[" + (CurrentResNumber - 1) + "/" + responses.Count + "]");
+                FormCaption.Instance.setTitle(threadTitle + " [" + (CurrentResNumber - 1) + "/" + responses.Count + "]");
                 FormCaption.Instance.Invalidate();
             }
             if (isSpeaking)
@@ -1174,12 +1173,7 @@ namespace SpeechCast
                     {
                         StartSpeaking();
                     }
-                    else if (!this.richTextBoxDefaultCaption.Focused)
-                    {
-                        FormCaption.Instance.CaptionText = this.richTextBoxDefaultCaption.Text;
-                    }else{
-                        FormCaption.Instance.CaptionText = "";
-                    }
+                    FormCaption.Instance.CaptionText = CaptionTextBuffer;
                 }
 
 
@@ -1188,13 +1182,18 @@ namespace SpeechCast
                     if (CurrentResNumber <= Response.MaxResponseCount)
                     {
                         if (this.endWebRequest) {
-                            orgWidth = FormCaption.Instance.Width;
-                            orgHeight = FormCaption.Instance.Height;
-                            FormCaption.Instance.Height = FormCaption.Instance.drawRect.Height;
-                            FormCaption.Instance.Width = FormCaption.Instance.drawRect.Width;
+                            if (UserConfig.CaptionAutoSmall)
+                            {
+                                orgWidth = FormCaption.Instance.Width;
+                                orgHeight = FormCaption.Instance.Height;
+                                FormCaption.Instance.Height = FormCaption.Instance.drawRect.Height;
+                                FormCaption.Instance.Width = FormCaption.Instance.drawRect.Width;
+                            }
                             GetFromURLNext();
-                            FormCaption.Instance.Height = orgHeight;
-                            FormCaption.Instance.Width = orgWidth;
+                            if (UserConfig.CaptionAutoSmall) {
+                                FormCaption.Instance.Height = orgHeight;
+                                FormCaption.Instance.Width = orgWidth;
+                            }
 
                         }
                     }
@@ -1746,6 +1745,25 @@ namespace SpeechCast
             {
                 this.splitContainer3.SplitterDistance = this.splitContainer3.Height - 130;
             }
+        }
+
+        private void toolStripButtonCaptionAutoSmall_Click(object sender, EventArgs e)
+        {
+            UserConfig.CaptionAutoSmall = this.toolStripButtonCaptionAutoSmall.Checked;
+        }
+
+        public string CaptionTextBuffer = "";
+        private void richTextBoxDefaultCaption_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.S && ModifierKeys == Keys.Control)
+            {
+                CaptionTextBuffer = this.richTextBoxDefaultCaption.Text;
+            }
+        }
+
+        private void richTextBoxDefaultCaption_Leave(object sender, EventArgs e)
+        {
+            CaptionTextBuffer = this.richTextBoxDefaultCaption.Text;
         }
 
     }
