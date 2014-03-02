@@ -218,11 +218,8 @@ namespace SpeechCast
                 offsets.Add(new Point(-i, captionFont.BorderSize - i));
                 offsets.Add(new Point(-captionFont.BorderSize + i, -i));
             }
-            if (!FormMain.UserConfig.CaptionIndent)
-            {
-                captionRect.X -= 12;
-                captionRect.Y -= 8;
-            }
+            captionRect.X = captionRect.Left + FormMain.UserConfig.CaptionIndentLeftPadding;
+            captionRect.Y = captionRect.Top + FormMain.UserConfig.CaptionIndentTopPadding;
             foreach (Point ofs in offsets)
             {
                 Rectangle borderRect = captionRect;

@@ -301,7 +301,21 @@ namespace SpeechCast
         /// </summary>
         public CaptionFont AACaptionFont = new CaptionFont();
 
-        public bool CaptionIndent = true;
+        /// <summary>
+        /// 字幕インデントONOFF
+        /// </summary>
+        //public bool CaptionIndent = true;
+
+        /// <summary>
+        /// 字幕表示位置調整
+        /// </summary>
+        public int CaptionIndentTopPadding = 0;
+        public int CaptionIndentLeftPadding = 0;
+
+        /// <summary>
+        /// 字幕表示エリア自動縮小(ネットアクセスタイムアウト時に字幕が塗りつぶされる場合の暫定対応)
+        /// </summary>
+        public bool CaptionAutoSmall;
 
         /// <summary>
         /// レス書き込み画面での名前

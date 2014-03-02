@@ -33,6 +33,9 @@
             this.buttonOK = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label22 = new System.Windows.Forms.Label();
+            this.NumericUpDownTurboSpeakingInvervalMillsec = new System.Windows.Forms.NumericUpDown();
+            this.label23 = new System.Windows.Forms.Label();
             this.textTestSentence = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonVoiceTest = new System.Windows.Forms.Button();
@@ -54,6 +57,11 @@
             this.NumericUpDownSpeakingInvervalMillsec = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonCaptionIndentPaddingRight = new System.Windows.Forms.Button();
+            this.buttonCaptionIndentPaddingLeft = new System.Windows.Forms.Button();
+            this.buttonCaptionIndentPaddingDown = new System.Windows.Forms.Button();
+            this.buttonCaptionIndentPaddingUp = new System.Windows.Forms.Button();
             this.checkBoxHideCaptionTitle = new System.Windows.Forms.CheckBox();
             this.buttonFontColor = new System.Windows.Forms.Button();
             this.checkBoxFontVertical = new System.Windows.Forms.CheckBox();
@@ -76,7 +84,6 @@
             this.checkBoxReduceFontSizeByWindowWidth = new System.Windows.Forms.CheckBox();
             this.checkBoxReduceFontSizeByWindowHeight = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.buttonRunEditorAAMode = new SpeechCast.Controls.ButtonRunEditor();
             this.textBoxAAModeConditions = new System.Windows.Forms.TextBox();
             this.label = new System.Windows.Forms.Label();
             this.numericUpDownAAModeTextLength = new System.Windows.Forms.NumericUpDown();
@@ -93,10 +100,8 @@
             this.NumericUpDownAutoGettingWebInverval = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.buttonRunEditorNGWord = new SpeechCast.Controls.ButtonRunEditor();
             this.TextBoxNGWords = new System.Windows.Forms.TextBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.buttonRunEditorPronounciation = new SpeechCast.Controls.ButtonRunEditor();
             this.TextBoxPronounciations = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -112,10 +117,14 @@
             this.buttonRefernceEditor = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxEditorFilePath = new System.Windows.Forms.TextBox();
-            this.checkBoxCaptionIndent = new System.Windows.Forms.CheckBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.buttonRunEditorAAMode = new SpeechCast.Controls.ButtonRunEditor();
+            this.buttonRunEditorNGWord = new SpeechCast.Controls.ButtonRunEditor();
+            this.buttonRunEditorPronounciation = new SpeechCast.Controls.ButtonRunEditor();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownTurboSpeakingInvervalMillsec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTurboThreshold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrackBarTurboSpeakingRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAAModeInvervalMillsec)).BeginInit();
@@ -123,6 +132,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TrackBarSpeakingRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownSpeakingInvervalMillsec)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownFontBorderSize)).BeginInit();
             this.tabPage7.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -186,6 +196,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label22);
+            this.tabPage1.Controls.Add(this.NumericUpDownTurboSpeakingInvervalMillsec);
+            this.tabPage1.Controls.Add(this.label23);
             this.tabPage1.Controls.Add(this.textTestSentence);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.buttonVoiceTest);
@@ -214,9 +227,44 @@
             this.tabPage1.Text = "音声";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(277, 51);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(34, 12);
+            this.label22.TabIndex = 22;
+            this.label22.Text = "msec.";
+            // 
+            // NumericUpDownTurboSpeakingInvervalMillsec
+            // 
+            this.NumericUpDownTurboSpeakingInvervalMillsec.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.NumericUpDownTurboSpeakingInvervalMillsec.Location = new System.Drawing.Point(176, 49);
+            this.NumericUpDownTurboSpeakingInvervalMillsec.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.NumericUpDownTurboSpeakingInvervalMillsec.Name = "NumericUpDownTurboSpeakingInvervalMillsec";
+            this.NumericUpDownTurboSpeakingInvervalMillsec.Size = new System.Drawing.Size(95, 19);
+            this.NumericUpDownTurboSpeakingInvervalMillsec.TabIndex = 21;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(17, 51);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(156, 12);
+            this.label23.TabIndex = 20;
+            this.label23.Text = "レス読み上げ間隔(ターボモード)";
+            // 
             // textTestSentence
             // 
-            this.textTestSentence.Location = new System.Drawing.Point(19, 191);
+            this.textTestSentence.Location = new System.Drawing.Point(19, 207);
             this.textTestSentence.Name = "textTestSentence";
             this.textTestSentence.Size = new System.Drawing.Size(371, 19);
             this.textTestSentence.TabIndex = 19;
@@ -224,7 +272,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(176, 216);
+            this.button1.Location = new System.Drawing.Point(176, 232);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(145, 23);
             this.button1.TabIndex = 18;
@@ -234,7 +282,7 @@
             // 
             // buttonVoiceTest
             // 
-            this.buttonVoiceTest.Location = new System.Drawing.Point(19, 216);
+            this.buttonVoiceTest.Location = new System.Drawing.Point(19, 232);
             this.buttonVoiceTest.Name = "buttonVoiceTest";
             this.buttonVoiceTest.Size = new System.Drawing.Size(145, 23);
             this.buttonVoiceTest.TabIndex = 17;
@@ -271,7 +319,7 @@
             // labelTurboSpeakingRate
             // 
             this.labelTurboSpeakingRate.AutoSize = true;
-            this.labelTurboSpeakingRate.Location = new System.Drawing.Point(110, 150);
+            this.labelTurboSpeakingRate.Location = new System.Drawing.Point(110, 166);
             this.labelTurboSpeakingRate.Name = "labelTurboSpeakingRate";
             this.labelTurboSpeakingRate.Size = new System.Drawing.Size(11, 12);
             this.labelTurboSpeakingRate.TabIndex = 14;
@@ -280,7 +328,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(17, 149);
+            this.label21.Location = new System.Drawing.Point(17, 165);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(87, 12);
             this.label21.TabIndex = 13;
@@ -289,7 +337,7 @@
             // TrackBarTurboSpeakingRate
             // 
             this.TrackBarTurboSpeakingRate.LargeChange = 2;
-            this.TrackBarTurboSpeakingRate.Location = new System.Drawing.Point(160, 140);
+            this.TrackBarTurboSpeakingRate.Location = new System.Drawing.Point(160, 156);
             this.TrackBarTurboSpeakingRate.Minimum = -10;
             this.TrackBarTurboSpeakingRate.Name = "TrackBarTurboSpeakingRate";
             this.TrackBarTurboSpeakingRate.Size = new System.Drawing.Size(222, 45);
@@ -299,7 +347,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(313, 58);
+            this.label18.Location = new System.Drawing.Point(277, 76);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(34, 12);
             this.label18.TabIndex = 11;
@@ -312,7 +360,7 @@
             0,
             0,
             0});
-            this.numericUpDownAAModeInvervalMillsec.Location = new System.Drawing.Point(212, 55);
+            this.numericUpDownAAModeInvervalMillsec.Location = new System.Drawing.Point(176, 74);
             this.numericUpDownAAModeInvervalMillsec.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -325,7 +373,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(17, 58);
+            this.label19.Location = new System.Drawing.Point(17, 76);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(147, 12);
             this.label19.TabIndex = 9;
@@ -375,7 +423,7 @@
             // labelSpeakingRate
             // 
             this.labelSpeakingRate.AutoSize = true;
-            this.labelSpeakingRate.Location = new System.Drawing.Point(110, 99);
+            this.labelSpeakingRate.Location = new System.Drawing.Point(110, 115);
             this.labelSpeakingRate.Name = "labelSpeakingRate";
             this.labelSpeakingRate.Size = new System.Drawing.Size(11, 12);
             this.labelSpeakingRate.TabIndex = 5;
@@ -384,7 +432,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 99);
+            this.label3.Location = new System.Drawing.Point(17, 115);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 12);
             this.label3.TabIndex = 4;
@@ -393,7 +441,7 @@
             // TrackBarSpeakingRate
             // 
             this.TrackBarSpeakingRate.LargeChange = 2;
-            this.TrackBarSpeakingRate.Location = new System.Drawing.Point(160, 89);
+            this.TrackBarSpeakingRate.Location = new System.Drawing.Point(160, 105);
             this.TrackBarSpeakingRate.Minimum = -10;
             this.TrackBarSpeakingRate.Name = "TrackBarSpeakingRate";
             this.TrackBarSpeakingRate.Size = new System.Drawing.Size(222, 45);
@@ -403,7 +451,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(313, 28);
+            this.label2.Location = new System.Drawing.Point(277, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 12);
             this.label2.TabIndex = 2;
@@ -416,7 +464,7 @@
             0,
             0,
             0});
-            this.NumericUpDownSpeakingInvervalMillsec.Location = new System.Drawing.Point(212, 25);
+            this.NumericUpDownSpeakingInvervalMillsec.Location = new System.Drawing.Point(176, 26);
             this.NumericUpDownSpeakingInvervalMillsec.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -431,13 +479,14 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(17, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(187, 12);
+            this.label1.Size = new System.Drawing.Size(92, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "音声が終了してから字幕が消える時間";
+            this.label1.Text = "レス読み上げ間隔";
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.checkBoxCaptionIndent);
+            this.tabPage2.Controls.Add(this.label24);
+            this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.checkBoxHideCaptionTitle);
             this.tabPage2.Controls.Add(this.buttonFontColor);
             this.tabPage2.Controls.Add(this.checkBoxFontVertical);
@@ -456,8 +505,61 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(425, 370);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "フォント";
+            this.tabPage2.Text = "字幕";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.buttonCaptionIndentPaddingRight);
+            this.groupBox2.Controls.Add(this.buttonCaptionIndentPaddingLeft);
+            this.groupBox2.Controls.Add(this.buttonCaptionIndentPaddingDown);
+            this.groupBox2.Controls.Add(this.buttonCaptionIndentPaddingUp);
+            this.groupBox2.Location = new System.Drawing.Point(13, 109);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(147, 66);
+            this.groupBox2.TabIndex = 15;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "字幕表示位置の微調整";
+            // 
+            // buttonCaptionIndentPaddingRight
+            // 
+            this.buttonCaptionIndentPaddingRight.Location = new System.Drawing.Point(88, 27);
+            this.buttonCaptionIndentPaddingRight.Name = "buttonCaptionIndentPaddingRight";
+            this.buttonCaptionIndentPaddingRight.Size = new System.Drawing.Size(24, 21);
+            this.buttonCaptionIndentPaddingRight.TabIndex = 18;
+            this.buttonCaptionIndentPaddingRight.Text = "→";
+            this.buttonCaptionIndentPaddingRight.UseVisualStyleBackColor = true;
+            this.buttonCaptionIndentPaddingRight.Click += new System.EventHandler(this.buttonCaptionIndentPaddingRight_Click);
+            // 
+            // buttonCaptionIndentPaddingLeft
+            // 
+            this.buttonCaptionIndentPaddingLeft.Location = new System.Drawing.Point(40, 27);
+            this.buttonCaptionIndentPaddingLeft.Name = "buttonCaptionIndentPaddingLeft";
+            this.buttonCaptionIndentPaddingLeft.Size = new System.Drawing.Size(24, 21);
+            this.buttonCaptionIndentPaddingLeft.TabIndex = 17;
+            this.buttonCaptionIndentPaddingLeft.Text = "←";
+            this.buttonCaptionIndentPaddingLeft.UseVisualStyleBackColor = true;
+            this.buttonCaptionIndentPaddingLeft.Click += new System.EventHandler(this.buttonCaptionIndentPaddingLeft_Click);
+            // 
+            // buttonCaptionIndentPaddingDown
+            // 
+            this.buttonCaptionIndentPaddingDown.Location = new System.Drawing.Point(64, 37);
+            this.buttonCaptionIndentPaddingDown.Name = "buttonCaptionIndentPaddingDown";
+            this.buttonCaptionIndentPaddingDown.Size = new System.Drawing.Size(24, 21);
+            this.buttonCaptionIndentPaddingDown.TabIndex = 16;
+            this.buttonCaptionIndentPaddingDown.Text = "↓";
+            this.buttonCaptionIndentPaddingDown.UseVisualStyleBackColor = true;
+            this.buttonCaptionIndentPaddingDown.Click += new System.EventHandler(this.buttonCaptionIndentPaddingDown_Click);
+            // 
+            // buttonCaptionIndentPaddingUp
+            // 
+            this.buttonCaptionIndentPaddingUp.Location = new System.Drawing.Point(64, 18);
+            this.buttonCaptionIndentPaddingUp.Name = "buttonCaptionIndentPaddingUp";
+            this.buttonCaptionIndentPaddingUp.Size = new System.Drawing.Size(24, 21);
+            this.buttonCaptionIndentPaddingUp.TabIndex = 15;
+            this.buttonCaptionIndentPaddingUp.Text = "↑";
+            this.buttonCaptionIndentPaddingUp.UseVisualStyleBackColor = true;
+            this.buttonCaptionIndentPaddingUp.Click += new System.EventHandler(this.buttonCaptionIndentPaddingUp_Click);
             // 
             // checkBoxHideCaptionTitle
             // 
@@ -502,9 +604,9 @@
             // 
             // panelPreview
             // 
-            this.panelPreview.Location = new System.Drawing.Point(13, 150);
+            this.panelPreview.Location = new System.Drawing.Point(13, 201);
             this.panelPreview.Name = "panelPreview";
-            this.panelPreview.Size = new System.Drawing.Size(404, 169);
+            this.panelPreview.Size = new System.Drawing.Size(404, 163);
             this.panelPreview.TabIndex = 9;
             this.panelPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPreview_Paint);
             // 
@@ -707,18 +809,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "AAモードになる条件";
             // 
-            // buttonRunEditorAAMode
-            // 
-            this.buttonRunEditorAAMode.AutoSize = true;
-            this.buttonRunEditorAAMode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonRunEditorAAMode.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
-            this.buttonRunEditorAAMode.Location = new System.Drawing.Point(344, 44);
-            this.buttonRunEditorAAMode.Name = "buttonRunEditorAAMode";
-            this.buttonRunEditorAAMode.Size = new System.Drawing.Size(53, 30);
-            this.buttonRunEditorAAMode.TabIndex = 3;
-            this.buttonRunEditorAAMode.TextBox = this.textBoxAAModeConditions;
-            this.buttonRunEditorAAMode.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
-            // 
             // textBoxAAModeConditions
             // 
             this.textBoxAAModeConditions.AcceptsReturn = true;
@@ -889,7 +979,7 @@
             0,
             0});
             this.NumericUpDownAutoGettingWebInverval.Minimum = new decimal(new int[] {
-            10000,
+            7000,
             0,
             0,
             0});
@@ -923,18 +1013,6 @@
             this.tabPage5.Text = "NGWord";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // buttonRunEditorNGWord
-            // 
-            this.buttonRunEditorNGWord.AutoSize = true;
-            this.buttonRunEditorNGWord.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonRunEditorNGWord.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
-            this.buttonRunEditorNGWord.Location = new System.Drawing.Point(369, 26);
-            this.buttonRunEditorNGWord.Name = "buttonRunEditorNGWord";
-            this.buttonRunEditorNGWord.Size = new System.Drawing.Size(53, 30);
-            this.buttonRunEditorNGWord.TabIndex = 1;
-            this.buttonRunEditorNGWord.TextBox = this.TextBoxNGWords;
-            this.buttonRunEditorNGWord.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
-            // 
             // TextBoxNGWords
             // 
             this.TextBoxNGWords.AcceptsReturn = true;
@@ -958,18 +1036,6 @@
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "読み方";
             this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // buttonRunEditorPronounciation
-            // 
-            this.buttonRunEditorPronounciation.AutoSize = true;
-            this.buttonRunEditorPronounciation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonRunEditorPronounciation.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
-            this.buttonRunEditorPronounciation.Location = new System.Drawing.Point(369, 46);
-            this.buttonRunEditorPronounciation.Name = "buttonRunEditorPronounciation";
-            this.buttonRunEditorPronounciation.Size = new System.Drawing.Size(53, 30);
-            this.buttonRunEditorPronounciation.TabIndex = 4;
-            this.buttonRunEditorPronounciation.TextBox = this.TextBoxPronounciations;
-            this.buttonRunEditorPronounciation.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
             // 
             // TextBoxPronounciations
             // 
@@ -1121,16 +1187,50 @@
             this.textBoxEditorFilePath.Size = new System.Drawing.Size(272, 19);
             this.textBoxEditorFilePath.TabIndex = 3;
             // 
-            // checkBoxCaptionIndent
+            // label24
             // 
-            this.checkBoxCaptionIndent.AutoSize = true;
-            this.checkBoxCaptionIndent.Location = new System.Drawing.Point(11, 119);
-            this.checkBoxCaptionIndent.Name = "checkBoxCaptionIndent";
-            this.checkBoxCaptionIndent.Size = new System.Drawing.Size(142, 16);
-            this.checkBoxCaptionIndent.TabIndex = 13;
-            this.checkBoxCaptionIndent.Text = "字幕にインデントを付ける";
-            this.checkBoxCaptionIndent.UseVisualStyleBackColor = true;
-            this.checkBoxCaptionIndent.CheckedChanged += new System.EventHandler(this.checkBoxCaptionIndent_CheckedChanged);
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(11, 180);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(311, 12);
+            this.label24.TabIndex = 16;
+            this.label24.Text = "※ 字幕調整時には代替字幕に日本語を入力しての調整を推奨";
+            // 
+            // buttonRunEditorAAMode
+            // 
+            this.buttonRunEditorAAMode.AutoSize = true;
+            this.buttonRunEditorAAMode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonRunEditorAAMode.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
+            this.buttonRunEditorAAMode.Location = new System.Drawing.Point(344, 44);
+            this.buttonRunEditorAAMode.Name = "buttonRunEditorAAMode";
+            this.buttonRunEditorAAMode.Size = new System.Drawing.Size(53, 30);
+            this.buttonRunEditorAAMode.TabIndex = 3;
+            this.buttonRunEditorAAMode.TextBox = this.textBoxAAModeConditions;
+            this.buttonRunEditorAAMode.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
+            // 
+            // buttonRunEditorNGWord
+            // 
+            this.buttonRunEditorNGWord.AutoSize = true;
+            this.buttonRunEditorNGWord.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonRunEditorNGWord.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
+            this.buttonRunEditorNGWord.Location = new System.Drawing.Point(369, 26);
+            this.buttonRunEditorNGWord.Name = "buttonRunEditorNGWord";
+            this.buttonRunEditorNGWord.Size = new System.Drawing.Size(53, 30);
+            this.buttonRunEditorNGWord.TabIndex = 1;
+            this.buttonRunEditorNGWord.TextBox = this.TextBoxNGWords;
+            this.buttonRunEditorNGWord.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
+            // 
+            // buttonRunEditorPronounciation
+            // 
+            this.buttonRunEditorPronounciation.AutoSize = true;
+            this.buttonRunEditorPronounciation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonRunEditorPronounciation.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
+            this.buttonRunEditorPronounciation.Location = new System.Drawing.Point(369, 46);
+            this.buttonRunEditorPronounciation.Name = "buttonRunEditorPronounciation";
+            this.buttonRunEditorPronounciation.Size = new System.Drawing.Size(53, 30);
+            this.buttonRunEditorPronounciation.TabIndex = 4;
+            this.buttonRunEditorPronounciation.TextBox = this.TextBoxPronounciations;
+            this.buttonRunEditorPronounciation.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
             // 
             // FormSettings
             // 
@@ -1153,6 +1253,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownTurboSpeakingInvervalMillsec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTurboThreshold)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrackBarTurboSpeakingRate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAAModeInvervalMillsec)).EndInit();
@@ -1161,6 +1262,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownSpeakingInvervalMillsec)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownFontBorderSize)).EndInit();
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
@@ -1271,6 +1373,14 @@
         private System.Windows.Forms.ListBox listBoxNewResponseSoundFilePathes;
         private System.Windows.Forms.Button buttonNewResponseSoundFilePathesAdd;
         private System.Windows.Forms.Button buttonNewResponseSoundFilePathesRemove;
-        private System.Windows.Forms.CheckBox checkBoxCaptionIndent;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button buttonCaptionIndentPaddingRight;
+        private System.Windows.Forms.Button buttonCaptionIndentPaddingLeft;
+        private System.Windows.Forms.Button buttonCaptionIndentPaddingDown;
+        private System.Windows.Forms.Button buttonCaptionIndentPaddingUp;
+        private System.Windows.Forms.Label label22;
+        public System.Windows.Forms.NumericUpDown NumericUpDownTurboSpeakingInvervalMillsec;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
     }
 }

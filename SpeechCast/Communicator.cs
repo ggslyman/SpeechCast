@@ -11,12 +11,11 @@ namespace SpeechCast
     class Communicator
     {
         public static Regex JBBSRegex = new System.Text.RegularExpressions.Regex(@"(http://jbbs.livedoor.jp|http://jbbs.shitaraba.net)/bbs/read.cgi(/(\w+)/(\d+)/(\d+)/)");
-        public static Regex YYRegex = new System.Text.RegularExpressions.Regex(@"(http://yy.+\..+|http://bbs\.aristocratism\.info)/.+/read.cgi/(\w+)/(\d+)/");
+        public static Regex YYRegex = new System.Text.RegularExpressions.Regex(@"(http://yy.+\..+|http://bbs\.aristocratism\.info|http://www.+\.atchs\.jp)/.+/read.cgi/(\w+)/(\d+)/");
         public static Regex NichanRegex = new System.Text.RegularExpressions.Regex(@"(http://.+2ch\.net)/.+/read.cgi/(\w+)/(\d+)/");
 
-
         public static Regex JBBSBaseRegex = new System.Text.RegularExpressions.Regex(@"(http://jbbs.livedoor.jp|http://jbbs.shitaraba.net)/(\w+)/(\d+)/");
-        public static Regex YYBaseRegex = new System.Text.RegularExpressions.Regex(@"(http://yy.+\..+|http://bbs\.aristocratism\.info)/(\w+)/");
+        public static Regex YYBaseRegex = new System.Text.RegularExpressions.Regex(@"(http://yy.+\..+|http://bbs\.aristocratism\.info|http://www.+\.atchs\.jp)/(\w+)/");
         public static Regex NichanBaseRegex = new System.Text.RegularExpressions.Regex(@"(http://.+2ch\.net)/(\w+)/");
 
         public static Regex htmlBodyRegex = new System.Text.RegularExpressions.Regex("<body.*?>(.*)</body>", RegexOptions.IgnoreCase);

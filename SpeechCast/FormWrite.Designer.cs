@@ -124,7 +124,6 @@
             // 
             // buttonPlay
             // 
-            this.buttonPlay.Image = global::SpeechCast.Properties.Resources.play;
             this.buttonPlay.Location = new System.Drawing.Point(503, 117);
             this.buttonPlay.Name = "buttonPlay";
             this.buttonPlay.Size = new System.Drawing.Size(46, 23);
