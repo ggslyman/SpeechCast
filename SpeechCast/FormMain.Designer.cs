@@ -41,9 +41,19 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.textBoxLog = new System.Windows.Forms.TextBox();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.splitContainerResCaption = new System.Windows.Forms.SplitContainer();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
+            this.splitContainerpkCaption = new System.Windows.Forms.SplitContainer();
             this.richTextBoxDefaultCaption = new System.Windows.Forms.RichTextBox();
+            this.buttonNum2Inc = new System.Windows.Forms.Button();
+            this.buttonNum2Dec = new System.Windows.Forms.Button();
+            this.buttonNum1Inc = new System.Windows.Forms.Button();
+            this.buttonNum1Dec = new System.Windows.Forms.Button();
+            this.buttonCaptionClock = new System.Windows.Forms.Button();
+            this.buttonCaptionNum2 = new System.Windows.Forms.Button();
+            this.buttonCaptionNum1 = new System.Windows.Forms.Button();
+            this.comboBoxCaptionNum2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxCaptionNum1 = new System.Windows.Forms.ComboBox();
             this.myToolStrip1 = new SpeechCast.Controls.MyToolStrip();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1 = new SpeechCast.Controls.MyToolStrip();
@@ -69,7 +79,9 @@
             this.toolStripButtonAutoUpdate = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonNext = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonLast = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonTurbo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonAutoNextThread = new System.Windows.Forms.ToolStripButton();
             this.toolStripTrackBarPlayVolume = new SpeechCast.Controls.ToolStripTrackBar();
             this.menuStrip1 = new SpeechCast.Controls.MyMenuStrip();
             this.toolStripMenuItemBookmarks = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,8 +107,8 @@
             this.toolStripButtonOpenAsBrowser = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOpenURLFromClipboard = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new SpeechCast.Controls.MyToolStrip();
-            this.toolStripButtonAutoNextThread = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.checkBoxClock24 = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowSecond = new System.Windows.Forms.CheckBox();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -107,10 +119,14 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerResCaption)).BeginInit();
+            this.splitContainerResCaption.Panel1.SuspendLayout();
+            this.splitContainerResCaption.Panel2.SuspendLayout();
+            this.splitContainerResCaption.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerpkCaption)).BeginInit();
+            this.splitContainerpkCaption.Panel1.SuspendLayout();
+            this.splitContainerpkCaption.Panel2.SuspendLayout();
+            this.splitContainerpkCaption.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -172,7 +188,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainerResCaption);
             this.splitContainer1.Panel2.Controls.Add(this.myToolStrip1);
             this.splitContainer1.Size = new System.Drawing.Size(949, 604);
             this.splitContainer1.SplitterDistance = 315;
@@ -238,31 +254,31 @@
             this.textBoxLog.Multiline = true;
             this.textBoxLog.Name = "textBoxLog";
             this.textBoxLog.ReadOnly = true;
+            this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxLog.Size = new System.Drawing.Size(315, 264);
             this.textBoxLog.TabIndex = 0;
             // 
-            // splitContainer3
+            // splitContainerResCaption
             // 
-            this.splitContainer3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer3.IsSplitterFixed = true;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitContainerResCaption.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerResCaption.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.splitContainerResCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerResCaption.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainerResCaption.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerResCaption.Name = "splitContainerResCaption";
+            this.splitContainerResCaption.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer3.Panel1
+            // splitContainerResCaption.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.webBrowser);
+            this.splitContainerResCaption.Panel1.Controls.Add(this.webBrowser);
             // 
-            // splitContainer3.Panel2
+            // splitContainerResCaption.Panel2
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.richTextBoxDefaultCaption);
-            this.splitContainer3.Panel2MinSize = 0;
-            this.splitContainer3.Size = new System.Drawing.Size(630, 604);
-            this.splitContainer3.SplitterDistance = 575;
-            this.splitContainer3.TabIndex = 3;
+            this.splitContainerResCaption.Panel2.Controls.Add(this.splitContainerpkCaption);
+            this.splitContainerResCaption.Panel2MinSize = 0;
+            this.splitContainerResCaption.Size = new System.Drawing.Size(630, 604);
+            this.splitContainerResCaption.SplitterDistance = 457;
+            this.splitContainerResCaption.TabIndex = 3;
             // 
             // webBrowser
             // 
@@ -270,19 +286,135 @@
             this.webBrowser.Location = new System.Drawing.Point(0, 0);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(628, 573);
+            this.webBrowser.Size = new System.Drawing.Size(628, 455);
             this.webBrowser.TabIndex = 3;
+            // 
+            // splitContainerpkCaption
+            // 
+            this.splitContainerpkCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerpkCaption.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainerpkCaption.IsSplitterFixed = true;
+            this.splitContainerpkCaption.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerpkCaption.Name = "splitContainerpkCaption";
+            this.splitContainerpkCaption.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerpkCaption.Panel1
+            // 
+            this.splitContainerpkCaption.Panel1.Controls.Add(this.richTextBoxDefaultCaption);
+            // 
+            // splitContainerpkCaption.Panel2
+            // 
+            this.splitContainerpkCaption.Panel2.Controls.Add(this.checkBoxShowSecond);
+            this.splitContainerpkCaption.Panel2.Controls.Add(this.checkBoxClock24);
+            this.splitContainerpkCaption.Panel2.Controls.Add(this.buttonNum2Inc);
+            this.splitContainerpkCaption.Panel2.Controls.Add(this.buttonNum2Dec);
+            this.splitContainerpkCaption.Panel2.Controls.Add(this.buttonNum1Inc);
+            this.splitContainerpkCaption.Panel2.Controls.Add(this.buttonNum1Dec);
+            this.splitContainerpkCaption.Panel2.Controls.Add(this.buttonCaptionClock);
+            this.splitContainerpkCaption.Panel2.Controls.Add(this.buttonCaptionNum2);
+            this.splitContainerpkCaption.Panel2.Controls.Add(this.buttonCaptionNum1);
+            this.splitContainerpkCaption.Panel2.Controls.Add(this.comboBoxCaptionNum2);
+            this.splitContainerpkCaption.Panel2.Controls.Add(this.comboBoxCaptionNum1);
+            this.splitContainerpkCaption.Size = new System.Drawing.Size(628, 141);
+            this.splitContainerpkCaption.SplitterDistance = 110;
+            this.splitContainerpkCaption.TabIndex = 1;
             // 
             // richTextBoxDefaultCaption
             // 
             this.richTextBoxDefaultCaption.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxDefaultCaption.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxDefaultCaption.Name = "richTextBoxDefaultCaption";
-            this.richTextBoxDefaultCaption.Size = new System.Drawing.Size(628, 23);
-            this.richTextBoxDefaultCaption.TabIndex = 0;
+            this.richTextBoxDefaultCaption.Size = new System.Drawing.Size(628, 110);
+            this.richTextBoxDefaultCaption.TabIndex = 1;
             this.richTextBoxDefaultCaption.Text = "";
             this.richTextBoxDefaultCaption.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBoxDefaultCaption_KeyDown);
             this.richTextBoxDefaultCaption.Leave += new System.EventHandler(this.richTextBoxDefaultCaption_Leave);
+            // 
+            // buttonNum2Inc
+            // 
+            this.buttonNum2Inc.Location = new System.Drawing.Point(223, 5);
+            this.buttonNum2Inc.Name = "buttonNum2Inc";
+            this.buttonNum2Inc.Size = new System.Drawing.Size(23, 19);
+            this.buttonNum2Inc.TabIndex = 8;
+            this.buttonNum2Inc.Text = "+";
+            this.buttonNum2Inc.UseVisualStyleBackColor = true;
+            this.buttonNum2Inc.Click += new System.EventHandler(this.buttonNum2Inc_Click);
+            // 
+            // buttonNum2Dec
+            // 
+            this.buttonNum2Dec.Location = new System.Drawing.Point(199, 5);
+            this.buttonNum2Dec.Name = "buttonNum2Dec";
+            this.buttonNum2Dec.Size = new System.Drawing.Size(23, 19);
+            this.buttonNum2Dec.TabIndex = 7;
+            this.buttonNum2Dec.Text = "-";
+            this.buttonNum2Dec.UseVisualStyleBackColor = true;
+            this.buttonNum2Dec.Click += new System.EventHandler(this.buttonNum2Dec_Click);
+            // 
+            // buttonNum1Inc
+            // 
+            this.buttonNum1Inc.Location = new System.Drawing.Point(75, 5);
+            this.buttonNum1Inc.Name = "buttonNum1Inc";
+            this.buttonNum1Inc.Size = new System.Drawing.Size(23, 19);
+            this.buttonNum1Inc.TabIndex = 6;
+            this.buttonNum1Inc.Text = "+";
+            this.buttonNum1Inc.UseVisualStyleBackColor = true;
+            this.buttonNum1Inc.Click += new System.EventHandler(this.buttonNum1Inc_Click);
+            // 
+            // buttonNum1Dec
+            // 
+            this.buttonNum1Dec.Location = new System.Drawing.Point(52, 5);
+            this.buttonNum1Dec.Name = "buttonNum1Dec";
+            this.buttonNum1Dec.Size = new System.Drawing.Size(23, 19);
+            this.buttonNum1Dec.TabIndex = 5;
+            this.buttonNum1Dec.Text = "-";
+            this.buttonNum1Dec.UseVisualStyleBackColor = true;
+            this.buttonNum1Dec.Click += new System.EventHandler(this.buttonNum1Dec_Click);
+            // 
+            // buttonCaptionClock
+            // 
+            this.buttonCaptionClock.Location = new System.Drawing.Point(296, 5);
+            this.buttonCaptionClock.Name = "buttonCaptionClock";
+            this.buttonCaptionClock.Size = new System.Drawing.Size(82, 19);
+            this.buttonCaptionClock.TabIndex = 4;
+            this.buttonCaptionClock.Text = "時計追加";
+            this.buttonCaptionClock.UseVisualStyleBackColor = true;
+            this.buttonCaptionClock.Click += new System.EventHandler(this.buttonCaptionClock_Click);
+            // 
+            // buttonCaptionNum2
+            // 
+            this.buttonCaptionNum2.Location = new System.Drawing.Point(250, 5);
+            this.buttonCaptionNum2.Name = "buttonCaptionNum2";
+            this.buttonCaptionNum2.Size = new System.Drawing.Size(38, 19);
+            this.buttonCaptionNum2.TabIndex = 3;
+            this.buttonCaptionNum2.Text = "追加";
+            this.buttonCaptionNum2.UseVisualStyleBackColor = true;
+            this.buttonCaptionNum2.Click += new System.EventHandler(this.buttonCaptionNum2_Click);
+            // 
+            // buttonCaptionNum1
+            // 
+            this.buttonCaptionNum1.Location = new System.Drawing.Point(102, 5);
+            this.buttonCaptionNum1.Name = "buttonCaptionNum1";
+            this.buttonCaptionNum1.Size = new System.Drawing.Size(38, 19);
+            this.buttonCaptionNum1.TabIndex = 2;
+            this.buttonCaptionNum1.Text = "追加";
+            this.buttonCaptionNum1.UseVisualStyleBackColor = true;
+            this.buttonCaptionNum1.Click += new System.EventHandler(this.buttonCaptionNum1_Click);
+            // 
+            // comboBoxCaptionNum2
+            // 
+            this.comboBoxCaptionNum2.FormattingEnabled = true;
+            this.comboBoxCaptionNum2.Location = new System.Drawing.Point(150, 4);
+            this.comboBoxCaptionNum2.Name = "comboBoxCaptionNum2";
+            this.comboBoxCaptionNum2.Size = new System.Drawing.Size(47, 20);
+            this.comboBoxCaptionNum2.TabIndex = 1;
+            // 
+            // comboBoxCaptionNum1
+            // 
+            this.comboBoxCaptionNum1.FormattingEnabled = true;
+            this.comboBoxCaptionNum1.Location = new System.Drawing.Point(3, 4);
+            this.comboBoxCaptionNum1.Name = "comboBoxCaptionNum1";
+            this.comboBoxCaptionNum1.Size = new System.Drawing.Size(47, 20);
+            this.comboBoxCaptionNum1.TabIndex = 0;
             // 
             // myToolStrip1
             // 
@@ -538,6 +670,11 @@
             this.toolStripButtonLast.Text = "最後のレスを読み上げる";
             this.toolStripButtonLast.Click += new System.EventHandler(this.toolStripMenuItemLast_Click);
             // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 26);
+            // 
             // toolStripButtonTurbo
             // 
             this.toolStripButtonTurbo.CheckOnClick = true;
@@ -548,6 +685,17 @@
             this.toolStripButtonTurbo.Size = new System.Drawing.Size(23, 23);
             this.toolStripButtonTurbo.Text = "ターボモードONOFF";
             this.toolStripButtonTurbo.Click += new System.EventHandler(this.toolStripButtonTurbo_Click);
+            // 
+            // toolStripButtonAutoNextThread
+            // 
+            this.toolStripButtonAutoNextThread.CheckOnClick = true;
+            this.toolStripButtonAutoNextThread.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAutoNextThread.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAutoNextThread.Image")));
+            this.toolStripButtonAutoNextThread.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAutoNextThread.Name = "toolStripButtonAutoNextThread";
+            this.toolStripButtonAutoNextThread.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButtonAutoNextThread.Text = "toolStripButtonAutoNextThread";
+            this.toolStripButtonAutoNextThread.Click += new System.EventHandler(this.toolStripButtonAutoNextThread_Click);
             // 
             // toolStripTrackBarPlayVolume
             // 
@@ -767,21 +915,27 @@
             this.toolStrip2.TabIndex = 3;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // toolStripButtonAutoNextThread
+            // checkBoxClock24
             // 
-            this.toolStripButtonAutoNextThread.CheckOnClick = true;
-            this.toolStripButtonAutoNextThread.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAutoNextThread.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAutoNextThread.Image")));
-            this.toolStripButtonAutoNextThread.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAutoNextThread.Name = "toolStripButtonAutoNextThread";
-            this.toolStripButtonAutoNextThread.Size = new System.Drawing.Size(23, 23);
-            this.toolStripButtonAutoNextThread.Text = "toolStripButtonAutoNextThread";
-            this.toolStripButtonAutoNextThread.Click += new System.EventHandler(this.toolStripButtonAutoNextThread_Click);
+            this.checkBoxClock24.AutoSize = true;
+            this.checkBoxClock24.Location = new System.Drawing.Point(383, 6);
+            this.checkBoxClock24.Name = "checkBoxClock24";
+            this.checkBoxClock24.Size = new System.Drawing.Size(84, 16);
+            this.checkBoxClock24.TabIndex = 9;
+            this.checkBoxClock24.Text = "24時間表記";
+            this.checkBoxClock24.UseVisualStyleBackColor = true;
+            this.checkBoxClock24.CheckedChanged += new System.EventHandler(this.checkBoxClock24_CheckedChanged);
             // 
-            // toolStripSeparator6
+            // checkBoxShowSecond
             // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 26);
+            this.checkBoxShowSecond.AutoSize = true;
+            this.checkBoxShowSecond.Location = new System.Drawing.Point(471, 6);
+            this.checkBoxShowSecond.Name = "checkBoxShowSecond";
+            this.checkBoxShowSecond.Size = new System.Drawing.Size(72, 16);
+            this.checkBoxShowSecond.TabIndex = 10;
+            this.checkBoxShowSecond.Text = "秒数表示";
+            this.checkBoxShowSecond.UseVisualStyleBackColor = true;
+            this.checkBoxShowSecond.CheckedChanged += new System.EventHandler(this.checkBoxShowSecond_CheckedChanged);
             // 
             // FormMain
             // 
@@ -812,10 +966,15 @@
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
+            this.splitContainerResCaption.Panel1.ResumeLayout(false);
+            this.splitContainerResCaption.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerResCaption)).EndInit();
+            this.splitContainerResCaption.ResumeLayout(false);
+            this.splitContainerpkCaption.Panel1.ResumeLayout(false);
+            this.splitContainerpkCaption.Panel2.ResumeLayout(false);
+            this.splitContainerpkCaption.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerpkCaption)).EndInit();
+            this.splitContainerpkCaption.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -883,7 +1042,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButtonPlaySoundNewResponse;
-        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.SplitContainer splitContainerResCaption;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxURL;
         private System.Windows.Forms.ToolStripButton toolStripButtonEnter;
@@ -891,11 +1050,23 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonOpenURLFromClipboard;
         private Controls.MyToolStrip toolStrip2;
         private System.Windows.Forms.WebBrowser webBrowser;
-        private System.Windows.Forms.RichTextBox richTextBoxDefaultCaption;
         private System.Windows.Forms.ToolStripButton toolStripButtonCaptionAutoSmall;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripButton toolStripButtonAutoNextThread;
+        private System.Windows.Forms.SplitContainer splitContainerpkCaption;
+        private System.Windows.Forms.RichTextBox richTextBoxDefaultCaption;
+        private System.Windows.Forms.Button buttonCaptionNum1;
+        private System.Windows.Forms.ComboBox comboBoxCaptionNum2;
+        private System.Windows.Forms.ComboBox comboBoxCaptionNum1;
+        private System.Windows.Forms.Button buttonCaptionNum2;
+        private System.Windows.Forms.Button buttonCaptionClock;
+        private System.Windows.Forms.Button buttonNum2Inc;
+        private System.Windows.Forms.Button buttonNum2Dec;
+        private System.Windows.Forms.Button buttonNum1Inc;
+        private System.Windows.Forms.Button buttonNum1Dec;
+        private System.Windows.Forms.CheckBox checkBoxClock24;
+        private System.Windows.Forms.CheckBox checkBoxShowSecond;
     }
 }
 

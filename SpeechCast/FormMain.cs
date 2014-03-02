@@ -27,6 +27,7 @@ namespace SpeechCast
         private const uint SET_FEATURE_ON_PROCESS = 0x00000002;
         private const int FEATURE_DISABLE_NAVIGATION_SOUNDS = 21;
 
+        DateTime objDate = new DateTime();
         public FormMain()
         {
 #if DEBUG
@@ -672,7 +673,6 @@ namespace SpeechCast
                     try
                     {
                         webBrowser.DocumentText = html;
-
                         documetnTime = stopWatch.ElapsedMilliseconds;
 
 #if DEBUG
@@ -1203,7 +1203,8 @@ namespace SpeechCast
                     {
                         StartSpeaking();
                     }
-                    FormCaption.Instance.CaptionText = CaptionTextBuffer;
+                    objDate = System.DateTime.Now;
+                    FormCaption.Instance.CaptionText = CaptionTextBuffer.Replace("#1#", comboBoxCaptionNum1.SelectedIndex.ToString()).Replace("#2#", comboBoxCaptionNum2.SelectedIndex.ToString()).Replace("#CLOCK#", objDate.ToString(dateformat));
                 }
 
 
@@ -1267,6 +1268,13 @@ namespace SpeechCast
                         toolStripTextBoxURL.Text = UserConfig.URL;
                     }
 
+                    for (int cnt = 0; cnt <= 100; cnt++)
+                    {
+                        comboBoxCaptionNum1.Items.Add(cnt);
+                        comboBoxCaptionNum2.Items.Add(cnt);
+                    }
+                    comboBoxCaptionNum1.SelectedIndex = 0;
+                    comboBoxCaptionNum2.SelectedIndex = 0;
                     toolStripButtonClickSound.Checked = UserConfig.NavigationSound;
                     CoInternetSetFeatureEnabled(FEATURE_DISABLE_NAVIGATION_SOUNDS, SET_FEATURE_ON_PROCESS, !UserConfig.NavigationSound);
 
@@ -1275,7 +1283,7 @@ namespace SpeechCast
                     toolStripButtonCaption.Checked = UserConfig.CaptionVisible;
                     toolStripButtonTurbo.Checked = UserConfig.TurboMode;
                     toolStripButtonSpeech.Checked = UserConfig.SpeakMode;
-                    this.splitContainer3.SplitterDistance = 2000;
+                    this.splitContainerResCaption.SplitterDistance = 2000;
                 }
                 catch (Exception ex)
                 {
@@ -1768,14 +1776,14 @@ namespace SpeechCast
 
         private void toolStripStatusLabelCommunication_Click(object sender, EventArgs e)
         {
-            if (this.splitContainer3.Panel2.Height > 0)
+            if (this.splitContainerResCaption.Panel2.Height > 0)
             {
-                this.splitContainer3.SplitterDistance = 2000;
+                this.splitContainerResCaption.SplitterDistance = 2000;
                 this.webBrowser.Focus();
             }
             else
             {
-                this.splitContainer3.SplitterDistance = this.splitContainer3.Height - 130;
+                this.splitContainerResCaption.SplitterDistance = this.splitContainerResCaption.Height - 130;
             }
         }
 
@@ -1912,5 +1920,70 @@ namespace SpeechCast
             });
             return ret.Replace("　", " ");
         }
+
+        private void buttonCaptionNum1_Click(object sender, EventArgs e)
+        {
+            this.richTextBoxDefaultCaption.Text += "#1#";
+            this.CaptionTextBuffer = this.richTextBoxDefaultCaption.Text;
+        }
+
+        private void buttonCaptionNum2_Click(object sender, EventArgs e)
+        {
+            this.richTextBoxDefaultCaption.Text += "#2#";
+            this.CaptionTextBuffer = this.richTextBoxDefaultCaption.Text;
+        }
+
+        private string dateformat = "hh:mm";
+        private void buttonCaptionClock_Click(object sender, EventArgs e)
+        {
+            this.richTextBoxDefaultCaption.Text += "#CLOCK#";
+            this.CaptionTextBuffer = this.richTextBoxDefaultCaption.Text;
+        }
+
+        private void buttonNum1Dec_Click(object sender, EventArgs e)
+        {
+            if (comboBoxCaptionNum1.SelectedIndex > 0) comboBoxCaptionNum1.SelectedIndex--;
+        }
+
+        private void buttonNum1Inc_Click(object sender, EventArgs e)
+        {
+            if (comboBoxCaptionNum1.SelectedIndex < (comboBoxCaptionNum1.Items.Count-1)) comboBoxCaptionNum1.SelectedIndex++;
+        }
+
+        private void buttonNum2Dec_Click(object sender, EventArgs e)
+        {
+            if (comboBoxCaptionNum2.SelectedIndex > 0) comboBoxCaptionNum2.SelectedIndex--;
+        }
+
+        private void buttonNum2Inc_Click(object sender, EventArgs e)
+        {
+            if (comboBoxCaptionNum2.SelectedIndex < (comboBoxCaptionNum2.Items.Count - 1)) comboBoxCaptionNum2.SelectedIndex++;
+        }
+
+        private void checkBoxClock24_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxClock24.Checked)
+            {
+                dateformat.Replace("hh", "HH");
+            }
+            else
+            {
+                dateformat.Replace("HH", "hh");
+            }
+        }
+
+        private void checkBoxShowSecond_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShowSecond.Checked)
+            {
+                dateformat = dateformat.Replace(":ss", "");
+                dateformat += (":ss");
+            }
+            else
+            {
+                dateformat = dateformat.Replace(":ss", "");
+            }
+        }
+
     }
 }
