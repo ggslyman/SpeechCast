@@ -1137,13 +1137,14 @@ namespace SpeechCast
             {
                 if (AutoUpdate)
                 {
-                    if (CurrentResNumber > Response.MaxResponseCount && UserConfig.AutoOpenNextThread)
+                    if (CurrentResNumber > Response.MaxResponseCount && UserConfig.AutoOpenNextThread && diffWeb.TotalMilliseconds >= UserConfig.AutoGettingWebInvervalMillsec)
                     {
                         if(openNextThreadUrl()){
                             openNextThread = true;
                             StartSpeaking();
                         }
-                    }else if (CurrentResNumber > responses.Count)
+                    }
+                    else if (CurrentResNumber > responses.Count)
                     {
                         int leftSeconds = (UserConfig.AutoGettingWebInvervalMillsec - (int)diffWeb.TotalMilliseconds) / 1000 + 1;
 
@@ -1283,6 +1284,8 @@ namespace SpeechCast
                     toolStripButtonCaption.Checked = UserConfig.CaptionVisible;
                     toolStripButtonTurbo.Checked = UserConfig.TurboMode;
                     toolStripButtonSpeech.Checked = UserConfig.SpeakMode;
+                    checkBoxClockMilitaryTime.Checked = UserConfig.MilitaryTime;
+                    checkBoxShowSecond.Checked = UserConfig.MilitaryTime;
                     this.splitContainerResCaption.SplitterDistance = 2000;
                 }
                 catch (Exception ex)
@@ -1827,17 +1830,17 @@ namespace SpeechCast
                     string searchTitle = zen2han(threadTitle);
                     System.Text.RegularExpressions.Match m = r.Match(searchTitle);
                     string nextNumber = null;
-                    while (m.Success)
+                    AddLog(searchTitle);
+                    if (m.Success)
                     {
                         //一致した対象が見つかったときキャプチャした部分文字列を表示
                         nextNumber = (Int32.Parse(m.Value) + 1).ToString();
-                        //次に一致する対象を検索
-                        m = m.NextMatch();
                     }
+                    AddLog(nextNumber);
 
                     // スレッド一覧の取得
                     string subjectURL = baseURL + "subject.txt";
-                    System.Console.WriteLine(subjectURL);
+                    AddLog(subjectURL);
                     System.Net.HttpWebRequest webReq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(subjectURL);
                     FormMain.UserConfig.SetProxy(webReq);
                     string encodingName = null;
@@ -1855,6 +1858,7 @@ namespace SpeechCast
                     try
                     {
                         webRes = (System.Net.HttpWebResponse)webReq.GetResponse();
+                        gettingWebTime = System.DateTime.Now; //例外が発生した場合、連続してwebアクセスが起こるのを防ぐ
                         using (StreamReader reader = new StreamReader(webRes.GetResponseStream(), Encoding.GetEncoding(encodingName)))
                         {
                             while (true)
@@ -1862,9 +1866,9 @@ namespace SpeechCast
                                 string s = reader.ReadLine();
                                 if (s == null)
                                 {
-                                    break;
+                                    return false;
                                 }
-                                string[] parseSubject = s.Split(',');
+                                string[] parseSubject = s.Replace("<>",",").Split(',');
 
                                 string searchSubject = zen2han(parseSubject[1]);
                                 System.Text.RegularExpressions.Match m2 = r.Match(searchSubject);
@@ -1898,12 +1902,16 @@ namespace SpeechCast
                     }
                     catch (Exception e)
                     {
-                        MessageBox.Show(string.Format("エラーが発生しました:{0}", e.Message));
+                        AddLog(string.Format("エラーが発生しました:{0}", e.Message));
                     }
                     finally
                     {
                     }
                 }
+            }
+            catch (Exception e)
+            {
+                AddLog(string.Format("エラーが発生しました:{0}", e.Message));
             }
             finally
             {
@@ -1962,13 +1970,15 @@ namespace SpeechCast
 
         private void checkBoxClock24_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxClock24.Checked)
+            if (checkBoxClockMilitaryTime.Checked)
             {
                 dateformat.Replace("hh", "HH");
+                UserConfig.MilitaryTime = true;
             }
             else
             {
                 dateformat.Replace("HH", "hh");
+                UserConfig.MilitaryTime = false;
             }
         }
 
@@ -1978,10 +1988,12 @@ namespace SpeechCast
             {
                 dateformat = dateformat.Replace(":ss", "");
                 dateformat += (":ss");
+                UserConfig.ShowSecond= true;
             }
             else
             {
                 dateformat = dateformat.Replace(":ss", "");
+                UserConfig.ShowSecond= false;
             }
         }
 

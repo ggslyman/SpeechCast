@@ -93,7 +93,7 @@ namespace SpeechCast
             }
             catch (Exception e)
             {
-                MessageBox.Show(string.Format("エラーが発生しました:{0}", e.Message));
+                FormMain.Instance.AddLog(string.Format("エラーが発生しました:{0}", e.Message));
             }
             finally
             {

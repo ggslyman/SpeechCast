@@ -76,7 +76,7 @@ namespace SpeechCast
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                FormMain.Instance.AddLog(e.Message);
             }
         }
 

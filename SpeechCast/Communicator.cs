@@ -115,7 +115,7 @@ namespace SpeechCast
             }
             catch (Exception e)
             {
-                System.Windows.Forms.MessageBox.Show(e.Message);
+                FormMain.Instance.AddLog(e.Message);
             }
             return title;
         }
@@ -358,7 +358,7 @@ namespace SpeechCast
                     , ThreadID);
                 return ThreadURL;
             }
-            m = Communicator.NichanBaseRegex.Match(BaseURL);
+            m = Communicator.YYBaseRegex.Match(baseURL);
             if (m.Success)
             {
                 ThreadURL = string.Format("{0}/test/read.cgi/{1}/{2}/"
@@ -367,7 +367,7 @@ namespace SpeechCast
                     , ThreadID);
                 return ThreadURL;
             }
-            m = Communicator.YYBaseRegex.Match(BaseURL);
+            m = Communicator.NichanBaseRegex.Match(baseURL);
             if (m.Success)
             {
                 ThreadURL = string.Format("{0}/test/read.cgi/{1}/{2}/"
