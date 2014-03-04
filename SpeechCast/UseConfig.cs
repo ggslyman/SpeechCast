@@ -318,6 +318,11 @@ namespace SpeechCast
         public int CaptionIndentLeftPadding = 0;
 
         /// <summary>
+        /// 字幕の時計表記設定
+        /// </summary>
+        public bool MilitaryTime = false;
+        public bool ShowSecond = false;
+        /// <summary>
         /// 字幕表示エリア自動縮小(ネットアクセスタイムアウト時に字幕が塗りつぶされる場合の暫定対応)
         /// </summary>
         public bool CaptionAutoSmall;

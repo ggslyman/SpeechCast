@@ -45,6 +45,8 @@
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.splitContainerpkCaption = new System.Windows.Forms.SplitContainer();
             this.richTextBoxDefaultCaption = new System.Windows.Forms.RichTextBox();
+            this.checkBoxShowSecond = new System.Windows.Forms.CheckBox();
+            this.checkBoxClockMilitaryTime = new System.Windows.Forms.CheckBox();
             this.buttonNum2Inc = new System.Windows.Forms.Button();
             this.buttonNum2Dec = new System.Windows.Forms.Button();
             this.buttonNum1Inc = new System.Windows.Forms.Button();
@@ -107,8 +109,6 @@
             this.toolStripButtonOpenAsBrowser = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOpenURLFromClipboard = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new SpeechCast.Controls.MyToolStrip();
-            this.checkBoxClock24 = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowSecond = new System.Windows.Forms.CheckBox();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -305,7 +305,7 @@
             // splitContainerpkCaption.Panel2
             // 
             this.splitContainerpkCaption.Panel2.Controls.Add(this.checkBoxShowSecond);
-            this.splitContainerpkCaption.Panel2.Controls.Add(this.checkBoxClock24);
+            this.splitContainerpkCaption.Panel2.Controls.Add(this.checkBoxClockMilitaryTime);
             this.splitContainerpkCaption.Panel2.Controls.Add(this.buttonNum2Inc);
             this.splitContainerpkCaption.Panel2.Controls.Add(this.buttonNum2Dec);
             this.splitContainerpkCaption.Panel2.Controls.Add(this.buttonNum1Inc);
@@ -324,11 +324,35 @@
             this.richTextBoxDefaultCaption.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxDefaultCaption.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxDefaultCaption.Name = "richTextBoxDefaultCaption";
+            this.richTextBoxDefaultCaption.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
             this.richTextBoxDefaultCaption.Size = new System.Drawing.Size(628, 110);
             this.richTextBoxDefaultCaption.TabIndex = 1;
             this.richTextBoxDefaultCaption.Text = "";
+            this.richTextBoxDefaultCaption.WordWrap = false;
             this.richTextBoxDefaultCaption.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBoxDefaultCaption_KeyDown);
             this.richTextBoxDefaultCaption.Leave += new System.EventHandler(this.richTextBoxDefaultCaption_Leave);
+            // 
+            // checkBoxShowSecond
+            // 
+            this.checkBoxShowSecond.AutoSize = true;
+            this.checkBoxShowSecond.Location = new System.Drawing.Point(471, 6);
+            this.checkBoxShowSecond.Name = "checkBoxShowSecond";
+            this.checkBoxShowSecond.Size = new System.Drawing.Size(72, 16);
+            this.checkBoxShowSecond.TabIndex = 10;
+            this.checkBoxShowSecond.Text = "秒数表示";
+            this.checkBoxShowSecond.UseVisualStyleBackColor = true;
+            this.checkBoxShowSecond.CheckedChanged += new System.EventHandler(this.checkBoxShowSecond_CheckedChanged);
+            // 
+            // checkBoxClockMilitaryTime
+            // 
+            this.checkBoxClockMilitaryTime.AutoSize = true;
+            this.checkBoxClockMilitaryTime.Location = new System.Drawing.Point(383, 6);
+            this.checkBoxClockMilitaryTime.Name = "checkBoxClockMilitaryTime";
+            this.checkBoxClockMilitaryTime.Size = new System.Drawing.Size(84, 16);
+            this.checkBoxClockMilitaryTime.TabIndex = 9;
+            this.checkBoxClockMilitaryTime.Text = "24時間表記";
+            this.checkBoxClockMilitaryTime.UseVisualStyleBackColor = true;
+            this.checkBoxClockMilitaryTime.CheckedChanged += new System.EventHandler(this.checkBoxClock24_CheckedChanged);
             // 
             // buttonNum2Inc
             // 
@@ -915,28 +939,6 @@
             this.toolStrip2.TabIndex = 3;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // checkBoxClock24
-            // 
-            this.checkBoxClock24.AutoSize = true;
-            this.checkBoxClock24.Location = new System.Drawing.Point(383, 6);
-            this.checkBoxClock24.Name = "checkBoxClock24";
-            this.checkBoxClock24.Size = new System.Drawing.Size(84, 16);
-            this.checkBoxClock24.TabIndex = 9;
-            this.checkBoxClock24.Text = "24時間表記";
-            this.checkBoxClock24.UseVisualStyleBackColor = true;
-            this.checkBoxClock24.CheckedChanged += new System.EventHandler(this.checkBoxClock24_CheckedChanged);
-            // 
-            // checkBoxShowSecond
-            // 
-            this.checkBoxShowSecond.AutoSize = true;
-            this.checkBoxShowSecond.Location = new System.Drawing.Point(471, 6);
-            this.checkBoxShowSecond.Name = "checkBoxShowSecond";
-            this.checkBoxShowSecond.Size = new System.Drawing.Size(72, 16);
-            this.checkBoxShowSecond.TabIndex = 10;
-            this.checkBoxShowSecond.Text = "秒数表示";
-            this.checkBoxShowSecond.UseVisualStyleBackColor = true;
-            this.checkBoxShowSecond.CheckedChanged += new System.EventHandler(this.checkBoxShowSecond_CheckedChanged);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1065,7 +1067,7 @@
         private System.Windows.Forms.Button buttonNum2Dec;
         private System.Windows.Forms.Button buttonNum1Inc;
         private System.Windows.Forms.Button buttonNum1Dec;
-        private System.Windows.Forms.CheckBox checkBoxClock24;
+        private System.Windows.Forms.CheckBox checkBoxClockMilitaryTime;
         private System.Windows.Forms.CheckBox checkBoxShowSecond;
     }
 }
