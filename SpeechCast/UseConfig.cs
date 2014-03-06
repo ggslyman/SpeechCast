@@ -342,6 +342,10 @@ namespace SpeechCast
         /// </summary>
         public bool FormWriteSage;
 
+        /// <summary>
+        /// デバッグログの出力有無の指定
+        /// </summary>
+        public bool OutputDebugLog = false;
 
         public void Serialize()
         {

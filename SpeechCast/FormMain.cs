@@ -30,7 +30,6 @@ namespace SpeechCast
         DateTime objDate = new DateTime();
         public FormMain()
         {
-#if DEBUG
             // ログのファイル出力周り処理(デバッグビルド時のみ)
             //  出力ファイルを指定して、StreamWriterオブジェクトを作成
             StreamWriter sw = new StreamWriter("debug.log");
@@ -44,7 +43,6 @@ namespace SpeechCast
             TextWriterTraceListener twtl = new TextWriterTraceListener(tw, "LogFile");
             //  リスナコレクションに追加する
             Trace.Listeners.Add(twtl);
-#endif
 
             // コンポーネントの初期化
             InitializeComponent();
@@ -204,7 +202,7 @@ namespace SpeechCast
 
         private string rawURL = null;
 
-        private void GetFromURL()
+        private async void GetFromURL()
         {
             if (CheckBaseURL())
             {
@@ -219,7 +217,7 @@ namespace SpeechCast
             }
             try
             {
-                GetFromURL(false);
+                await GetFromURL(false);
             }
             catch (Exception ex)
             {
@@ -228,14 +226,14 @@ namespace SpeechCast
             AutoUpdate = false;
         }
 
-        private void GetFromURLNext()
+        private async Task GetFromURLNext()
         {
             this.endWebRequest = false;
-            if (!GetFromURL(true))
+            if (!await GetFromURL(true))
             {
                 if (needsRetry)
                 {
-                   GetFromURL(false);
+                   await GetFromURL(false);
                 }
             }
             this.endWebRequest = true;
@@ -305,8 +303,7 @@ namespace SpeechCast
 #if DEBUG
         string debugDatFileName = null;
 #endif
-
-        private bool GetFromURL(bool next)
+        private async Task<bool> GetFromURL(bool next)
         {
 
             string url = null;
@@ -314,7 +311,6 @@ namespace SpeechCast
             bool result = true;
             bool updated = false;
             bool useRangeHeader = false;
-
             needsRetry = false;
             if (next && rawURL != null)
             {
@@ -392,263 +388,265 @@ namespace SpeechCast
             }
 
             System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
-            communicationStatusString = "通信中・・・・";
-            PushAndSetWaitCursor();
-            try
-            {
-                int oldResponseCount = responses.Count;
-
-                System.Net.HttpWebRequest webReq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
-                webReq.KeepAlive = false;
-                FormMain.UserConfig.SetProxy(webReq);
-
-                if (UserConfig.GZipCompressionEnabled && useRangeHeader == false)
-                {
-                    webReq.AutomaticDecompression = System.Net.DecompressionMethods.GZip;
-                }
-#if DEBUG
-                AddLog("datSize={0} lastModifiedTime={1} useRangeHeader={2}",
-                    datSize, lastModifiedDateTime.ToLongTimeString(), useRangeHeader);
-#endif
-                if (useRangeHeader)
-                {
-                    webReq.AddRange(datSize - 1);
-                    webReq.IfModifiedSince = lastModifiedDateTime;
-                }
-
-                System.Net.HttpWebResponse webRes = null;
-
-                gettingWebTime = System.DateTime.Now; //例外が発生した場合、連続してwebアクセスが起こるのを防ぐ
-
+            //communicationStatusString = "通信中・・・・";
+            //PushAndSetWaitCursor();
                 long responseTime = 0, readTime = 0, listViewTime = 0, documetnTime = 0, encodingTime = 0, setTime = 0;
+                System.Net.HttpWebResponse webRes = null;
+                bool webReqResult = true;
                 try
                 {
-                    stopWatch.Start();
-                    //サーバーからの応答を受信するためのWebResponseを取得
-                    webReq.Timeout=10000;
-                    webRes = (System.Net.HttpWebResponse)webReq.GetResponse();
+                    await Task.Run(() =>
+                    {
+                        int oldResponseCount = responses.Count;
 
-                    lastModifiedDateTime = webRes.LastModified;
-                    responseTime = stopWatch.ElapsedMilliseconds;
-                    //if (useRangeHeader)
-                    //{
-                    //    throw (new Exception(" 416 "));
-                    //}
+                        System.Net.HttpWebRequest webReq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
+                        webReq.KeepAlive = false;
+                        FormMain.UserConfig.SetProxy(webReq);
+
+                        if (UserConfig.GZipCompressionEnabled && useRangeHeader == false)
+                        {
+                            webReq.AutomaticDecompression = System.Net.DecompressionMethods.GZip;
+                        }
+#if DEBUG
+                        //AddLog("datSize={0} lastModifiedTime={1} useRangeHeader={2}",
+                        //    datSize, lastModifiedDateTime.ToLongTimeString(), useRangeHeader);
+#endif
+                        if (useRangeHeader)
+                        {
+                            webReq.AddRange(datSize - 1);
+                            webReq.IfModifiedSince = lastModifiedDateTime;
+                        }
+
+
+                        gettingWebTime = System.DateTime.Now; //例外が発生した場合、連続してwebアクセスが起こるのを防ぐ
+
+                        stopWatch.Start();
+                        //サーバーからの応答を受信するためのWebResponseを取得
+                        webReq.Timeout = 10000;
+                        webRes = (System.Net.HttpWebResponse)webReq.GetResponse();
+
+                        lastModifiedDateTime = webRes.LastModified;
+                        responseTime = stopWatch.ElapsedMilliseconds;
+                        //if (useRangeHeader)
+                        //{
+                        //    throw (new Exception(" 416 "));
+                        //}
+                    });
                 }
-                catch (Exception e)
+                catch (System.Net.WebException e)
                 {
                     if (e.Message.IndexOf("304") < 0)
                     {
                         AddLog("GetResponse Exception: {0}", e.Message);
                     }
-
                     if (e.Message.IndexOf("416") >= 0)
                     {
                         //autoUpdate = false;
                         //
-                        //MessageBox.Show(this, "多分、あぼ～んされています。Enterを押して再取得してください。");
+                        MessageBox.Show(this, "多分、あぼ～んされています。Enterを押して再取得してください。");
                         AddLog("誰かのレスがあぼ～んされてるかも？　全レス再取得します。");
                         needsRetry = true;
                     }
-
-                    return false;
+                    webReqResult = false;
                 }
-
-                try
+                if (webReqResult)
                 {
-                    using (MemoryStream memStream = new MemoryStream())
+                    try
                     {
-                        stopWatch.Reset();
-                        stopWatch.Start();
-
-                        Stream data = webRes.GetResponseStream();
-
-                        byte[] buf = new byte[1024];
-                        
-                        while (true)
+                        using (MemoryStream memStream = new MemoryStream())
                         {
-                            int size = data.Read(buf, 0, buf.Length);
+                            stopWatch.Reset();
+                            stopWatch.Start();
 
-                            if (size == 0)
-                            {
-                                break;
-                            }
-                            memStream.Write(buf, 0, size);
-                        }
+                            Stream data = webRes.GetResponseStream();
 
-                        data.Close();
+                            byte[] buf = new byte[1024];
 
-                        gettingWebTime = System.DateTime.Now;
-
-
-
-                        List<Response> tempResponses = new List<Response>(responses);
-
-                        int number = responses.Count + 1;
-                        if (clearItems)
-                        {
-                            tempResponses.Clear();
-                            number = 1;
-                        }
-
-                        int incRes = 0;
-                        memStream.Seek(0, SeekOrigin.Begin);
-
-#if DEBUG
-                        if (Response.Style == Response.BBSStyle.nichan && string.IsNullOrEmpty(debugDatFileName) == false && memStream.Length > 1)
-                        {
-                            memStream.ReadByte();
-
-                            string datDirName = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath) ,"Logs");
-
-                            if(!Directory.Exists(datDirName))
-                            {
-                                Directory.CreateDirectory(datDirName);
-                            }
-                            string fullPath = Path.Combine(datDirName,debugDatFileName);
-                            FileMode fileMode = FileMode.Create;
-
-                            if (File.Exists(fullPath) && next)
-                            {
-                                fileMode = FileMode.Append;
-                            }
-
-                            using (FileStream fs = new FileStream(fullPath, fileMode))
-                            {
-                                Byte[] bytes = new Byte[memStream.Length - 1];
-                                memStream.Read(bytes, 0, (int)memStream.Length - 1);
-                                fs.Write(bytes,0,bytes.Length);
-                            }
-
-                            memStream.Seek(0, SeekOrigin.Begin);
-                        }
-#endif
-
-                        if (useRangeHeader && memStream.Length > 0)
-                        {
-                            int c = memStream.GetBuffer()[0];
-
-                            //AddLog("c={0}", c);
-
-                            if (c != 10) // 10 == '\n'
-                            {
-                                //autoUpdate = false;
-                                AddLog("誰かのレスがあぼ～んされてるかも？　全レス再取得します。(char={0},datSize={1})", c, datSize);
-                                needsRetry = true;
-                                return false;
-                            }
-                        }
-                        readTime = stopWatch.ElapsedMilliseconds;
-                        stopWatch.Reset();
-                        stopWatch.Start();
-
-                        System.Diagnostics.Stopwatch stopWatchSet = new System.Diagnostics.Stopwatch();
-
-                        using (StreamReader reader = new StreamReader(memStream, Encoding.GetEncoding(encodingName)))
-                        {                            
                             while (true)
                             {
-                                string s = reader.ReadLine();
-                                if (s == null)
+                                int size = data.Read(buf, 0, buf.Length);
+
+                                if (size == 0)
                                 {
                                     break;
                                 }
-
-                                Response res = new Response();
-
-
-                                res.Number = number; //先に入れておかないとHTMLが正しく作成されない
-                                stopWatchSet.Start();
-                                bool ret = res.SetRawText(s);
-                                stopWatchSet.Stop();
-
-                                if (ret)
-                                {
-                                    if (Response.Style == Response.BBSStyle.jbbs)
-                                    {
-                                        //途中の番号が抜ける場合の対策
-                                        while (res.Number > number)
-                                        {
-                                            AddLog("途中のレスが削除された？ No.{0}", number);
-                                            Response emptyRes = new Response();
-
-                                            emptyRes.Number = number++;
-                                            emptyRes.SetEmpty();
-                                            tempResponses.Add(emptyRes);
-                                        }
-                                    }
-
-                                    tempResponses.Add(res);
-                                    number++; 
-                                }
-
-                                incRes++;
+                                memStream.Write(buf, 0, size);
                             }
 
-                            //AddLog("memStream.Size={0} incRes={1}", memStream.Length, incRes);
+                            data.Close();
 
-                            datSize += (int)memStream.Length - 1;
-                        }
-                        setTime = stopWatchSet.ElapsedMilliseconds;
-                        encodingTime = stopWatch.ElapsedMilliseconds;
-                        stopWatch.Reset();
-                        stopWatch.Start();
+                            gettingWebTime = System.DateTime.Now;
 
-                        if (tempResponses.Count != responses.Count || !next)
-                        {
-                            //レスが増えた
 
-                            updated = true;
-                            listViewResponses.BeginUpdate();
-                            int startIndex;
+
+                            List<Response> tempResponses = new List<Response>(responses);
+
+                            int number = responses.Count + 1;
                             if (clearItems)
                             {
-                                responses.Clear();
-                                listViewResponses.Items.Clear();
-                                startIndex = 0;
+                                tempResponses.Clear();
+                                number = 1;
                             }
-                            else
+
+                            int incRes = 0;
+                            memStream.Seek(0, SeekOrigin.Begin);
+
+#if DEBUG
+                            if (Response.Style == Response.BBSStyle.nichan && string.IsNullOrEmpty(debugDatFileName) == false && memStream.Length > 1)
                             {
-                                startIndex = responses.Count;
-                            }
-                            //AddLog("startIndex={0} tempResponses={1} responses={2}", startIndex, tempResponses.Count, responses.Count);
+                                memStream.ReadByte();
 
-                            for (int j = startIndex; j < tempResponses.Count; j++)
+                                string datDirName = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Logs");
+
+                                if (!Directory.Exists(datDirName))
+                                {
+                                    Directory.CreateDirectory(datDirName);
+                                }
+                                string fullPath = Path.Combine(datDirName, debugDatFileName);
+                                FileMode fileMode = FileMode.Create;
+
+                                if (File.Exists(fullPath) && next)
+                                {
+                                    fileMode = FileMode.Append;
+                                }
+
+                                using (FileStream fs = new FileStream(fullPath, fileMode))
+                                {
+                                    Byte[] bytes = new Byte[memStream.Length - 1];
+                                    memStream.Read(bytes, 0, (int)memStream.Length - 1);
+                                    fs.Write(bytes, 0, bytes.Length);
+                                }
+
+                                memStream.Seek(0, SeekOrigin.Begin);
+                            }
+#endif
+
+                            if (useRangeHeader && memStream.Length > 0)
                             {
-                                Response res = tempResponses[j];
+                                int c = memStream.GetBuffer()[0];
 
-                                res.Number = j + 1;
-                                responses.Add(res);
-                                listViewResponses.Items.Add(res.CreateListViewItem());
+                                //AddLog("c={0}", c);
+
+                                if (c != 10) // 10 == '\n'
+                                {
+                                    //autoUpdate = false;
+                                    AddLog("誰かのレスがあぼ～んされてるかも？　全レス再取得します。(char={0},datSize={1})", c, datSize);
+                                    needsRetry = true;
+                                    return false;
+                                }
                             }
-                            listViewResponses.EndUpdate();
+                            readTime = stopWatch.ElapsedMilliseconds;
+                            stopWatch.Reset();
+                            stopWatch.Start();
 
+                            System.Diagnostics.Stopwatch stopWatchSet = new System.Diagnostics.Stopwatch();
 
-                            if (next == true)
+                            using (StreamReader reader = new StreamReader(memStream, Encoding.GetEncoding(encodingName)))
                             {
-                                PlaySoundNewResponse();
+                                while (true)
+                                {
+                                    string s = reader.ReadLine();
+                                    if (s == null)
+                                    {
+                                        break;
+                                    }
+
+                                    Response res = new Response();
+
+
+                                    res.Number = number; //先に入れておかないとHTMLが正しく作成されない
+                                    stopWatchSet.Start();
+                                    bool ret = res.SetRawText(s);
+                                    stopWatchSet.Stop();
+
+                                    if (ret)
+                                    {
+                                        if (Response.Style == Response.BBSStyle.jbbs)
+                                        {
+                                            //途中の番号が抜ける場合の対策
+                                            while (res.Number > number)
+                                            {
+                                                AddLog("途中のレスが削除された？ No.{0}", number);
+                                                Response emptyRes = new Response();
+
+                                                emptyRes.Number = number++;
+                                                emptyRes.SetEmpty();
+                                                tempResponses.Add(emptyRes);
+                                            }
+                                        }
+
+                                        tempResponses.Add(res);
+                                        number++;
+                                    }
+
+                                    incRes++;
+                                }
+
+                                //AddLog("memStream.Size={0} incRes={1}", memStream.Length, incRes);
+
+                                datSize += (int)memStream.Length - 1;
                             }
+                            setTime = stopWatchSet.ElapsedMilliseconds;
+                            encodingTime = stopWatch.ElapsedMilliseconds;
+                            stopWatch.Reset();
+                            stopWatch.Start();
+
+                            if (tempResponses.Count != responses.Count || !next)
+                            {
+                                //レスが増えた
+
+                                updated = true;
+                                listViewResponses.BeginUpdate();
+                                int startIndex;
+                                if (clearItems)
+                                {
+                                    responses.Clear();
+                                    listViewResponses.Items.Clear();
+                                    startIndex = 0;
+                                }
+                                else
+                                {
+                                    startIndex = responses.Count;
+                                }
+                                //AddLog("startIndex={0} tempResponses={1} responses={2}", startIndex, tempResponses.Count, responses.Count);
+
+                                for (int j = startIndex; j < tempResponses.Count; j++)
+                                {
+                                    Response res = tempResponses[j];
+
+                                    res.Number = j + 1;
+                                    responses.Add(res);
+                                    listViewResponses.Items.Add(res.CreateListViewItem());
+                                }
+                                listViewResponses.EndUpdate();
+
+
+                                if (next == true)
+                                {
+                                    PlaySoundNewResponse();
+                                }
+                            }
+                            listViewTime = stopWatch.ElapsedMilliseconds;
+                            stopWatch.Reset();
+                            stopWatch.Start();
                         }
-                        listViewTime = stopWatch.ElapsedMilliseconds;
-                        stopWatch.Reset();
-                        stopWatch.Start();
                     }
-                }
-                 catch (System.Net.WebException we)
-                {
-                    result = false;
-
-                    AddLog("WebException: status={0}", we.Status.ToString());
-                    if (we.Response != null && we.Response.Headers != null)
+                    catch (System.Net.WebException we)
                     {
-                        for (int j = 0; j < we.Response.Headers.Count; j++)
-                        {
-                            AddLog("WebException: header {0}={1}", we.Response.Headers.Keys[j], we.Response.Headers[j]);
+                        result = false;
 
+                        AddLog("WebException: status={0}", we.Status.ToString());
+                        if (we.Response != null && we.Response.Headers != null)
+                        {
+                            for (int j = 0; j < we.Response.Headers.Count; j++)
+                            {
+                                AddLog("WebException: header {0}={1}", we.Response.Headers.Keys[j], we.Response.Headers[j]);
+
+                            }
                         }
                     }
-                }
-                
+                }                
+
                 if (responses.Count != 0)
                 {
                     threadTitle = responses[0].ThreadTitle;
@@ -686,13 +684,7 @@ namespace SpeechCast
                         AddLog("webBrowser Exception: {0}", ex.Message);
                     }
                 }
-            }
-            finally
-            {
-                PopCursor();
-                communicationStatusString = "";
-            }
-            return result;
+                return result;
         }
 
         private List<Response> responses = new List<Response>();
@@ -707,8 +699,11 @@ namespace SpeechCast
         private void AddLog(string str)
         {
             DateTime dtNow = DateTime.Now;
-            Trace.WriteLine(dtNow.ToString()+":"+str);
-            textBoxLog.AppendText(str + "\r\n");
+            if (UserConfig.OutputDebugLog)
+            {
+                Trace.WriteLine(dtNow.ToString() + ":" + str);
+                textBoxLog.AppendText(str + "\r\n");
+            }
         }
 
         private void listViewResponses_Click(object sender, EventArgs e)
@@ -1121,10 +1116,12 @@ namespace SpeechCast
         private int orgWidth;
         private int orgHeight;
         private bool openNextThread;
+        private TimeSpan diff;
+        private TimeSpan diffWeb;
         private void timer_Tick(object sender, EventArgs e)
         {
-            TimeSpan diff = System.DateTime.Now - speakingCompletedTime;
-            TimeSpan diffWeb = System.DateTime.Now - gettingWebTime;
+            diff = System.DateTime.Now - speakingCompletedTime;
+            diffWeb = System.DateTime.Now - gettingWebTime;
             if (threadTitle.Length>0) {
                 FormCaption.Instance.setTitle(threadTitle + " [" + (CurrentResNumber - 1) + "/" + responses.Count + "]");
                 FormCaption.Instance.Invalidate();
@@ -1137,12 +1134,16 @@ namespace SpeechCast
             {
                 if (AutoUpdate)
                 {
-                    if (CurrentResNumber > Response.MaxResponseCount && UserConfig.AutoOpenNextThread && diffWeb.TotalMilliseconds >= UserConfig.AutoGettingWebInvervalMillsec)
+                    if (!this.endWebRequest)
                     {
-                        if(openNextThreadUrl()){
-                            openNextThread = true;
-                            StartSpeaking();
-                        }
+                        communicationStatusString = string.Format("取得中・・・");
+                    }
+                    else if (CurrentResNumber > Response.MaxResponseCount && UserConfig.AutoOpenNextThread && diffWeb.TotalMilliseconds >= UserConfig.AutoGettingWebInvervalMillsec)
+                    {
+                        //if(openNextThreadUrl()){
+                        //    openNextThread = true;
+                        //    StartSpeaking();
+                        //}
                     }
                     else if (CurrentResNumber > responses.Count)
                     {
@@ -1167,13 +1168,13 @@ namespace SpeechCast
                 }
                 else
                 {
-                    if (openNextThread && !isSpeaking)
-                    {
-                        openNextThread = false;
-                        AutoUpdate = true;
-                        toolStripButtonAutoUpdate.Checked = true;
-                        CurrentResNumber = 0;
-                    }
+                    //if (openNextThread && !isSpeaking)
+                    //{
+                    //    openNextThread = false;
+                    //    AutoUpdate = true;
+                    //    toolStripButtonAutoUpdate.Checked = true;
+                    //    CurrentResNumber = 0;
+                    //}
                     communicationStatusString = "";
                 }
             }
@@ -1214,19 +1215,18 @@ namespace SpeechCast
                     if (CurrentResNumber <= Response.MaxResponseCount)
                     {
                         if (this.endWebRequest) {
-                            if (UserConfig.CaptionAutoSmall)
-                            {
-                                orgWidth = FormCaption.Instance.Width;
-                                orgHeight = FormCaption.Instance.Height;
-                                FormCaption.Instance.Height = FormCaption.Instance.drawRect.Height;
-                                FormCaption.Instance.Width = FormCaption.Instance.drawRect.Width;
-                            }
-                            GetFromURLNext();
-                            if (UserConfig.CaptionAutoSmall) {
-                                FormCaption.Instance.Height = orgHeight;
-                                FormCaption.Instance.Width = orgWidth;
-                            }
-
+                            //if (UserConfig.CaptionAutoSmall)
+                            //{
+                            //    orgWidth = FormCaption.Instance.Width;
+                            //    orgHeight = FormCaption.Instance.Height;
+                            //    FormCaption.Instance.Height = FormCaption.Instance.drawRect.Height;
+                            //    FormCaption.Instance.Width = FormCaption.Instance.drawRect.Width;
+                            //}
+                            //await GetFromURLNext();
+                            //if (UserConfig.CaptionAutoSmall) {
+                            //    FormCaption.Instance.Height = orgHeight;
+                            //    FormCaption.Instance.Width = orgWidth;
+                            //}
                         }
                     }
                     else
@@ -1239,6 +1239,67 @@ namespace SpeechCast
                 }
             }
         }
+
+        private async void timerWeb_Tick(object sender, EventArgs e)
+        {
+            if (threadTitle.Length > 0)
+            {
+                FormCaption.Instance.setTitle(threadTitle + " [" + (CurrentResNumber - 1) + "/" + responses.Count + "]");
+                FormCaption.Instance.Invalidate();
+            }
+            else
+            {
+                if (AutoUpdate)
+                {
+                    if (CurrentResNumber > Response.MaxResponseCount && UserConfig.AutoOpenNextThread && diffWeb.TotalMilliseconds >= UserConfig.AutoGettingWebInvervalMillsec)
+                    {
+                        if (openNextThreadUrl())
+                        {
+                            openNextThread = true;
+                            StartSpeaking();
+                        }
+                    }
+                }
+                else
+                {
+                    if (openNextThread && !isSpeaking)
+                    {
+                        openNextThread = false;
+                        AutoUpdate = true;
+                        toolStripButtonAutoUpdate.Checked = true;
+                        CurrentResNumber = 0;
+                    }
+                    communicationStatusString = "";
+                }
+            }
+
+            if (!isSpeaking && timerTickEnabled)
+            {
+
+                if (
+                        CurrentResNumber > responses.Count 
+                        && AutoUpdate && diffWeb.TotalMilliseconds >= UserConfig.AutoGettingWebInvervalMillsec
+                        && CurrentResNumber <= Response.MaxResponseCount
+                        && this.endWebRequest
+                    )
+                {
+                    if (UserConfig.CaptionAutoSmall)
+                    {
+                        orgWidth = FormCaption.Instance.Width;
+                        orgHeight = FormCaption.Instance.Height;
+                        FormCaption.Instance.Height = FormCaption.Instance.drawRect.Height;
+                        FormCaption.Instance.Width = FormCaption.Instance.drawRect.Width;
+                    }
+                    await GetFromURLNext();
+                    if (UserConfig.CaptionAutoSmall)
+                    {
+                        FormCaption.Instance.Height = orgHeight;
+                        FormCaption.Instance.Width = orgWidth;
+                    }
+                }
+            }
+        }
+
 
         public static UserConfig UserConfig;
         public static Bookmarks Bookmarks;
@@ -1972,12 +2033,12 @@ namespace SpeechCast
         {
             if (checkBoxClockMilitaryTime.Checked)
             {
-                dateformat.Replace("hh", "HH");
+                dateformat = dateformat.Replace("hh", "HH");
                 UserConfig.MilitaryTime = true;
             }
             else
             {
-                dateformat.Replace("HH", "hh");
+                dateformat = dateformat.Replace("HH", "hh");
                 UserConfig.MilitaryTime = false;
             }
         }
