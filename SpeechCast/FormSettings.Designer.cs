@@ -57,6 +57,7 @@
             this.NumericUpDownSpeakingInvervalMillsec = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label24 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonCaptionIndentPaddingRight = new System.Windows.Forms.Button();
             this.buttonCaptionIndentPaddingLeft = new System.Windows.Forms.Button();
@@ -84,6 +85,7 @@
             this.checkBoxReduceFontSizeByWindowWidth = new System.Windows.Forms.CheckBox();
             this.checkBoxReduceFontSizeByWindowHeight = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonRunEditorAAMode = new SpeechCast.Controls.ButtonRunEditor();
             this.textBoxAAModeConditions = new System.Windows.Forms.TextBox();
             this.label = new System.Windows.Forms.Label();
             this.numericUpDownAAModeTextLength = new System.Windows.Forms.NumericUpDown();
@@ -100,8 +102,10 @@
             this.NumericUpDownAutoGettingWebInverval = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.buttonRunEditorNGWord = new SpeechCast.Controls.ButtonRunEditor();
             this.TextBoxNGWords = new System.Windows.Forms.TextBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.buttonRunEditorPronounciation = new SpeechCast.Controls.ButtonRunEditor();
             this.TextBoxPronounciations = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -117,10 +121,7 @@
             this.buttonRefernceEditor = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxEditorFilePath = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.buttonRunEditorAAMode = new SpeechCast.Controls.ButtonRunEditor();
-            this.buttonRunEditorNGWord = new SpeechCast.Controls.ButtonRunEditor();
-            this.buttonRunEditorPronounciation = new SpeechCast.Controls.ButtonRunEditor();
+            this.checkBoxDebug = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -508,6 +509,15 @@
             this.tabPage2.Text = "字幕";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(11, 180);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(311, 12);
+            this.label24.TabIndex = 16;
+            this.label24.Text = "※ 字幕調整時には代替字幕に日本語を入力しての調整を推奨";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.buttonCaptionIndentPaddingRight);
@@ -809,6 +819,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "AAモードになる条件";
             // 
+            // buttonRunEditorAAMode
+            // 
+            this.buttonRunEditorAAMode.AutoSize = true;
+            this.buttonRunEditorAAMode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonRunEditorAAMode.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
+            this.buttonRunEditorAAMode.Location = new System.Drawing.Point(344, 44);
+            this.buttonRunEditorAAMode.Name = "buttonRunEditorAAMode";
+            this.buttonRunEditorAAMode.Size = new System.Drawing.Size(53, 30);
+            this.buttonRunEditorAAMode.TabIndex = 3;
+            this.buttonRunEditorAAMode.TextBox = this.textBoxAAModeConditions;
+            this.buttonRunEditorAAMode.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
+            // 
             // textBoxAAModeConditions
             // 
             this.textBoxAAModeConditions.AcceptsReturn = true;
@@ -1013,6 +1035,18 @@
             this.tabPage5.Text = "NGWord";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // buttonRunEditorNGWord
+            // 
+            this.buttonRunEditorNGWord.AutoSize = true;
+            this.buttonRunEditorNGWord.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonRunEditorNGWord.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
+            this.buttonRunEditorNGWord.Location = new System.Drawing.Point(369, 26);
+            this.buttonRunEditorNGWord.Name = "buttonRunEditorNGWord";
+            this.buttonRunEditorNGWord.Size = new System.Drawing.Size(53, 30);
+            this.buttonRunEditorNGWord.TabIndex = 1;
+            this.buttonRunEditorNGWord.TextBox = this.TextBoxNGWords;
+            this.buttonRunEditorNGWord.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
+            // 
             // TextBoxNGWords
             // 
             this.TextBoxNGWords.AcceptsReturn = true;
@@ -1036,6 +1070,18 @@
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "読み方";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // buttonRunEditorPronounciation
+            // 
+            this.buttonRunEditorPronounciation.AutoSize = true;
+            this.buttonRunEditorPronounciation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonRunEditorPronounciation.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
+            this.buttonRunEditorPronounciation.Location = new System.Drawing.Point(369, 46);
+            this.buttonRunEditorPronounciation.Name = "buttonRunEditorPronounciation";
+            this.buttonRunEditorPronounciation.Size = new System.Drawing.Size(53, 30);
+            this.buttonRunEditorPronounciation.TabIndex = 4;
+            this.buttonRunEditorPronounciation.TextBox = this.TextBoxPronounciations;
+            this.buttonRunEditorPronounciation.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
             // 
             // TextBoxPronounciations
             // 
@@ -1150,6 +1196,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.checkBoxDebug);
             this.tabPage4.Controls.Add(this.buttonRefernceEditor);
             this.tabPage4.Controls.Add(this.label8);
             this.tabPage4.Controls.Add(this.textBoxEditorFilePath);
@@ -1187,50 +1234,15 @@
             this.textBoxEditorFilePath.Size = new System.Drawing.Size(272, 19);
             this.textBoxEditorFilePath.TabIndex = 3;
             // 
-            // label24
+            // checkBoxDebug
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(11, 180);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(311, 12);
-            this.label24.TabIndex = 16;
-            this.label24.Text = "※ 字幕調整時には代替字幕に日本語を入力しての調整を推奨";
-            // 
-            // buttonRunEditorAAMode
-            // 
-            this.buttonRunEditorAAMode.AutoSize = true;
-            this.buttonRunEditorAAMode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonRunEditorAAMode.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
-            this.buttonRunEditorAAMode.Location = new System.Drawing.Point(344, 44);
-            this.buttonRunEditorAAMode.Name = "buttonRunEditorAAMode";
-            this.buttonRunEditorAAMode.Size = new System.Drawing.Size(53, 30);
-            this.buttonRunEditorAAMode.TabIndex = 3;
-            this.buttonRunEditorAAMode.TextBox = this.textBoxAAModeConditions;
-            this.buttonRunEditorAAMode.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
-            // 
-            // buttonRunEditorNGWord
-            // 
-            this.buttonRunEditorNGWord.AutoSize = true;
-            this.buttonRunEditorNGWord.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonRunEditorNGWord.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
-            this.buttonRunEditorNGWord.Location = new System.Drawing.Point(369, 26);
-            this.buttonRunEditorNGWord.Name = "buttonRunEditorNGWord";
-            this.buttonRunEditorNGWord.Size = new System.Drawing.Size(53, 30);
-            this.buttonRunEditorNGWord.TabIndex = 1;
-            this.buttonRunEditorNGWord.TextBox = this.TextBoxNGWords;
-            this.buttonRunEditorNGWord.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
-            // 
-            // buttonRunEditorPronounciation
-            // 
-            this.buttonRunEditorPronounciation.AutoSize = true;
-            this.buttonRunEditorPronounciation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonRunEditorPronounciation.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
-            this.buttonRunEditorPronounciation.Location = new System.Drawing.Point(369, 46);
-            this.buttonRunEditorPronounciation.Name = "buttonRunEditorPronounciation";
-            this.buttonRunEditorPronounciation.Size = new System.Drawing.Size(53, 30);
-            this.buttonRunEditorPronounciation.TabIndex = 4;
-            this.buttonRunEditorPronounciation.TextBox = this.TextBoxPronounciations;
-            this.buttonRunEditorPronounciation.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
+            this.checkBoxDebug.AutoSize = true;
+            this.checkBoxDebug.Location = new System.Drawing.Point(10, 56);
+            this.checkBoxDebug.Name = "checkBoxDebug";
+            this.checkBoxDebug.Size = new System.Drawing.Size(130, 16);
+            this.checkBoxDebug.TabIndex = 6;
+            this.checkBoxDebug.Text = "デバッグログを出力する";
+            this.checkBoxDebug.UseVisualStyleBackColor = true;
             // 
             // FormSettings
             // 
@@ -1382,5 +1394,6 @@
         public System.Windows.Forms.NumericUpDown NumericUpDownTurboSpeakingInvervalMillsec;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.CheckBox checkBoxDebug;
     }
 }

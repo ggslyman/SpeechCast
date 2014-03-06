@@ -42,7 +42,6 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.textBoxLog = new System.Windows.Forms.TextBox();
             this.splitContainerResCaption = new System.Windows.Forms.SplitContainer();
-            this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.splitContainerpkCaption = new System.Windows.Forms.SplitContainer();
             this.richTextBoxDefaultCaption = new System.Windows.Forms.RichTextBox();
             this.checkBoxShowSecond = new System.Windows.Forms.CheckBox();
@@ -109,6 +108,8 @@
             this.toolStripButtonOpenAsBrowser = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOpenURLFromClipboard = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new SpeechCast.Controls.MyToolStrip();
+            this.timerWeb = new System.Windows.Forms.Timer(this.components);
+            this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -279,15 +280,6 @@
             this.splitContainerResCaption.Size = new System.Drawing.Size(630, 604);
             this.splitContainerResCaption.SplitterDistance = 457;
             this.splitContainerResCaption.TabIndex = 3;
-            // 
-            // webBrowser
-            // 
-            this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(628, 455);
-            this.webBrowser.TabIndex = 3;
             // 
             // splitContainerpkCaption
             // 
@@ -939,6 +931,20 @@
             this.toolStrip2.TabIndex = 3;
             this.toolStrip2.Text = "toolStrip2";
             // 
+            // timerWeb
+            // 
+            this.timerWeb.Enabled = true;
+            this.timerWeb.Tick += new System.EventHandler(this.timerWeb_Tick);
+            // 
+            // webBrowser
+            // 
+            this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Name = "webBrowser";
+            this.webBrowser.Size = new System.Drawing.Size(628, 455);
+            this.webBrowser.TabIndex = 5;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1051,7 +1057,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonOpenAsBrowser;
         private System.Windows.Forms.ToolStripButton toolStripButtonOpenURLFromClipboard;
         private Controls.MyToolStrip toolStrip2;
-        private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.ToolStripButton toolStripButtonCaptionAutoSmall;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
@@ -1069,6 +1074,8 @@
         private System.Windows.Forms.Button buttonNum1Dec;
         private System.Windows.Forms.CheckBox checkBoxClockMilitaryTime;
         private System.Windows.Forms.CheckBox checkBoxShowSecond;
+        private System.Windows.Forms.Timer timerWeb;
+        private System.Windows.Forms.WebBrowser webBrowser;
     }
 }
 

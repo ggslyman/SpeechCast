@@ -117,7 +117,8 @@ namespace SpeechCast
             this.textBoxSpeakingTextWhenAAMode.Text = userConfig.SpeakingTextWhenAAMode;
             this.checkBoxHideCaptionTitle.Checked = userConfig.HideCaptionTitle;
             this.VoiceVolme = userConfig.SpeakingVolume;
-    UpdateUI();
+            this.checkBoxDebug.Checked = userConfig.OutputDebugLog;
+            UpdateUI();
         }
 
         private CaptionFont.CaptionColors fontColors;
@@ -187,6 +188,7 @@ namespace SpeechCast
             userConfig.SpeakingTextWhenAAMode = this.textBoxSpeakingTextWhenAAMode.Text;
             userConfig.AACaptionFont.Colors = this.aAFontColors;
             userConfig.HideCaptionTitle = this.checkBoxHideCaptionTitle.Checked;
+            userConfig.OutputDebugLog = this.checkBoxDebug.Checked;
         }
         
 
