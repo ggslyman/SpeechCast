@@ -433,5 +433,49 @@ namespace SpeechCast
             FormCaption.Instance.Refresh();
         }
 
+        private void buttonResSoundTest_Click(object sender, EventArgs e)
+        {
+            if (listBoxNewResponseSoundFilePathes.Items.Count > 0 && listBoxNewResponseSoundFilePathes.SelectedIndex >= 0)
+            {
+                var NewResponseSoundFilePath = listBoxNewResponseSoundFilePathes.SelectedItem.ToString();
+                //System.Console.WriteLine(NewResponseSoundFilePath);
+                //System.Console.WriteLine(soundIdx);
+                if (File.Exists(NewResponseSoundFilePath))
+                {
+                    try
+                    {
+                        //WMPLib.WindowsMediaPlayer mp = new WMPLib.WindowsMediaPlayer(); /* WMP */
+                        //mp.URL = NewResponseSoundFilePath; /* 再生したい音声ファイルのパス */
+                        //mp.settings.volume = UserConfig.PlayVolume;
+                        //if (UserConfig.PlaySoundNewResponseSync)
+                        //{
+                        //    mp.controls.play();
+                        //    while((int)mp.playState == 1) /* 停止しているか判定 */
+                        //    {
+                        //        System.Threading.Thread.Sleep(1000);
+                        //    }
+                        //    mp.close();　/* 音声ファイルを切り替える前に使うといいらしい */
+                        //}
+                        //else
+                        //{
+                        //    mp.controls.play();
+                        //}
+                        if (FormMain.Instance.soundPlayerNewResponse == null)
+                        {
+                            FormMain.Instance.soundPlayerNewResponse = new SoundPlayer();
+                        }
+                        FormMain.Instance.soundPlayerNewResponse.SoundLocation = NewResponseSoundFilePath;
+                        FormMain.Instance.soundPlayerNewResponse.Load();
+                        FormMain.Instance.soundPlayerNewResponse.Play();
+                        FormMain.Instance.soundPlayerNewResponse.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        FormMain.Instance.AddLog("PlaySoundNewResponse:{0}", ex.Message);
+                    }
+                }
+            }
+        }
+
      }
 }

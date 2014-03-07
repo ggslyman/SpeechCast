@@ -118,10 +118,11 @@
             this.label20 = new System.Windows.Forms.Label();
             this.checkBoxPlaySoundNewResponse = new System.Windows.Forms.CheckBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.checkBoxDebug = new System.Windows.Forms.CheckBox();
             this.buttonRefernceEditor = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxEditorFilePath = new System.Windows.Forms.TextBox();
-            this.checkBoxDebug = new System.Windows.Forms.CheckBox();
+            this.buttonResSoundTest = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1126,6 +1127,7 @@
             // 
             // panelPlaySound
             // 
+            this.panelPlaySound.Controls.Add(this.buttonResSoundTest);
             this.panelPlaySound.Controls.Add(this.buttonNewResponseSoundFilePathesRemove);
             this.panelPlaySound.Controls.Add(this.buttonNewResponseSoundFilePathesAdd);
             this.panelPlaySound.Controls.Add(this.listBoxNewResponseSoundFilePathes);
@@ -1208,6 +1210,16 @@
             this.tabPage4.Text = "その他";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // checkBoxDebug
+            // 
+            this.checkBoxDebug.AutoSize = true;
+            this.checkBoxDebug.Location = new System.Drawing.Point(10, 56);
+            this.checkBoxDebug.Name = "checkBoxDebug";
+            this.checkBoxDebug.Size = new System.Drawing.Size(130, 16);
+            this.checkBoxDebug.TabIndex = 6;
+            this.checkBoxDebug.Text = "デバッグログを出力する";
+            this.checkBoxDebug.UseVisualStyleBackColor = true;
+            // 
             // buttonRefernceEditor
             // 
             this.buttonRefernceEditor.Location = new System.Drawing.Point(394, 22);
@@ -1234,15 +1246,15 @@
             this.textBoxEditorFilePath.Size = new System.Drawing.Size(272, 19);
             this.textBoxEditorFilePath.TabIndex = 3;
             // 
-            // checkBoxDebug
+            // buttonResSoundTest
             // 
-            this.checkBoxDebug.AutoSize = true;
-            this.checkBoxDebug.Location = new System.Drawing.Point(10, 56);
-            this.checkBoxDebug.Name = "checkBoxDebug";
-            this.checkBoxDebug.Size = new System.Drawing.Size(130, 16);
-            this.checkBoxDebug.TabIndex = 6;
-            this.checkBoxDebug.Text = "デバッグログを出力する";
-            this.checkBoxDebug.UseVisualStyleBackColor = true;
+            this.buttonResSoundTest.Location = new System.Drawing.Point(271, 202);
+            this.buttonResSoundTest.Name = "buttonResSoundTest";
+            this.buttonResSoundTest.Size = new System.Drawing.Size(80, 22);
+            this.buttonResSoundTest.TabIndex = 10;
+            this.buttonResSoundTest.Text = "テスト";
+            this.buttonResSoundTest.UseVisualStyleBackColor = true;
+            this.buttonResSoundTest.Click += new System.EventHandler(this.buttonResSoundTest_Click);
             // 
             // FormSettings
             // 
@@ -1395,5 +1407,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.CheckBox checkBoxDebug;
+        private System.Windows.Forms.Button buttonResSoundTest;
     }
 }

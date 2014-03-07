@@ -716,7 +716,7 @@ namespace SpeechCast
             }
         }
 
-        private SoundPlayer soundPlayerNewResponse = null;
+        public SoundPlayer soundPlayerNewResponse = null;
 
         private void PlaySoundNewResponse()
         {
@@ -1743,11 +1743,6 @@ namespace SpeechCast
             synthesizer.Volume = toolStripTrackBarVoiceVolume.Value;            
         }
 
-        private void toolStripTrackBarPlayVolume_ValueChanged(object sender, EventArgs e)
-        {
-            UserConfig.PlayVolume = toolStripTrackBarPlayVolume.Value;
-        }
-
         private void toolStripMenuItemAbout_Click(object sender, EventArgs e)
         {
             FormAbout formAbout = new FormAbout();
@@ -2056,6 +2051,11 @@ namespace SpeechCast
                 dateformat = dateformat.Replace(":ss", "");
                 UserConfig.ShowSecond= false;
             }
+        }
+
+        private void buttonSpeakCaptionText_Click(object sender, EventArgs e)
+        {
+            StartSpeaking(CaptionTextBuffer.Replace("#1#", comboBoxCaptionNum1.SelectedIndex.ToString()).Replace("#2#", comboBoxCaptionNum2.SelectedIndex.ToString()).Replace("#CLOCK#", objDate.ToString(dateformat)));
         }
 
     }

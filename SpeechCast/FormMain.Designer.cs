@@ -42,8 +42,10 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.textBoxLog = new System.Windows.Forms.TextBox();
             this.splitContainerResCaption = new System.Windows.Forms.SplitContainer();
+            this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.splitContainerpkCaption = new System.Windows.Forms.SplitContainer();
             this.richTextBoxDefaultCaption = new System.Windows.Forms.RichTextBox();
+            this.buttonSpeakCaptionText = new System.Windows.Forms.Button();
             this.checkBoxShowSecond = new System.Windows.Forms.CheckBox();
             this.checkBoxClockMilitaryTime = new System.Windows.Forms.CheckBox();
             this.buttonNum2Inc = new System.Windows.Forms.Button();
@@ -83,7 +85,6 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonTurbo = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonAutoNextThread = new System.Windows.Forms.ToolStripButton();
-            this.toolStripTrackBarPlayVolume = new SpeechCast.Controls.ToolStripTrackBar();
             this.menuStrip1 = new SpeechCast.Controls.MyMenuStrip();
             this.toolStripMenuItemBookmarks = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemAddBookMark = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,7 +110,32 @@
             this.toolStripButtonOpenURLFromClipboard = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new SpeechCast.Controls.MyToolStrip();
             this.timerWeb = new System.Windows.Forms.Timer(this.components);
-            this.webBrowser = new System.Windows.Forms.WebBrowser();
+            this.myToolStrip2 = new SpeechCast.Controls.MyToolStrip();
+            this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTrackBar1 = new SpeechCast.Controls.ToolStripTrackBar();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton16 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton17 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton18 = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -131,6 +157,7 @@
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            this.myToolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -281,6 +308,15 @@
             this.splitContainerResCaption.SplitterDistance = 457;
             this.splitContainerResCaption.TabIndex = 3;
             // 
+            // webBrowser
+            // 
+            this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Name = "webBrowser";
+            this.webBrowser.Size = new System.Drawing.Size(628, 455);
+            this.webBrowser.TabIndex = 5;
+            // 
             // splitContainerpkCaption
             // 
             this.splitContainerpkCaption.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -296,6 +332,7 @@
             // 
             // splitContainerpkCaption.Panel2
             // 
+            this.splitContainerpkCaption.Panel2.Controls.Add(this.buttonSpeakCaptionText);
             this.splitContainerpkCaption.Panel2.Controls.Add(this.checkBoxShowSecond);
             this.splitContainerpkCaption.Panel2.Controls.Add(this.checkBoxClockMilitaryTime);
             this.splitContainerpkCaption.Panel2.Controls.Add(this.buttonNum2Inc);
@@ -323,6 +360,16 @@
             this.richTextBoxDefaultCaption.WordWrap = false;
             this.richTextBoxDefaultCaption.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBoxDefaultCaption_KeyDown);
             this.richTextBoxDefaultCaption.Leave += new System.EventHandler(this.richTextBoxDefaultCaption_Leave);
+            // 
+            // buttonSpeakCaptionText
+            // 
+            this.buttonSpeakCaptionText.Location = new System.Drawing.Point(549, 3);
+            this.buttonSpeakCaptionText.Name = "buttonSpeakCaptionText";
+            this.buttonSpeakCaptionText.Size = new System.Drawing.Size(68, 19);
+            this.buttonSpeakCaptionText.TabIndex = 11;
+            this.buttonSpeakCaptionText.Text = "読み上げ";
+            this.buttonSpeakCaptionText.UseVisualStyleBackColor = true;
+            this.buttonSpeakCaptionText.Click += new System.EventHandler(this.buttonSpeakCaptionText_Click);
             // 
             // checkBoxShowSecond
             // 
@@ -461,20 +508,7 @@
             this.toolStripButtonBorder,
             this.toolStripButtonSettings,
             this.toolStripButtonCaptionAutoSmall,
-            this.toolStripSeparator4,
-            this.toolStripButtonThreads,
-            this.toolStripButtonResponse,
-            this.toolStripButton1,
-            this.toolStripButtonFirst,
-            this.toolStripButtonPrev,
-            this.toolStripButtonStop,
-            this.toolStripButtonAutoUpdate,
-            this.toolStripButtonNext,
-            this.toolStripButtonLast,
-            this.toolStripSeparator6,
-            this.toolStripButtonTurbo,
-            this.toolStripButtonAutoNextThread,
-            this.toolStripTrackBarPlayVolume});
+            this.toolStripSeparator4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 26);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(949, 26);
@@ -606,7 +640,7 @@
             this.toolStripButtonThreads.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonThreads.Image")));
             this.toolStripButtonThreads.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonThreads.Name = "toolStripButtonThreads";
-            this.toolStripButtonThreads.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButtonThreads.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonThreads.Text = "スレ";
             this.toolStripButtonThreads.ToolTipText = "スレ一覧とスレ作成";
             this.toolStripButtonThreads.Click += new System.EventHandler(this.toolStripButtonThreads_Click);
@@ -617,14 +651,14 @@
             this.toolStripButtonResponse.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonResponse.Image")));
             this.toolStripButtonResponse.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonResponse.Name = "toolStripButtonResponse";
-            this.toolStripButtonResponse.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButtonResponse.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonResponse.Text = "レスを書く";
             this.toolStripButtonResponse.Click += new System.EventHandler(this.toolStripButtonResponse_Click);
             // 
             // toolStripButton1
             // 
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(6, 26);
+            this.toolStripButton1.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButtonFirst
             // 
@@ -632,7 +666,7 @@
             this.toolStripButtonFirst.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFirst.Image")));
             this.toolStripButtonFirst.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonFirst.Name = "toolStripButtonFirst";
-            this.toolStripButtonFirst.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButtonFirst.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonFirst.Text = "最初のレスを読み上げる";
             this.toolStripButtonFirst.Click += new System.EventHandler(this.toolStripMenuItemFirst_Click);
             // 
@@ -642,7 +676,7 @@
             this.toolStripButtonPrev.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonPrev.Image")));
             this.toolStripButtonPrev.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonPrev.Name = "toolStripButtonPrev";
-            this.toolStripButtonPrev.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButtonPrev.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonPrev.Text = "前のレスを読み上げる";
             this.toolStripButtonPrev.Click += new System.EventHandler(this.toolStripMenuItemPrev_Click);
             // 
@@ -652,7 +686,7 @@
             this.toolStripButtonStop.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonStop.Image")));
             this.toolStripButtonStop.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonStop.Name = "toolStripButtonStop";
-            this.toolStripButtonStop.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButtonStop.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonStop.Text = "読み上げを止める";
             this.toolStripButtonStop.Click += new System.EventHandler(this.toolStripMenuItemStop_Click);
             // 
@@ -662,7 +696,7 @@
             this.toolStripButtonAutoUpdate.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAutoUpdate.Image")));
             this.toolStripButtonAutoUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAutoUpdate.Name = "toolStripButtonAutoUpdate";
-            this.toolStripButtonAutoUpdate.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButtonAutoUpdate.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonAutoUpdate.Text = "自動更新";
             this.toolStripButtonAutoUpdate.Click += new System.EventHandler(this.toolStripButtonAutoUpdate_Click);
             // 
@@ -672,7 +706,7 @@
             this.toolStripButtonNext.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonNext.Image")));
             this.toolStripButtonNext.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonNext.Name = "toolStripButtonNext";
-            this.toolStripButtonNext.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButtonNext.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonNext.Text = "次のレスを読み上げる";
             this.toolStripButtonNext.Click += new System.EventHandler(this.toolStripMenuItemNext_Click);
             // 
@@ -682,14 +716,14 @@
             this.toolStripButtonLast.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLast.Image")));
             this.toolStripButtonLast.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonLast.Name = "toolStripButtonLast";
-            this.toolStripButtonLast.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButtonLast.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonLast.Text = "最後のレスを読み上げる";
             this.toolStripButtonLast.Click += new System.EventHandler(this.toolStripMenuItemLast_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 26);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
             // 
             // toolStripButtonTurbo
             // 
@@ -698,7 +732,7 @@
             this.toolStripButtonTurbo.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonTurbo.Image")));
             this.toolStripButtonTurbo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonTurbo.Name = "toolStripButtonTurbo";
-            this.toolStripButtonTurbo.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButtonTurbo.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonTurbo.Text = "ターボモードONOFF";
             this.toolStripButtonTurbo.Click += new System.EventHandler(this.toolStripButtonTurbo_Click);
             // 
@@ -709,23 +743,9 @@
             this.toolStripButtonAutoNextThread.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAutoNextThread.Image")));
             this.toolStripButtonAutoNextThread.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAutoNextThread.Name = "toolStripButtonAutoNextThread";
-            this.toolStripButtonAutoNextThread.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButtonAutoNextThread.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonAutoNextThread.Text = "toolStripButtonAutoNextThread";
             this.toolStripButtonAutoNextThread.Click += new System.EventHandler(this.toolStripButtonAutoNextThread_Click);
-            // 
-            // toolStripTrackBarPlayVolume
-            // 
-            this.toolStripTrackBarPlayVolume.AutoSize = false;
-            this.toolStripTrackBarPlayVolume.LargeChange = 10;
-            this.toolStripTrackBarPlayVolume.Maximum = 100;
-            this.toolStripTrackBarPlayVolume.Minimum = 0;
-            this.toolStripTrackBarPlayVolume.Name = "toolStripTrackBarPlayVolume";
-            this.toolStripTrackBarPlayVolume.Size = new System.Drawing.Size(100, 22);
-            this.toolStripTrackBarPlayVolume.SmallChange = 5;
-            this.toolStripTrackBarPlayVolume.Text = "着信音ボリューム";
-            this.toolStripTrackBarPlayVolume.Value = 0;
-            this.toolStripTrackBarPlayVolume.Visible = false;
-            this.toolStripTrackBarPlayVolume.ValueChanged += new System.EventHandler(this.toolStripTrackBarPlayVolume_ValueChanged);
             // 
             // menuStrip1
             // 
@@ -936,20 +956,247 @@
             this.timerWeb.Enabled = true;
             this.timerWeb.Tick += new System.EventHandler(this.timerWeb_Tick);
             // 
-            // webBrowser
+            // myToolStrip2
             // 
-            this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(628, 455);
-            this.webBrowser.TabIndex = 5;
+            this.myToolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel4,
+            this.toolStripButtonThreads,
+            this.toolStripButtonResponse,
+            this.toolStripButton1,
+            this.toolStripButtonFirst,
+            this.toolStripButtonPrev,
+            this.toolStripButtonStop,
+            this.toolStripButtonAutoUpdate,
+            this.toolStripButtonNext,
+            this.toolStripButtonLast,
+            this.toolStripSeparator6,
+            this.toolStripButtonTurbo,
+            this.toolStripButtonAutoNextThread});
+            this.myToolStrip2.Location = new System.Drawing.Point(0, 77);
+            this.myToolStrip2.Name = "myToolStrip2";
+            this.myToolStrip2.Size = new System.Drawing.Size(949, 25);
+            this.myToolStrip2.TabIndex = 7;
+            this.myToolStrip2.Text = "myToolStrip2";
+            // 
+            // toolStripLabel4
+            // 
+            this.toolStripLabel4.Name = "toolStripLabel4";
+            this.toolStripLabel4.Size = new System.Drawing.Size(32, 22);
+            this.toolStripLabel4.Text = "Play";
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 26);
+            // 
+            // toolStripLabel5
+            // 
+            this.toolStripLabel5.Name = "toolStripLabel5";
+            this.toolStripLabel5.Size = new System.Drawing.Size(51, 23);
+            this.toolStripLabel5.Text = "Volume";
+            // 
+            // toolStripTrackBar1
+            // 
+            this.toolStripTrackBar1.AutoSize = false;
+            this.toolStripTrackBar1.LargeChange = 10;
+            this.toolStripTrackBar1.Maximum = 100;
+            this.toolStripTrackBar1.Minimum = 0;
+            this.toolStripTrackBar1.Name = "toolStripTrackBar1";
+            this.toolStripTrackBar1.Size = new System.Drawing.Size(100, 22);
+            this.toolStripTrackBar1.SmallChange = 5;
+            this.toolStripTrackBar1.Text = "読み上げボリューム";
+            this.toolStripTrackBar1.Value = 0;
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton2.Text = "字幕";
+            this.toolStripButton2.ToolTipText = "字幕ウィンドウを表示";
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.CheckOnClick = true;
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton3.Text = "読み上げ";
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.CheckOnClick = true;
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton4.Text = "レス着信音";
+            // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.CheckOnClick = true;
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton5.Text = "リロード音";
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 26);
+            // 
+            // toolStripButton6
+            // 
+            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton6.Text = "枠";
+            this.toolStripButton6.ToolTipText = "字幕ウィンドウの枠を表示";
+            // 
+            // toolStripButton7
+            // 
+            this.toolStripButton7.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
+            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton7.Text = "設定";
+            // 
+            // toolStripButton8
+            // 
+            this.toolStripButton8.CheckOnClick = true;
+            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
+            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton8.Name = "toolStripButton8";
+            this.toolStripButton8.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton8.Text = "字幕表示エリア自動縮小";
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 26);
+            // 
+            // toolStripButton9
+            // 
+            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton9.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton9.Image")));
+            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton9.Name = "toolStripButton9";
+            this.toolStripButton9.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton9.Text = "スレ";
+            this.toolStripButton9.ToolTipText = "スレ一覧とスレ作成";
+            // 
+            // toolStripButton10
+            // 
+            this.toolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton10.Image")));
+            this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton10.Name = "toolStripButton10";
+            this.toolStripButton10.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton10.Text = "レスを書く";
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 26);
+            // 
+            // toolStripButton11
+            // 
+            this.toolStripButton11.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton11.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton11.Image")));
+            this.toolStripButton11.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton11.Name = "toolStripButton11";
+            this.toolStripButton11.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton11.Text = "最初のレスを読み上げる";
+            // 
+            // toolStripButton12
+            // 
+            this.toolStripButton12.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton12.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton12.Image")));
+            this.toolStripButton12.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton12.Name = "toolStripButton12";
+            this.toolStripButton12.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton12.Text = "前のレスを読み上げる";
+            // 
+            // toolStripButton13
+            // 
+            this.toolStripButton13.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton13.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton13.Image")));
+            this.toolStripButton13.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton13.Name = "toolStripButton13";
+            this.toolStripButton13.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton13.Text = "読み上げを止める";
+            // 
+            // toolStripButton14
+            // 
+            this.toolStripButton14.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton14.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton14.Image")));
+            this.toolStripButton14.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton14.Name = "toolStripButton14";
+            this.toolStripButton14.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton14.Text = "自動更新";
+            // 
+            // toolStripButton15
+            // 
+            this.toolStripButton15.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton15.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton15.Image")));
+            this.toolStripButton15.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton15.Name = "toolStripButton15";
+            this.toolStripButton15.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton15.Text = "次のレスを読み上げる";
+            // 
+            // toolStripButton16
+            // 
+            this.toolStripButton16.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton16.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton16.Image")));
+            this.toolStripButton16.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton16.Name = "toolStripButton16";
+            this.toolStripButton16.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton16.Text = "最後のレスを読み上げる";
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 26);
+            // 
+            // toolStripButton17
+            // 
+            this.toolStripButton17.CheckOnClick = true;
+            this.toolStripButton17.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton17.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton17.Image")));
+            this.toolStripButton17.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton17.Name = "toolStripButton17";
+            this.toolStripButton17.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton17.Text = "ターボモードONOFF";
+            // 
+            // toolStripButton18
+            // 
+            this.toolStripButton18.CheckOnClick = true;
+            this.toolStripButton18.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton18.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton18.Image")));
+            this.toolStripButton18.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton18.Name = "toolStripButton18";
+            this.toolStripButton18.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButton18.Text = "toolStripButtonAutoNextThread";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(949, 703);
+            this.Controls.Add(this.myToolStrip2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip2);
@@ -989,6 +1236,8 @@
             this.menuStrip1.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            this.myToolStrip2.ResumeLayout(false);
+            this.myToolStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1044,7 +1293,6 @@
         private Controls.ToolStripTrackBar toolStripTrackBarVoiceVolume;
         private System.Windows.Forms.ToolStripButton toolStripButtonTurbo;
         private System.Windows.Forms.ToolStripButton toolStripButtonSpeech;
-        private Controls.ToolStripTrackBar toolStripTrackBarPlayVolume;
         private Controls.MyToolStrip myToolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonClickSound;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
@@ -1076,6 +1324,33 @@
         private System.Windows.Forms.CheckBox checkBoxShowSecond;
         private System.Windows.Forms.Timer timerWeb;
         private System.Windows.Forms.WebBrowser webBrowser;
+        private System.Windows.Forms.Button buttonSpeakCaptionText;
+        private Controls.MyToolStrip myToolStrip2;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel4;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel5;
+        private Controls.ToolStripTrackBar toolStripTrackBar1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ToolStripButton toolStripButton7;
+        private System.Windows.Forms.ToolStripButton toolStripButton8;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripButton toolStripButton9;
+        private System.Windows.Forms.ToolStripButton toolStripButton10;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripButton toolStripButton11;
+        private System.Windows.Forms.ToolStripButton toolStripButton12;
+        private System.Windows.Forms.ToolStripButton toolStripButton13;
+        private System.Windows.Forms.ToolStripButton toolStripButton14;
+        private System.Windows.Forms.ToolStripButton toolStripButton15;
+        private System.Windows.Forms.ToolStripButton toolStripButton16;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripButton toolStripButton17;
+        private System.Windows.Forms.ToolStripButton toolStripButton18;
     }
 }
 
