@@ -1852,18 +1852,6 @@ namespace SpeechCast
         }
 
         public string CaptionTextBuffer = "";
-        private void richTextBoxDefaultCaption_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.S && ModifierKeys == Keys.Control)
-            {
-                CaptionTextBuffer = this.richTextBoxDefaultCaption.Text;
-            }
-        }
-
-        private void richTextBoxDefaultCaption_Leave(object sender, EventArgs e)
-        {
-            CaptionTextBuffer = this.richTextBoxDefaultCaption.Text;
-        }
 
         private void toolStripButtonAutoNextThread_Click(object sender, EventArgs e)
         {
@@ -1987,21 +1975,21 @@ namespace SpeechCast
 
         private void buttonCaptionNum1_Click(object sender, EventArgs e)
         {
-            this.richTextBoxDefaultCaption.Text += "#1#";
-            this.CaptionTextBuffer = this.richTextBoxDefaultCaption.Text;
+            insertTextBox(this.textBoxDefaultCaption, "#1#");
+            this.CaptionTextBuffer = this.textBoxDefaultCaption.Text;
         }
 
         private void buttonCaptionNum2_Click(object sender, EventArgs e)
         {
-            this.richTextBoxDefaultCaption.Text += "#2#";
-            this.CaptionTextBuffer = this.richTextBoxDefaultCaption.Text;
+            insertTextBox(this.textBoxDefaultCaption, "#2#");
+            this.CaptionTextBuffer = this.textBoxDefaultCaption.Text;
         }
 
         private string dateformat = "hh:mm";
         private void buttonCaptionClock_Click(object sender, EventArgs e)
         {
-            this.richTextBoxDefaultCaption.Text += "#CLOCK#";
-            this.CaptionTextBuffer = this.richTextBoxDefaultCaption.Text;
+            insertTextBox(this.textBoxDefaultCaption,"#CLOCK#");
+            this.CaptionTextBuffer = this.textBoxDefaultCaption.Text;
         }
 
         private void buttonNum1Dec_Click(object sender, EventArgs e)
@@ -2058,5 +2046,23 @@ namespace SpeechCast
             StartSpeaking(CaptionTextBuffer.Replace("#1#", comboBoxCaptionNum1.SelectedIndex.ToString()).Replace("#2#", comboBoxCaptionNum2.SelectedIndex.ToString()).Replace("#CLOCK#", objDate.ToString(dateformat)));
         }
 
+        private void textBoxDefaultCaption_Changed(object sender, EventArgs e)
+        {
+            CaptionTextBuffer = textBoxDefaultCaption.Text;
+        }
+        private void insertTextBox(TextBox targetText, string msg)
+        {
+            if (targetText.SelectedText.Length == 0)
+            {
+                targetText.SelectedText = DateTime.Now.ToString("HH:mm") + "\r\n";
+            }
+            else {
+                targetText.Text = targetText.Text.Substring(0, targetText.SelectionStart)
+                + msg
+                + targetText.Text.Substring(targetText.SelectionStart + targetText.SelectionLength);
+            }
+            targetText.SelectionLength = 0;　//なくてもいい
+            targetText.SelectionStart = targetText.Text.Length;
+        }
     }
 }

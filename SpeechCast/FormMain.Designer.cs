@@ -44,7 +44,7 @@
             this.splitContainerResCaption = new System.Windows.Forms.SplitContainer();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.splitContainerpkCaption = new System.Windows.Forms.SplitContainer();
-            this.richTextBoxDefaultCaption = new System.Windows.Forms.RichTextBox();
+            this.textBoxDefaultCaption = new System.Windows.Forms.TextBox();
             this.buttonSpeakCaptionText = new System.Windows.Forms.Button();
             this.checkBoxShowSecond = new System.Windows.Forms.CheckBox();
             this.checkBoxClockMilitaryTime = new System.Windows.Forms.CheckBox();
@@ -328,7 +328,7 @@
             // 
             // splitContainerpkCaption.Panel1
             // 
-            this.splitContainerpkCaption.Panel1.Controls.Add(this.richTextBoxDefaultCaption);
+            this.splitContainerpkCaption.Panel1.Controls.Add(this.textBoxDefaultCaption);
             // 
             // splitContainerpkCaption.Panel2
             // 
@@ -348,18 +348,16 @@
             this.splitContainerpkCaption.SplitterDistance = 110;
             this.splitContainerpkCaption.TabIndex = 1;
             // 
-            // richTextBoxDefaultCaption
+            // textBoxDefaultCaption
             // 
-            this.richTextBoxDefaultCaption.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxDefaultCaption.Location = new System.Drawing.Point(0, 0);
-            this.richTextBoxDefaultCaption.Name = "richTextBoxDefaultCaption";
-            this.richTextBoxDefaultCaption.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.richTextBoxDefaultCaption.Size = new System.Drawing.Size(628, 110);
-            this.richTextBoxDefaultCaption.TabIndex = 1;
-            this.richTextBoxDefaultCaption.Text = "";
-            this.richTextBoxDefaultCaption.WordWrap = false;
-            this.richTextBoxDefaultCaption.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBoxDefaultCaption_KeyDown);
-            this.richTextBoxDefaultCaption.Leave += new System.EventHandler(this.richTextBoxDefaultCaption_Leave);
+            this.textBoxDefaultCaption.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxDefaultCaption.Location = new System.Drawing.Point(0, 0);
+            this.textBoxDefaultCaption.Multiline = true;
+            this.textBoxDefaultCaption.Name = "textBoxDefaultCaption";
+            this.textBoxDefaultCaption.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxDefaultCaption.Size = new System.Drawing.Size(628, 110);
+            this.textBoxDefaultCaption.TabIndex = 2;
+            this.textBoxDefaultCaption.TextChanged += new System.EventHandler(this.textBoxDefaultCaption_Changed);
             // 
             // buttonSpeakCaptionText
             // 
@@ -495,6 +493,7 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel2,
             this.toolStripComboBoxSelectVoice,
@@ -939,6 +938,7 @@
             // 
             // toolStrip2
             // 
+            this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
             this.toolStripTextBoxURL,
@@ -958,6 +958,7 @@
             // 
             // myToolStrip2
             // 
+            this.myToolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.myToolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel4,
             this.toolStripButtonThreads,
@@ -1226,6 +1227,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerResCaption)).EndInit();
             this.splitContainerResCaption.ResumeLayout(false);
             this.splitContainerpkCaption.Panel1.ResumeLayout(false);
+            this.splitContainerpkCaption.Panel1.PerformLayout();
             this.splitContainerpkCaption.Panel2.ResumeLayout(false);
             this.splitContainerpkCaption.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerpkCaption)).EndInit();
@@ -1310,7 +1312,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripButton toolStripButtonAutoNextThread;
         private System.Windows.Forms.SplitContainer splitContainerpkCaption;
-        private System.Windows.Forms.RichTextBox richTextBoxDefaultCaption;
         private System.Windows.Forms.Button buttonCaptionNum1;
         private System.Windows.Forms.ComboBox comboBoxCaptionNum2;
         private System.Windows.Forms.ComboBox comboBoxCaptionNum1;
@@ -1351,6 +1352,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripButton toolStripButton17;
         private System.Windows.Forms.ToolStripButton toolStripButton18;
+        private System.Windows.Forms.TextBox textBoxDefaultCaption;
     }
 }
 
