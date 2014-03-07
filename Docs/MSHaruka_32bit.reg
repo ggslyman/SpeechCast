@@ -1,0 +1,17 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_ja-JP_Haruka_10.0]
+@="Microsoft Server Speech Text to Speech Voice (ja-JP, Haruka)"
+"411"="Microsoft Server Speech Text to Speech Voice (ja-JP, Haruka)"
+"CLSID"="{a12bdfa1-c3a1-48ea-8e3f-27945e16cf7e}"
+"LangDataPath"="C:\\Program Files\\Common Files\\Microsoft Shared\\Speech\\Tokens\\TTS_MS_ja-JP_Haruka_10.0\\MSTTSLocjaJP.dat"
+"VoicePath"="C:\\Program Files\\Common Files\\Microsoft Shared\\Speech\\Tokens\\TTS_MS_ja-JP_Haruka_10.0\\HarukaT"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_MS_ja-JP_Haruka_10.0\Attributes]
+@=""
+"Age"="Adult"
+"Gender"="Female"
+"Language"="411"
+"Name"="Microsoft Server Speech Text to Speech Voice (ja-JP, Haruka)"
+"Vendor"="Microsoft"
+"Version"="11.0"
