@@ -1998,7 +1998,8 @@ namespace SpeechCast
 
         private void buttonSpeakCaptionText_Click(object sender, EventArgs e)
         {
-            StartSpeaking(CaptionTextBuffer.Replace("#1#", comboBoxCaptionNum1.SelectedIndex.ToString()).Replace("#2#", comboBoxCaptionNum2.SelectedIndex.ToString()).Replace("#CLOCK#", objDate.ToString(dateformat)));
+            if (CaptionTextBuffer.Replace("#1#", comboBoxCaptionNum1.SelectedIndex.ToString()).Replace("#2#", comboBoxCaptionNum2.SelectedIndex.ToString()).Replace("#CLOCK#", objDate.ToString(dateformat)).Length>0)
+                StartSpeaking(CaptionTextBuffer.Replace("#1#", comboBoxCaptionNum1.SelectedIndex.ToString()).Replace("#2#", comboBoxCaptionNum2.SelectedIndex.ToString()).Replace("#CLOCK#", objDate.ToString(dateformat)));
         }
 
         private void textBoxDefaultCaption_Changed(object sender, EventArgs e)
@@ -2009,7 +2010,7 @@ namespace SpeechCast
         {
             if (targetText.SelectedText.Length == 0)
             {
-                targetText.SelectedText = DateTime.Now.ToString("HH:mm") + "\r\n";
+                targetText.SelectedText = msg;
             }
             else {
                 targetText.Text = targetText.Text.Substring(0, targetText.SelectionStart)
