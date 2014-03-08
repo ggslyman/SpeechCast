@@ -57,9 +57,8 @@
             this.buttonCaptionNum1 = new System.Windows.Forms.Button();
             this.comboBoxCaptionNum2 = new System.Windows.Forms.ComboBox();
             this.comboBoxCaptionNum1 = new System.Windows.Forms.ComboBox();
-            this.myToolStrip1 = new SpeechCast.Controls.MyToolStrip();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.toolStrip1 = new SpeechCast.Controls.MyToolStrip();
+            this.myToolStripVoice = new SpeechCast.Controls.MyToolStrip();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBoxSelectVoice = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
@@ -108,9 +107,9 @@
             this.toolStripButtonEnter = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOpenAsBrowser = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOpenURLFromClipboard = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip2 = new SpeechCast.Controls.MyToolStrip();
+            this.myToolStripUrl = new SpeechCast.Controls.MyToolStrip();
             this.timerWeb = new System.Windows.Forms.Timer(this.components);
-            this.myToolStrip2 = new SpeechCast.Controls.MyToolStrip();
+            this.myToolStripPlay = new SpeechCast.Controls.MyToolStrip();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
@@ -154,10 +153,10 @@
             this.splitContainerpkCaption.Panel1.SuspendLayout();
             this.splitContainerpkCaption.Panel2.SuspendLayout();
             this.splitContainerpkCaption.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.myToolStripVoice.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.toolStrip2.SuspendLayout();
-            this.myToolStrip2.SuspendLayout();
+            this.myToolStripUrl.SuspendLayout();
+            this.myToolStripPlay.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -199,9 +198,9 @@
             // 
             this.panel1.Controls.Add(this.splitContainer1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 77);
+            this.panel1.Location = new System.Drawing.Point(0, 102);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(949, 604);
+            this.panel1.Size = new System.Drawing.Size(949, 579);
             this.panel1.TabIndex = 5;
             // 
             // splitContainer1
@@ -217,8 +216,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainerResCaption);
-            this.splitContainer1.Panel2.Controls.Add(this.myToolStrip1);
-            this.splitContainer1.Size = new System.Drawing.Size(949, 604);
+            this.splitContainer1.Size = new System.Drawing.Size(949, 579);
             this.splitContainer1.SplitterDistance = 315;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -236,8 +234,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.textBoxLog);
-            this.splitContainer2.Size = new System.Drawing.Size(315, 604);
-            this.splitContainer2.SplitterDistance = 336;
+            this.splitContainer2.Size = new System.Drawing.Size(315, 579);
+            this.splitContainer2.SplitterDistance = 322;
             this.splitContainer2.TabIndex = 0;
             // 
             // listViewResponses
@@ -253,7 +251,7 @@
             this.listViewResponses.Location = new System.Drawing.Point(0, 0);
             this.listViewResponses.MultiSelect = false;
             this.listViewResponses.Name = "listViewResponses";
-            this.listViewResponses.Size = new System.Drawing.Size(315, 336);
+            this.listViewResponses.Size = new System.Drawing.Size(315, 322);
             this.listViewResponses.TabIndex = 0;
             this.listViewResponses.UseCompatibleStateImageBehavior = false;
             this.listViewResponses.View = System.Windows.Forms.View.Details;
@@ -283,7 +281,7 @@
             this.textBoxLog.Name = "textBoxLog";
             this.textBoxLog.ReadOnly = true;
             this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxLog.Size = new System.Drawing.Size(315, 264);
+            this.textBoxLog.Size = new System.Drawing.Size(315, 253);
             this.textBoxLog.TabIndex = 0;
             // 
             // splitContainerResCaption
@@ -304,8 +302,8 @@
             // 
             this.splitContainerResCaption.Panel2.Controls.Add(this.splitContainerpkCaption);
             this.splitContainerResCaption.Panel2MinSize = 0;
-            this.splitContainerResCaption.Size = new System.Drawing.Size(630, 604);
-            this.splitContainerResCaption.SplitterDistance = 457;
+            this.splitContainerResCaption.Size = new System.Drawing.Size(630, 579);
+            this.splitContainerResCaption.SplitterDistance = 432;
             this.splitContainerResCaption.TabIndex = 3;
             // 
             // webBrowser
@@ -314,7 +312,7 @@
             this.webBrowser.Location = new System.Drawing.Point(0, 0);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(628, 455);
+            this.webBrowser.Size = new System.Drawing.Size(628, 430);
             this.webBrowser.TabIndex = 5;
             // 
             // splitContainerpkCaption
@@ -477,24 +475,14 @@
             this.comboBoxCaptionNum1.Size = new System.Drawing.Size(47, 20);
             this.comboBoxCaptionNum1.TabIndex = 0;
             // 
-            // myToolStrip1
-            // 
-            this.myToolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.myToolStrip1.Name = "myToolStrip1";
-            this.myToolStrip1.Size = new System.Drawing.Size(630, 25);
-            this.myToolStrip1.TabIndex = 2;
-            this.myToolStrip1.Text = "myToolStrip1";
-            this.myToolStrip1.Visible = false;
-            // 
             // timer
             // 
             this.timer.Enabled = true;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // toolStrip1
+            // myToolStripVoice
             // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.myToolStripVoice.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel2,
             this.toolStripComboBoxSelectVoice,
             this.toolStripLabel3,
@@ -508,11 +496,11 @@
             this.toolStripButtonSettings,
             this.toolStripButtonCaptionAutoSmall,
             this.toolStripSeparator4});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 26);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(949, 26);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
+            this.myToolStripVoice.Location = new System.Drawing.Point(0, 26);
+            this.myToolStripVoice.Name = "myToolStripVoice";
+            this.myToolStripVoice.Size = new System.Drawing.Size(949, 26);
+            this.myToolStripVoice.TabIndex = 0;
+            this.myToolStripVoice.Text = "toolStrip1";
             // 
             // toolStripLabel2
             // 
@@ -936,30 +924,28 @@
             this.toolStripButtonOpenURLFromClipboard.Text = "クリップボードからURLを開く";
             this.toolStripButtonOpenURLFromClipboard.Click += new System.EventHandler(this.toolStripButtonOpenURLFromClipboard_Click);
             // 
-            // toolStrip2
+            // myToolStripUrl
             // 
-            this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.myToolStripUrl.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
             this.toolStripTextBoxURL,
             this.toolStripButtonEnter,
             this.toolStripButtonOpenAsBrowser,
             this.toolStripButtonOpenURLFromClipboard});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 52);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(949, 25);
-            this.toolStrip2.TabIndex = 3;
-            this.toolStrip2.Text = "toolStrip2";
+            this.myToolStripUrl.Location = new System.Drawing.Point(0, 77);
+            this.myToolStripUrl.Name = "myToolStripUrl";
+            this.myToolStripUrl.Size = new System.Drawing.Size(949, 25);
+            this.myToolStripUrl.TabIndex = 3;
+            this.myToolStripUrl.Text = "toolStrip2";
             // 
             // timerWeb
             // 
             this.timerWeb.Enabled = true;
             this.timerWeb.Tick += new System.EventHandler(this.timerWeb_Tick);
             // 
-            // myToolStrip2
+            // myToolStripPlay
             // 
-            this.myToolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.myToolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.myToolStripPlay.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel4,
             this.toolStripButtonThreads,
             this.toolStripButtonResponse,
@@ -973,11 +959,11 @@
             this.toolStripSeparator6,
             this.toolStripButtonTurbo,
             this.toolStripButtonAutoNextThread});
-            this.myToolStrip2.Location = new System.Drawing.Point(0, 77);
-            this.myToolStrip2.Name = "myToolStrip2";
-            this.myToolStrip2.Size = new System.Drawing.Size(949, 25);
-            this.myToolStrip2.TabIndex = 7;
-            this.myToolStrip2.Text = "myToolStrip2";
+            this.myToolStripPlay.Location = new System.Drawing.Point(0, 52);
+            this.myToolStripPlay.Name = "myToolStripPlay";
+            this.myToolStripPlay.Size = new System.Drawing.Size(949, 25);
+            this.myToolStripPlay.TabIndex = 7;
+            this.myToolStripPlay.Text = "myToolStrip2";
             // 
             // toolStripLabel4
             // 
@@ -1197,11 +1183,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(949, 703);
-            this.Controls.Add(this.myToolStrip2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.toolStrip2);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.myToolStripUrl);
+            this.Controls.Add(this.myToolStripPlay);
+            this.Controls.Add(this.myToolStripVoice);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -1214,7 +1200,6 @@
             this.panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -1232,14 +1217,14 @@
             this.splitContainerpkCaption.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerpkCaption)).EndInit();
             this.splitContainerpkCaption.ResumeLayout(false);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.myToolStripVoice.ResumeLayout(false);
+            this.myToolStripVoice.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
-            this.myToolStrip2.ResumeLayout(false);
-            this.myToolStrip2.PerformLayout();
+            this.myToolStripUrl.ResumeLayout(false);
+            this.myToolStripUrl.PerformLayout();
+            this.myToolStripPlay.ResumeLayout(false);
+            this.myToolStripPlay.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1247,7 +1232,7 @@
 
         #endregion
 
-        private SpeechCast.Controls.MyToolStrip toolStrip1;
+        private SpeechCast.Controls.MyToolStrip myToolStripVoice;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxSelectVoice;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.StatusStrip statusStrip1;
@@ -1295,7 +1280,6 @@
         private Controls.ToolStripTrackBar toolStripTrackBarVoiceVolume;
         private System.Windows.Forms.ToolStripButton toolStripButtonTurbo;
         private System.Windows.Forms.ToolStripButton toolStripButtonSpeech;
-        private Controls.MyToolStrip myToolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonClickSound;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripButton1;
@@ -1306,7 +1290,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonEnter;
         private System.Windows.Forms.ToolStripButton toolStripButtonOpenAsBrowser;
         private System.Windows.Forms.ToolStripButton toolStripButtonOpenURLFromClipboard;
-        private Controls.MyToolStrip toolStrip2;
+        private Controls.MyToolStrip myToolStripUrl;
         private System.Windows.Forms.ToolStripButton toolStripButtonCaptionAutoSmall;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
@@ -1326,7 +1310,7 @@
         private System.Windows.Forms.Timer timerWeb;
         private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.Button buttonSpeakCaptionText;
-        private Controls.MyToolStrip myToolStrip2;
+        private Controls.MyToolStrip myToolStripPlay;
         private System.Windows.Forms.ToolStripLabel toolStripLabel4;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel5;

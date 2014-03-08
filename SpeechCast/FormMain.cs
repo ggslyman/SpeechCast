@@ -123,7 +123,11 @@ namespace SpeechCast
             {
                 FormCaption.Instance.CaptionText = speakingText;
 
-                if (CurrentResNumber <= Response.MaxResponseCount && speakClipboard == false)
+                if(openNextThread == 2){
+                    openNextThread = 0;
+                    CurrentResNumber = 0;
+                }
+                else if (CurrentResNumber <= Response.MaxResponseCount && speakClipboard == false)
                 {
                     CurrentResNumber++;
                 }
@@ -920,8 +924,9 @@ namespace SpeechCast
                 listViewResponses.Items[CurrentResNumber - 1].Selected = true;
                 webBrowser.Document.Window.ScrollTo(0, GetResponsesScrollY(CurrentResNumber));
             }
-            else if (openNextThread)
+            else if (openNextThread == 1)
             {
+                openNextThread = 2;
                 speakingText = string.Format("次スレ候補、{0}を開きます。", threadTitle);
 
                 replacementIndices = null;
@@ -930,7 +935,7 @@ namespace SpeechCast
                 synthesizer.Rate = UserConfig.SpeakingRate;
                 synthesizer.SpeakAsync(speakingText);
             }
-            else if (CurrentResNumber > Response.MaxResponseCount)
+            else if (CurrentResNumber > Response.MaxResponseCount && openNextThread == 0)
             {
                 speakingText = string.Format("レス{0}を超えました。\nこれ以上は表示できません。\n次スレを立ててください。", Response.MaxResponseCount);
 
@@ -1115,35 +1120,35 @@ namespace SpeechCast
         private bool endWebRequest = true;
         private int orgWidth;
         private int orgHeight;
-        private bool openNextThread;
+        private int openNextThread;
         private TimeSpan diff;
         private TimeSpan diffWeb;
         private void timer_Tick(object sender, EventArgs e)
         {
             diff = System.DateTime.Now - speakingCompletedTime;
             diffWeb = System.DateTime.Now - gettingWebTime;
-            if (threadTitle.Length>0) {
+            // スレタイトル更新処理
+            if (threadTitle.Length > 0)
+            {
                 FormCaption.Instance.setTitle(threadTitle + " [" + (CurrentResNumber - 1) + "/" + responses.Count + "]");
                 FormCaption.Instance.Invalidate();
             }
+            // ステータステキスト更新処理
             if (isSpeaking)
             {
                 communicationStatusString = string.Format("話し中・・・（{0}/{1}）", CurrentResNumber,responses.Count);
             }
             else
             {
+                // 代替テキスト更新処理
+                objDate = System.DateTime.Now;
+                FormCaption.Instance.CaptionText = CaptionTextBuffer.Replace("#1#", comboBoxCaptionNum1.SelectedIndex.ToString()).Replace("#2#", comboBoxCaptionNum2.SelectedIndex.ToString()).Replace("#CLOCK#", objDate.ToString(dateformat));
+
                 if (AutoUpdate)
                 {
                     if (!this.endWebRequest)
                     {
                         communicationStatusString = string.Format("取得中・・・");
-                    }
-                    else if (CurrentResNumber > Response.MaxResponseCount && UserConfig.AutoOpenNextThread && diffWeb.TotalMilliseconds >= UserConfig.AutoGettingWebInvervalMillsec)
-                    {
-                        //if(openNextThreadUrl()){
-                        //    openNextThread = true;
-                        //    StartSpeaking();
-                        //}
                     }
                     else if (CurrentResNumber > responses.Count)
                     {
@@ -1168,118 +1173,68 @@ namespace SpeechCast
                 }
                 else
                 {
-                    //if (openNextThread && !isSpeaking)
-                    //{
-                    //    openNextThread = false;
-                    //    AutoUpdate = true;
-                    //    toolStripButtonAutoUpdate.Checked = true;
-                    //    CurrentResNumber = 0;
-                    //}
                     communicationStatusString = "";
                 }
             }
             
-            int speakingInvervalMillsec;
-            if ((responses.Count - CurrentResNumber) < UserConfig.TurboThreshold || UserConfig.TurboMode == false)
+            // 読み上げ処理
+            if (
+                !isSpeaking
+                && timerTickEnabled
+               )
             {
-                speakingInvervalMillsec = UserConfig.SpeakingInvervalMillsec;
-            }
-            else
-            {
-                speakingInvervalMillsec = UserConfig.TurboSpeakingInvervalMillsec;
-            }
-
-            if (isSpeakingWarningMessage && !UserConfig.AutoOpenNextThread)
-            {
-                speakingInvervalMillsec = 20 * 1000;
-            }
-            else if (FormCaption.Instance.IsAAMode)
-            {
-                speakingInvervalMillsec = UserConfig.AAModeInvervalMillsec;
-            }
-            if (isSpeaking == false && timerTickEnabled)
-            {
-                if (diff.TotalMilliseconds >= speakingInvervalMillsec)
+                // 読み上げボイスステータスの設定
+                int speakingInvervalMillsec;
+                if ((responses.Count - CurrentResNumber) < UserConfig.TurboThreshold || UserConfig.TurboMode == false)
                 {
-                    if (CurrentResNumber <= responses.Count && AutoUpdate)
-                    {
-                        StartSpeaking();
-                    }
-                    objDate = System.DateTime.Now;
-                    FormCaption.Instance.CaptionText = CaptionTextBuffer.Replace("#1#", comboBoxCaptionNum1.SelectedIndex.ToString()).Replace("#2#", comboBoxCaptionNum2.SelectedIndex.ToString()).Replace("#CLOCK#", objDate.ToString(dateformat));
+                    speakingInvervalMillsec = UserConfig.SpeakingInvervalMillsec;
+                }
+                else
+                {
+                    speakingInvervalMillsec = UserConfig.TurboSpeakingInvervalMillsec;
                 }
 
-
-                if (CurrentResNumber > responses.Count && AutoUpdate && diffWeb.TotalMilliseconds >= UserConfig.AutoGettingWebInvervalMillsec)
+                if (isSpeakingWarningMessage && !UserConfig.AutoOpenNextThread)
                 {
-                    if (CurrentResNumber <= Response.MaxResponseCount)
-                    {
-                        if (this.endWebRequest) {
-                            //if (UserConfig.CaptionAutoSmall)
-                            //{
-                            //    orgWidth = FormCaption.Instance.Width;
-                            //    orgHeight = FormCaption.Instance.Height;
-                            //    FormCaption.Instance.Height = FormCaption.Instance.drawRect.Height;
-                            //    FormCaption.Instance.Width = FormCaption.Instance.drawRect.Width;
-                            //}
-                            //await GetFromURLNext();
-                            //if (UserConfig.CaptionAutoSmall) {
-                            //    FormCaption.Instance.Height = orgHeight;
-                            //    FormCaption.Instance.Width = orgWidth;
-                            //}
-                        }
-                    }
-                    else
-                    {
-                        if (diff.TotalMilliseconds >= speakingInvervalMillsec)
-                        {
-                            StartSpeaking();
-                        }
-                    }
+                    speakingInvervalMillsec = 20 * 1000;
+                }
+                else if (FormCaption.Instance.IsAAMode)
+                {
+                    speakingInvervalMillsec = UserConfig.AAModeInvervalMillsec;
+                }
+
+                // 通常レス読み上げ
+                if (
+                    diff.TotalMilliseconds >= speakingInvervalMillsec
+                    && AutoUpdate
+                    )
+                {
+                    StartSpeaking();
                 }
             }
         }
 
         private async void timerWeb_Tick(object sender, EventArgs e)
         {
-            if (threadTitle.Length > 0)
-            {
-                FormCaption.Instance.setTitle(threadTitle + " [" + (CurrentResNumber - 1) + "/" + responses.Count + "]");
-                FormCaption.Instance.Invalidate();
-            }
-            else
-            {
-                if (AutoUpdate)
-                {
-                    if (CurrentResNumber > Response.MaxResponseCount && UserConfig.AutoOpenNextThread && diffWeb.TotalMilliseconds >= UserConfig.AutoGettingWebInvervalMillsec)
-                    {
-                        if (openNextThreadUrl())
-                        {
-                            openNextThread = true;
-                            StartSpeaking();
-                        }
-                    }
-                }
-                else
-                {
-                    if (openNextThread && !isSpeaking)
-                    {
-                        openNextThread = false;
-                        AutoUpdate = true;
-                        toolStripButtonAutoUpdate.Checked = true;
-                        CurrentResNumber = 0;
-                    }
-                    communicationStatusString = "";
-                }
-            }
-
-            if (!isSpeaking && timerTickEnabled)
-            {
-
+            // 自動Webアクセス条件がTrueなら
+            if(
+                    diffWeb.TotalMilliseconds >= UserConfig.AutoGettingWebInvervalMillsec
+                    && AutoUpdate
+                    && timerTickEnabled
+              ){
+                // 自動次スレ取得の条件判別
                 if (
-                        CurrentResNumber > responses.Count 
-                        && AutoUpdate && diffWeb.TotalMilliseconds >= UserConfig.AutoGettingWebInvervalMillsec
-                        && CurrentResNumber <= Response.MaxResponseCount
+                        CurrentResNumber > Response.MaxResponseCount
+                        && UserConfig.AutoOpenNextThread
+                        && openNextThread == 0
+                    )
+                {
+                    openNextThread = openNextThreadUrl();
+                }
+
+                // レス取得の条件判定
+                if (
+                        responses.Count <= Response.MaxResponseCount
                         && this.endWebRequest
                     )
                 {
@@ -1299,7 +1254,6 @@ namespace SpeechCast
                 }
             }
         }
-
 
         public static UserConfig UserConfig;
         public static Bookmarks Bookmarks;
@@ -1396,6 +1350,9 @@ namespace SpeechCast
             selectedIndex = 0;
             toolStripTrackBarVoiceVolume.Value = UserConfig.SpeakingVolume;
             synthesizer.Volume = UserConfig.SpeakingVolume;
+            myToolStripPlay.GripStyle = ToolStripGripStyle.Hidden;
+            myToolStripUrl.GripStyle = ToolStripGripStyle.Hidden;
+            myToolStripVoice.GripStyle = ToolStripGripStyle.Hidden;
             //idx = toolStripComboBoxVolume.Items.IndexOf(UserConfig.SpeakingVolume);
             //if (idx >= 0)
             //{
@@ -1406,7 +1363,6 @@ namespace SpeechCast
             //{
             //    toolStripComboBoxVolume.SelectedIndex = selectedIndex;
             //}
-
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -1858,7 +1814,7 @@ namespace SpeechCast
             UserConfig.AutoOpenNextThread = !UserConfig.AutoOpenNextThread;
         }
 
-        private bool openNextThreadUrl(){
+        private int openNextThreadUrl(){
             System.Text.RegularExpressions.Regex r =
                 new System.Text.RegularExpressions.Regex(
                     @"[0-9]+",
@@ -1869,8 +1825,6 @@ namespace SpeechCast
                 if (baseURL != null && threadTitle != null)
                 {
                     // 現在のスレタイから連番と思われる部分を抽出
-
-                    //TextBox1.Text内で正規表現と一致する対象を1つ検索
                     string searchTitle = zen2han(threadTitle);
                     System.Text.RegularExpressions.Match m = r.Match(searchTitle);
                     string nextNumber = null;
@@ -1901,26 +1855,32 @@ namespace SpeechCast
                     System.Net.HttpWebResponse webRes = null;
                     try
                     {
+                        string[] parseSubject;
                         webRes = (System.Net.HttpWebResponse)webReq.GetResponse();
                         gettingWebTime = System.DateTime.Now; //例外が発生した場合、連続してwebアクセスが起こるのを防ぐ
                         using (StreamReader reader = new StreamReader(webRes.GetResponseStream(), Encoding.GetEncoding(encodingName)))
                         {
+                            // subject.txtを全件検索
                             while (true)
                             {
                                 string s = reader.ReadLine();
                                 if (s == null)
                                 {
-                                    return false;
+                                    return 0;
                                 }
-                                string[] parseSubject = s.Replace("<>",",").Split(',');
 
+                                parseSubject = s.Replace("<>", ",").Split(',');
                                 string searchSubject = zen2han(parseSubject[1]);
+                                // subject.txtを連番部分を取得
                                 System.Text.RegularExpressions.Match m2 = r.Match(searchSubject);
                                 if(m2.Success)
                                 {
-                                    if (m2.Value == nextNumber) {
+                                    // 連番部分が次スレ連番候補と一致したら
+                                    if (m2.Value == nextNumber)
+                                    {
                                         //一致した対象が見つかったときキャプチャした部分文字列を表示
                                         nextUrl = parseSubject[0];
+                                        threadTitle = parseSubject[1];
                                         break;
                                     }
                                     //次に一致する対象を検索
@@ -1940,16 +1900,14 @@ namespace SpeechCast
                         if (threadUrl.Length > 0)
                         {
                             toolStripTextBoxURL.Text = threadUrl;
-                            GetFromURL();
-                            return true;
+                            rawURL = null;
+                            threadTitle = parseSubject[1];
+                            return 1;
                         }
                     }
                     catch (Exception e)
                     {
                         AddLog(string.Format("エラーが発生しました:{0}", e.Message));
-                    }
-                    finally
-                    {
                     }
                 }
             }
@@ -1957,10 +1915,7 @@ namespace SpeechCast
             {
                 AddLog(string.Format("エラーが発生しました:{0}", e.Message));
             }
-            finally
-            {
-            }
-            return false;
+            return 0;
         }
         private static string zen2han(string aStr)
         {
