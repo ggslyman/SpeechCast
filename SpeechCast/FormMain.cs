@@ -1241,7 +1241,7 @@ namespace SpeechCast
                 if (
                     diff.TotalMilliseconds >= speakingInvervalMillsec
                     && AutoUpdate
-                    && responses.Count >= CurrentResNumber
+                    //&& responses.Count >= CurrentResNumber
                     )
                 {
                     StartSpeaking();
