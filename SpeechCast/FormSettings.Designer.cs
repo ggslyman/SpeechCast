@@ -111,6 +111,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.panelPlaySound = new System.Windows.Forms.Panel();
+            this.buttonResSoundTest = new System.Windows.Forms.Button();
             this.buttonNewResponseSoundFilePathesRemove = new System.Windows.Forms.Button();
             this.buttonNewResponseSoundFilePathesAdd = new System.Windows.Forms.Button();
             this.listBoxNewResponseSoundFilePathes = new System.Windows.Forms.ListBox();
@@ -122,7 +123,9 @@
             this.buttonRefernceEditor = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxEditorFilePath = new System.Windows.Forms.TextBox();
-            this.buttonResSoundTest = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.numericUpDownDefaultCaptinoDispInvervalMillsec = new System.Windows.Forms.NumericUpDown();
+            this.label26 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -147,6 +150,7 @@
             this.tabPage8.SuspendLayout();
             this.panelPlaySound.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDefaultCaptinoDispInvervalMillsec)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -198,6 +202,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label25);
+            this.tabPage1.Controls.Add(this.numericUpDownDefaultCaptinoDispInvervalMillsec);
+            this.tabPage1.Controls.Add(this.label26);
             this.tabPage1.Controls.Add(this.label22);
             this.tabPage1.Controls.Add(this.NumericUpDownTurboSpeakingInvervalMillsec);
             this.tabPage1.Controls.Add(this.label23);
@@ -266,7 +273,7 @@
             // 
             // textTestSentence
             // 
-            this.textTestSentence.Location = new System.Drawing.Point(19, 207);
+            this.textTestSentence.Location = new System.Drawing.Point(19, 228);
             this.textTestSentence.Name = "textTestSentence";
             this.textTestSentence.Size = new System.Drawing.Size(371, 19);
             this.textTestSentence.TabIndex = 19;
@@ -274,7 +281,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(176, 232);
+            this.button1.Location = new System.Drawing.Point(176, 253);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(145, 23);
             this.button1.TabIndex = 18;
@@ -284,7 +291,7 @@
             // 
             // buttonVoiceTest
             // 
-            this.buttonVoiceTest.Location = new System.Drawing.Point(19, 232);
+            this.buttonVoiceTest.Location = new System.Drawing.Point(19, 253);
             this.buttonVoiceTest.Name = "buttonVoiceTest";
             this.buttonVoiceTest.Size = new System.Drawing.Size(145, 23);
             this.buttonVoiceTest.TabIndex = 17;
@@ -321,7 +328,7 @@
             // labelTurboSpeakingRate
             // 
             this.labelTurboSpeakingRate.AutoSize = true;
-            this.labelTurboSpeakingRate.Location = new System.Drawing.Point(110, 166);
+            this.labelTurboSpeakingRate.Location = new System.Drawing.Point(110, 187);
             this.labelTurboSpeakingRate.Name = "labelTurboSpeakingRate";
             this.labelTurboSpeakingRate.Size = new System.Drawing.Size(11, 12);
             this.labelTurboSpeakingRate.TabIndex = 14;
@@ -330,7 +337,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(17, 165);
+            this.label21.Location = new System.Drawing.Point(17, 186);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(87, 12);
             this.label21.TabIndex = 13;
@@ -339,7 +346,7 @@
             // TrackBarTurboSpeakingRate
             // 
             this.TrackBarTurboSpeakingRate.LargeChange = 2;
-            this.TrackBarTurboSpeakingRate.Location = new System.Drawing.Point(160, 156);
+            this.TrackBarTurboSpeakingRate.Location = new System.Drawing.Point(160, 177);
             this.TrackBarTurboSpeakingRate.Minimum = -10;
             this.TrackBarTurboSpeakingRate.Name = "TrackBarTurboSpeakingRate";
             this.TrackBarTurboSpeakingRate.Size = new System.Drawing.Size(222, 45);
@@ -349,7 +356,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(277, 76);
+            this.label18.Location = new System.Drawing.Point(277, 97);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(34, 12);
             this.label18.TabIndex = 11;
@@ -362,7 +369,7 @@
             0,
             0,
             0});
-            this.numericUpDownAAModeInvervalMillsec.Location = new System.Drawing.Point(176, 74);
+            this.numericUpDownAAModeInvervalMillsec.Location = new System.Drawing.Point(176, 95);
             this.numericUpDownAAModeInvervalMillsec.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -375,7 +382,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(17, 76);
+            this.label19.Location = new System.Drawing.Point(17, 97);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(147, 12);
             this.label19.TabIndex = 9;
@@ -425,7 +432,7 @@
             // labelSpeakingRate
             // 
             this.labelSpeakingRate.AutoSize = true;
-            this.labelSpeakingRate.Location = new System.Drawing.Point(110, 115);
+            this.labelSpeakingRate.Location = new System.Drawing.Point(110, 136);
             this.labelSpeakingRate.Name = "labelSpeakingRate";
             this.labelSpeakingRate.Size = new System.Drawing.Size(11, 12);
             this.labelSpeakingRate.TabIndex = 5;
@@ -434,7 +441,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 115);
+            this.label3.Location = new System.Drawing.Point(17, 136);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 12);
             this.label3.TabIndex = 4;
@@ -443,7 +450,7 @@
             // TrackBarSpeakingRate
             // 
             this.TrackBarSpeakingRate.LargeChange = 2;
-            this.TrackBarSpeakingRate.Location = new System.Drawing.Point(160, 105);
+            this.TrackBarSpeakingRate.Location = new System.Drawing.Point(160, 126);
             this.TrackBarSpeakingRate.Minimum = -10;
             this.TrackBarSpeakingRate.Name = "TrackBarSpeakingRate";
             this.TrackBarSpeakingRate.Size = new System.Drawing.Size(222, 45);
@@ -1138,6 +1145,16 @@
             this.panelPlaySound.Size = new System.Drawing.Size(393, 282);
             this.panelPlaySound.TabIndex = 4;
             // 
+            // buttonResSoundTest
+            // 
+            this.buttonResSoundTest.Location = new System.Drawing.Point(271, 202);
+            this.buttonResSoundTest.Name = "buttonResSoundTest";
+            this.buttonResSoundTest.Size = new System.Drawing.Size(80, 22);
+            this.buttonResSoundTest.TabIndex = 10;
+            this.buttonResSoundTest.Text = "テスト";
+            this.buttonResSoundTest.UseVisualStyleBackColor = true;
+            this.buttonResSoundTest.Click += new System.EventHandler(this.buttonResSoundTest_Click);
+            // 
             // buttonNewResponseSoundFilePathesRemove
             // 
             this.buttonNewResponseSoundFilePathesRemove.Location = new System.Drawing.Point(174, 202);
@@ -1246,15 +1263,40 @@
             this.textBoxEditorFilePath.Size = new System.Drawing.Size(272, 19);
             this.textBoxEditorFilePath.TabIndex = 3;
             // 
-            // buttonResSoundTest
+            // label25
             // 
-            this.buttonResSoundTest.Location = new System.Drawing.Point(271, 202);
-            this.buttonResSoundTest.Name = "buttonResSoundTest";
-            this.buttonResSoundTest.Size = new System.Drawing.Size(80, 22);
-            this.buttonResSoundTest.TabIndex = 10;
-            this.buttonResSoundTest.Text = "テスト";
-            this.buttonResSoundTest.UseVisualStyleBackColor = true;
-            this.buttonResSoundTest.Click += new System.EventHandler(this.buttonResSoundTest_Click);
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(277, 74);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(34, 12);
+            this.label25.TabIndex = 25;
+            this.label25.Text = "msec.";
+            // 
+            // numericUpDownDefaultCaptinoDispInvervalMillsec
+            // 
+            this.numericUpDownDefaultCaptinoDispInvervalMillsec.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownDefaultCaptinoDispInvervalMillsec.Location = new System.Drawing.Point(176, 72);
+            this.numericUpDownDefaultCaptinoDispInvervalMillsec.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDownDefaultCaptinoDispInvervalMillsec.Name = "numericUpDownDefaultCaptinoDispInvervalMillsec";
+            this.numericUpDownDefaultCaptinoDispInvervalMillsec.Size = new System.Drawing.Size(95, 19);
+            this.numericUpDownDefaultCaptinoDispInvervalMillsec.TabIndex = 24;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(17, 74);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(93, 12);
+            this.label26.TabIndex = 23;
+            this.label26.Text = "字幕が消える時間";
             // 
             // FormSettings
             // 
@@ -1307,6 +1349,7 @@
             this.panelPlaySound.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDefaultCaptinoDispInvervalMillsec)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1408,5 +1451,8 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.CheckBox checkBoxDebug;
         private System.Windows.Forms.Button buttonResSoundTest;
+        private System.Windows.Forms.Label label25;
+        public System.Windows.Forms.NumericUpDown numericUpDownDefaultCaptinoDispInvervalMillsec;
+        private System.Windows.Forms.Label label26;
     }
 }

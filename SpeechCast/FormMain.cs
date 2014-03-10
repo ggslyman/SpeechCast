@@ -1141,9 +1141,11 @@ namespace SpeechCast
             else
             {
                 // 代替テキスト更新処理
-                objDate = System.DateTime.Now;
-                FormCaption.Instance.CaptionText = CaptionTextBuffer.Replace("#1#", comboBoxCaptionNum1.SelectedIndex.ToString()).Replace("#2#", comboBoxCaptionNum2.SelectedIndex.ToString()).Replace("#CLOCK#", objDate.ToString(dateformat));
-
+                if (diff.TotalMilliseconds >= UserConfig.DefaultCaptinoDispInvervalMillsec)
+                { 
+                    objDate = System.DateTime.Now;
+                    FormCaption.Instance.CaptionText = CaptionTextBuffer.Replace("#1#", comboBoxCaptionNum1.SelectedIndex.ToString()).Replace("#2#", comboBoxCaptionNum2.SelectedIndex.ToString()).Replace("#CLOCK#", objDate.ToString(dateformat));
+                }
                 if (AutoUpdate)
                 {
                     if (!this.endWebRequest)
@@ -1207,6 +1209,7 @@ namespace SpeechCast
                 if (
                     diff.TotalMilliseconds >= speakingInvervalMillsec
                     && AutoUpdate
+                    && responses.Count >= CurrentResNumber
                     )
                 {
                     StartSpeaking();

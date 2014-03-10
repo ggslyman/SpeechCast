@@ -138,6 +138,12 @@ namespace SpeechCast
         /// </summary>
         public int TurboSpeakingInvervalMillsec = 500;
 
+
+        /// <summary>
+        /// レス読み上げ後から代替字幕表示までの時間
+        /// </summary>
+        public int DefaultCaptinoDispInvervalMillsec = 2000;
+
         /// <summary>
         /// AAモードで字幕が消える時間
         /// </summary>

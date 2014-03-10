@@ -94,6 +94,7 @@ namespace SpeechCast
             }
             this.NumericUpDownSpeakingInvervalMillsec.Value = userConfig.SpeakingInvervalMillsec;
             this.NumericUpDownTurboSpeakingInvervalMillsec.Value = userConfig.TurboSpeakingInvervalMillsec;
+            this.numericUpDownDefaultCaptinoDispInvervalMillsec.Value = userConfig.DefaultCaptinoDispInvervalMillsec;
             this.TrackBarSpeakingRate.Value = userConfig.SpeakingRate;
             this.TrackBarTurboSpeakingRate.Value = userConfig.TurboSpeakingRate;
             this.labelTurboSpeakingRate.Text = userConfig.TurboSpeakingRate.ToString();
@@ -130,6 +131,7 @@ namespace SpeechCast
         {
             userConfig.SpeakingInvervalMillsec = System.Convert.ToInt32(this.NumericUpDownSpeakingInvervalMillsec.Value);
             userConfig.TurboSpeakingInvervalMillsec = System.Convert.ToInt32(this.NumericUpDownTurboSpeakingInvervalMillsec.Value);
+            userConfig.DefaultCaptinoDispInvervalMillsec = System.Convert.ToInt32(this.numericUpDownDefaultCaptinoDispInvervalMillsec.Value);
             userConfig.SpeakingRate = this.TrackBarSpeakingRate.Value;
             userConfig.TurboSpeakingRate = this.TrackBarTurboSpeakingRate.Value;
             userConfig.TurboThreshold = System.Convert.ToInt32(this.numericUpDownTurboThreshold.Value);

@@ -280,6 +280,9 @@
     </Compile>
     <Compile Include="Response.cs" />
     <Compile Include="UseConfig.cs" />
+    <Content Include="README.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="app3.ico" />
