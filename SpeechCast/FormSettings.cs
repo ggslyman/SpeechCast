@@ -184,6 +184,7 @@ namespace SpeechCast
             userConfig.SpeakTextBetweenBracesEvenIfAAMode = checkBoxSpeakTextBetweenBraces.Checked;
             userConfig.AAModeInvervalMillsec = System.Convert.ToInt32(this.numericUpDownAAModeInvervalMillsec.Value);
             userConfig.PlaySoundNewResponse = this.checkBoxPlaySoundNewResponse.Checked;
+            FormMain.Instance.toolStripButtonPlaySoundNewResponse.Checked = checkBoxPlaySoundNewResponse.Checked;
             userConfig.PlaySoundNewResponseSync = this.checkBoxPlaySoundSync.Checked;
             //userConfig.NewResponseSoundFilePath = this.textBoxSoundFilePath.Text;
             userConfig.EditorFilePath = this.textBoxEditorFilePath.Text;

@@ -1296,7 +1296,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonClickSound;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButtonPlaySoundNewResponse;
         private System.Windows.Forms.SplitContainer splitContainerResCaption;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxURL;
@@ -1351,6 +1350,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton18;
         private System.Windows.Forms.TextBox textBoxDefaultCaption;
         public System.Windows.Forms.ToolStripButton toolStripButtonShowCaptionImmediately;
+        public System.Windows.Forms.ToolStripButton toolStripButtonPlaySoundNewResponse;
     }
 }
 

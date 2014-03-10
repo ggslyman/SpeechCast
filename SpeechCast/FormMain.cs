@@ -92,8 +92,14 @@ namespace SpeechCast
 
 
         static public FormMain Instance;
-
-
+        private string captionTextBuffer = "";
+        // 代替テキスト
+        public string CaptionTextBuffer{
+            // 数値と時計の自動変換
+            get { return captionTextBuffer.Replace("#1#", comboBoxCaptionNum1.SelectedIndex.ToString()).Replace("#2#", comboBoxCaptionNum2.SelectedIndex.ToString()).Replace("#CLOCK#", objDate.ToString(dateformat)); }
+            set {captionTextBuffer = value;}
+        }
+        // ステータスバーの表示テキスト
         private string communicationStatusString
         {
             get
@@ -109,7 +115,7 @@ namespace SpeechCast
                 }
             }
         }
-
+        // 読み上げ完了時の処理
         void synthesizer_SpeakCompleted(object sender, SpeakCompletedEventArgs e)
         {
             speakingCompletedTime = System.DateTime.Now;
@@ -123,8 +129,10 @@ namespace SpeechCast
             {
                 FormCaption.Instance.CaptionText = speakingText;
 
-                if(openNextThread == 2){
-                    openNextThread = 0;
+                // 自動次スレオープン時のフラグ更新と現在のレス番号のリセット
+                if (openNextThread == SpeakAnnounce)
+                {
+                    openNextThread = ReadThread;
                     CurrentResNumber = 0;
                 }
                 else if (CurrentResNumber <= Response.MaxResponseCount && speakClipboard == false)
@@ -307,6 +315,7 @@ namespace SpeechCast
 #if DEBUG
         string debugDatFileName = null;
 #endif
+        // 元ソースより非同期に変更
         private async Task<bool> GetFromURL(bool next)
         {
 
@@ -392,13 +401,16 @@ namespace SpeechCast
             }
 
             System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
+            // 完全にバックグラウンド処理になったので、メッセージなどはコメントアウト
             //communicationStatusString = "通信中・・・・";
             //PushAndSetWaitCursor();
                 long responseTime = 0, readTime = 0, listViewTime = 0, documetnTime = 0, encodingTime = 0, setTime = 0;
                 System.Net.HttpWebResponse webRes = null;
+                // タイムアウト等の結果判別用真偽値
                 bool webReqResult = true;
                 try
                 {
+                    // Webアクセス部分を非同期化するためTask.Runで囲む
                     await Task.Run(() =>
                     {
                         int oldResponseCount = responses.Count;
@@ -435,7 +447,7 @@ namespace SpeechCast
                         //{
                         //    throw (new Exception(" 416 "));
                         //}
-                    });
+                    });// 非同期処理終了
                 }
                 catch (System.Net.WebException e)
                 {
@@ -457,6 +469,7 @@ namespace SpeechCast
                 {
                     try
                     {
+                        // datの差分取得の為の生データバイト数計測
                         using (MemoryStream memStream = new MemoryStream())
                         {
                             stopWatch.Reset();
@@ -545,6 +558,7 @@ namespace SpeechCast
 
                             System.Diagnostics.Stopwatch stopWatchSet = new System.Diagnostics.Stopwatch();
 
+                            // 実データ取得
                             using (StreamReader reader = new StreamReader(memStream, Encoding.GetEncoding(encodingName)))
                             {
                                 while (true)
@@ -735,6 +749,7 @@ namespace SpeechCast
                 {
                     try
                     {
+                        //MP3対応したかったが、同期再生が出来ずに挫折。誰か実装してくれ
                         //WMPLib.WindowsMediaPlayer mp = new WMPLib.WindowsMediaPlayer(); /* WMP */
                         //mp.URL = NewResponseSoundFilePath; /* 再生したい音声ファイルのパス */
                         //mp.settings.volume = UserConfig.PlayVolume;
@@ -924,9 +939,9 @@ namespace SpeechCast
                 listViewResponses.Items[CurrentResNumber - 1].Selected = true;
                 webBrowser.Document.Window.ScrollTo(0, GetResponsesScrollY(CurrentResNumber));
             }
-            else if (openNextThread == 1)
+            else if (openNextThread == OpenNextThread)
             {
-                openNextThread = 2;
+                openNextThread = SpeakAnnounce;
                 speakingText = string.Format("次スレ候補、{0}を開きます。", threadTitle);
 
                 replacementIndices = null;
@@ -935,7 +950,7 @@ namespace SpeechCast
                 synthesizer.Rate = UserConfig.SpeakingRate;
                 synthesizer.SpeakAsync(speakingText);
             }
-            else if (CurrentResNumber > Response.MaxResponseCount && openNextThread == 0)
+            else if (CurrentResNumber > Response.MaxResponseCount && openNextThread == ReadThread)
             {
                 speakingText = string.Format("レス{0}を超えました。\nこれ以上は表示できません。\n次スレを立ててください。", Response.MaxResponseCount);
 
@@ -1121,8 +1136,17 @@ namespace SpeechCast
         private int orgWidth;
         private int orgHeight;
         private int openNextThread;
+        // openNextThreadのフラグ定義
+        // レス読み上げ中
+        private const int ReadThread = 0;
+        // 次スレ発見
+        private const int OpenNextThread = 1;
+        // 次スレへ移動中(移動中アナウンス管理用)
+        private const int SpeakAnnounce = 2;
+
         private TimeSpan diff;
         private TimeSpan diffWeb;
+        // 読み上げ管理用バックグラウンドプロセス
         private void timer_Tick(object sender, EventArgs e)
         {
             diff = System.DateTime.Now - speakingCompletedTime;
@@ -1138,20 +1162,24 @@ namespace SpeechCast
             {
                 communicationStatusString = string.Format("話し中・・・（{0}/{1}）", CurrentResNumber,responses.Count);
             }
+            // 読み上げが止まっていたら、次の読み上げ条件の検索と読み上げ実行
             else
             {
                 // 代替テキスト更新処理
                 if (diff.TotalMilliseconds >= UserConfig.DefaultCaptinoDispInvervalMillsec)
                 { 
                     objDate = System.DateTime.Now;
-                    FormCaption.Instance.CaptionText = CaptionTextBuffer.Replace("#1#", comboBoxCaptionNum1.SelectedIndex.ToString()).Replace("#2#", comboBoxCaptionNum2.SelectedIndex.ToString()).Replace("#CLOCK#", objDate.ToString(dateformat));
+                    FormCaption.Instance.CaptionText = CaptionTextBuffer;
                 }
+                // 自動更新がONならば
                 if (AutoUpdate)
                 {
+                    // 別スレッドのレス取得状態の確認
                     if (!this.endWebRequest)
                     {
                         communicationStatusString = string.Format("取得中・・・");
                     }
+                    // レス取得が終わっていて、かつ読み上げ対象レスがなければ、次のレス取得までのカウントダウンをステータスに表示
                     else if (CurrentResNumber > responses.Count)
                     {
                         int leftSeconds = (UserConfig.AutoGettingWebInvervalMillsec - (int)diffWeb.TotalMilliseconds) / 1000 + 1;
@@ -1173,6 +1201,7 @@ namespace SpeechCast
                         communicationStatusString = "待機中・・・";
                     }
                 }
+                // 自動更新がOFFならステータスを消去
                 else
                 {
                     communicationStatusString = "";
@@ -1187,6 +1216,7 @@ namespace SpeechCast
             {
                 // 読み上げボイスステータスの設定
                 int speakingInvervalMillsec;
+                // 読み上げ間隔の設定
                 if ((responses.Count - CurrentResNumber) < UserConfig.TurboThreshold || UserConfig.TurboMode == false)
                 {
                     speakingInvervalMillsec = UserConfig.SpeakingInvervalMillsec;
@@ -1195,13 +1225,15 @@ namespace SpeechCast
                 {
                     speakingInvervalMillsec = UserConfig.TurboSpeakingInvervalMillsec;
                 }
-
+                // 
                 if (isSpeakingWarningMessage && !UserConfig.AutoOpenNextThread)
                 {
+                    // 次スレを立てるのを促すアナウンスの場合強制的に20秒間隔にする
                     speakingInvervalMillsec = 20 * 1000;
                 }
                 else if (FormCaption.Instance.IsAAMode)
                 {
+                    // AAモードの時のインターバルの設定
                     speakingInvervalMillsec = UserConfig.AAModeInvervalMillsec;
                 }
 
@@ -1217,6 +1249,7 @@ namespace SpeechCast
             }
         }
 
+        // レス取得用バックグラウンドプロセス
         private async void timerWeb_Tick(object sender, EventArgs e)
         {
             // 自動Webアクセス条件がTrueなら
@@ -1229,7 +1262,7 @@ namespace SpeechCast
                 if (
                         CurrentResNumber > Response.MaxResponseCount
                         && UserConfig.AutoOpenNextThread
-                        && openNextThread == 0
+                        && openNextThread == ReadThread
                     )
                 {
                     openNextThread = openNextThreadUrl();
@@ -1305,6 +1338,7 @@ namespace SpeechCast
                     toolStripButtonShowCaptionImmediately.Checked = UserConfig.ShowCaptionImmediately;
                     checkBoxClockMilitaryTime.Checked = UserConfig.MilitaryTime;
                     checkBoxShowSecond.Checked = UserConfig.MilitaryTime;
+                    toolStripButtonPlaySoundNewResponse.Checked = UserConfig.PlaySoundNewResponse;
                     this.splitContainerResCaption.SplitterDistance = 2000;
                 }
                 catch (Exception ex)
@@ -1390,7 +1424,6 @@ namespace SpeechCast
                 if (formSettings.ShowDialog() == DialogResult.OK)
                 {
                     formSettings.GetUserConfig(UserConfig);
-                    toolStripButtonPlaySoundNewResponse.Checked = UserConfig.PlaySoundNewResponse;
                     FormCaption.Instance.Refresh();
                     if (soundPlayerNewResponse != null)
                     {
@@ -1811,14 +1844,21 @@ namespace SpeechCast
             UserConfig.CaptionAutoSmall = this.toolStripButtonCaptionAutoSmall.Checked;
         }
 
-        public string CaptionTextBuffer = "";
 
         private void toolStripButtonAutoNextThread_Click(object sender, EventArgs e)
         {
             UserConfig.AutoOpenNextThread = !UserConfig.AutoOpenNextThread;
         }
 
+        // 次スレ自動オープン機能
+        // 現在の検索条件は、「現在のスレタイの最初に出てくる数字(全角半角問わず)に1足した数字をスレタイに含むスレを開く」
+        // その他条件は要望があれば追加
+        // 案としては、
+        // 「現在の条件＋現在のスレより後に立てられたスレに絞り込む」
+        // 「現在のスレより後に立てられたスレが1件のみであれば数字の一致を確認しない」
+        // 等を想定。そういえばゴミスレはどうすりゃいいんだ・・・
         private int openNextThreadUrl(){
+            // 最初の数字検索用の正規表現オブジェクト
             System.Text.RegularExpressions.Regex r =
                 new System.Text.RegularExpressions.Regex(
                     @"[0-9]+",
@@ -1828,24 +1868,25 @@ namespace SpeechCast
             {
                 if (baseURL != null && threadTitle != null)
                 {
-                    // 現在のスレタイから連番と思われる部分を抽出
+                    // 全角半角変換処理を挟む
                     string searchTitle = zen2han(threadTitle);
+                    // 現在のスレタイから連番と思われる部分を抽出
                     System.Text.RegularExpressions.Match m = r.Match(searchTitle);
                     string nextNumber = null;
                     AddLog(searchTitle);
                     if (m.Success)
                     {
-                        //一致した対象が見つかったときキャプチャした部分文字列を表示
+                        // 取得した数字をインクリメントして文字列として格納
                         nextNumber = (Int32.Parse(m.Value) + 1).ToString();
                     }
-                    AddLog(nextNumber);
-
+                    //AddLog(nextNumber);
                     // スレッド一覧の取得
                     string subjectURL = baseURL + "subject.txt";
-                    AddLog(subjectURL);
+                    //AddLog(subjectURL);
                     System.Net.HttpWebRequest webReq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(subjectURL);
                     FormMain.UserConfig.SetProxy(webReq);
                     string encodingName = null;
+                    // 運営サイトごとに文字エンコーディングを取得
                     switch (Response.Style)
                     {
                         case Response.BBSStyle.jbbs:
@@ -1864,33 +1905,33 @@ namespace SpeechCast
                         gettingWebTime = System.DateTime.Now; //例外が発生した場合、連続してwebアクセスが起こるのを防ぐ
                         using (StreamReader reader = new StreamReader(webRes.GetResponseStream(), Encoding.GetEncoding(encodingName)))
                         {
-                            // subject.txtを全件検索
+                            // subject.txtを1行ずつ全件検索
                             while (true)
                             {
                                 string s = reader.ReadLine();
                                 if (s == null)
                                 {
-                                    return 0;
+                                    // 全件検索してもHITしなければ、次スレ検索状況をレス読み中のままにする
+                                    return ReadThread;
                                 }
 
+                                // スレタイを取得
                                 parseSubject = s.Replace("<>", ",").Split(',');
                                 string searchSubject = zen2han(parseSubject[1]);
-                                // subject.txtを連番部分を取得
+                                // スレタイの連番部分を取得
                                 System.Text.RegularExpressions.Match m2 = r.Match(searchSubject);
                                 if(m2.Success)
                                 {
                                     // 連番部分が次スレ連番候補と一致したら
                                     if (m2.Value == nextNumber)
                                     {
-                                        //一致した対象が見つかったときキャプチャした部分文字列を表示
+                                        // 一致データをメンバ変数に入れてループを抜ける
                                         nextUrl = parseSubject[0];
                                         threadTitle = parseSubject[1];
                                         break;
                                     }
-                                    //次に一致する対象を検索
                                 }
                             }
-
                         }
                         System.Text.RegularExpressions.Match m3 = r.Match(nextUrl);
                         string threadId = null;
@@ -1898,29 +1939,34 @@ namespace SpeechCast
                         {
                             //一致した対象が見つかったときキャプチャした部分文字列を表示
                             threadId = m3.Value;
-                            //次に一致する対象を検索
                         }
+                        // スレッドURLを生成
                         string threadUrl = Communicator.Instance.getThreadUrl(baseURL, threadId);
                         if (threadUrl.Length > 0)
                         {
+                            // スレッドURLを生成出来たら、URL入力テキストボックスにそのURLをセット、
+                            // 現在開いてるDatのURLをクリア
+                            // スレタイを更新して、フラグを次スレオープン状態に変更
                             toolStripTextBoxURL.Text = threadUrl;
                             rawURL = null;
                             threadTitle = parseSubject[1];
-                            return 1;
+                            return OpenNextThread;
                         }
                     }
                     catch (Exception e)
                     {
-                        AddLog(string.Format("エラーが発生しました:{0}", e.Message));
+                        AddLog(string.Format("エラーが発生しました:{0}", e.Message + e.StackTrace));
                     }
                 }
             }
             catch (Exception e)
             {
-                AddLog(string.Format("エラーが発生しました:{0}", e.Message));
+                AddLog(string.Format("エラーが発生しました:{0}", e.Message + e.StackTrace));
             }
-            return 0;
+            return ReadThread;
         }
+
+        // ググって拾っきた全角半角変換スクリプト
         private static string zen2han(string aStr)
         {
 
@@ -1932,6 +1978,7 @@ namespace SpeechCast
             return ret.Replace("　", " ");
         }
 
+        // 代替字幕関連の処理
         private void buttonCaptionNum1_Click(object sender, EventArgs e)
         {
             insertTextBox(this.textBoxDefaultCaption, "#1#");
@@ -2025,6 +2072,7 @@ namespace SpeechCast
             targetText.SelectionStart = targetText.Text.Length;
         }
 
+        // 字幕瞬間表示のオプション
         private void toolStripButtonShowCaptionImmediately_Click(object sender, EventArgs e)
         {
             UserConfig.ShowCaptionImmediately = toolStripButtonShowCaptionImmediately.Checked;
