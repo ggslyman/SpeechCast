@@ -64,6 +64,7 @@
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTrackBarVoiceVolume = new SpeechCast.Controls.ToolStripTrackBar();
             this.toolStripButtonCaption = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonShowCaptionImmediately = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSpeech = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonPlaySoundNewResponse = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonClickSound = new System.Windows.Forms.ToolStripButton();
@@ -488,6 +489,7 @@
             this.toolStripLabel3,
             this.toolStripTrackBarVoiceVolume,
             this.toolStripButtonCaption,
+            this.toolStripButtonShowCaptionImmediately,
             this.toolStripButtonSpeech,
             this.toolStripButtonPlaySoundNewResponse,
             this.toolStripButtonClickSound,
@@ -544,6 +546,17 @@
             this.toolStripButtonCaption.Text = "字幕";
             this.toolStripButtonCaption.ToolTipText = "字幕ウィンドウを表示";
             this.toolStripButtonCaption.Click += new System.EventHandler(this.toolStripButtonCaption_Click);
+            // 
+            // toolStripButtonShowCaptionImmediately
+            // 
+            this.toolStripButtonShowCaptionImmediately.CheckOnClick = true;
+            this.toolStripButtonShowCaptionImmediately.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonShowCaptionImmediately.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonShowCaptionImmediately.Image")));
+            this.toolStripButtonShowCaptionImmediately.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonShowCaptionImmediately.Name = "toolStripButtonShowCaptionImmediately";
+            this.toolStripButtonShowCaptionImmediately.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButtonShowCaptionImmediately.Text = "字幕の瞬間表示";
+            this.toolStripButtonShowCaptionImmediately.Click += new System.EventHandler(this.toolStripButtonShowCaptionImmediately_Click);
             // 
             // toolStripButtonSpeech
             // 
@@ -1337,6 +1350,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton17;
         private System.Windows.Forms.ToolStripButton toolStripButton18;
         private System.Windows.Forms.TextBox textBoxDefaultCaption;
+        public System.Windows.Forms.ToolStripButton toolStripButtonShowCaptionImmediately;
     }
 }
 

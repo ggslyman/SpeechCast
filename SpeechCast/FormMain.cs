@@ -1302,6 +1302,7 @@ namespace SpeechCast
                     toolStripButtonCaption.Checked = UserConfig.CaptionVisible;
                     toolStripButtonTurbo.Checked = UserConfig.TurboMode;
                     toolStripButtonSpeech.Checked = UserConfig.SpeakMode;
+                    toolStripButtonShowCaptionImmediately.Checked = UserConfig.ShowCaptionImmediately;
                     checkBoxClockMilitaryTime.Checked = UserConfig.MilitaryTime;
                     checkBoxShowSecond.Checked = UserConfig.MilitaryTime;
                     this.splitContainerResCaption.SplitterDistance = 2000;
@@ -2022,6 +2023,11 @@ namespace SpeechCast
             }
             targetText.SelectionLength = 0;　//なくてもいい
             targetText.SelectionStart = targetText.Text.Length;
+        }
+
+        private void toolStripButtonShowCaptionImmediately_Click(object sender, EventArgs e)
+        {
+            UserConfig.ShowCaptionImmediately = toolStripButtonShowCaptionImmediately.Checked;
         }
     }
 }

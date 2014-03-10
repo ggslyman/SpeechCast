@@ -178,6 +178,7 @@ namespace SpeechCast
             userConfig.GZipCompressionEnabled = checkBoxGZipCompression.Checked;
             userConfig.UseDefaultProxy = checkBoxUseProxy.Checked;
             userConfig.ShowCaptionImmediately = checkBoxShowCaptionImmediately.Checked;
+            FormMain.Instance.toolStripButtonShowCaptionImmediately.Checked = checkBoxShowCaptionImmediately.Checked;
             userConfig.ReduceFontSizeByWindowWidth = checkBoxReduceFontSizeByWindowWidth.Checked;
             userConfig.ReduceFontSizeByWindowHeight = checkBoxReduceFontSizeByWindowHeight.Checked;
             userConfig.SpeakTextBetweenBracesEvenIfAAMode = checkBoxSpeakTextBetweenBraces.Checked;
