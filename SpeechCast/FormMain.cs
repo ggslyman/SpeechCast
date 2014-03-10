@@ -1241,7 +1241,7 @@ namespace SpeechCast
                 if (
                     diff.TotalMilliseconds >= speakingInvervalMillsec
                     && AutoUpdate
-                    && responses.Count >= CurrentResNumber
+                    //&& responses.Count >= CurrentResNumber
                     )
                 {
                     StartSpeaking();
@@ -1336,6 +1336,7 @@ namespace SpeechCast
                     toolStripButtonTurbo.Checked = UserConfig.TurboMode;
                     toolStripButtonSpeech.Checked = UserConfig.SpeakMode;
                     toolStripButtonShowCaptionImmediately.Checked = UserConfig.ShowCaptionImmediately;
+                    toolStripButtonCaptionAutoSmall.Checked = UserConfig.CaptionAutoSmall;
                     checkBoxClockMilitaryTime.Checked = UserConfig.MilitaryTime;
                     checkBoxShowSecond.Checked = UserConfig.MilitaryTime;
                     toolStripButtonPlaySoundNewResponse.Checked = UserConfig.PlaySoundNewResponse;
