@@ -112,6 +112,7 @@
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Speech">
@@ -210,6 +211,7 @@
     <Compile Include="FormWrite.Designer.cs">
       <DependentUpon>FormWrite.cs</DependentUpon>
     </Compile>
+    <Compile Include="includes\Japanese.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\ButtonRunEditor.resx">

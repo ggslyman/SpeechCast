@@ -1062,7 +1062,7 @@ namespace SpeechCast
             }else{
                 synthesizer.Volume = 0;
             }
-            synthesizer.SpeakAsync(pronounciationText);
+            synthesizer.SpeakAsync(MMFrame.Text.Language.Japanese.ToKatakanaFromKatakanaHalf(pronounciationText));
         }
 
         public void StopSpeaking()
@@ -2077,5 +2077,16 @@ namespace SpeechCast
         {
             UserConfig.ShowCaptionImmediately = toolStripButtonShowCaptionImmediately.Checked;
         }
+
+        public static string ConvertKana(string src)
+        {
+            return System.Text.RegularExpressions.Regex.Replace(src, "[\uFF61-\uFF9F+]", MatchKanaEvaluator);
+        }
+
+        private static string MatchKanaEvaluator(System.Text.RegularExpressions.Match m)
+        {
+            return Microsoft.VisualBasic.Strings.StrConv(m.Value, Microsoft.VisualBasic.VbStrConv.Wide, 0);
+        }
     }
+
 }
