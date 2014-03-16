@@ -173,7 +173,7 @@ namespace SpeechCast
         static Regex toTextRegexDiv = new Regex("<div.*?>.*?</div>", RegexOptions.IgnoreCase);
 
         static Regex toHtmlRegexGtGt = new Regex(@"&gt;&gt;(\d+)", RegexOptions.IgnoreCase);
-        static Regex toHtmlRegexUrl = new Regex(@"(http|ttp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)");
+        static Regex toHtmlRegexUrl = new Regex(@"(http|ttp)(s)?(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)");
 
         static MatchEvaluator toTextMatchEvalGroupRemoveLink = new MatchEvaluator(ReplaceGroupRemoveLink);
         static MatchEvaluator toTextMatchEvalGroupAddLink = new MatchEvaluator(ReplaceGroupResAnchor);

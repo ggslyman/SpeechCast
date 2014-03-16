@@ -148,6 +148,12 @@
     <Compile Include="Controls\MyToolStrip.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\TabPageImg.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TabPageImg.Designer.cs">
+      <DependentUpon>TabPageImg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ToolStripTrackBar.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -221,6 +227,9 @@
     <EmbeddedResource Include="Controls\FormWaitForEdit.resx">
       <DependentUpon>FormWaitForEdit.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TabPageImg.resx">
+      <DependentUpon>TabPageImg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
