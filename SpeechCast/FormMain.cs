@@ -404,67 +404,66 @@ namespace SpeechCast
             // 完全にバックグラウンド処理になったので、メッセージなどはコメントアウト
             //communicationStatusString = "通信中・・・・";
             //PushAndSetWaitCursor();
-                long responseTime = 0, readTime = 0, listViewTime = 0, documetnTime = 0, encodingTime = 0, setTime = 0;
-                System.Net.HttpWebResponse webRes = null;
-                // タイムアウト等の結果判別用真偽値
-                bool webReqResult = true;
-                try
+            int oldResponseCount = responses.Count;
+            long responseTime = 0, readTime = 0, listViewTime = 0, documetnTime = 0, encodingTime = 0, setTime = 0;
+            System.Net.HttpWebResponse webRes = null;
+            // タイムアウト等の結果判別用真偽値
+            bool webReqResult = true;
+            try
+            {
+                // Webアクセス部分を非同期化するためTask.Runで囲む
+                await Task.Run(() =>
                 {
-                    // Webアクセス部分を非同期化するためTask.Runで囲む
-                    await Task.Run(() =>
+                    System.Net.HttpWebRequest webReq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
+                    webReq.KeepAlive = false;
+                    FormMain.UserConfig.SetProxy(webReq);
+
+                    if (UserConfig.GZipCompressionEnabled && useRangeHeader == false)
                     {
-                        int oldResponseCount = responses.Count;
-
-                        System.Net.HttpWebRequest webReq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
-                        webReq.KeepAlive = false;
-                        FormMain.UserConfig.SetProxy(webReq);
-
-                        if (UserConfig.GZipCompressionEnabled && useRangeHeader == false)
-                        {
-                            webReq.AutomaticDecompression = System.Net.DecompressionMethods.GZip;
-                        }
+                        webReq.AutomaticDecompression = System.Net.DecompressionMethods.GZip;
+                    }
 #if DEBUG
-                        //AddLog("datSize={0} lastModifiedTime={1} useRangeHeader={2}",
-                        //    datSize, lastModifiedDateTime.ToLongTimeString(), useRangeHeader);
+                    //AddLog("datSize={0} lastModifiedTime={1} useRangeHeader={2}",
+                    //    datSize, lastModifiedDateTime.ToLongTimeString(), useRangeHeader);
 #endif
-                        if (useRangeHeader)
-                        {
-                            webReq.AddRange(datSize - 1);
-                            webReq.IfModifiedSince = lastModifiedDateTime;
-                        }
+                    if (useRangeHeader)
+                    {
+                        webReq.AddRange(datSize - 1);
+                        webReq.IfModifiedSince = lastModifiedDateTime;
+                    }
 
 
-                        gettingWebTime = System.DateTime.Now; //例外が発生した場合、連続してwebアクセスが起こるのを防ぐ
+                    gettingWebTime = System.DateTime.Now; //例外が発生した場合、連続してwebアクセスが起こるのを防ぐ
 
-                        stopWatch.Start();
-                        //サーバーからの応答を受信するためのWebResponseを取得
-                        webReq.Timeout = 10000;
-                        webRes = (System.Net.HttpWebResponse)webReq.GetResponse();
+                    stopWatch.Start();
+                    //サーバーからの応答を受信するためのWebResponseを取得
+                    webReq.Timeout = 10000;
+                    webRes = (System.Net.HttpWebResponse)webReq.GetResponse();
 
-                        lastModifiedDateTime = webRes.LastModified;
-                        responseTime = stopWatch.ElapsedMilliseconds;
-                        //if (useRangeHeader)
-                        //{
-                        //    throw (new Exception(" 416 "));
-                        //}
-                    });// 非同期処理終了
-                }
-                catch (System.Net.WebException e)
+                    lastModifiedDateTime = webRes.LastModified;
+                    responseTime = stopWatch.ElapsedMilliseconds;
+                    //if (useRangeHeader)
+                    //{
+                    //    throw (new Exception(" 416 "));
+                    //}
+                });// 非同期処理終了
+            }
+            catch (System.Net.WebException e)
+            {
+                if (e.Message.IndexOf("304") < 0)
                 {
-                    if (e.Message.IndexOf("304") < 0)
-                    {
-                        AddLog("GetResponse Exception: {0}", e.Message);
-                    }
-                    if (e.Message.IndexOf("416") >= 0)
-                    {
-                        //autoUpdate = false;
-                        //
-                        MessageBox.Show(this, "多分、あぼ～んされています。Enterを押して再取得してください。");
-                        AddLog("誰かのレスがあぼ～んされてるかも？　全レス再取得します。");
-                        needsRetry = true;
-                    }
-                    webReqResult = false;
+                    AddLog("GetResponse Exception: {0}", e.Message);
                 }
+                if (e.Message.IndexOf("416") >= 0)
+                {
+                    //autoUpdate = false;
+                    //
+                    MessageBox.Show(this, "多分、あぼ～んされています。Enterを押して再取得してください。");
+                    AddLog("誰かのレスがあぼ～んされてるかも？　全レス再取得します。");
+                    needsRetry = true;
+                }
+                webReqResult = false;
+            }
                 if (webReqResult)
                 {
                     try
@@ -641,7 +640,9 @@ namespace SpeechCast
 
                                 if (next == true)
                                 {
-                                    PlaySoundNewResponse();
+                                    NewResponseNumber = oldResponseCount + 1;
+                                    //AddLog(NewResponseNumber.ToString());
+                                    //PlaySoundNewResponse();
                                 }
                             }
                             listViewTime = stopWatch.ElapsedMilliseconds;
@@ -827,6 +828,7 @@ namespace SpeechCast
         }
 
         private int currentResNumber_ = 0;
+        private int NewResponseNumber = 0;
 
         public int CurrentResNumber
         {
@@ -1062,6 +1064,7 @@ namespace SpeechCast
             }else{
                 synthesizer.Volume = 0;
             }
+            if (CurrentResNumber == NewResponseNumber) PlaySoundNewResponse();
             synthesizer.SpeakAsync(MMFrame.Text.Language.Japanese.ToKatakanaFromKatakanaHalf(pronounciationText));
         }
 

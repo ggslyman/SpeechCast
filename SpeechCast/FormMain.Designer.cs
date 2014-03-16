@@ -1290,7 +1290,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAbout;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemGoSupportBBS;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private Controls.ToolStripTrackBar toolStripTrackBarVoiceVolume;
+        private SpeechCast.Controls.ToolStripTrackBar toolStripTrackBarVoiceVolume;
         private System.Windows.Forms.ToolStripButton toolStripButtonTurbo;
         private System.Windows.Forms.ToolStripButton toolStripButtonSpeech;
         private System.Windows.Forms.ToolStripButton toolStripButtonClickSound;
@@ -1302,7 +1302,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonEnter;
         private System.Windows.Forms.ToolStripButton toolStripButtonOpenAsBrowser;
         private System.Windows.Forms.ToolStripButton toolStripButtonOpenURLFromClipboard;
-        private Controls.MyToolStrip myToolStripUrl;
+        private SpeechCast.Controls.MyToolStrip myToolStripUrl;
         private System.Windows.Forms.ToolStripButton toolStripButtonCaptionAutoSmall;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
@@ -1322,11 +1322,11 @@
         private System.Windows.Forms.Timer timerWeb;
         private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.Button buttonSpeakCaptionText;
-        private Controls.MyToolStrip myToolStripPlay;
+        private SpeechCast.Controls.MyToolStrip myToolStripPlay;
         private System.Windows.Forms.ToolStripLabel toolStripLabel4;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel5;
-        private Controls.ToolStripTrackBar toolStripTrackBar1;
+        private SpeechCast.Controls.ToolStripTrackBar toolStripTrackBar1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
