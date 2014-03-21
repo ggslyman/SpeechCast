@@ -65,6 +65,20 @@ namespace SpeechCast
             // Webブラウザオブジェクトへの新規イベント追加
             this.webBrowser.StatusTextChanged += new EventHandler(webBrowser_StatusTextChanged);
             this.webBrowser.Navigating += new WebBrowserNavigatingEventHandler(webBrowser_Navigating);
+            // JavaScriptでの差分取得用HTMLをセット
+            this.webBrowser.DocumentText = @"<html><body><script type=""text/javascript""> 
+function addRes(res) { 
+    var element = document.createElement('div');
+    element.innerHTML = res;
+    var objResArea = document.getElementById(""resArea"");; 
+    objResArea.appendChild(element);
+}
+function clearRes() { 
+    var objResArea = document.getElementById(""resArea"");; 
+    objResArea.innerHTML = """";
+}
+</script>
+<div id=""resArea""></div></body></html>";
         }
 
         // ブラウザ内リンクのイベント追加
@@ -326,6 +340,8 @@ namespace SpeechCast
         string debugDatFileName = null;
 #endif
         // 元ソースより非同期に変更
+        private int oldResCount = 0;
+        private string oldUrl = "";
         private async Task<bool> GetFromURL(bool next)
         {
 
@@ -408,6 +424,15 @@ namespace SpeechCast
                 }
                 url = rawURL;
                 datSize = 1;
+                // レス差分取得関係の初期化処理
+                if (oldUrl != rawURL)
+                {
+                    responses.Clear();
+                    oldUrl = rawURL;
+                    oldResCount = 0;
+                    Object[] objArray = new Object[1];
+                    webBrowser.Document.InvokeScript("clearRes", objArray);
+                }
             }
 
             System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
@@ -623,6 +648,15 @@ namespace SpeechCast
                                 //レスが増えた
 
                                 updated = true;
+                                // 差分用処理
+                                if (responses.Count == 0)
+                                {
+                                    oldResCount = 0;
+                                }
+                                else
+                                {
+                                    oldResCount = responses.Count;
+                                }
                                 listViewResponses.BeginUpdate();
                                 int startIndex;
                                 if (clearItems)
@@ -684,34 +718,16 @@ namespace SpeechCast
 
                 if (updated)
                 {
-                    string[] htmlStrings = new string[responses.Count];
-
-                    int i = 0;
-                    foreach (Response res in responses)
+                    // JavaScriptでの差分追加処理
+                    if (webBrowser.Document != null)
                     {
-                        htmlStrings[i] = res.Html;
-                        i++;
-                    }
-
-                    string html = string.Format("<html><body>{0}</body></html>"
-                                        , string.Concat(htmlStrings)
-                                        );
-
-                    try
-                    {
-                        webBrowser.DocumentText = html;
-                        documetnTime = stopWatch.ElapsedMilliseconds;
-
-#if DEBUG
-                        AddLog("Elasped res={0} read={1} enc={2} list={3} doc={4} set={5}",
-                            responseTime, readTime, encodingTime, listViewTime, documetnTime, setTime);
-#endif
-                    }
-                    catch (Exception ex)
-                    {
-                        result = false;
-                        AddLog("webBrowser Exception: {0}", ex.Message);
-                    }
+                        for (int idx = oldResCount; idx < responses.Count; idx++)
+                        {
+                            Object[] objArray = new Object[1];
+                            objArray[0] = responses[idx].Html;
+                            webBrowser.Document.InvokeScript("addRes", objArray);
+                        }
+                    }                    
                 }
                 return result;
         }
@@ -834,7 +850,7 @@ namespace SpeechCast
 
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            ScrollToDocumentEnd();
+            //ScrollToDocumentEnd();
         }
 
         private int currentResNumber_ = 0;
@@ -948,7 +964,7 @@ namespace SpeechCast
                 isSpeaking = true;
                 StartSpeaking(text);
                 listViewResponses.Items[CurrentResNumber - 1].Selected = true;
-                webBrowser.Document.Window.ScrollTo(0, GetResponsesScrollY(CurrentResNumber));
+                //webBrowser.Document.Window.ScrollTo(0, GetResponsesScrollY(CurrentResNumber));
             }
             else if (openNextThread == OpenNextThread)
             {
@@ -2135,5 +2151,6 @@ namespace SpeechCast
         {
             UserConfig.SetFormToRect(ref UserConfig.FormViewToRect, frm);
         }
+
     }
 }

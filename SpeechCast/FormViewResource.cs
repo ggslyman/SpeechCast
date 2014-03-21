@@ -39,6 +39,7 @@ namespace SpeechCast
         {
             // コンテンツ格納用のWebブラウザを作成
             WebBrowser wb = new WebBrowser();
+            // ウィジェットHTMLを生成
             string widgetCode = "<iframe width=\"480\" height=\"360\" src=\"https://www.youtube.com/embed/" + id + "\" frameborder=\"0\" allowfullscreen></iframe>";
             wb.DocumentText = "<body>" + widgetCode + "</body>";
             wb.Dock = DockStyle.Fill;
