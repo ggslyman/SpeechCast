@@ -83,6 +83,11 @@ namespace SpeechCast
                     webBrowser.Document.Window.ScrollTo(0, GetResponsesScrollY(resNo));
                 }
             }
+            else if (url.EndsWith("jpg") || url.EndsWith("png") || url.EndsWith("gif"))
+            {
+                e.Cancel = true;
+                oepnFormViewNewtab(url);
+            }
             else if (url.StartsWith("http:"))
             {
                 System.Diagnostics.Process.Start(url);
@@ -912,8 +917,6 @@ namespace SpeechCast
         private void StartSpeaking()
         {
             speakClipboard = false;
-            isSpeaking = true;
-
 
             if (CurrentResNumber <= 0)
             {
@@ -937,6 +940,7 @@ namespace SpeechCast
                 }
 
                 isSpeakingWarningMessage = false;
+                isSpeaking = true;
                 StartSpeaking(text);
                 listViewResponses.Items[CurrentResNumber - 1].Selected = true;
                 webBrowser.Document.Window.ScrollTo(0, GetResponsesScrollY(CurrentResNumber));
@@ -950,6 +954,7 @@ namespace SpeechCast
                 isSpeakingWarningMessage = true;
                 FormCaption.Instance.IsAAMode = false;
                 synthesizer.Rate = UserConfig.SpeakingRate;
+                isSpeaking = true;
                 synthesizer.SpeakAsync(speakingText);
             }
             else if (CurrentResNumber > Response.MaxResponseCount && openNextThread == ReadThread)
@@ -960,11 +965,12 @@ namespace SpeechCast
                 isSpeakingWarningMessage = true;
                 FormCaption.Instance.IsAAMode = false;
                 synthesizer.Rate = UserConfig.SpeakingRate;
+                isSpeaking = true;
                 synthesizer.SpeakAsync(speakingText);
             }
             else
             {
-                speakingCompletedTime = System.DateTime.Now;
+                if(isSpeaking)speakingCompletedTime = System.DateTime.Now;
                 isSpeaking = false;
             }
         }
@@ -2091,6 +2097,28 @@ namespace SpeechCast
         {
             return Microsoft.VisualBasic.Strings.StrConv(m.Value, Microsoft.VisualBasic.VbStrConv.Wide, 0);
         }
-    }
 
+        private void toolStripButton19_Click(object sender, EventArgs e)
+        {
+            oepnFormViewNewtab("http://peercasket.s3.amazonaws.com/2014s/title/d348fc17-c842-412f-bfe4-37af265905cd");
+        }
+
+        // イメージビューア起動
+        public FormViewResource formViewResource = null;
+        private void oepnFormViewNewtab(string url)
+        {
+            if ((formViewResource == null) || formViewResource.IsDisposed)
+            {
+                formViewResource = new FormViewResource(UserConfig.FormViewToRect);
+                formViewResource.Show();
+            }
+            formViewResource.addTab(url);
+            formViewResource.Activate();
+        }
+        // ビューア位置の保存
+        public void saveViewerPos(FormViewResource frm)
+        {
+            UserConfig.SetFormToRect(ref UserConfig.FormViewToRect, frm);
+        }
+    }
 }

@@ -119,6 +119,11 @@ namespace SpeechCast
         public Rectangle FormCaptionRect;
 
         /// <summary>
+        /// イメージビューアのウィンドウ位置
+        /// </summary>
+        public Rectangle FormViewToRect;
+
+        /// <summary>
         /// 読み上げONOFF
         /// </summary>
         public bool SpeakMode = false;

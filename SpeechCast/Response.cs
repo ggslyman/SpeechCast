@@ -276,7 +276,7 @@ namespace SpeechCast
             StringBuilder sb = new StringBuilder();
 
             sb.Append("<a href=\"http");
-            sb.Append(m.Groups[2].Value);
+            sb.Append(m.Groups[3].Value);
             sb.Append("\">");
             //sb.Append("\" target=\"_blank\">");
             sb.Append(m.Groups[0].Value);

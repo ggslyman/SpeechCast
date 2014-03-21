@@ -203,12 +203,12 @@ namespace SpeechCast
             System.Drawing.Font font = captionFont.CreateFont();
 
             StringFormat stringFormat = new StringFormat();
-
+            //TextFormatFlags txtFormatFlags = new TextFormatFlags();
+            //txtFormatFlags = TextFormatFlags.Top | TextFormatFlags.Left;
             if (captionFont.IsDirectionVertical)
             {
                 stringFormat.FormatFlags = StringFormatFlags.DirectionVertical | StringFormatFlags.DirectionRightToLeft;
             }
-
             List<Point> offsets = new List<Point>();
 
             for (int i = 0; i < captionFont.BorderSize; i++)
@@ -229,20 +229,24 @@ namespace SpeechCast
 
                 if (isAAMode)
                 {
+                    //TextRenderer.DrawText(g, captionText, font, borderRect, FormMain.UserConfig.AACaptionFont.Colors.BorderColor, txtFormatFlags);
                     g.DrawString(captionText, font, captionFont.BorderBrush, borderRect.X, borderRect.Y);
                 }
                 else
                 {
+                    //TextRenderer.DrawText(g, captionText, font, borderRect, FormMain.UserConfig.CaptionFont.Colors.BorderColor, txtFormatFlags);
                     g.DrawString(captionText, font, captionFont.BorderBrush, borderRect, stringFormat);
                 }
             }
 
             if (isAAMode)
             {
+                //TextRenderer.DrawText(g, captionText, font, captionRect, FormMain.UserConfig.AACaptionFont.Colors.HighForeColor, txtFormatFlags);
                 g.DrawString(captionText, font, captionFont.GetForeBrush(captionRect), captionRect.X, captionRect.Y);
             }
             else
             {
+                //TextRenderer.DrawText(g, captionText, font, captionRect, FormMain.UserConfig.CaptionFont.Colors.HighForeColor, txtFormatFlags);
                 g.DrawString(captionText, font, captionFont.GetForeBrush(captionRect), captionRect, stringFormat);
             }
         }
