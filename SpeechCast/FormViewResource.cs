@@ -17,7 +17,7 @@ namespace SpeechCast
         static public FormViewResource Instance;
         private ImageList imgList = new ImageList();
         public Rectangle rect;
-        public FormViewResource(Rectangle loadRect)
+        public FormViewResource(Rectangle loadRect) 
         {
             rect = loadRect;
             InitializeComponent();
@@ -35,7 +35,20 @@ namespace SpeechCast
             this.Height = rect.Height;
         }
 
-        public void addTab(string url)
+        public void addTabYoutube(string id)
+        {
+            string widgetCode = "<iframe width=\"480\" height=\"360\" src=\"https://www.youtube.com/embed/" + id + "\" frameborder=\"0\" allowfullscreen></iframe>";
+            // コンテンツ格納用のWebブラウザを作成
+            WebBrowser wb = new WebBrowser();
+            wb.Dock = DockStyle.Fill;
+            wb.DocumentText = "<body>" + widgetCode + "</body>";
+
+            // タブを追加
+            TabPage tp = new TabPage();
+            tp.Controls.Add(wb);
+            this.tabControlContainer.TabPages.Add(tp);
+        }
+        public void addTabImg(string url)
         {
             // コンテンツ格納用のWebブラウザを作成
             WebBrowser wb = new WebBrowser();
@@ -65,7 +78,10 @@ namespace SpeechCast
                     //タブとマウス位置を比較し、クリックしたタブを選択
                     if (this.tabControlContainer.GetTabRect(i).Contains(e.X, e.Y))
                     {
+                        TabPage rmPage = this.tabControlContainer.TabPages[i];
                         this.tabControlContainer.TabPages.Remove(this.tabControlContainer.TabPages[i]);
+                        // タブを消しただけだとページがメモリ上に残るのでdisposeする
+                        rmPage.Dispose();
                         // タブが無くなったらフォーム自体を閉じる
                         if (this.tabControlContainer.TabCount == 0)this.Close();
                         break;

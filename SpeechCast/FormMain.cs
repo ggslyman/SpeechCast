@@ -71,7 +71,6 @@ namespace SpeechCast
         void webBrowser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
             string url = e.Url.AbsoluteUri;
-
             if (url.StartsWith(Response.AnchorUrl))
             {
                 e.Cancel = true;
@@ -86,7 +85,13 @@ namespace SpeechCast
             else if (url.EndsWith("jpg") || url.EndsWith("png") || url.EndsWith("gif"))
             {
                 e.Cancel = true;
-                oepnFormViewNewtab(url);
+                oepnFormViewNewtabImg(url);
+            }
+            else if (url.IndexOf("youtube.com/watch?v=")>0)
+            {
+                e.Cancel = true;
+                var id = url.Split('=');
+                oepnFormViewNewtabYoutube(id[1]);
             }
             else if (url.StartsWith("http:"))
             {
@@ -2100,19 +2105,29 @@ namespace SpeechCast
 
         private void toolStripButton19_Click(object sender, EventArgs e)
         {
-            oepnFormViewNewtab("http://peercasket.s3.amazonaws.com/2014s/title/d348fc17-c842-412f-bfe4-37af265905cd");
+            oepnFormViewNewtabImg("http://peercasket.s3.amazonaws.com/2014s/title/d348fc17-c842-412f-bfe4-37af265905cd");
         }
 
         // イメージビューア起動
         public FormViewResource formViewResource = null;
-        private void oepnFormViewNewtab(string url)
+        private void oepnFormViewNewtabImg(string url)
         {
             if ((formViewResource == null) || formViewResource.IsDisposed)
             {
                 formViewResource = new FormViewResource(UserConfig.FormViewToRect);
                 formViewResource.Show();
             }
-            formViewResource.addTab(url);
+            formViewResource.addTabImg(url);
+            formViewResource.Activate();
+        }
+        private void oepnFormViewNewtabYoutube(string id)
+        {
+            if ((formViewResource == null) || formViewResource.IsDisposed)
+            {
+                formViewResource = new FormViewResource(UserConfig.FormViewToRect);
+                formViewResource.Show();
+            }
+            formViewResource.addTabYoutube(id);
             formViewResource.Activate();
         }
         // ビューア位置の保存
