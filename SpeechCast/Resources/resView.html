@@ -1,0 +1,18 @@
+<html>
+	<body>
+		<script type="text/javascript">
+		function addRes(res) {
+			var element = document.createElement('div');
+			element.innerHTML = res;
+			var objResArea = document.getElementById("resArea");;
+			objResArea.appendChild(element);
+		}
+		function clearRes() {
+			var objResArea = document.getElementById("resArea");;
+			objResArea.innerHTML = "";
+		}
+		</script>
+		<div id="resArea">
+		</div>
+	</body>
+</html>

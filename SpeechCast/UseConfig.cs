@@ -122,6 +122,16 @@ namespace SpeechCast
         /// イメージビューアのウィンドウ位置
         /// </summary>
         public Rectangle FormViewToRect;
+        
+        /// <summary>
+        /// 自動スクロールONOFF
+        /// </summary>
+        public bool EnableAutoScroll = false;
+
+        /// <summary>
+        /// 自動スクロールスピード
+        /// </summary>
+        public int AutoScrollSpeed = 1;
 
         /// <summary>
         /// 読み上げONOFF

@@ -66,19 +66,8 @@ namespace SpeechCast
             this.webBrowser.StatusTextChanged += new EventHandler(webBrowser_StatusTextChanged);
             this.webBrowser.Navigating += new WebBrowserNavigatingEventHandler(webBrowser_Navigating);
             // JavaScriptでの差分取得用HTMLをセット
-            this.webBrowser.DocumentText = @"<html><body><script type=""text/javascript""> 
-function addRes(res) { 
-    var element = document.createElement('div');
-    element.innerHTML = res;
-    var objResArea = document.getElementById(""resArea"");; 
-    objResArea.appendChild(element);
-}
-function clearRes() { 
-    var objResArea = document.getElementById(""resArea"");; 
-    objResArea.innerHTML = """";
-}
-</script>
-<div id=""resArea""></div></body></html>";
+            string html = Properties.Resources.resView.ToString();
+            webBrowser.DocumentText = html;
         }
 
         // ブラウザ内リンクのイベント追加
@@ -1179,6 +1168,7 @@ function clearRes() {
         // 読み上げ管理用バックグラウンドプロセス
         private void timer_Tick(object sender, EventArgs e)
         {
+            if (UserConfig.EnableAutoScroll) webBrowser.Document.Window.ScrollTo(0, (webBrowser.Document.Body.ScrollTop + UserConfig.AutoScrollSpeed));
             diff = System.DateTime.Now - speakingCompletedTime;
             diffWeb = System.DateTime.Now - gettingWebTime;
             // スレタイトル更新処理
@@ -1371,6 +1361,7 @@ function clearRes() {
                     checkBoxShowSecond.Checked = UserConfig.MilitaryTime;
                     toolStripButtonPlaySoundNewResponse.Checked = UserConfig.PlaySoundNewResponse;
                     this.splitContainerResCaption.SplitterDistance = 2000;
+                    toolStripButtonAutoScroll.Checked = UserConfig.EnableAutoScroll;
                 }
                 catch (Exception ex)
                 {
@@ -1894,6 +1885,11 @@ function clearRes() {
                 new System.Text.RegularExpressions.Regex(
                     @"[0-9]+",
                     System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+            // スレタイのレス数の削除用正規表現オブジェクト
+            System.Text.RegularExpressions.Regex rTitle =
+                new System.Text.RegularExpressions.Regex(
+                    @"(?<title>\\d+?)\([0-9]+\)",
+                    System.Text.RegularExpressions.RegexOptions.IgnoreCase);
             string nextUrl = null;
             try
             {
@@ -1980,7 +1976,9 @@ function clearRes() {
                             // スレタイを更新して、フラグを次スレオープン状態に変更
                             toolStripTextBoxURL.Text = threadUrl;
                             rawURL = null;
-                            threadTitle = parseSubject[1];
+
+                            System.Text.RegularExpressions.Match mtitle = r.Match(parseSubject[1]);
+                            if (mtitle.Success) threadTitle = mtitle.Groups["title"].Value;
                             return OpenNextThread;
                         }
                     }
@@ -2119,11 +2117,6 @@ function clearRes() {
             return Microsoft.VisualBasic.Strings.StrConv(m.Value, Microsoft.VisualBasic.VbStrConv.Wide, 0);
         }
 
-        private void toolStripButton19_Click(object sender, EventArgs e)
-        {
-            oepnFormViewNewtabImg("http://peercasket.s3.amazonaws.com/2014s/title/d348fc17-c842-412f-bfe4-37af265905cd");
-        }
-
         // イメージビューア起動
         public FormViewResource formViewResource = null;
         private void oepnFormViewNewtabImg(string url)
@@ -2150,6 +2143,13 @@ function clearRes() {
         public void saveViewerPos(FormViewResource frm)
         {
             UserConfig.SetFormToRect(ref UserConfig.FormViewToRect, frm);
+        }
+
+        // オートスクロールのONOFF
+        private void toolStripButtonAutoScroll_Click(object sender, EventArgs e)
+        {
+            UserConfig.EnableAutoScroll = !UserConfig.EnableAutoScroll;
+            toolStripButtonAutoScroll.Checked = UserConfig.EnableAutoScroll;
         }
 
     }

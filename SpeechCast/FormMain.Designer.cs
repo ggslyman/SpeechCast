@@ -73,7 +73,7 @@
             this.toolStripButtonSettings = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCaptionAutoSmall = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton19 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonAutoScroll = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonThreads = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonResponse = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripSeparator();
@@ -499,7 +499,7 @@
             this.toolStripButtonSettings,
             this.toolStripButtonCaptionAutoSmall,
             this.toolStripSeparator4,
-            this.toolStripButton19});
+            this.toolStripButtonAutoScroll});
             this.myToolStripVoice.Location = new System.Drawing.Point(0, 26);
             this.myToolStripVoice.Name = "myToolStripVoice";
             this.myToolStripVoice.Size = new System.Drawing.Size(949, 26);
@@ -636,15 +636,16 @@
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 26);
             // 
-            // toolStripButton19
+            // toolStripButtonAutoScroll
             // 
-            this.toolStripButton19.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton19.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton19.Image")));
-            this.toolStripButton19.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton19.Name = "toolStripButton19";
-            this.toolStripButton19.Size = new System.Drawing.Size(23, 23);
-            this.toolStripButton19.Text = "toolStripButton19";
-            this.toolStripButton19.Click += new System.EventHandler(this.toolStripButton19_Click);
+            this.toolStripButtonAutoScroll.CheckOnClick = true;
+            this.toolStripButtonAutoScroll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonAutoScroll.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAutoScroll.Image")));
+            this.toolStripButtonAutoScroll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAutoScroll.Name = "toolStripButtonAutoScroll";
+            this.toolStripButtonAutoScroll.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButtonAutoScroll.Text = "自動スクロール";
+            this.toolStripButtonAutoScroll.Click += new System.EventHandler(this.toolStripButtonAutoScroll_Click);
             // 
             // toolStripButtonThreads
             // 
@@ -1363,7 +1364,7 @@
         private System.Windows.Forms.TextBox textBoxDefaultCaption;
         public System.Windows.Forms.ToolStripButton toolStripButtonShowCaptionImmediately;
         public System.Windows.Forms.ToolStripButton toolStripButtonPlaySoundNewResponse;
-        private System.Windows.Forms.ToolStripButton toolStripButton19;
+        private System.Windows.Forms.ToolStripButton toolStripButtonAutoScroll;
     }
 }
 

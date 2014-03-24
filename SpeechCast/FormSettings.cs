@@ -97,6 +97,8 @@ namespace SpeechCast
             this.numericUpDownDefaultCaptinoDispInvervalMillsec.Value = userConfig.DefaultCaptinoDispInvervalMillsec;
             this.TrackBarSpeakingRate.Value = userConfig.SpeakingRate;
             this.TrackBarTurboSpeakingRate.Value = userConfig.TurboSpeakingRate;
+            this.trackBarAutoScrollSpeed.Value = userConfig.AutoScrollSpeed;
+            this.labelAutoScrollSpeed.Text = userConfig.AutoScrollSpeed.ToString();
             this.labelTurboSpeakingRate.Text = userConfig.TurboSpeakingRate.ToString();
             this.TextBoxNGWords.Text = StringsToText(userConfig.NGWords);
             this.TextBoxPronounciations.Text = StringsToText(userConfig.Pronounciations);
@@ -134,6 +136,7 @@ namespace SpeechCast
             userConfig.DefaultCaptinoDispInvervalMillsec = System.Convert.ToInt32(this.numericUpDownDefaultCaptinoDispInvervalMillsec.Value);
             userConfig.SpeakingRate = this.TrackBarSpeakingRate.Value;
             userConfig.TurboSpeakingRate = this.TrackBarTurboSpeakingRate.Value;
+            userConfig.AutoScrollSpeed = this.trackBarAutoScrollSpeed.Value;
             userConfig.TurboThreshold = System.Convert.ToInt32(this.numericUpDownTurboThreshold.Value);
             userConfig.MaxSpeakingCharacterCount = System.Convert.ToInt32(this.NumericUpDownMaxSpeakingCharacterCount.Value);
             userConfig.CaptionFont = this.CaptionFont;
@@ -479,6 +482,11 @@ namespace SpeechCast
                     }
                 }
             }
+        }
+
+        private void trackBarAutoScrollSpeed_ValueChanged(object sender, EventArgs e)
+        {
+            labelAutoScrollSpeed.Text = trackBarAutoScrollSpeed.Value.ToString();
         }
 
      }

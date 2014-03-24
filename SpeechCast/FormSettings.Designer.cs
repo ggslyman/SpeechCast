@@ -33,6 +33,9 @@
             this.buttonOK = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label25 = new System.Windows.Forms.Label();
+            this.numericUpDownDefaultCaptinoDispInvervalMillsec = new System.Windows.Forms.NumericUpDown();
+            this.label26 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.NumericUpDownTurboSpeakingInvervalMillsec = new System.Windows.Forms.NumericUpDown();
             this.label23 = new System.Windows.Forms.Label();
@@ -85,7 +88,6 @@
             this.checkBoxReduceFontSizeByWindowWidth = new System.Windows.Forms.CheckBox();
             this.checkBoxReduceFontSizeByWindowHeight = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.buttonRunEditorAAMode = new SpeechCast.Controls.ButtonRunEditor();
             this.textBoxAAModeConditions = new System.Windows.Forms.TextBox();
             this.label = new System.Windows.Forms.Label();
             this.numericUpDownAAModeTextLength = new System.Windows.Forms.NumericUpDown();
@@ -102,10 +104,8 @@
             this.NumericUpDownAutoGettingWebInverval = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.buttonRunEditorNGWord = new SpeechCast.Controls.ButtonRunEditor();
             this.TextBoxNGWords = new System.Windows.Forms.TextBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.buttonRunEditorPronounciation = new SpeechCast.Controls.ButtonRunEditor();
             this.TextBoxPronounciations = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -123,12 +123,16 @@
             this.buttonRefernceEditor = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxEditorFilePath = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.numericUpDownDefaultCaptinoDispInvervalMillsec = new System.Windows.Forms.NumericUpDown();
-            this.label26 = new System.Windows.Forms.Label();
+            this.trackBarAutoScrollSpeed = new System.Windows.Forms.TrackBar();
+            this.labelAutoScrollSpeed = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.buttonRunEditorAAMode = new SpeechCast.Controls.ButtonRunEditor();
+            this.buttonRunEditorNGWord = new SpeechCast.Controls.ButtonRunEditor();
+            this.buttonRunEditorPronounciation = new SpeechCast.Controls.ButtonRunEditor();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDefaultCaptinoDispInvervalMillsec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownTurboSpeakingInvervalMillsec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTurboThreshold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrackBarTurboSpeakingRate)).BeginInit();
@@ -150,7 +154,7 @@
             this.tabPage8.SuspendLayout();
             this.panelPlaySound.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDefaultCaptinoDispInvervalMillsec)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarAutoScrollSpeed)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -235,6 +239,41 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "音声";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(277, 74);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(34, 12);
+            this.label25.TabIndex = 25;
+            this.label25.Text = "msec.";
+            // 
+            // numericUpDownDefaultCaptinoDispInvervalMillsec
+            // 
+            this.numericUpDownDefaultCaptinoDispInvervalMillsec.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownDefaultCaptinoDispInvervalMillsec.Location = new System.Drawing.Point(176, 72);
+            this.numericUpDownDefaultCaptinoDispInvervalMillsec.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDownDefaultCaptinoDispInvervalMillsec.Name = "numericUpDownDefaultCaptinoDispInvervalMillsec";
+            this.numericUpDownDefaultCaptinoDispInvervalMillsec.Size = new System.Drawing.Size(95, 19);
+            this.numericUpDownDefaultCaptinoDispInvervalMillsec.TabIndex = 24;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(17, 74);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(93, 12);
+            this.label26.TabIndex = 23;
+            this.label26.Text = "字幕が消える時間";
             // 
             // label22
             // 
@@ -827,18 +866,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "AAモードになる条件";
             // 
-            // buttonRunEditorAAMode
-            // 
-            this.buttonRunEditorAAMode.AutoSize = true;
-            this.buttonRunEditorAAMode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonRunEditorAAMode.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
-            this.buttonRunEditorAAMode.Location = new System.Drawing.Point(344, 44);
-            this.buttonRunEditorAAMode.Name = "buttonRunEditorAAMode";
-            this.buttonRunEditorAAMode.Size = new System.Drawing.Size(53, 30);
-            this.buttonRunEditorAAMode.TabIndex = 3;
-            this.buttonRunEditorAAMode.TextBox = this.textBoxAAModeConditions;
-            this.buttonRunEditorAAMode.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
-            // 
             // textBoxAAModeConditions
             // 
             this.textBoxAAModeConditions.AcceptsReturn = true;
@@ -1043,18 +1070,6 @@
             this.tabPage5.Text = "NGWord";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // buttonRunEditorNGWord
-            // 
-            this.buttonRunEditorNGWord.AutoSize = true;
-            this.buttonRunEditorNGWord.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonRunEditorNGWord.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
-            this.buttonRunEditorNGWord.Location = new System.Drawing.Point(369, 26);
-            this.buttonRunEditorNGWord.Name = "buttonRunEditorNGWord";
-            this.buttonRunEditorNGWord.Size = new System.Drawing.Size(53, 30);
-            this.buttonRunEditorNGWord.TabIndex = 1;
-            this.buttonRunEditorNGWord.TextBox = this.TextBoxNGWords;
-            this.buttonRunEditorNGWord.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
-            // 
             // TextBoxNGWords
             // 
             this.TextBoxNGWords.AcceptsReturn = true;
@@ -1078,18 +1093,6 @@
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "読み方";
             this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // buttonRunEditorPronounciation
-            // 
-            this.buttonRunEditorPronounciation.AutoSize = true;
-            this.buttonRunEditorPronounciation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonRunEditorPronounciation.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
-            this.buttonRunEditorPronounciation.Location = new System.Drawing.Point(369, 46);
-            this.buttonRunEditorPronounciation.Name = "buttonRunEditorPronounciation";
-            this.buttonRunEditorPronounciation.Size = new System.Drawing.Size(53, 30);
-            this.buttonRunEditorPronounciation.TabIndex = 4;
-            this.buttonRunEditorPronounciation.TextBox = this.TextBoxPronounciations;
-            this.buttonRunEditorPronounciation.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
             // 
             // TextBoxPronounciations
             // 
@@ -1215,6 +1218,9 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.labelAutoScrollSpeed);
+            this.tabPage4.Controls.Add(this.label28);
+            this.tabPage4.Controls.Add(this.trackBarAutoScrollSpeed);
             this.tabPage4.Controls.Add(this.checkBoxDebug);
             this.tabPage4.Controls.Add(this.buttonRefernceEditor);
             this.tabPage4.Controls.Add(this.label8);
@@ -1230,7 +1236,7 @@
             // checkBoxDebug
             // 
             this.checkBoxDebug.AutoSize = true;
-            this.checkBoxDebug.Location = new System.Drawing.Point(10, 56);
+            this.checkBoxDebug.Location = new System.Drawing.Point(9, 115);
             this.checkBoxDebug.Name = "checkBoxDebug";
             this.checkBoxDebug.Size = new System.Drawing.Size(130, 16);
             this.checkBoxDebug.TabIndex = 6;
@@ -1263,40 +1269,69 @@
             this.textBoxEditorFilePath.Size = new System.Drawing.Size(272, 19);
             this.textBoxEditorFilePath.TabIndex = 3;
             // 
-            // label25
+            // trackBarAutoScrollSpeed
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(277, 74);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(34, 12);
-            this.label25.TabIndex = 25;
-            this.label25.Text = "msec.";
+            this.trackBarAutoScrollSpeed.Location = new System.Drawing.Point(145, 57);
+            this.trackBarAutoScrollSpeed.Minimum = 1;
+            this.trackBarAutoScrollSpeed.Name = "trackBarAutoScrollSpeed";
+            this.trackBarAutoScrollSpeed.Size = new System.Drawing.Size(272, 45);
+            this.trackBarAutoScrollSpeed.TabIndex = 7;
+            this.trackBarAutoScrollSpeed.Value = 1;
+            this.trackBarAutoScrollSpeed.ValueChanged += new System.EventHandler(this.trackBarAutoScrollSpeed_ValueChanged);
             // 
-            // numericUpDownDefaultCaptinoDispInvervalMillsec
+            // labelAutoScrollSpeed
             // 
-            this.numericUpDownDefaultCaptinoDispInvervalMillsec.Increment = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDownDefaultCaptinoDispInvervalMillsec.Location = new System.Drawing.Point(176, 72);
-            this.numericUpDownDefaultCaptinoDispInvervalMillsec.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numericUpDownDefaultCaptinoDispInvervalMillsec.Name = "numericUpDownDefaultCaptinoDispInvervalMillsec";
-            this.numericUpDownDefaultCaptinoDispInvervalMillsec.Size = new System.Drawing.Size(95, 19);
-            this.numericUpDownDefaultCaptinoDispInvervalMillsec.TabIndex = 24;
+            this.labelAutoScrollSpeed.AutoSize = true;
+            this.labelAutoScrollSpeed.Location = new System.Drawing.Point(118, 70);
+            this.labelAutoScrollSpeed.Name = "labelAutoScrollSpeed";
+            this.labelAutoScrollSpeed.Size = new System.Drawing.Size(11, 12);
+            this.labelAutoScrollSpeed.TabIndex = 9;
+            this.labelAutoScrollSpeed.Text = "0";
             // 
-            // label26
+            // label28
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(17, 74);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(93, 12);
-            this.label26.TabIndex = 23;
-            this.label26.Text = "字幕が消える時間";
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(11, 70);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(99, 12);
+            this.label28.TabIndex = 8;
+            this.label28.Text = "自動スクロール速度";
+            // 
+            // buttonRunEditorAAMode
+            // 
+            this.buttonRunEditorAAMode.AutoSize = true;
+            this.buttonRunEditorAAMode.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonRunEditorAAMode.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
+            this.buttonRunEditorAAMode.Location = new System.Drawing.Point(344, 44);
+            this.buttonRunEditorAAMode.Name = "buttonRunEditorAAMode";
+            this.buttonRunEditorAAMode.Size = new System.Drawing.Size(53, 30);
+            this.buttonRunEditorAAMode.TabIndex = 3;
+            this.buttonRunEditorAAMode.TextBox = this.textBoxAAModeConditions;
+            this.buttonRunEditorAAMode.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
+            // 
+            // buttonRunEditorNGWord
+            // 
+            this.buttonRunEditorNGWord.AutoSize = true;
+            this.buttonRunEditorNGWord.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonRunEditorNGWord.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
+            this.buttonRunEditorNGWord.Location = new System.Drawing.Point(369, 26);
+            this.buttonRunEditorNGWord.Name = "buttonRunEditorNGWord";
+            this.buttonRunEditorNGWord.Size = new System.Drawing.Size(53, 30);
+            this.buttonRunEditorNGWord.TabIndex = 1;
+            this.buttonRunEditorNGWord.TextBox = this.TextBoxNGWords;
+            this.buttonRunEditorNGWord.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
+            // 
+            // buttonRunEditorPronounciation
+            // 
+            this.buttonRunEditorPronounciation.AutoSize = true;
+            this.buttonRunEditorPronounciation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonRunEditorPronounciation.EditorErrorMessage = "エディターが見つかりません。\\nその他タブで設定してください。";
+            this.buttonRunEditorPronounciation.Location = new System.Drawing.Point(369, 46);
+            this.buttonRunEditorPronounciation.Name = "buttonRunEditorPronounciation";
+            this.buttonRunEditorPronounciation.Size = new System.Drawing.Size(53, 30);
+            this.buttonRunEditorPronounciation.TabIndex = 4;
+            this.buttonRunEditorPronounciation.TextBox = this.TextBoxPronounciations;
+            this.buttonRunEditorPronounciation.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
             // 
             // FormSettings
             // 
@@ -1319,6 +1354,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDefaultCaptinoDispInvervalMillsec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownTurboSpeakingInvervalMillsec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTurboThreshold)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TrackBarTurboSpeakingRate)).EndInit();
@@ -1349,7 +1385,7 @@
             this.panelPlaySound.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDefaultCaptinoDispInvervalMillsec)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarAutoScrollSpeed)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1454,5 +1490,8 @@
         private System.Windows.Forms.Label label25;
         public System.Windows.Forms.NumericUpDown numericUpDownDefaultCaptinoDispInvervalMillsec;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label labelAutoScrollSpeed;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TrackBar trackBarAutoScrollSpeed;
     }
 }
