@@ -2136,7 +2136,7 @@ namespace SpeechCast
                 formViewResource = new FormViewResource(UserConfig.FormViewToRect);
                 formViewResource.Show();
             }
-            formViewResource.addTabYoutube(id);
+            formViewResource.addTabYoutube(id,UserConfig.ViewerYoutubePlayerWidth,UserConfig.ViewerYoutubePlayerHeight);
             formViewResource.Activate();
         }
         // ビューア位置の保存

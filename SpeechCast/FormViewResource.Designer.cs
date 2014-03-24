@@ -39,6 +39,7 @@
             this.tabControlContainer.SelectedIndex = 0;
             this.tabControlContainer.Size = new System.Drawing.Size(284, 262);
             this.tabControlContainer.TabIndex = 0;
+            this.tabControlContainer.DoubleClick += new System.EventHandler(this.tabControlContainer_DoubleClick);
             this.tabControlContainer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabControlContainer_MouseDown);
             // 
             // FormViewResource

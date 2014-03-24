@@ -121,6 +121,8 @@ namespace SpeechCast
             this.checkBoxHideCaptionTitle.Checked = userConfig.HideCaptionTitle;
             this.VoiceVolme = userConfig.SpeakingVolume;
             this.checkBoxDebug.Checked = userConfig.OutputDebugLog;
+            numericUpDownViewerYoutubePlayerHeight.Value = userConfig.ViewerYoutubePlayerHeight;
+            numericUpDownViewerYoutubePlayerWidth.Value = userConfig.ViewerYoutubePlayerWidth;
             UpdateUI();
         }
 
@@ -196,6 +198,8 @@ namespace SpeechCast
             userConfig.AACaptionFont.Colors = this.aAFontColors;
             userConfig.HideCaptionTitle = this.checkBoxHideCaptionTitle.Checked;
             userConfig.OutputDebugLog = this.checkBoxDebug.Checked;
+            userConfig.ViewerYoutubePlayerHeight = (int)numericUpDownViewerYoutubePlayerHeight.Value;
+            userConfig.ViewerYoutubePlayerWidth = (int)numericUpDownViewerYoutubePlayerWidth.Value;
         }
         
 

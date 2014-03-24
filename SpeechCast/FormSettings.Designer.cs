@@ -123,9 +123,15 @@
             this.buttonRefernceEditor = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxEditorFilePath = new System.Windows.Forms.TextBox();
-            this.trackBarAutoScrollSpeed = new System.Windows.Forms.TrackBar();
+            this.tabPageBrowser = new System.Windows.Forms.TabPage();
             this.labelAutoScrollSpeed = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.trackBarAutoScrollSpeed = new System.Windows.Forms.TrackBar();
+            this.label27 = new System.Windows.Forms.Label();
+            this.numericUpDownViewerYoutubePlayerHeight = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownViewerYoutubePlayerWidth = new System.Windows.Forms.NumericUpDown();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.buttonRunEditorAAMode = new SpeechCast.Controls.ButtonRunEditor();
             this.buttonRunEditorNGWord = new SpeechCast.Controls.ButtonRunEditor();
             this.buttonRunEditorPronounciation = new SpeechCast.Controls.ButtonRunEditor();
@@ -154,7 +160,10 @@
             this.tabPage8.SuspendLayout();
             this.panelPlaySound.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPageBrowser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarAutoScrollSpeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownViewerYoutubePlayerHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownViewerYoutubePlayerWidth)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -164,7 +173,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 396);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(433, 40);
+            this.panel1.Size = new System.Drawing.Size(446, 40);
             this.panel1.TabIndex = 0;
             // 
             // buttonCancel
@@ -196,12 +205,13 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage8);
+            this.tabControl1.Controls.Add(this.tabPageBrowser);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(433, 396);
+            this.tabControl1.Size = new System.Drawing.Size(446, 396);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -235,7 +245,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(425, 370);
+            this.tabPage1.Size = new System.Drawing.Size(438, 370);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "音声";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -551,7 +561,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(425, 370);
+            this.tabPage2.Size = new System.Drawing.Size(438, 370);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "字幕";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -782,7 +792,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(425, 370);
+            this.tabPage7.Size = new System.Drawing.Size(438, 370);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "AAモード";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -988,7 +998,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(425, 370);
+            this.tabPage3.Size = new System.Drawing.Size(438, 370);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "通信";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1065,7 +1075,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(425, 370);
+            this.tabPage5.Size = new System.Drawing.Size(438, 370);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "NGWord";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1089,7 +1099,7 @@
             this.tabPage6.Controls.Add(this.TextBoxPronounciations);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(425, 370);
+            this.tabPage6.Size = new System.Drawing.Size(438, 370);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "読み方";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1130,7 +1140,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(425, 370);
+            this.tabPage8.Size = new System.Drawing.Size(438, 370);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "サウンド";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -1218,9 +1228,6 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.labelAutoScrollSpeed);
-            this.tabPage4.Controls.Add(this.label28);
-            this.tabPage4.Controls.Add(this.trackBarAutoScrollSpeed);
             this.tabPage4.Controls.Add(this.checkBoxDebug);
             this.tabPage4.Controls.Add(this.buttonRefernceEditor);
             this.tabPage4.Controls.Add(this.label8);
@@ -1228,7 +1235,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(425, 370);
+            this.tabPage4.Size = new System.Drawing.Size(438, 370);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "その他";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1236,7 +1243,7 @@
             // checkBoxDebug
             // 
             this.checkBoxDebug.AutoSize = true;
-            this.checkBoxDebug.Location = new System.Drawing.Point(9, 115);
+            this.checkBoxDebug.Location = new System.Drawing.Point(10, 54);
             this.checkBoxDebug.Name = "checkBoxDebug";
             this.checkBoxDebug.Size = new System.Drawing.Size(130, 16);
             this.checkBoxDebug.TabIndex = 6;
@@ -1269,33 +1276,101 @@
             this.textBoxEditorFilePath.Size = new System.Drawing.Size(272, 19);
             this.textBoxEditorFilePath.TabIndex = 3;
             // 
-            // trackBarAutoScrollSpeed
+            // tabPageBrowser
             // 
-            this.trackBarAutoScrollSpeed.Location = new System.Drawing.Point(145, 57);
-            this.trackBarAutoScrollSpeed.Minimum = 1;
-            this.trackBarAutoScrollSpeed.Name = "trackBarAutoScrollSpeed";
-            this.trackBarAutoScrollSpeed.Size = new System.Drawing.Size(272, 45);
-            this.trackBarAutoScrollSpeed.TabIndex = 7;
-            this.trackBarAutoScrollSpeed.Value = 1;
-            this.trackBarAutoScrollSpeed.ValueChanged += new System.EventHandler(this.trackBarAutoScrollSpeed_ValueChanged);
+            this.tabPageBrowser.Controls.Add(this.label30);
+            this.tabPageBrowser.Controls.Add(this.label29);
+            this.tabPageBrowser.Controls.Add(this.numericUpDownViewerYoutubePlayerWidth);
+            this.tabPageBrowser.Controls.Add(this.numericUpDownViewerYoutubePlayerHeight);
+            this.tabPageBrowser.Controls.Add(this.label27);
+            this.tabPageBrowser.Controls.Add(this.labelAutoScrollSpeed);
+            this.tabPageBrowser.Controls.Add(this.label28);
+            this.tabPageBrowser.Controls.Add(this.trackBarAutoScrollSpeed);
+            this.tabPageBrowser.Location = new System.Drawing.Point(4, 22);
+            this.tabPageBrowser.Name = "tabPageBrowser";
+            this.tabPageBrowser.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageBrowser.Size = new System.Drawing.Size(438, 370);
+            this.tabPageBrowser.TabIndex = 8;
+            this.tabPageBrowser.Text = "ブラウザ";
+            this.tabPageBrowser.UseVisualStyleBackColor = true;
             // 
             // labelAutoScrollSpeed
             // 
             this.labelAutoScrollSpeed.AutoSize = true;
-            this.labelAutoScrollSpeed.Location = new System.Drawing.Point(118, 70);
+            this.labelAutoScrollSpeed.Location = new System.Drawing.Point(116, 22);
             this.labelAutoScrollSpeed.Name = "labelAutoScrollSpeed";
             this.labelAutoScrollSpeed.Size = new System.Drawing.Size(11, 12);
-            this.labelAutoScrollSpeed.TabIndex = 9;
+            this.labelAutoScrollSpeed.TabIndex = 12;
             this.labelAutoScrollSpeed.Text = "0";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(11, 70);
+            this.label28.Location = new System.Drawing.Point(9, 22);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(99, 12);
-            this.label28.TabIndex = 8;
+            this.label28.TabIndex = 11;
             this.label28.Text = "自動スクロール速度";
+            // 
+            // trackBarAutoScrollSpeed
+            // 
+            this.trackBarAutoScrollSpeed.Location = new System.Drawing.Point(143, 9);
+            this.trackBarAutoScrollSpeed.Minimum = 1;
+            this.trackBarAutoScrollSpeed.Name = "trackBarAutoScrollSpeed";
+            this.trackBarAutoScrollSpeed.Size = new System.Drawing.Size(272, 45);
+            this.trackBarAutoScrollSpeed.TabIndex = 10;
+            this.trackBarAutoScrollSpeed.Value = 1;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(9, 80);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(122, 12);
+            this.label27.TabIndex = 13;
+            this.label27.Text = "Youtubeプレイヤーサイズ";
+            // 
+            // numericUpDownViewerYoutubePlayerHeight
+            // 
+            this.numericUpDownViewerYoutubePlayerHeight.Location = new System.Drawing.Point(292, 78);
+            this.numericUpDownViewerYoutubePlayerHeight.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.numericUpDownViewerYoutubePlayerHeight.Name = "numericUpDownViewerYoutubePlayerHeight";
+            this.numericUpDownViewerYoutubePlayerHeight.Size = new System.Drawing.Size(75, 19);
+            this.numericUpDownViewerYoutubePlayerHeight.TabIndex = 14;
+            // 
+            // numericUpDownViewerYoutubePlayerWidth
+            // 
+            this.numericUpDownViewerYoutubePlayerWidth.Location = new System.Drawing.Point(164, 78);
+            this.numericUpDownViewerYoutubePlayerWidth.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.numericUpDownViewerYoutubePlayerWidth.Name = "numericUpDownViewerYoutubePlayerWidth";
+            this.numericUpDownViewerYoutubePlayerWidth.Size = new System.Drawing.Size(75, 19);
+            this.numericUpDownViewerYoutubePlayerWidth.TabIndex = 15;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(261, 80);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(25, 12);
+            this.label29.TabIndex = 16;
+            this.label29.Text = "高さ";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(141, 80);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(17, 12);
+            this.label30.TabIndex = 17;
+            this.label30.Text = "幅";
             // 
             // buttonRunEditorAAMode
             // 
@@ -1339,7 +1414,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(433, 436);
+            this.ClientSize = new System.Drawing.Size(446, 436);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -1385,7 +1460,11 @@
             this.panelPlaySound.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.tabPageBrowser.ResumeLayout(false);
+            this.tabPageBrowser.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarAutoScrollSpeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownViewerYoutubePlayerHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownViewerYoutubePlayerWidth)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1490,6 +1569,12 @@
         private System.Windows.Forms.Label label25;
         public System.Windows.Forms.NumericUpDown numericUpDownDefaultCaptinoDispInvervalMillsec;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TabPage tabPageBrowser;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.NumericUpDown numericUpDownViewerYoutubePlayerWidth;
+        private System.Windows.Forms.NumericUpDown numericUpDownViewerYoutubePlayerHeight;
+        private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label labelAutoScrollSpeed;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TrackBar trackBarAutoScrollSpeed;

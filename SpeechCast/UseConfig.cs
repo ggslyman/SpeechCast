@@ -122,7 +122,14 @@ namespace SpeechCast
         /// イメージビューアのウィンドウ位置
         /// </summary>
         public Rectangle FormViewToRect;
-        
+
+        /// <summary>
+        /// イメージビューアのyoutubeガジェットの表示サイズ
+        /// </summary>
+        public int ViewerYoutubePlayerHeight = 360;
+        public int ViewerYoutubePlayerWidth = 480;
+
+
         /// <summary>
         /// 自動スクロールONOFF
         /// </summary>
