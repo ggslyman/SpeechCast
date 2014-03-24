@@ -152,8 +152,9 @@ window.onresize = ImageChange;
 
         private void tabControlContainer_DoubleClick(object sender, EventArgs e)
         {
-            TabPage rmPage = this.tabControlContainer.TabPages[tabControlContainer.TabIndex];
-            this.tabControlContainer.TabPages.Remove(this.tabControlContainer.TabPages[tabControlContainer.TabIndex]);
+
+            TabPage rmPage = this.tabControlContainer.TabPages[tabControlContainer.SelectedIndex];
+            this.tabControlContainer.TabPages.Remove(this.tabControlContainer.TabPages[tabControlContainer.SelectedIndex]);
             // タブを消しただけだとページがメモリ上に残るのでdisposeする
             rmPage.Dispose();
             // タブが無くなったらフォーム自体を閉じる
