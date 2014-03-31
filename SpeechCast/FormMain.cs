@@ -70,6 +70,7 @@ namespace SpeechCast
             webBrowser.DocumentText = html;
         }
 
+        static Regex youtubeId = new Regex(@"http[s]?://www.youtube.com/watch\?v=([a-zA-Z0-9]*)", RegexOptions.IgnoreCase);
         // ブラウザ内リンクのイベント追加
         void webBrowser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
@@ -93,8 +94,11 @@ namespace SpeechCast
             else if (url.IndexOf("youtube.com/watch?v=")>0)
             {
                 e.Cancel = true;
-                var id = url.Split('=');
-                oepnFormViewNewtabYoutube(id[1]);
+                Match m = youtubeId.Match(url);
+                if(m.Success){
+                    var id = m.Groups[1].Value;
+                    oepnFormViewNewtabYoutube(id);
+                }
             }
             else if (url.StartsWith("http:"))
             {
