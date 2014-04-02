@@ -1368,6 +1368,7 @@ namespace SpeechCast
                     checkBoxShowSecond.Checked = UserConfig.MilitaryTime;
                     toolStripButtonPlaySoundNewResponse.Checked = UserConfig.PlaySoundNewResponse;
                     this.splitContainerResCaption.SplitterDistance = 2000;
+                    this.splitContainerResCaption.IsSplitterFixed = true;
                     toolStripButtonAutoScroll.Checked = UserConfig.EnableAutoScroll;
                     toolStripButtonListToggle.Checked = !UserConfig.ViewResList;
                     toolStripTextBoxThreadKeyword.Text = UserConfig.ThreadKeyword;
@@ -1866,11 +1867,13 @@ namespace SpeechCast
             if (this.splitContainerResCaption.Panel2.Height > 0)
             {
                 this.splitContainerResCaption.SplitterDistance = 2000;
+                this.splitContainerResCaption.IsSplitterFixed = true;
                 this.webBrowser.Focus();
             }
             else
             {
                 this.splitContainerResCaption.SplitterDistance = this.splitContainerResCaption.Height - 130;
+                this.splitContainerResCaption.IsSplitterFixed = false;
             }
         }
 

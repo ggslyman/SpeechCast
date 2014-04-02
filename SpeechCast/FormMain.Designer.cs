@@ -206,9 +206,9 @@
             // 
             this.panel1.Controls.Add(this.splitContainer1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 102);
+            this.panel1.Location = new System.Drawing.Point(0, 127);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(949, 579);
+            this.panel1.Size = new System.Drawing.Size(949, 554);
             this.panel1.TabIndex = 5;
             // 
             // splitContainer1
@@ -225,7 +225,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainerResCaption);
-            this.splitContainer1.Size = new System.Drawing.Size(949, 579);
+            this.splitContainer1.Size = new System.Drawing.Size(949, 554);
             this.splitContainer1.SplitterDistance = 300;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -244,8 +244,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.textBoxLog);
-            this.splitContainer2.Size = new System.Drawing.Size(300, 579);
-            this.splitContainer2.SplitterDistance = 322;
+            this.splitContainer2.Size = new System.Drawing.Size(300, 554);
+            this.splitContainer2.SplitterDistance = 308;
             this.splitContainer2.TabIndex = 0;
             // 
             // listViewResponses
@@ -261,7 +261,7 @@
             this.listViewResponses.Location = new System.Drawing.Point(0, 0);
             this.listViewResponses.MultiSelect = false;
             this.listViewResponses.Name = "listViewResponses";
-            this.listViewResponses.Size = new System.Drawing.Size(300, 322);
+            this.listViewResponses.Size = new System.Drawing.Size(300, 308);
             this.listViewResponses.TabIndex = 0;
             this.listViewResponses.UseCompatibleStateImageBehavior = false;
             this.listViewResponses.View = System.Windows.Forms.View.Details;
@@ -291,7 +291,7 @@
             this.textBoxLog.Name = "textBoxLog";
             this.textBoxLog.ReadOnly = true;
             this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxLog.Size = new System.Drawing.Size(300, 253);
+            this.textBoxLog.Size = new System.Drawing.Size(300, 242);
             this.textBoxLog.TabIndex = 0;
             // 
             // splitContainerResCaption
@@ -312,8 +312,8 @@
             // 
             this.splitContainerResCaption.Panel2.Controls.Add(this.splitContainerpkCaption);
             this.splitContainerResCaption.Panel2MinSize = 0;
-            this.splitContainerResCaption.Size = new System.Drawing.Size(645, 579);
-            this.splitContainerResCaption.SplitterDistance = 432;
+            this.splitContainerResCaption.Size = new System.Drawing.Size(645, 554);
+            this.splitContainerResCaption.SplitterDistance = 407;
             this.splitContainerResCaption.TabIndex = 3;
             // 
             // webBrowser
@@ -322,7 +322,7 @@
             this.webBrowser.Location = new System.Drawing.Point(0, 0);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(643, 430);
+            this.webBrowser.Size = new System.Drawing.Size(643, 405);
             this.webBrowser.TabIndex = 5;
             // 
             // splitContainerpkCaption
@@ -965,7 +965,7 @@
             this.toolStripButtonEnter,
             this.toolStripButtonOpenAsBrowser,
             this.toolStripButtonOpenURLFromClipboard});
-            this.myToolStripUrl.Location = new System.Drawing.Point(0, 77);
+            this.myToolStripUrl.Location = new System.Drawing.Point(0, 102);
             this.myToolStripUrl.Name = "myToolStripUrl";
             this.myToolStripUrl.Size = new System.Drawing.Size(949, 25);
             this.myToolStripUrl.TabIndex = 3;
@@ -1219,7 +1219,7 @@
             this.toolStripButtonAutoNextThread,
             this.toolStripLabel7,
             this.toolStripTextBoxThreadKeyword});
-            this.myToolStripBrowser.Location = new System.Drawing.Point(0, 102);
+            this.myToolStripBrowser.Location = new System.Drawing.Point(0, 77);
             this.myToolStripBrowser.Name = "myToolStripBrowser";
             this.myToolStripBrowser.Size = new System.Drawing.Size(949, 25);
             this.myToolStripBrowser.TabIndex = 8;
@@ -1258,10 +1258,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(949, 703);
-            this.Controls.Add(this.myToolStripBrowser);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.myToolStripUrl);
+            this.Controls.Add(this.myToolStripBrowser);
             this.Controls.Add(this.myToolStripPlay);
             this.Controls.Add(this.myToolStripVoice);
             this.Controls.Add(this.menuStrip1);
