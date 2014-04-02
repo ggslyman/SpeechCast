@@ -75,6 +75,7 @@ namespace SpeechCast
         void webBrowser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
             string url = e.Url.AbsoluteUri;
+            string diffurl = url.ToLower();
             if (url.StartsWith(Response.AnchorUrl))
             {
                 e.Cancel = true;
@@ -86,7 +87,7 @@ namespace SpeechCast
                     webBrowser.Document.Window.ScrollTo(0, GetResponsesScrollY(resNo));
                 }
             }
-            else if (url.EndsWith("jpg") || url.EndsWith("png") || url.EndsWith("gif"))
+            else if (diffurl.EndsWith("jpg") || diffurl.EndsWith("png") || diffurl.EndsWith("gif") || diffurl.EndsWith("jpeg") || diffurl.EndsWith("bmp"))
             {
                 e.Cancel = true;
                 oepnFormViewNewtabImg(url);
@@ -100,7 +101,7 @@ namespace SpeechCast
                     oepnFormViewNewtabYoutube(id);
                 }
             }
-            else if (url.StartsWith("http:"))
+            else if (diffurl.StartsWith("http:"))
             {
                 System.Diagnostics.Process.Start(url);
                 e.Cancel = true;
@@ -1366,6 +1367,8 @@ namespace SpeechCast
                     toolStripButtonPlaySoundNewResponse.Checked = UserConfig.PlaySoundNewResponse;
                     this.splitContainerResCaption.SplitterDistance = 2000;
                     toolStripButtonAutoScroll.Checked = UserConfig.EnableAutoScroll;
+                    toolStripButtonListToggle.Checked = !UserConfig.ViewResList;
+                    this.viewResList(UserConfig.ViewResList);
                 }
                 catch (Exception ex)
                 {
@@ -1417,6 +1420,7 @@ namespace SpeechCast
             myToolStripPlay.GripStyle = ToolStripGripStyle.Hidden;
             myToolStripUrl.GripStyle = ToolStripGripStyle.Hidden;
             myToolStripVoice.GripStyle = ToolStripGripStyle.Hidden;
+            myToolStripBrowser.GripStyle = ToolStripGripStyle.Hidden;
             //idx = toolStripComboBoxVolume.Items.IndexOf(UserConfig.SpeakingVolume);
             //if (idx >= 0)
             //{
@@ -2154,6 +2158,34 @@ namespace SpeechCast
         {
             UserConfig.EnableAutoScroll = !UserConfig.EnableAutoScroll;
             toolStripButtonAutoScroll.Checked = UserConfig.EnableAutoScroll;
+        }
+
+        private void toolStripButton19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButtonListToggle_Click(object sender, EventArgs e)
+        {
+            UserConfig.ViewResList = !toolStripButtonListToggle.Checked;
+            this.viewResList(UserConfig.ViewResList);
+        }
+
+        private void viewResList(bool visibleFlag)
+        {
+            if (visibleFlag)
+            {
+                splitContainer1.Panel1MinSize = 25;
+                splitContainer1.SplitterDistance = 300;
+                splitContainer1.IsSplitterFixed = false;
+            }
+            else
+            {
+                splitContainer1.Panel1MinSize = 0;
+                splitContainer1.SplitterDistance = 0;
+                splitContainer1.IsSplitterFixed = true;
+            }
+
         }
 
     }

@@ -137,6 +137,9 @@
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton17 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton18 = new System.Windows.Forms.ToolStripButton();
+            this.myToolStripBrowser = new SpeechCast.Controls.MyToolStrip();
+            this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButtonListToggle = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -159,6 +162,7 @@
             this.menuStrip1.SuspendLayout();
             this.myToolStripUrl.SuspendLayout();
             this.myToolStripPlay.SuspendLayout();
+            this.myToolStripBrowser.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -208,6 +212,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -219,12 +224,13 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainerResCaption);
             this.splitContainer1.Size = new System.Drawing.Size(949, 579);
-            this.splitContainer1.SplitterDistance = 315;
+            this.splitContainer1.SplitterDistance = 300;
             this.splitContainer1.TabIndex = 0;
             // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.IsSplitterFixed = true;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -236,7 +242,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.textBoxLog);
-            this.splitContainer2.Size = new System.Drawing.Size(315, 579);
+            this.splitContainer2.Size = new System.Drawing.Size(300, 579);
             this.splitContainer2.SplitterDistance = 322;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -253,7 +259,7 @@
             this.listViewResponses.Location = new System.Drawing.Point(0, 0);
             this.listViewResponses.MultiSelect = false;
             this.listViewResponses.Name = "listViewResponses";
-            this.listViewResponses.Size = new System.Drawing.Size(315, 322);
+            this.listViewResponses.Size = new System.Drawing.Size(300, 322);
             this.listViewResponses.TabIndex = 0;
             this.listViewResponses.UseCompatibleStateImageBehavior = false;
             this.listViewResponses.View = System.Windows.Forms.View.Details;
@@ -283,7 +289,7 @@
             this.textBoxLog.Name = "textBoxLog";
             this.textBoxLog.ReadOnly = true;
             this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxLog.Size = new System.Drawing.Size(315, 253);
+            this.textBoxLog.Size = new System.Drawing.Size(300, 253);
             this.textBoxLog.TabIndex = 0;
             // 
             // splitContainerResCaption
@@ -304,7 +310,7 @@
             // 
             this.splitContainerResCaption.Panel2.Controls.Add(this.splitContainerpkCaption);
             this.splitContainerResCaption.Panel2MinSize = 0;
-            this.splitContainerResCaption.Size = new System.Drawing.Size(630, 579);
+            this.splitContainerResCaption.Size = new System.Drawing.Size(645, 579);
             this.splitContainerResCaption.SplitterDistance = 432;
             this.splitContainerResCaption.TabIndex = 3;
             // 
@@ -314,7 +320,7 @@
             this.webBrowser.Location = new System.Drawing.Point(0, 0);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(628, 430);
+            this.webBrowser.Size = new System.Drawing.Size(643, 430);
             this.webBrowser.TabIndex = 5;
             // 
             // splitContainerpkCaption
@@ -344,7 +350,7 @@
             this.splitContainerpkCaption.Panel2.Controls.Add(this.buttonCaptionNum1);
             this.splitContainerpkCaption.Panel2.Controls.Add(this.comboBoxCaptionNum2);
             this.splitContainerpkCaption.Panel2.Controls.Add(this.comboBoxCaptionNum1);
-            this.splitContainerpkCaption.Size = new System.Drawing.Size(628, 141);
+            this.splitContainerpkCaption.Size = new System.Drawing.Size(643, 141);
             this.splitContainerpkCaption.SplitterDistance = 110;
             this.splitContainerpkCaption.TabIndex = 1;
             // 
@@ -355,7 +361,7 @@
             this.textBoxDefaultCaption.Multiline = true;
             this.textBoxDefaultCaption.Name = "textBoxDefaultCaption";
             this.textBoxDefaultCaption.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxDefaultCaption.Size = new System.Drawing.Size(628, 110);
+            this.textBoxDefaultCaption.Size = new System.Drawing.Size(643, 110);
             this.textBoxDefaultCaption.TabIndex = 2;
             this.textBoxDefaultCaption.TextChanged += new System.EventHandler(this.textBoxDefaultCaption_Changed);
             // 
@@ -498,8 +504,7 @@
             this.toolStripButtonBorder,
             this.toolStripButtonSettings,
             this.toolStripButtonCaptionAutoSmall,
-            this.toolStripSeparator4,
-            this.toolStripButtonAutoScroll});
+            this.toolStripSeparator4});
             this.myToolStripVoice.Location = new System.Drawing.Point(0, 26);
             this.myToolStripVoice.Name = "myToolStripVoice";
             this.myToolStripVoice.Size = new System.Drawing.Size(949, 26);
@@ -643,7 +648,7 @@
             this.toolStripButtonAutoScroll.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonAutoScroll.Image")));
             this.toolStripButtonAutoScroll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAutoScroll.Name = "toolStripButtonAutoScroll";
-            this.toolStripButtonAutoScroll.Size = new System.Drawing.Size(23, 23);
+            this.toolStripButtonAutoScroll.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonAutoScroll.Text = "自動スクロール";
             this.toolStripButtonAutoScroll.Click += new System.EventHandler(this.toolStripButtonAutoScroll_Click);
             // 
@@ -1204,11 +1209,41 @@
             this.toolStripButton18.Size = new System.Drawing.Size(23, 23);
             this.toolStripButton18.Text = "toolStripButtonAutoNextThread";
             // 
+            // myToolStripBrowser
+            // 
+            this.myToolStripBrowser.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel6,
+            this.toolStripButtonAutoScroll,
+            this.toolStripButtonListToggle});
+            this.myToolStripBrowser.Location = new System.Drawing.Point(0, 102);
+            this.myToolStripBrowser.Name = "myToolStripBrowser";
+            this.myToolStripBrowser.Size = new System.Drawing.Size(949, 25);
+            this.myToolStripBrowser.TabIndex = 8;
+            this.myToolStripBrowser.Text = "myToolStrip1";
+            // 
+            // toolStripLabel6
+            // 
+            this.toolStripLabel6.Name = "toolStripLabel6";
+            this.toolStripLabel6.Size = new System.Drawing.Size(56, 22);
+            this.toolStripLabel6.Text = "Browser";
+            // 
+            // toolStripButtonListToggle
+            // 
+            this.toolStripButtonListToggle.CheckOnClick = true;
+            this.toolStripButtonListToggle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonListToggle.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonListToggle.Image")));
+            this.toolStripButtonListToggle.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonListToggle.Name = "toolStripButtonListToggle";
+            this.toolStripButtonListToggle.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonListToggle.Text = "レス一覧を非表示";
+            this.toolStripButtonListToggle.Click += new System.EventHandler(this.toolStripButtonListToggle_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(949, 703);
+            this.Controls.Add(this.myToolStripBrowser);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.myToolStripUrl);
@@ -1251,6 +1286,8 @@
             this.myToolStripUrl.PerformLayout();
             this.myToolStripPlay.ResumeLayout(false);
             this.myToolStripPlay.PerformLayout();
+            this.myToolStripBrowser.ResumeLayout(false);
+            this.myToolStripBrowser.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1365,6 +1402,9 @@
         public System.Windows.Forms.ToolStripButton toolStripButtonShowCaptionImmediately;
         public System.Windows.Forms.ToolStripButton toolStripButtonPlaySoundNewResponse;
         private System.Windows.Forms.ToolStripButton toolStripButtonAutoScroll;
+        private Controls.MyToolStrip myToolStripBrowser;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel6;
+        private System.Windows.Forms.ToolStripButton toolStripButtonListToggle;
     }
 }
 

@@ -140,6 +140,8 @@ namespace SpeechCast
         /// </summary>
         public int AutoScrollSpeed = 1;
 
+        public bool ViewResList = true;
+
         /// <summary>
         /// 読み上げONOFF
         /// </summary>
