@@ -371,7 +371,8 @@ namespace SpeechCast
                 if (m.Success)
                 {
                     rawURL = m.Groups[1].Value + "/bbs/rawmode.cgi" + m.Groups[2];
-                    AddLog("jbbs rawmode: {0}", rawURL);
+                    threadId = m.Groups[5].Value;
+                    AddLog("jbbs rawmode: {0} {1}", rawURL, threadId);
                     Response.Style = Response.BBSStyle.jbbs;
                     encodingName = "EUC-JP";
 
@@ -383,9 +384,10 @@ namespace SpeechCast
                     if (m.Success)
                     {
                         rawURL = m.Groups[1].Value + "/" + m.Groups[2].Value + "/dat/" + m.Groups[3].Value + ".dat";
+                        threadId = m.Groups[3].Value;
                         Response.Style = Response.BBSStyle.yykakiko;
 
-                        AddLog("yykakiko dat mode: {0}", rawURL);
+                        AddLog("yykakiko dat mode: {0} {1}", rawURL , threadId);
 
                         encodingName = "Shift_JIS";
                         baseURL = string.Format("{0}/{1}/", m.Groups[1], m.Groups[2]);
@@ -396,9 +398,10 @@ namespace SpeechCast
                         if (m.Success)
                         {
                             rawURL = m.Groups[1].Value + "/" + m.Groups[2].Value + "/dat/" + m.Groups[3].Value + ".dat";
+                            threadId = m.Groups[3].Value;
                             Response.Style = Response.BBSStyle.nichan;
 
-                            AddLog("2ch dat mode: {0}", rawURL);
+                            AddLog("2ch dat mode: {0} {1}", rawURL , threadId);
 
                             encodingName = "Shift_JIS";
                             baseURL = string.Format("{0}/{1}/", m.Groups[1], m.Groups[2]);
@@ -443,38 +446,37 @@ namespace SpeechCast
                 // Webアクセス部分を非同期化するためTask.Runで囲む
                 await Task.Run(() =>
                 {
-                    System.Net.HttpWebRequest webReq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
-                    webReq.KeepAlive = false;
-                    FormMain.UserConfig.SetProxy(webReq);
-
-                    if (UserConfig.GZipCompressionEnabled && useRangeHeader == false)
+                    try
                     {
-                        webReq.AutomaticDecompression = System.Net.DecompressionMethods.GZip;
+                        System.Net.HttpWebRequest webReq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
+                        webReq.KeepAlive = false;
+                        FormMain.UserConfig.SetProxy(webReq);
+
+                        if (UserConfig.GZipCompressionEnabled && useRangeHeader == false)
+                        {
+                            webReq.AutomaticDecompression = System.Net.DecompressionMethods.GZip;
+                        }
+                        if (useRangeHeader)
+                        {
+                            webReq.AddRange(datSize - 1);
+                            webReq.IfModifiedSince = lastModifiedDateTime;
+                        }
+
+
+                        gettingWebTime = System.DateTime.Now; //例外が発生した場合、連続してwebアクセスが起こるのを防ぐ
+
+                        stopWatch.Start();
+                        //サーバーからの応答を受信するためのWebResponseを取得
+                        webReq.Timeout = 10000;
+                        webRes = (System.Net.HttpWebResponse)webReq.GetResponse();
+
+                        lastModifiedDateTime = webRes.LastModified;
+                        responseTime = stopWatch.ElapsedMilliseconds;
                     }
-#if DEBUG
-                    //AddLog("datSize={0} lastModifiedTime={1} useRangeHeader={2}",
-                    //    datSize, lastModifiedDateTime.ToLongTimeString(), useRangeHeader);
-#endif
-                    if (useRangeHeader)
+                    catch (System.Net.WebException e)
                     {
-                        webReq.AddRange(datSize - 1);
-                        webReq.IfModifiedSince = lastModifiedDateTime;
+                        webReqResult = false;
                     }
-
-
-                    gettingWebTime = System.DateTime.Now; //例外が発生した場合、連続してwebアクセスが起こるのを防ぐ
-
-                    stopWatch.Start();
-                    //サーバーからの応答を受信するためのWebResponseを取得
-                    webReq.Timeout = 10000;
-                    webRes = (System.Net.HttpWebResponse)webReq.GetResponse();
-
-                    lastModifiedDateTime = webRes.LastModified;
-                    responseTime = stopWatch.ElapsedMilliseconds;
-                    //if (useRangeHeader)
-                    //{
-                    //    throw (new Exception(" 416 "));
-                    //}
                 });// 非同期処理終了
             }
             catch (System.Net.WebException e)
@@ -1295,7 +1297,7 @@ namespace SpeechCast
 
                 // レス取得の条件判定
                 if (
-                        responses.Count <= Response.MaxResponseCount
+                        responses.Count < Response.MaxResponseCount
                         && this.endWebRequest
                     )
                 {
@@ -1368,6 +1370,8 @@ namespace SpeechCast
                     this.splitContainerResCaption.SplitterDistance = 2000;
                     toolStripButtonAutoScroll.Checked = UserConfig.EnableAutoScroll;
                     toolStripButtonListToggle.Checked = !UserConfig.ViewResList;
+                    toolStripTextBoxThreadKeyword.Text = UserConfig.ThreadKeyword;
+
                     this.viewResList(UserConfig.ViewResList);
                 }
                 catch (Exception ex)
@@ -1439,6 +1443,7 @@ namespace SpeechCast
             UserConfig.SetFormToRect(ref UserConfig.FormMainRect, this);
             UserConfig.SetFormToRect(ref UserConfig.FormCaptionRect, FormCaption.Instance);
             UserConfig.URL = toolStripTextBoxURL.Text;
+            UserConfig.ThreadKeyword = toolStripTextBoxThreadKeyword.Text;
             UserConfig.Serialize();
             Bookmarks.Serialize();
         }
@@ -1887,6 +1892,7 @@ namespace SpeechCast
         // 「現在の条件＋現在のスレより後に立てられたスレに絞り込む」
         // 「現在のスレより後に立てられたスレが1件のみであれば数字の一致を確認しない」
         // 等を想定。そういえばゴミスレはどうすりゃいいんだ・・・
+        private string threadId = null;
         private int openNextThreadUrl(){
             // 最初の数字検索用の正規表現オブジェクト
             System.Text.RegularExpressions.Regex r =
@@ -1896,7 +1902,7 @@ namespace SpeechCast
             // スレタイのレス数の削除用正規表現オブジェクト
             System.Text.RegularExpressions.Regex rTitle =
                 new System.Text.RegularExpressions.Regex(
-                    @"(?<title>\\d+?)\([0-9]+\)",
+                    @"(?<title>\\d+?)\\([0-9]+\\)",
                     System.Text.RegularExpressions.RegexOptions.IgnoreCase);
             string nextUrl = null;
             try
@@ -1908,7 +1914,7 @@ namespace SpeechCast
                     // 現在のスレタイから連番と思われる部分を抽出
                     System.Text.RegularExpressions.Match m = r.Match(searchTitle);
                     string nextNumber = null;
-                    AddLog(searchTitle);
+                    // AddLog(searchTitle);
                     if (m.Success)
                     {
                         // 取得した数字をインクリメントして文字列として格納
@@ -1953,14 +1959,29 @@ namespace SpeechCast
                                 // スレタイを取得
                                 parseSubject = s.Replace("<>", ",").Split(',');
                                 string searchSubject = zen2han(parseSubject[1]);
+                                string searchThreadid = parseSubject[0].Split('.')[0];
                                 // スレタイの連番部分を取得
                                 System.Text.RegularExpressions.Match m2 = r.Match(searchSubject);
-                                if(m2.Success)
+                                if (
+                                    // 指定キーワードを含む、今スレより当たらしいスレが見つかれば
+                                        toolStripTextBoxThreadKeyword.Text.Trim().Length > 0
+                                    &&  searchSubject.IndexOf(toolStripTextBoxThreadKeyword.Text) >= 0
+                                    &&  Int32.Parse(threadId) < Int32.Parse(searchThreadid)
+                                    )
+                                {
+                                    // 一致データをメンバ変数に入れてループを抜ける
+                                    threadId = null;
+                                    nextUrl = parseSubject[0];
+                                    threadTitle = parseSubject[1];
+                                    break;
+                                }
+                                if (m2.Success)
                                 {
                                     // 連番部分が次スレ連番候補と一致したら
                                     if (m2.Value == nextNumber)
                                     {
                                         // 一致データをメンバ変数に入れてループを抜ける
+                                        threadId = null;
                                         nextUrl = parseSubject[0];
                                         threadTitle = parseSubject[1];
                                         break;
@@ -1969,7 +1990,6 @@ namespace SpeechCast
                             }
                         }
                         System.Text.RegularExpressions.Match m3 = r.Match(nextUrl);
-                        string threadId = null;
                         if (m3.Success)
                         {
                             //一致した対象が見つかったときキャプチャした部分文字列を表示
@@ -1984,8 +2004,11 @@ namespace SpeechCast
                             // スレタイを更新して、フラグを次スレオープン状態に変更
                             toolStripTextBoxURL.Text = threadUrl;
                             rawURL = null;
-
-                            System.Text.RegularExpressions.Match mtitle = r.Match(parseSubject[1]);
+                            responses.Clear();
+                            oldResCount = 0;
+                            Object[] objArray = new Object[1];
+                            webBrowser.Document.InvokeScript("clearRes", objArray);
+                            System.Text.RegularExpressions.Match mtitle = rTitle.Match(threadTitle);
                             if (mtitle.Success) threadTitle = mtitle.Groups["title"].Value;
                             return OpenNextThread;
                         }

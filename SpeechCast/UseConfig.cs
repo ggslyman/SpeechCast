@@ -140,7 +140,15 @@ namespace SpeechCast
         /// </summary>
         public int AutoScrollSpeed = 1;
 
+        /// <summary>
+        /// レス一覧の表示非表示フラグ
+        /// </summary>
         public bool ViewResList = true;
+
+        /// <summary>
+        /// 自動次スレ検索時のHIT条件キーワード
+        /// </summary>
+        public string ThreadKeyword = "";
 
         /// <summary>
         /// 読み上げONOFF

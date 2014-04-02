@@ -140,6 +140,8 @@
             this.myToolStripBrowser = new SpeechCast.Controls.MyToolStrip();
             this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButtonListToggle = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel7 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBoxThreadKeyword = new System.Windows.Forms.ToolStripTextBox();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -988,8 +990,7 @@
             this.toolStripButtonNext,
             this.toolStripButtonLast,
             this.toolStripSeparator6,
-            this.toolStripButtonTurbo,
-            this.toolStripButtonAutoNextThread});
+            this.toolStripButtonTurbo});
             this.myToolStripPlay.Location = new System.Drawing.Point(0, 52);
             this.myToolStripPlay.Name = "myToolStripPlay";
             this.myToolStripPlay.Size = new System.Drawing.Size(949, 25);
@@ -1213,8 +1214,11 @@
             // 
             this.myToolStripBrowser.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel6,
+            this.toolStripButtonListToggle,
             this.toolStripButtonAutoScroll,
-            this.toolStripButtonListToggle});
+            this.toolStripButtonAutoNextThread,
+            this.toolStripLabel7,
+            this.toolStripTextBoxThreadKeyword});
             this.myToolStripBrowser.Location = new System.Drawing.Point(0, 102);
             this.myToolStripBrowser.Name = "myToolStripBrowser";
             this.myToolStripBrowser.Size = new System.Drawing.Size(949, 25);
@@ -1237,6 +1241,17 @@
             this.toolStripButtonListToggle.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonListToggle.Text = "レス一覧を非表示";
             this.toolStripButtonListToggle.Click += new System.EventHandler(this.toolStripButtonListToggle_Click);
+            // 
+            // toolStripLabel7
+            // 
+            this.toolStripLabel7.Name = "toolStripLabel7";
+            this.toolStripLabel7.Size = new System.Drawing.Size(104, 22);
+            this.toolStripLabel7.Text = "次スレキーワード";
+            // 
+            // toolStripTextBoxThreadKeyword
+            // 
+            this.toolStripTextBoxThreadKeyword.Name = "toolStripTextBoxThreadKeyword";
+            this.toolStripTextBoxThreadKeyword.Size = new System.Drawing.Size(100, 25);
             // 
             // FormMain
             // 
@@ -1405,6 +1420,8 @@
         private Controls.MyToolStrip myToolStripBrowser;
         private System.Windows.Forms.ToolStripLabel toolStripLabel6;
         private System.Windows.Forms.ToolStripButton toolStripButtonListToggle;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel7;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxThreadKeyword;
     }
 }
 
