@@ -774,7 +774,7 @@
             this.toolStripButtonAutoNextThread.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAutoNextThread.Name = "toolStripButtonAutoNextThread";
             this.toolStripButtonAutoNextThread.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonAutoNextThread.Text = "toolStripButtonAutoNextThread";
+            this.toolStripButtonAutoNextThread.Text = "次スレへ自動移動";
             this.toolStripButtonAutoNextThread.Click += new System.EventHandler(this.toolStripButtonAutoNextThread_Click);
             // 
             // menuStrip1

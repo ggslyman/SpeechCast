@@ -70,7 +70,7 @@ namespace SpeechCast
             webBrowser.DocumentText = html;
         }
 
-        static Regex youtubeId = new Regex(@"http[s]?://www.youtube.com/watch\?v=([a-zA-Z0-9]*)", RegexOptions.IgnoreCase);
+        static Regex youtubeId = new Regex(@"http[s]?://www.youtube.com/watch\?v=([\d\w\-_]*)", RegexOptions.IgnoreCase);
         // ブラウザ内リンクのイベント追加
         void webBrowser_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
