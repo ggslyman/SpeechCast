@@ -33,6 +33,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelResNumber = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelCommunication = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelDefaultCaptionButton = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -102,6 +103,7 @@
             this.toolStripMenuItemCopyboard = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemGoSupportBBS = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemGoLatestRelease = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -171,10 +173,11 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelResNumber,
-            this.toolStripStatusLabelCommunication});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 681);
+            this.toolStripStatusLabelCommunication,
+            this.toolStripStatusLabelDefaultCaptionButton});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 680);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(949, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(949, 23);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -187,7 +190,7 @@
             this.toolStripStatusLabelResNumber.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
             this.toolStripStatusLabelResNumber.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripStatusLabelResNumber.Name = "toolStripStatusLabelResNumber";
-            this.toolStripStatusLabelResNumber.Size = new System.Drawing.Size(80, 17);
+            this.toolStripStatusLabelResNumber.Size = new System.Drawing.Size(80, 18);
             // 
             // toolStripStatusLabelCommunication
             // 
@@ -197,10 +200,17 @@
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.toolStripStatusLabelCommunication.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
             this.toolStripStatusLabelCommunication.Name = "toolStripStatusLabelCommunication";
-            this.toolStripStatusLabelCommunication.Size = new System.Drawing.Size(854, 17);
+            this.toolStripStatusLabelCommunication.Size = new System.Drawing.Size(726, 18);
             this.toolStripStatusLabelCommunication.Spring = true;
             this.toolStripStatusLabelCommunication.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolStripStatusLabelCommunication.Click += new System.EventHandler(this.toolStripStatusLabelCommunication_Click);
+            // 
+            // toolStripStatusLabelDefaultCaptionButton
+            // 
+            this.toolStripStatusLabelDefaultCaptionButton.Name = "toolStripStatusLabelDefaultCaptionButton";
+            this.toolStripStatusLabelDefaultCaptionButton.Size = new System.Drawing.Size(128, 18);
+            this.toolStripStatusLabelDefaultCaptionButton.Text = "代替字幕入力欄を表示";
+            this.toolStripStatusLabelDefaultCaptionButton.Click += new System.EventHandler(this.toolStripStatusLabelDefaultCaptionButton_Click);
             // 
             // panel1
             // 
@@ -208,7 +218,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 127);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(949, 554);
+            this.panel1.Size = new System.Drawing.Size(949, 553);
             this.panel1.TabIndex = 5;
             // 
             // splitContainer1
@@ -225,7 +235,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainerResCaption);
-            this.splitContainer1.Size = new System.Drawing.Size(949, 554);
+            this.splitContainer1.Size = new System.Drawing.Size(949, 553);
             this.splitContainer1.SplitterDistance = 300;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -244,8 +254,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.textBoxLog);
-            this.splitContainer2.Size = new System.Drawing.Size(300, 554);
-            this.splitContainer2.SplitterDistance = 308;
+            this.splitContainer2.Size = new System.Drawing.Size(300, 553);
+            this.splitContainer2.SplitterDistance = 307;
             this.splitContainer2.TabIndex = 0;
             // 
             // listViewResponses
@@ -261,7 +271,7 @@
             this.listViewResponses.Location = new System.Drawing.Point(0, 0);
             this.listViewResponses.MultiSelect = false;
             this.listViewResponses.Name = "listViewResponses";
-            this.listViewResponses.Size = new System.Drawing.Size(300, 308);
+            this.listViewResponses.Size = new System.Drawing.Size(300, 307);
             this.listViewResponses.TabIndex = 0;
             this.listViewResponses.UseCompatibleStateImageBehavior = false;
             this.listViewResponses.View = System.Windows.Forms.View.Details;
@@ -312,8 +322,8 @@
             // 
             this.splitContainerResCaption.Panel2.Controls.Add(this.splitContainerpkCaption);
             this.splitContainerResCaption.Panel2MinSize = 0;
-            this.splitContainerResCaption.Size = new System.Drawing.Size(645, 554);
-            this.splitContainerResCaption.SplitterDistance = 407;
+            this.splitContainerResCaption.Size = new System.Drawing.Size(645, 553);
+            this.splitContainerResCaption.SplitterDistance = 406;
             this.splitContainerResCaption.TabIndex = 3;
             // 
             // webBrowser
@@ -322,7 +332,7 @@
             this.webBrowser.Location = new System.Drawing.Point(0, 0);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(643, 405);
+            this.webBrowser.Size = new System.Drawing.Size(643, 404);
             this.webBrowser.TabIndex = 5;
             // 
             // splitContainerpkCaption
@@ -890,6 +900,7 @@
             // 
             this.toolStripMenuItemHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemGoSupportBBS,
+            this.toolStripMenuItemGoLatestRelease,
             this.toolStripSeparator3,
             this.toolStripMenuItemAbout});
             this.toolStripMenuItemHelp.Name = "toolStripMenuItemHelp";
@@ -899,19 +910,26 @@
             // toolStripMenuItemGoSupportBBS
             // 
             this.toolStripMenuItemGoSupportBBS.Name = "toolStripMenuItemGoSupportBBS";
-            this.toolStripMenuItemGoSupportBBS.Size = new System.Drawing.Size(178, 22);
+            this.toolStripMenuItemGoSupportBBS.Size = new System.Drawing.Size(232, 22);
             this.toolStripMenuItemGoSupportBBS.Text = "サポート掲示板";
             this.toolStripMenuItemGoSupportBBS.Click += new System.EventHandler(this.toolStripMenuItemGoSupportBBS_Click);
+            // 
+            // toolStripMenuItemGoLatestRelease
+            // 
+            this.toolStripMenuItemGoLatestRelease.Name = "toolStripMenuItemGoLatestRelease";
+            this.toolStripMenuItemGoLatestRelease.Size = new System.Drawing.Size(232, 22);
+            this.toolStripMenuItemGoLatestRelease.Text = "最新のバージョンを確認する";
+            this.toolStripMenuItemGoLatestRelease.Click += new System.EventHandler(this.toolStripMenuItemGoLatestRelease_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(175, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(229, 6);
             // 
             // toolStripMenuItemAbout
             // 
             this.toolStripMenuItemAbout.Name = "toolStripMenuItemAbout";
-            this.toolStripMenuItemAbout.Size = new System.Drawing.Size(178, 22);
+            this.toolStripMenuItemAbout.Size = new System.Drawing.Size(232, 22);
             this.toolStripMenuItemAbout.Text = "バージョン情報(&A)";
             this.toolStripMenuItemAbout.Click += new System.EventHandler(this.toolStripMenuItemAbout_Click);
             // 
@@ -1422,6 +1440,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonListToggle;
         private System.Windows.Forms.ToolStripLabel toolStripLabel7;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxThreadKeyword;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDefaultCaptionButton;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemGoLatestRelease;
     }
 }
 

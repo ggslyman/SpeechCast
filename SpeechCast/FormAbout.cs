@@ -20,9 +20,10 @@ namespace SpeechCast
 
             string ver = asm.GetName().Version.ToString();
             System.Console.WriteLine(ver);
-            Regex rx = new Regex(@"\.\d+$");
-
+            Regex rx = new Regex(@"\.(?<rev>\d+?)$");
+            Match m = rx.Match(ver);
             ver = rx.Replace(ver, "");
+            if (m.Success && Int32.Parse(m.Groups["rev"].Value) > 0) ver += " rev." + m.Groups["rev"].Value;
             labelVersion.Text += ver;
         }
 

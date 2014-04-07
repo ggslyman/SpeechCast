@@ -121,6 +121,10 @@ namespace SpeechCast
             this.checkBoxHideCaptionTitle.Checked = userConfig.HideCaptionTitle;
             this.VoiceVolme = userConfig.SpeakingVolume;
             this.checkBoxDebug.Checked = userConfig.OutputDebugLog;
+            this.checkBoxAutoReloadAlertCaption.Checked = userConfig.AutoReloadAlertCaption;
+            this.checkBoxAutoReloadAlertVoice.Checked = userConfig.AutoReloadAlertVoice;
+            this.numericUpDownAutoReloadAlertTime.Value = userConfig.AutoReloadAlertInvervalMinutes;
+            this.textBoxAutoReloadAlertMessage.Text = userConfig.AutoReloadAlertMessage;
             numericUpDownViewerYoutubePlayerHeight.Value = userConfig.ViewerYoutubePlayerHeight;
             numericUpDownViewerYoutubePlayerWidth.Value = userConfig.ViewerYoutubePlayerWidth;
             UpdateUI();
@@ -200,6 +204,10 @@ namespace SpeechCast
             userConfig.OutputDebugLog = this.checkBoxDebug.Checked;
             userConfig.ViewerYoutubePlayerHeight = (int)numericUpDownViewerYoutubePlayerHeight.Value;
             userConfig.ViewerYoutubePlayerWidth = (int)numericUpDownViewerYoutubePlayerWidth.Value;
+            userConfig.AutoReloadAlertCaption = this.checkBoxAutoReloadAlertCaption.Checked;
+            userConfig.AutoReloadAlertVoice = this.checkBoxAutoReloadAlertVoice.Checked;
+            userConfig.AutoReloadAlertInvervalMinutes = (int)this.numericUpDownAutoReloadAlertTime.Value;
+            userConfig.AutoReloadAlertMessage = this.textBoxAutoReloadAlertMessage.Text;
         }
         
 

@@ -890,7 +890,7 @@ namespace SpeechCast
                         {
                             CurrentResNumber = responses.Count + 1;
                         }
-
+                        captionTextBuffer = textBoxDefaultCaption.Text;
                         StartSpeaking();
                     }
                     else
@@ -1231,6 +1231,20 @@ namespace SpeechCast
                 // 自動更新がOFFならステータスを消去
                 else
                 {
+                    if (diffWeb.TotalMinutes >= UserConfig.AutoReloadAlertInvervalMinutes)
+                    {
+                        gettingWebTime = System.DateTime.Now;
+                        if (UserConfig.AutoReloadAlertCaption)
+                        {
+                            objDate = System.DateTime.Now;
+                            CaptionTextBuffer = textBoxDefaultCaption.Text + UserConfig.AutoReloadAlertMessage;
+                            FormCaption.Instance.CaptionText = CaptionTextBuffer;
+                        }
+                        if (UserConfig.AutoReloadAlertVoice)
+                        {
+                            StartSpeaking(UserConfig.AutoReloadAlertMessage);
+                        }
+                    }
                     communicationStatusString = "";
                 }
             }
@@ -1426,6 +1440,9 @@ namespace SpeechCast
             myToolStripUrl.GripStyle = ToolStripGripStyle.Hidden;
             myToolStripVoice.GripStyle = ToolStripGripStyle.Hidden;
             myToolStripBrowser.GripStyle = ToolStripGripStyle.Hidden;
+
+            speakingCompletedTime = System.DateTime.Now;
+            gettingWebTime = System.DateTime.Now;
             //idx = toolStripComboBoxVolume.Items.IndexOf(UserConfig.SpeakingVolume);
             //if (idx >= 0)
             //{
@@ -1460,6 +1477,7 @@ namespace SpeechCast
                 if (formSettings.ShowDialog() == DialogResult.OK)
                 {
                     formSettings.GetUserConfig(UserConfig);
+                    if (!UserConfig.AutoReloadAlertCaption)CaptionTextBuffer = textBoxDefaultCaption.Text;
                     FormCaption.Instance.Refresh();
                     if (soundPlayerNewResponse != null)
                     {
@@ -1840,6 +1858,11 @@ namespace SpeechCast
             }
         }
 
+        private void toolStripMenuItemGoLatestRelease_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/ggslyman/SpeechCast/releases/latest");
+        }
+
         private void toolStripButtonTurbo_Click(object sender, EventArgs e)
         {
             UserConfig.TurboMode = !UserConfig.TurboMode;
@@ -1863,6 +1886,20 @@ namespace SpeechCast
         }
 
         private void toolStripStatusLabelCommunication_Click(object sender, EventArgs e)
+        {
+            if (this.splitContainerResCaption.Panel2.Height > 0)
+            {
+                this.splitContainerResCaption.SplitterDistance = 2000;
+                this.splitContainerResCaption.IsSplitterFixed = true;
+                this.webBrowser.Focus();
+            }
+            else
+            {
+                this.splitContainerResCaption.SplitterDistance = this.splitContainerResCaption.Height - 130;
+                this.splitContainerResCaption.IsSplitterFixed = false;
+            }
+        }
+        private void toolStripStatusLabelDefaultCaptionButton_Click(object sender, EventArgs e)
         {
             if (this.splitContainerResCaption.Panel2.Height > 0)
             {
@@ -2213,6 +2250,5 @@ namespace SpeechCast
             }
 
         }
-
     }
 }

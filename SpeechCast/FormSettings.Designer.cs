@@ -118,23 +118,29 @@
             this.checkBoxPlaySoundSync = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
             this.checkBoxPlaySoundNewResponse = new System.Windows.Forms.CheckBox();
+            this.tabPageBrowser = new System.Windows.Forms.TabPage();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.numericUpDownViewerYoutubePlayerWidth = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownViewerYoutubePlayerHeight = new System.Windows.Forms.NumericUpDown();
+            this.label27 = new System.Windows.Forms.Label();
+            this.labelAutoScrollSpeed = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.trackBarAutoScrollSpeed = new System.Windows.Forms.TrackBar();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.checkBoxDebug = new System.Windows.Forms.CheckBox();
             this.buttonRefernceEditor = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxEditorFilePath = new System.Windows.Forms.TextBox();
-            this.tabPageBrowser = new System.Windows.Forms.TabPage();
-            this.labelAutoScrollSpeed = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.trackBarAutoScrollSpeed = new System.Windows.Forms.TrackBar();
-            this.label27 = new System.Windows.Forms.Label();
-            this.numericUpDownViewerYoutubePlayerHeight = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownViewerYoutubePlayerWidth = new System.Windows.Forms.NumericUpDown();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBoxAutoReloadAlertVoice = new System.Windows.Forms.CheckBox();
+            this.checkBoxAutoReloadAlertCaption = new System.Windows.Forms.CheckBox();
+            this.numericUpDownAutoReloadAlertTime = new System.Windows.Forms.NumericUpDown();
+            this.label31 = new System.Windows.Forms.Label();
             this.buttonRunEditorAAMode = new SpeechCast.Controls.ButtonRunEditor();
             this.buttonRunEditorNGWord = new SpeechCast.Controls.ButtonRunEditor();
             this.buttonRunEditorPronounciation = new SpeechCast.Controls.ButtonRunEditor();
+            this.textBoxAutoReloadAlertMessage = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -159,11 +165,13 @@
             this.tabPage6.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.panelPlaySound.SuspendLayout();
-            this.tabPage4.SuspendLayout();
             this.tabPageBrowser.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarAutoScrollSpeed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownViewerYoutubePlayerHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownViewerYoutubePlayerWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownViewerYoutubePlayerHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarAutoScrollSpeed)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoReloadAlertTime)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -990,6 +998,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Controls.Add(this.checkBoxUseProxy);
             this.tabPage3.Controls.Add(this.checkBoxGZipCompression);
             this.tabPage3.Controls.Add(this.label10);
@@ -1226,6 +1235,103 @@
             this.checkBoxPlaySoundNewResponse.UseVisualStyleBackColor = true;
             this.checkBoxPlaySoundNewResponse.CheckedChanged += new System.EventHandler(this.checkBoxPlaySoundNewResponse_CheckedChanged);
             // 
+            // tabPageBrowser
+            // 
+            this.tabPageBrowser.Controls.Add(this.label30);
+            this.tabPageBrowser.Controls.Add(this.label29);
+            this.tabPageBrowser.Controls.Add(this.numericUpDownViewerYoutubePlayerWidth);
+            this.tabPageBrowser.Controls.Add(this.numericUpDownViewerYoutubePlayerHeight);
+            this.tabPageBrowser.Controls.Add(this.label27);
+            this.tabPageBrowser.Controls.Add(this.labelAutoScrollSpeed);
+            this.tabPageBrowser.Controls.Add(this.label28);
+            this.tabPageBrowser.Controls.Add(this.trackBarAutoScrollSpeed);
+            this.tabPageBrowser.Location = new System.Drawing.Point(4, 22);
+            this.tabPageBrowser.Name = "tabPageBrowser";
+            this.tabPageBrowser.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageBrowser.Size = new System.Drawing.Size(438, 370);
+            this.tabPageBrowser.TabIndex = 8;
+            this.tabPageBrowser.Text = "ブラウザ";
+            this.tabPageBrowser.UseVisualStyleBackColor = true;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(141, 80);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(17, 12);
+            this.label30.TabIndex = 17;
+            this.label30.Text = "幅";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(261, 80);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(25, 12);
+            this.label29.TabIndex = 16;
+            this.label29.Text = "高さ";
+            // 
+            // numericUpDownViewerYoutubePlayerWidth
+            // 
+            this.numericUpDownViewerYoutubePlayerWidth.Location = new System.Drawing.Point(164, 78);
+            this.numericUpDownViewerYoutubePlayerWidth.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.numericUpDownViewerYoutubePlayerWidth.Name = "numericUpDownViewerYoutubePlayerWidth";
+            this.numericUpDownViewerYoutubePlayerWidth.Size = new System.Drawing.Size(75, 19);
+            this.numericUpDownViewerYoutubePlayerWidth.TabIndex = 15;
+            // 
+            // numericUpDownViewerYoutubePlayerHeight
+            // 
+            this.numericUpDownViewerYoutubePlayerHeight.Location = new System.Drawing.Point(292, 78);
+            this.numericUpDownViewerYoutubePlayerHeight.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.numericUpDownViewerYoutubePlayerHeight.Name = "numericUpDownViewerYoutubePlayerHeight";
+            this.numericUpDownViewerYoutubePlayerHeight.Size = new System.Drawing.Size(75, 19);
+            this.numericUpDownViewerYoutubePlayerHeight.TabIndex = 14;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(9, 80);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(122, 12);
+            this.label27.TabIndex = 13;
+            this.label27.Text = "Youtubeプレイヤーサイズ";
+            // 
+            // labelAutoScrollSpeed
+            // 
+            this.labelAutoScrollSpeed.AutoSize = true;
+            this.labelAutoScrollSpeed.Location = new System.Drawing.Point(116, 22);
+            this.labelAutoScrollSpeed.Name = "labelAutoScrollSpeed";
+            this.labelAutoScrollSpeed.Size = new System.Drawing.Size(11, 12);
+            this.labelAutoScrollSpeed.TabIndex = 12;
+            this.labelAutoScrollSpeed.Text = "0";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(9, 22);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(99, 12);
+            this.label28.TabIndex = 11;
+            this.label28.Text = "自動スクロール速度";
+            // 
+            // trackBarAutoScrollSpeed
+            // 
+            this.trackBarAutoScrollSpeed.Location = new System.Drawing.Point(143, 9);
+            this.trackBarAutoScrollSpeed.Minimum = 1;
+            this.trackBarAutoScrollSpeed.Name = "trackBarAutoScrollSpeed";
+            this.trackBarAutoScrollSpeed.Size = new System.Drawing.Size(272, 45);
+            this.trackBarAutoScrollSpeed.TabIndex = 10;
+            this.trackBarAutoScrollSpeed.Value = 1;
+            this.trackBarAutoScrollSpeed.ValueChanged += new System.EventHandler(this.trackBarAutoScrollSpeed_ValueChanged);
+            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.checkBoxDebug);
@@ -1276,101 +1382,70 @@
             this.textBoxEditorFilePath.Size = new System.Drawing.Size(272, 19);
             this.textBoxEditorFilePath.TabIndex = 3;
             // 
-            // tabPageBrowser
+            // groupBox3
             // 
-            this.tabPageBrowser.Controls.Add(this.label30);
-            this.tabPageBrowser.Controls.Add(this.label29);
-            this.tabPageBrowser.Controls.Add(this.numericUpDownViewerYoutubePlayerWidth);
-            this.tabPageBrowser.Controls.Add(this.numericUpDownViewerYoutubePlayerHeight);
-            this.tabPageBrowser.Controls.Add(this.label27);
-            this.tabPageBrowser.Controls.Add(this.labelAutoScrollSpeed);
-            this.tabPageBrowser.Controls.Add(this.label28);
-            this.tabPageBrowser.Controls.Add(this.trackBarAutoScrollSpeed);
-            this.tabPageBrowser.Location = new System.Drawing.Point(4, 22);
-            this.tabPageBrowser.Name = "tabPageBrowser";
-            this.tabPageBrowser.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageBrowser.Size = new System.Drawing.Size(438, 370);
-            this.tabPageBrowser.TabIndex = 8;
-            this.tabPageBrowser.Text = "ブラウザ";
-            this.tabPageBrowser.UseVisualStyleBackColor = true;
+            this.groupBox3.Controls.Add(this.textBoxAutoReloadAlertMessage);
+            this.groupBox3.Controls.Add(this.label31);
+            this.groupBox3.Controls.Add(this.numericUpDownAutoReloadAlertTime);
+            this.groupBox3.Controls.Add(this.checkBoxAutoReloadAlertCaption);
+            this.groupBox3.Controls.Add(this.checkBoxAutoReloadAlertVoice);
+            this.groupBox3.Location = new System.Drawing.Point(20, 132);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(410, 72);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "自動更新忘れ警告";
             // 
-            // labelAutoScrollSpeed
+            // checkBoxAutoReloadAlertVoice
             // 
-            this.labelAutoScrollSpeed.AutoSize = true;
-            this.labelAutoScrollSpeed.Location = new System.Drawing.Point(116, 22);
-            this.labelAutoScrollSpeed.Name = "labelAutoScrollSpeed";
-            this.labelAutoScrollSpeed.Size = new System.Drawing.Size(11, 12);
-            this.labelAutoScrollSpeed.TabIndex = 12;
-            this.labelAutoScrollSpeed.Text = "0";
+            this.checkBoxAutoReloadAlertVoice.AutoSize = true;
+            this.checkBoxAutoReloadAlertVoice.Location = new System.Drawing.Point(13, 18);
+            this.checkBoxAutoReloadAlertVoice.Name = "checkBoxAutoReloadAlertVoice";
+            this.checkBoxAutoReloadAlertVoice.Size = new System.Drawing.Size(93, 16);
+            this.checkBoxAutoReloadAlertVoice.TabIndex = 0;
+            this.checkBoxAutoReloadAlertVoice.Text = "音声読み上げ";
+            this.checkBoxAutoReloadAlertVoice.UseVisualStyleBackColor = true;
             // 
-            // label28
+            // checkBoxAutoReloadAlertCaption
             // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(9, 22);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(99, 12);
-            this.label28.TabIndex = 11;
-            this.label28.Text = "自動スクロール速度";
+            this.checkBoxAutoReloadAlertCaption.AutoSize = true;
+            this.checkBoxAutoReloadAlertCaption.Location = new System.Drawing.Point(112, 18);
+            this.checkBoxAutoReloadAlertCaption.Name = "checkBoxAutoReloadAlertCaption";
+            this.checkBoxAutoReloadAlertCaption.Size = new System.Drawing.Size(66, 16);
+            this.checkBoxAutoReloadAlertCaption.TabIndex = 1;
+            this.checkBoxAutoReloadAlertCaption.Text = "レス表示";
+            this.checkBoxAutoReloadAlertCaption.UseVisualStyleBackColor = true;
             // 
-            // trackBarAutoScrollSpeed
+            // numericUpDownAutoReloadAlertTime
             // 
-            this.trackBarAutoScrollSpeed.Location = new System.Drawing.Point(143, 9);
-            this.trackBarAutoScrollSpeed.Minimum = 1;
-            this.trackBarAutoScrollSpeed.Name = "trackBarAutoScrollSpeed";
-            this.trackBarAutoScrollSpeed.Size = new System.Drawing.Size(272, 45);
-            this.trackBarAutoScrollSpeed.TabIndex = 10;
-            this.trackBarAutoScrollSpeed.Value = 1;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(9, 80);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(122, 12);
-            this.label27.TabIndex = 13;
-            this.label27.Text = "Youtubeプレイヤーサイズ";
-            // 
-            // numericUpDownViewerYoutubePlayerHeight
-            // 
-            this.numericUpDownViewerYoutubePlayerHeight.Location = new System.Drawing.Point(292, 78);
-            this.numericUpDownViewerYoutubePlayerHeight.Maximum = new decimal(new int[] {
-            5000,
+            this.numericUpDownAutoReloadAlertTime.Location = new System.Drawing.Point(344, 17);
+            this.numericUpDownAutoReloadAlertTime.Maximum = new decimal(new int[] {
+            30,
             0,
             0,
             0});
-            this.numericUpDownViewerYoutubePlayerHeight.Name = "numericUpDownViewerYoutubePlayerHeight";
-            this.numericUpDownViewerYoutubePlayerHeight.Size = new System.Drawing.Size(75, 19);
-            this.numericUpDownViewerYoutubePlayerHeight.TabIndex = 14;
-            // 
-            // numericUpDownViewerYoutubePlayerWidth
-            // 
-            this.numericUpDownViewerYoutubePlayerWidth.Location = new System.Drawing.Point(164, 78);
-            this.numericUpDownViewerYoutubePlayerWidth.Maximum = new decimal(new int[] {
-            5000,
+            this.numericUpDownAutoReloadAlertTime.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
-            this.numericUpDownViewerYoutubePlayerWidth.Name = "numericUpDownViewerYoutubePlayerWidth";
-            this.numericUpDownViewerYoutubePlayerWidth.Size = new System.Drawing.Size(75, 19);
-            this.numericUpDownViewerYoutubePlayerWidth.TabIndex = 15;
+            this.numericUpDownAutoReloadAlertTime.Name = "numericUpDownAutoReloadAlertTime";
+            this.numericUpDownAutoReloadAlertTime.Size = new System.Drawing.Size(53, 19);
+            this.numericUpDownAutoReloadAlertTime.TabIndex = 7;
+            this.numericUpDownAutoReloadAlertTime.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
-            // label29
+            // label31
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(261, 80);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(25, 12);
-            this.label29.TabIndex = 16;
-            this.label29.Text = "高さ";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(141, 80);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(17, 12);
-            this.label30.TabIndex = 17;
-            this.label30.Text = "幅";
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(184, 19);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(154, 12);
+            this.label31.TabIndex = 8;
+            this.label31.Text = "警告を表示するまでの時間(分)";
             // 
             // buttonRunEditorAAMode
             // 
@@ -1407,6 +1482,13 @@
             this.buttonRunEditorPronounciation.TabIndex = 4;
             this.buttonRunEditorPronounciation.TextBox = this.TextBoxPronounciations;
             this.buttonRunEditorPronounciation.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
+            // 
+            // textBoxAutoReloadAlertMessage
+            // 
+            this.textBoxAutoReloadAlertMessage.Location = new System.Drawing.Point(13, 42);
+            this.textBoxAutoReloadAlertMessage.Name = "textBoxAutoReloadAlertMessage";
+            this.textBoxAutoReloadAlertMessage.Size = new System.Drawing.Size(384, 19);
+            this.textBoxAutoReloadAlertMessage.TabIndex = 20;
             // 
             // FormSettings
             // 
@@ -1458,13 +1540,16 @@
             this.tabPage8.PerformLayout();
             this.panelPlaySound.ResumeLayout(false);
             this.panelPlaySound.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
             this.tabPageBrowser.ResumeLayout(false);
             this.tabPageBrowser.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarAutoScrollSpeed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownViewerYoutubePlayerHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownViewerYoutubePlayerWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownViewerYoutubePlayerHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarAutoScrollSpeed)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoReloadAlertTime)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1578,5 +1663,11 @@
         private System.Windows.Forms.Label labelAutoScrollSpeed;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TrackBar trackBarAutoScrollSpeed;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label31;
+        public System.Windows.Forms.NumericUpDown numericUpDownAutoReloadAlertTime;
+        private System.Windows.Forms.CheckBox checkBoxAutoReloadAlertCaption;
+        private System.Windows.Forms.CheckBox checkBoxAutoReloadAlertVoice;
+        private System.Windows.Forms.TextBox textBoxAutoReloadAlertMessage;
     }
 }

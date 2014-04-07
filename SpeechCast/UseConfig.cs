@@ -228,6 +228,13 @@ namespace SpeechCast
         public int AutoGettingWebInvervalMillsec = 10000;
 
         /// <summary>
+        /// 自動更新忘れ関連
+        /// </summary>
+        public bool AutoReloadAlertVoice = false;
+        public bool AutoReloadAlertCaption = false;
+        public int AutoReloadAlertInvervalMinutes = 5;
+        public string AutoReloadAlertMessage = "レス自動更新がONになっていません";
+        /// <summary>
         /// 次スレ自動開始
         /// </summary>
         public bool AutoOpenNextThread = false;
