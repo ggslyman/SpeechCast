@@ -333,9 +333,9 @@ namespace SpeechCast
 #if DEBUG
         string debugDatFileName = null;
 #endif
-        // 元ソースより非同期に変更
         private int oldResCount = 0;
         private string oldUrl = "";
+        // 元ソースより非同期に変更
         private async Task<bool> GetFromURL(bool next)
         {
 
@@ -722,6 +722,8 @@ namespace SpeechCast
                             Object[] objArray = new Object[1];
                             objArray[0] = responses[idx].Html;
                             webBrowser.Document.InvokeScript("addRes", objArray);
+                            objArray[0] = UserConfig.magnification;
+                            webBrowser.Document.InvokeScript("setZoom", objArray);
                         }
                     }                    
                 }
@@ -1887,23 +1889,19 @@ namespace SpeechCast
 
         private void toolStripStatusLabelCommunication_Click(object sender, EventArgs e)
         {
-            if (this.splitContainerResCaption.Panel2.Height > 0)
-            {
-                this.splitContainerResCaption.SplitterDistance = 2000;
-                this.splitContainerResCaption.IsSplitterFixed = true;
-                this.webBrowser.Focus();
-            }
-            else
-            {
-                this.splitContainerResCaption.SplitterDistance = this.splitContainerResCaption.Height - 130;
-                this.splitContainerResCaption.IsSplitterFixed = false;
-            }
+            this.openResCaptionForm();
         }
         private void toolStripStatusLabelDefaultCaptionButton_Click(object sender, EventArgs e)
         {
+            this.openResCaptionForm();
+        }
+
+        private void openResCaptionForm()
+        {
             if (this.splitContainerResCaption.Panel2.Height > 0)
             {
-                this.splitContainerResCaption.SplitterDistance = 2000;
+                int resCaptionFormHeight = this.splitContainerResCaption.SplitterDistance;
+                this.splitContainerResCaption.SplitterDistance = 4000;
                 this.splitContainerResCaption.IsSplitterFixed = true;
                 this.webBrowser.Focus();
             }
@@ -1911,9 +1909,9 @@ namespace SpeechCast
             {
                 this.splitContainerResCaption.SplitterDistance = this.splitContainerResCaption.Height - 130;
                 this.splitContainerResCaption.IsSplitterFixed = false;
+                webBrowser.Document.Window.ScrollTo(0, (webBrowser.Document.Body.ScrollTop + this.splitContainerResCaption.Panel2.Height));
             }
         }
-
         private void toolStripButtonCaptionAutoSmall_Click(object sender, EventArgs e)
         {
             UserConfig.CaptionAutoSmall = this.toolStripButtonCaptionAutoSmall.Checked;
@@ -2249,6 +2247,22 @@ namespace SpeechCast
                 splitContainer1.IsSplitterFixed = true;
             }
 
+        }
+
+        private void toolStripButtonZoomOutnResView_Click(object sender, EventArgs e)
+        {
+            Object[] objArray = new Object[1];
+            UserConfig.magnification = UserConfig.magnification - 0.1;
+            objArray[0] = UserConfig.magnification;
+            webBrowser.Document.InvokeScript("setZoom", objArray);
+        }
+
+        private void toolStripButtonZoomInnResView_Click(object sender, EventArgs e)
+        {
+            Object[] objArray = new Object[1];
+            UserConfig.magnification = UserConfig.magnification + 0.1;
+            objArray[0] = UserConfig.magnification;
+            webBrowser.Document.InvokeScript("setZoom", objArray);
         }
     }
 }

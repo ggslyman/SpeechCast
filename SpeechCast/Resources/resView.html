@@ -1,18 +1,27 @@
 <html>
 	<body>
 		<script type="text/javascript">
-		function addRes(res) {
-			var element = document.createElement('div');
-			element.innerHTML = res;
-			var objResArea = document.getElementById("resArea");;
-			objResArea.appendChild(element);
-		}
-		function clearRes() {
-			var objResArea = document.getElementById("resArea");
-			objResArea.innerHTML = "";
-		}
-		</script>
-		<div id="resArea">
+      function addRes(res) {
+      var element = document.createElement('div');
+      element.innerHTML = res;
+      var objResArea = document.getElementById("resArea");;
+      objResArea.appendChild(element);
+      }
+      function clearRes() {
+      var objResArea = document.getElementById("resArea");
+      objResArea.innerHTML = "";
+      }
+      function setZoom(magnification){
+      var objResArea = document.getElementById("resArea");
+
+      if ('zoom' in objResArea.style) {
+      objResArea.style.zoom = magnification;
+      } else {
+      alert ("Your browser doesn't support this example!");
+      }
+      }
+    </script>
+		<div id="resArea" style="zoom:100%">
 		</div>
 	</body>
 </html>

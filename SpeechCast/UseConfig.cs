@@ -240,6 +240,11 @@ namespace SpeechCast
         public bool AutoOpenNextThread = false;
 
         /// <summary>
+        /// レス表示領域の表示倍率
+        /// </summary>
+        public double magnification = 1.0;
+
+        /// <summary>
         /// 文字数制限
         /// </summary>
         public int MaxSpeakingCharacterCount = 100;
