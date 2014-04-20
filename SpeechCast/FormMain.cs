@@ -1909,12 +1909,14 @@ namespace SpeechCast
                 this.splitContainerResCaption.SplitterDistance = 4000;
                 this.splitContainerResCaption.IsSplitterFixed = true;
                 this.webBrowser.Focus();
+                this.toolStripButtonOpenResCaptionForm.Checked = false;
             }
             else
             {
                 this.splitContainerResCaption.SplitterDistance = this.splitContainerResCaption.Height - 130;
                 this.splitContainerResCaption.IsSplitterFixed = false;
                 webBrowser.Document.Window.ScrollTo(0, (webBrowser.Document.Body.ScrollTop + this.splitContainerResCaption.Panel2.Height));
+                this.toolStripButtonOpenResCaptionForm.Checked = true;
             }
         }
         private void toolStripButtonCaptionAutoSmall_Click(object sender, EventArgs e)
@@ -2273,6 +2275,11 @@ namespace SpeechCast
         private void toolStripButtonMoveBottom_Click(object sender, EventArgs e)
         {
             webBrowser.Document.Window.ScrollTo(0, webBrowser.Document.Body.ScrollRectangle.Height);
+        }
+
+        private void toolStripButtonOpenResCaptionForm_Click(object sender, EventArgs e)
+        {
+            this.openResCaptionForm();
         }
     }
 }

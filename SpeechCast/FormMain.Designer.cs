@@ -72,8 +72,9 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonBorder = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSettings = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonCaptionAutoSmall = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonOpenResCaptionForm = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonCaptionAutoSmall = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonAutoScroll = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonThreads = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonResponse = new System.Windows.Forms.ToolStripButton();
@@ -336,7 +337,7 @@
             this.splitContainerResCaption.Panel2.Controls.Add(this.splitContainerpkCaption);
             this.splitContainerResCaption.Panel2MinSize = 0;
             this.splitContainerResCaption.Size = new System.Drawing.Size(861, 706);
-            this.splitContainerResCaption.SplitterDistance = 554;
+            this.splitContainerResCaption.SplitterDistance = 548;
             this.splitContainerResCaption.SplitterWidth = 5;
             this.splitContainerResCaption.TabIndex = 3;
             // 
@@ -347,7 +348,7 @@
             this.webBrowser.Margin = new System.Windows.Forms.Padding(4);
             this.webBrowser.MinimumSize = new System.Drawing.Size(27, 25);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(859, 552);
+            this.webBrowser.Size = new System.Drawing.Size(859, 546);
             this.webBrowser.TabIndex = 5;
             // 
             // splitContainerpkCaption
@@ -378,7 +379,7 @@
             this.splitContainerpkCaption.Panel2.Controls.Add(this.buttonCaptionNum1);
             this.splitContainerpkCaption.Panel2.Controls.Add(this.comboBoxCaptionNum2);
             this.splitContainerpkCaption.Panel2.Controls.Add(this.comboBoxCaptionNum1);
-            this.splitContainerpkCaption.Size = new System.Drawing.Size(859, 145);
+            this.splitContainerpkCaption.Size = new System.Drawing.Size(859, 151);
             this.splitContainerpkCaption.SplitterDistance = 109;
             this.splitContainerpkCaption.SplitterWidth = 5;
             this.splitContainerpkCaption.TabIndex = 1;
@@ -397,7 +398,7 @@
             // 
             // buttonSpeakCaptionText
             // 
-            this.buttonSpeakCaptionText.Location = new System.Drawing.Point(732, 4);
+            this.buttonSpeakCaptionText.Location = new System.Drawing.Point(3, 5);
             this.buttonSpeakCaptionText.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSpeakCaptionText.Name = "buttonSpeakCaptionText";
             this.buttonSpeakCaptionText.Size = new System.Drawing.Size(91, 24);
@@ -409,7 +410,7 @@
             // checkBoxShowSecond
             // 
             this.checkBoxShowSecond.AutoSize = true;
-            this.checkBoxShowSecond.Location = new System.Drawing.Point(628, 8);
+            this.checkBoxShowSecond.Location = new System.Drawing.Point(703, 8);
             this.checkBoxShowSecond.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxShowSecond.Name = "checkBoxShowSecond";
             this.checkBoxShowSecond.Size = new System.Drawing.Size(89, 19);
@@ -421,7 +422,7 @@
             // checkBoxClockMilitaryTime
             // 
             this.checkBoxClockMilitaryTime.AutoSize = true;
-            this.checkBoxClockMilitaryTime.Location = new System.Drawing.Point(511, 8);
+            this.checkBoxClockMilitaryTime.Location = new System.Drawing.Point(598, 8);
             this.checkBoxClockMilitaryTime.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxClockMilitaryTime.Name = "checkBoxClockMilitaryTime";
             this.checkBoxClockMilitaryTime.Size = new System.Drawing.Size(105, 19);
@@ -432,7 +433,7 @@
             // 
             // buttonNum2Inc
             // 
-            this.buttonNum2Inc.Location = new System.Drawing.Point(297, 6);
+            this.buttonNum2Inc.Location = new System.Drawing.Point(386, 6);
             this.buttonNum2Inc.Margin = new System.Windows.Forms.Padding(4);
             this.buttonNum2Inc.Name = "buttonNum2Inc";
             this.buttonNum2Inc.Size = new System.Drawing.Size(31, 24);
@@ -443,7 +444,7 @@
             // 
             // buttonNum2Dec
             // 
-            this.buttonNum2Dec.Location = new System.Drawing.Point(265, 6);
+            this.buttonNum2Dec.Location = new System.Drawing.Point(354, 6);
             this.buttonNum2Dec.Margin = new System.Windows.Forms.Padding(4);
             this.buttonNum2Dec.Name = "buttonNum2Dec";
             this.buttonNum2Dec.Size = new System.Drawing.Size(31, 24);
@@ -454,7 +455,7 @@
             // 
             // buttonNum1Inc
             // 
-            this.buttonNum1Inc.Location = new System.Drawing.Point(100, 6);
+            this.buttonNum1Inc.Location = new System.Drawing.Point(195, 6);
             this.buttonNum1Inc.Margin = new System.Windows.Forms.Padding(4);
             this.buttonNum1Inc.Name = "buttonNum1Inc";
             this.buttonNum1Inc.Size = new System.Drawing.Size(31, 24);
@@ -465,7 +466,7 @@
             // 
             // buttonNum1Dec
             // 
-            this.buttonNum1Dec.Location = new System.Drawing.Point(69, 6);
+            this.buttonNum1Dec.Location = new System.Drawing.Point(164, 6);
             this.buttonNum1Dec.Margin = new System.Windows.Forms.Padding(4);
             this.buttonNum1Dec.Name = "buttonNum1Dec";
             this.buttonNum1Dec.Size = new System.Drawing.Size(31, 24);
@@ -476,7 +477,7 @@
             // 
             // buttonCaptionClock
             // 
-            this.buttonCaptionClock.Location = new System.Drawing.Point(395, 6);
+            this.buttonCaptionClock.Location = new System.Drawing.Point(481, 6);
             this.buttonCaptionClock.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCaptionClock.Name = "buttonCaptionClock";
             this.buttonCaptionClock.Size = new System.Drawing.Size(109, 24);
@@ -487,7 +488,7 @@
             // 
             // buttonCaptionNum2
             // 
-            this.buttonCaptionNum2.Location = new System.Drawing.Point(333, 6);
+            this.buttonCaptionNum2.Location = new System.Drawing.Point(422, 6);
             this.buttonCaptionNum2.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCaptionNum2.Name = "buttonCaptionNum2";
             this.buttonCaptionNum2.Size = new System.Drawing.Size(51, 24);
@@ -498,7 +499,7 @@
             // 
             // buttonCaptionNum1
             // 
-            this.buttonCaptionNum1.Location = new System.Drawing.Point(136, 6);
+            this.buttonCaptionNum1.Location = new System.Drawing.Point(231, 6);
             this.buttonCaptionNum1.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCaptionNum1.Name = "buttonCaptionNum1";
             this.buttonCaptionNum1.Size = new System.Drawing.Size(51, 24);
@@ -510,7 +511,7 @@
             // comboBoxCaptionNum2
             // 
             this.comboBoxCaptionNum2.FormattingEnabled = true;
-            this.comboBoxCaptionNum2.Location = new System.Drawing.Point(200, 5);
+            this.comboBoxCaptionNum2.Location = new System.Drawing.Point(289, 5);
             this.comboBoxCaptionNum2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxCaptionNum2.Name = "comboBoxCaptionNum2";
             this.comboBoxCaptionNum2.Size = new System.Drawing.Size(61, 23);
@@ -519,7 +520,7 @@
             // comboBoxCaptionNum1
             // 
             this.comboBoxCaptionNum1.FormattingEnabled = true;
-            this.comboBoxCaptionNum1.Location = new System.Drawing.Point(4, 5);
+            this.comboBoxCaptionNum1.Location = new System.Drawing.Point(99, 5);
             this.comboBoxCaptionNum1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxCaptionNum1.Name = "comboBoxCaptionNum1";
             this.comboBoxCaptionNum1.Size = new System.Drawing.Size(61, 23);
@@ -545,8 +546,9 @@
             this.toolStripSeparator5,
             this.toolStripButtonBorder,
             this.toolStripButtonSettings,
-            this.toolStripButtonCaptionAutoSmall,
-            this.toolStripSeparator4});
+            this.toolStripButtonOpenResCaptionForm,
+            this.toolStripSeparator4,
+            this.toolStripButtonCaptionAutoSmall});
             this.myToolStripVoice.Location = new System.Drawing.Point(0, 29);
             this.myToolStripVoice.Name = "myToolStripVoice";
             this.myToolStripVoice.Size = new System.Drawing.Size(1265, 31);
@@ -667,21 +669,32 @@
             this.toolStripButtonSettings.Text = "設定";
             this.toolStripButtonSettings.Click += new System.EventHandler(this.toolStripButtonSettings_Click);
             // 
-            // toolStripButtonCaptionAutoSmall
+            // toolStripButtonOpenResCaptionForm
             // 
-            this.toolStripButtonCaptionAutoSmall.CheckOnClick = true;
-            this.toolStripButtonCaptionAutoSmall.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonCaptionAutoSmall.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCaptionAutoSmall.Image")));
-            this.toolStripButtonCaptionAutoSmall.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonCaptionAutoSmall.Name = "toolStripButtonCaptionAutoSmall";
-            this.toolStripButtonCaptionAutoSmall.Size = new System.Drawing.Size(23, 28);
-            this.toolStripButtonCaptionAutoSmall.Text = "字幕表示エリア自動縮小";
-            this.toolStripButtonCaptionAutoSmall.Click += new System.EventHandler(this.toolStripButtonCaptionAutoSmall_Click);
+            this.toolStripButtonOpenResCaptionForm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonOpenResCaptionForm.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOpenResCaptionForm.Image")));
+            this.toolStripButtonOpenResCaptionForm.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonOpenResCaptionForm.Name = "toolStripButtonOpenResCaptionForm";
+            this.toolStripButtonOpenResCaptionForm.Size = new System.Drawing.Size(23, 28);
+            this.toolStripButtonOpenResCaptionForm.Text = "代替字幕入力欄を表示";
+            this.toolStripButtonOpenResCaptionForm.Click += new System.EventHandler(this.toolStripButtonOpenResCaptionForm_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
+            // 
+            // toolStripButtonCaptionAutoSmall
+            // 
+            this.toolStripButtonCaptionAutoSmall.CheckOnClick = true;
+            this.toolStripButtonCaptionAutoSmall.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonCaptionAutoSmall.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCaptionAutoSmall.Image")));
+            this.toolStripButtonCaptionAutoSmall.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonCaptionAutoSmall.Name = "toolStripButtonCaptionAutoSmall";
+            this.toolStripButtonCaptionAutoSmall.Size = new System.Drawing.Size(168, 28);
+            this.toolStripButtonCaptionAutoSmall.Text = "字幕表示エリア自動縮小";
+            this.toolStripButtonCaptionAutoSmall.Visible = false;
+            this.toolStripButtonCaptionAutoSmall.Click += new System.EventHandler(this.toolStripButtonCaptionAutoSmall_Click);
             // 
             // toolStripButtonAutoScroll
             // 
@@ -973,7 +986,7 @@
             // toolStripTextBoxURL
             // 
             this.toolStripTextBoxURL.Name = "toolStripTextBoxURL";
-            this.toolStripTextBoxURL.Size = new System.Drawing.Size(639, 30);
+            this.toolStripTextBoxURL.Size = new System.Drawing.Size(500, 30);
             this.toolStripTextBoxURL.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxURL_KeyDown);
             // 
             // toolStripButtonEnter
@@ -1010,10 +1023,10 @@
             // 
             this.myToolStripUrl.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
-            this.toolStripTextBoxURL,
             this.toolStripButtonEnter,
             this.toolStripButtonOpenAsBrowser,
-            this.toolStripButtonOpenURLFromClipboard});
+            this.toolStripButtonOpenURLFromClipboard,
+            this.toolStripTextBoxURL});
             this.myToolStripUrl.Location = new System.Drawing.Point(0, 115);
             this.myToolStripUrl.Name = "myToolStripUrl";
             this.myToolStripUrl.Size = new System.Drawing.Size(1265, 30);
@@ -1517,6 +1530,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonZoomOutnResView;
         private System.Windows.Forms.ToolStripButton toolStripButtonZoomInResView;
         private System.Windows.Forms.ToolStripButton toolStripButtonMoveBottom;
+        private System.Windows.Forms.ToolStripButton toolStripButtonOpenResCaptionForm;
     }
 }
 
