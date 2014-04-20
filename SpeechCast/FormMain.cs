@@ -717,13 +717,18 @@ namespace SpeechCast
                     // JavaScriptでの差分追加処理
                     if (webBrowser.Document != null)
                     {
+                        Object[] objArray = new Object[1];
+                        objArray[0] = UserConfig.magnification;
+                        webBrowser.Document.InvokeScript("setZoom", objArray);
                         for (int idx = oldResCount; idx < responses.Count; idx++)
                         {
-                            Object[] objArray = new Object[1];
                             objArray[0] = responses[idx].Html;
                             webBrowser.Document.InvokeScript("addRes", objArray);
-                            objArray[0] = UserConfig.magnification;
-                            webBrowser.Document.InvokeScript("setZoom", objArray);
+                        }
+                        if (moveScrollBottom)
+                        {
+                            webBrowser.Document.Window.ScrollTo(0, webBrowser.Document.Body.ScrollRectangle.Height);
+                            moveScrollBottom = false;
                         }
                     }                    
                 }
@@ -1683,11 +1688,11 @@ namespace SpeechCast
 
             }
         }
-
+        private bool moveScrollBottom = false;
         private void toolStripMenuItemBookmark_Click(object sender, EventArgs e)
         {
             string url = (string) ((sender as ToolStripMenuItem).Tag);
-
+            if (UserConfig.enableMoveBottomFromBookmarks) moveScrollBottom = true;
             toolStripTextBoxURL.Text = url;
 
             GetFromURL();
@@ -2263,6 +2268,11 @@ namespace SpeechCast
             UserConfig.magnification = UserConfig.magnification + 0.1;
             objArray[0] = UserConfig.magnification;
             webBrowser.Document.InvokeScript("setZoom", objArray);
+        }
+
+        private void toolStripButtonMoveBottom_Click(object sender, EventArgs e)
+        {
+            webBrowser.Document.Window.ScrollTo(0, webBrowser.Document.Body.ScrollRectangle.Height);
         }
     }
 }

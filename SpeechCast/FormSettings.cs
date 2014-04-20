@@ -125,6 +125,7 @@ namespace SpeechCast
             this.checkBoxAutoReloadAlertVoice.Checked = userConfig.AutoReloadAlertVoice;
             this.numericUpDownAutoReloadAlertTime.Value = userConfig.AutoReloadAlertInvervalMinutes;
             this.textBoxAutoReloadAlertMessage.Text = userConfig.AutoReloadAlertMessage;
+            this.checkBoxEnableMoveBottomFromBookmarks.Checked = userConfig.enableMoveBottomFromBookmarks;
             numericUpDownViewerYoutubePlayerHeight.Value = userConfig.ViewerYoutubePlayerHeight;
             numericUpDownViewerYoutubePlayerWidth.Value = userConfig.ViewerYoutubePlayerWidth;
             UpdateUI();
@@ -208,6 +209,7 @@ namespace SpeechCast
             userConfig.AutoReloadAlertVoice = this.checkBoxAutoReloadAlertVoice.Checked;
             userConfig.AutoReloadAlertInvervalMinutes = (int)this.numericUpDownAutoReloadAlertTime.Value;
             userConfig.AutoReloadAlertMessage = this.textBoxAutoReloadAlertMessage.Text;
+            userConfig.enableMoveBottomFromBookmarks = this.checkBoxEnableMoveBottomFromBookmarks.Checked;
         }
         
 

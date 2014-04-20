@@ -147,6 +147,7 @@
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonZoomOutnResView = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonZoomInResView = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonMoveBottom = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -335,7 +336,7 @@
             this.splitContainerResCaption.Panel2.Controls.Add(this.splitContainerpkCaption);
             this.splitContainerResCaption.Panel2MinSize = 0;
             this.splitContainerResCaption.Size = new System.Drawing.Size(861, 706);
-            this.splitContainerResCaption.SplitterDistance = 555;
+            this.splitContainerResCaption.SplitterDistance = 554;
             this.splitContainerResCaption.SplitterWidth = 5;
             this.splitContainerResCaption.TabIndex = 3;
             // 
@@ -346,7 +347,7 @@
             this.webBrowser.Margin = new System.Windows.Forms.Padding(4);
             this.webBrowser.MinimumSize = new System.Drawing.Size(27, 25);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(859, 553);
+            this.webBrowser.Size = new System.Drawing.Size(859, 552);
             this.webBrowser.TabIndex = 5;
             // 
             // splitContainerpkCaption
@@ -377,7 +378,7 @@
             this.splitContainerpkCaption.Panel2.Controls.Add(this.buttonCaptionNum1);
             this.splitContainerpkCaption.Panel2.Controls.Add(this.comboBoxCaptionNum2);
             this.splitContainerpkCaption.Panel2.Controls.Add(this.comboBoxCaptionNum1);
-            this.splitContainerpkCaption.Size = new System.Drawing.Size(859, 144);
+            this.splitContainerpkCaption.Size = new System.Drawing.Size(859, 145);
             this.splitContainerpkCaption.SplitterDistance = 109;
             this.splitContainerpkCaption.SplitterWidth = 5;
             this.splitContainerpkCaption.TabIndex = 1;
@@ -1269,7 +1270,8 @@
             this.toolStripTextBoxThreadKeyword,
             this.toolStripSeparator11,
             this.toolStripButtonZoomOutnResView,
-            this.toolStripButtonZoomInResView});
+            this.toolStripButtonZoomInResView,
+            this.toolStripButtonMoveBottom});
             this.myToolStripBrowser.Location = new System.Drawing.Point(0, 85);
             this.myToolStripBrowser.Name = "myToolStripBrowser";
             this.myToolStripBrowser.Size = new System.Drawing.Size(1265, 30);
@@ -1316,7 +1318,7 @@
             this.toolStripButtonZoomOutnResView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonZoomOutnResView.Name = "toolStripButtonZoomOutnResView";
             this.toolStripButtonZoomOutnResView.Size = new System.Drawing.Size(23, 27);
-            this.toolStripButtonZoomOutnResView.Text = "toolStripButton19";
+            this.toolStripButtonZoomOutnResView.Text = "レスを縮小";
             this.toolStripButtonZoomOutnResView.Click += new System.EventHandler(this.toolStripButtonZoomOutnResView_Click);
             // 
             // toolStripButtonZoomInResView
@@ -1326,8 +1328,18 @@
             this.toolStripButtonZoomInResView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonZoomInResView.Name = "toolStripButtonZoomInResView";
             this.toolStripButtonZoomInResView.Size = new System.Drawing.Size(23, 27);
-            this.toolStripButtonZoomInResView.Text = "toolStripButton20";
+            this.toolStripButtonZoomInResView.Text = "レスを拡大";
             this.toolStripButtonZoomInResView.Click += new System.EventHandler(this.toolStripButtonZoomInnResView_Click);
+            // 
+            // toolStripButtonMoveBottom
+            // 
+            this.toolStripButtonMoveBottom.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonMoveBottom.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonMoveBottom.Image")));
+            this.toolStripButtonMoveBottom.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonMoveBottom.Name = "toolStripButtonMoveBottom";
+            this.toolStripButtonMoveBottom.Size = new System.Drawing.Size(23, 27);
+            this.toolStripButtonMoveBottom.Text = "最新のレスまで移動";
+            this.toolStripButtonMoveBottom.Click += new System.EventHandler(this.toolStripButtonMoveBottom_Click);
             // 
             // FormMain
             // 
@@ -1504,6 +1516,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripButton toolStripButtonZoomOutnResView;
         private System.Windows.Forms.ToolStripButton toolStripButtonZoomInResView;
+        private System.Windows.Forms.ToolStripButton toolStripButtonMoveBottom;
     }
 }
 

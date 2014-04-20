@@ -974,6 +974,18 @@
         x44kfQNnfZRX3I/oxwAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="toolStripButtonMoveBottom.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFOSURBVFhH7ZSxyoJQGIYriaBc6hpcWoTWoFlob2i3oc2l
+        pRtw8AYa2h2CxsBZ8AK6AcdwEQcNKu39+wL/5ZzI6GQQPvDgy0G/90PEWlH6/T5ul0L2ej26iqVaoFqg
+        WqBaoFrg9xe4XC4wDAPj8ZirLMtM0SObzSZ3BjmbzZAkCd3HEgQBBoMBM1CUiqLA933Kj4miCKPRiHn4
+        XVVVxeFwoPyc4/F4f123KMThcIgwDCkX53w+YzqdMsNeVdM0xHFM+XWyLMN8PmeGFnUymeB0OlF+j+Vy
+        yQx/pq7rSNOUshgsy0K9XmeKeC4WC1yvV8piWa/XkCSJKcylBU3TpPw5NpsNWq0WU95oNLBarT5bnuM4
+        Djqdzn85/fls2y6nPMfzPHS7XbTbbex2u3LLc/b7PVzX/U65MLbbLb4p7XD/kL4o97BMuYdlyj0syRr+
+        AO3hoBnT5oXcAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>84</value>
   </metadata>
