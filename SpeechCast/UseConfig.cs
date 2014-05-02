@@ -213,6 +213,11 @@ namespace SpeechCast
         public bool SpeaksResNumber = true;
 
         /// <summary>
+        /// レス番号を読み上げる？
+        /// </summary>
+        public int endThreadWarningResCount = 950;
+
+        /// <summary>
         /// AAモード時にレス番号を読み上げる？
         /// </summary>
         public bool SpeaksResNumberWhenAAMode = true;

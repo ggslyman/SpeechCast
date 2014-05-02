@@ -153,7 +153,9 @@ namespace SpeechCast
                     openNextThread = ReadThread;
                     CurrentResNumber = 0;
                 }
-                else if (CurrentResNumber <= Response.MaxResponseCount && speakClipboard == false)
+                else if (
+                        CurrentResNumber <= Response.MaxResponseCount
+                    &&  (speakClipboard == false && endThreadWarning == false))
                 {
                     CurrentResNumber++;
                 }
@@ -941,6 +943,7 @@ namespace SpeechCast
         private void StartSpeaking()
         {
             speakClipboard = false;
+            endThreadWarning = false;
 
             if (CurrentResNumber <= 0)
             {
@@ -1169,6 +1172,7 @@ namespace SpeechCast
         private int orgWidth;
         private int orgHeight;
         private int openNextThread;
+        private bool endThreadWarning = false;
         // openNextThreadのフラグ定義
         // レス読み上げ中
         private const int ReadThread = 0;
@@ -1285,13 +1289,23 @@ namespace SpeechCast
                     speakingInvervalMillsec = UserConfig.AAModeInvervalMillsec;
                 }
 
+                // スレ終了警告
+                if (UserConfig.endThreadWarningResCount > 0 && CurrentResNumber == UserConfig.endThreadWarningResCount && endThreadWarning == false)
+                {
+                    string speakText = string.Format("レスが{0}に到達しました。次スレを準備してください。", UserConfig.endThreadWarningResCount);
+                    endThreadWarning = true;
+                    isSpeakingWarningMessage = false;
+                    isSpeaking = true;
+                    StartSpeaking(speakText);
+                }
                 // 通常レス読み上げ
-                if (
+                else if (
                     diff.TotalMilliseconds >= speakingInvervalMillsec
                     && AutoUpdate
                     //&& responses.Count >= CurrentResNumber
                     )
                 {
+                    endThreadWarning = true;
                     StartSpeaking();
                 }
             }
@@ -1794,7 +1808,33 @@ namespace SpeechCast
         private void toolStripTrackBarVoiceVolume_ValueChanged(object sender, EventArgs e)
         {
             UserConfig.SpeakingVolume = toolStripTrackBarVoiceVolume.Value;
+            toolStripTextBoxVoiceVolume.Text = toolStripTrackBarVoiceVolume.Value.ToString();
             synthesizer.Volume = toolStripTrackBarVoiceVolume.Value;            
+        }
+
+        private void toolStripTextBoxVoiceVolume_TextChanged(object sender, EventArgs e)
+        {
+            int vol;
+            if (toolStripTextBoxVoiceVolume.Text.Length > 0)
+            {
+                if (int.TryParse(toolStripTextBoxVoiceVolume.Text,out vol))
+                {
+                    if (vol <= 100 && vol > 0)
+                    {
+                        UserConfig.SpeakingVolume = vol;
+                        toolStripTrackBarVoiceVolume.Value = vol;
+                        synthesizer.Volume = toolStripTrackBarVoiceVolume.Value;
+                    }
+                    else
+                    {
+                        toolStripTextBoxVoiceVolume.Text = toolStripTrackBarVoiceVolume.Value.ToString();
+                    }
+                }
+                else
+                {
+                    toolStripTextBoxVoiceVolume.Text = toolStripTrackBarVoiceVolume.Value.ToString();
+                }
+            }
         }
 
         private void toolStripMenuItemAbout_Click(object sender, EventArgs e)
@@ -2281,5 +2321,6 @@ namespace SpeechCast
         {
             this.openResCaptionForm();
         }
+
     }
 }

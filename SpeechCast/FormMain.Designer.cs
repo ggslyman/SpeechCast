@@ -63,6 +63,7 @@
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripComboBoxSelectVoice = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBoxVoiceVolume = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTrackBarVoiceVolume = new SpeechCast.Controls.ToolStripTrackBar();
             this.toolStripButtonCaption = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonShowCaptionImmediately = new System.Windows.Forms.ToolStripButton();
@@ -206,7 +207,7 @@
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.toolStripStatusLabelCommunication.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
             this.toolStripStatusLabelCommunication.Name = "toolStripStatusLabelCommunication";
-            this.toolStripStatusLabelCommunication.Size = new System.Drawing.Size(1015, 23);
+            this.toolStripStatusLabelCommunication.Size = new System.Drawing.Size(1165, 23);
             this.toolStripStatusLabelCommunication.Spring = true;
             this.toolStripStatusLabelCommunication.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolStripStatusLabelCommunication.Click += new System.EventHandler(this.toolStripStatusLabelCommunication_Click);
@@ -214,7 +215,7 @@
             // toolStripStatusLabelDefaultCaptionButton
             // 
             this.toolStripStatusLabelDefaultCaptionButton.Name = "toolStripStatusLabelDefaultCaptionButton";
-            this.toolStripStatusLabelDefaultCaptionButton.Size = new System.Drawing.Size(150, 23);
+            this.toolStripStatusLabelDefaultCaptionButton.Size = new System.Drawing.Size(160, 21);
             this.toolStripStatusLabelDefaultCaptionButton.Text = "代替字幕入力欄を表示";
             this.toolStripStatusLabelDefaultCaptionButton.Click += new System.EventHandler(this.toolStripStatusLabelDefaultCaptionButton_Click);
             // 
@@ -337,7 +338,7 @@
             this.splitContainerResCaption.Panel2.Controls.Add(this.splitContainerpkCaption);
             this.splitContainerResCaption.Panel2MinSize = 0;
             this.splitContainerResCaption.Size = new System.Drawing.Size(861, 706);
-            this.splitContainerResCaption.SplitterDistance = 548;
+            this.splitContainerResCaption.SplitterDistance = 546;
             this.splitContainerResCaption.SplitterWidth = 5;
             this.splitContainerResCaption.TabIndex = 3;
             // 
@@ -348,7 +349,7 @@
             this.webBrowser.Margin = new System.Windows.Forms.Padding(4);
             this.webBrowser.MinimumSize = new System.Drawing.Size(27, 25);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(859, 546);
+            this.webBrowser.Size = new System.Drawing.Size(859, 544);
             this.webBrowser.TabIndex = 5;
             // 
             // splitContainerpkCaption
@@ -379,7 +380,7 @@
             this.splitContainerpkCaption.Panel2.Controls.Add(this.buttonCaptionNum1);
             this.splitContainerpkCaption.Panel2.Controls.Add(this.comboBoxCaptionNum2);
             this.splitContainerpkCaption.Panel2.Controls.Add(this.comboBoxCaptionNum1);
-            this.splitContainerpkCaption.Size = new System.Drawing.Size(859, 151);
+            this.splitContainerpkCaption.Size = new System.Drawing.Size(859, 153);
             this.splitContainerpkCaption.SplitterDistance = 109;
             this.splitContainerpkCaption.SplitterWidth = 5;
             this.splitContainerpkCaption.TabIndex = 1;
@@ -537,6 +538,7 @@
             this.toolStripLabel2,
             this.toolStripComboBoxSelectVoice,
             this.toolStripLabel3,
+            this.toolStripTextBoxVoiceVolume,
             this.toolStripTrackBarVoiceVolume,
             this.toolStripButtonCaption,
             this.toolStripButtonShowCaptionImmediately,
@@ -558,7 +560,7 @@
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(45, 28);
+            this.toolStripLabel2.Size = new System.Drawing.Size(49, 28);
             this.toolStripLabel2.Text = "Voice";
             // 
             // toolStripComboBoxSelectVoice
@@ -571,8 +573,14 @@
             // toolStripLabel3
             // 
             this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(52, 28);
+            this.toolStripLabel3.Size = new System.Drawing.Size(61, 28);
             this.toolStripLabel3.Text = "Volume";
+            // 
+            // toolStripTextBoxVoiceVolume
+            // 
+            this.toolStripTextBoxVoiceVolume.Name = "toolStripTextBoxVoiceVolume";
+            this.toolStripTextBoxVoiceVolume.Size = new System.Drawing.Size(30, 31);
+            this.toolStripTextBoxVoiceVolume.TextChanged += new System.EventHandler(this.toolStripTextBoxVoiceVolume_TextChanged);
             // 
             // toolStripTrackBarVoiceVolume
             // 
@@ -691,7 +699,7 @@
             this.toolStripButtonCaptionAutoSmall.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonCaptionAutoSmall.Image")));
             this.toolStripButtonCaptionAutoSmall.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonCaptionAutoSmall.Name = "toolStripButtonCaptionAutoSmall";
-            this.toolStripButtonCaptionAutoSmall.Size = new System.Drawing.Size(168, 28);
+            this.toolStripButtonCaptionAutoSmall.Size = new System.Drawing.Size(179, 28);
             this.toolStripButtonCaptionAutoSmall.Text = "字幕表示エリア自動縮小";
             this.toolStripButtonCaptionAutoSmall.Visible = false;
             this.toolStripButtonCaptionAutoSmall.Click += new System.EventHandler(this.toolStripButtonCaptionAutoSmall_Click);
@@ -840,27 +848,27 @@
             this.toolStripMenuItemEditBookmarks,
             this.toolStripSeparator1});
             this.toolStripMenuItemBookmarks.Name = "toolStripMenuItemBookmarks";
-            this.toolStripMenuItemBookmarks.Size = new System.Drawing.Size(127, 25);
+            this.toolStripMenuItemBookmarks.Size = new System.Drawing.Size(133, 25);
             this.toolStripMenuItemBookmarks.Text = "ブックマーク(&B)";
             // 
             // toolStripMenuItemAddBookMark
             // 
             this.toolStripMenuItemAddBookMark.Name = "toolStripMenuItemAddBookMark";
-            this.toolStripMenuItemAddBookMark.Size = new System.Drawing.Size(213, 26);
+            this.toolStripMenuItemAddBookMark.Size = new System.Drawing.Size(221, 26);
             this.toolStripMenuItemAddBookMark.Text = "ブックマーク追加(&A)";
             this.toolStripMenuItemAddBookMark.Click += new System.EventHandler(this.toolStripMenuItemAddBookmark_Click);
             // 
             // toolStripMenuItemEditBookmarks
             // 
             this.toolStripMenuItemEditBookmarks.Name = "toolStripMenuItemEditBookmarks";
-            this.toolStripMenuItemEditBookmarks.Size = new System.Drawing.Size(213, 26);
+            this.toolStripMenuItemEditBookmarks.Size = new System.Drawing.Size(221, 26);
             this.toolStripMenuItemEditBookmarks.Text = "ブックマーク編集(&E)";
             this.toolStripMenuItemEditBookmarks.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(210, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(218, 6);
             // 
             // toolStripMenuItemSpeech
             // 
@@ -874,7 +882,7 @@
             this.toolStripMenuItem1,
             this.toolStripMenuItemCopyboard});
             this.toolStripMenuItemSpeech.Name = "toolStripMenuItemSpeech";
-            this.toolStripMenuItemSpeech.Size = new System.Drawing.Size(99, 25);
+            this.toolStripMenuItemSpeech.Size = new System.Drawing.Size(103, 25);
             this.toolStripMenuItemSpeech.Text = "読み上げ(&S)";
             // 
             // toolStripMenuItemFirst
@@ -882,7 +890,7 @@
             this.toolStripMenuItemFirst.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemFirst.Image")));
             this.toolStripMenuItemFirst.Name = "toolStripMenuItemFirst";
             this.toolStripMenuItemFirst.ShortcutKeys = System.Windows.Forms.Keys.F9;
-            this.toolStripMenuItemFirst.Size = new System.Drawing.Size(349, 26);
+            this.toolStripMenuItemFirst.Size = new System.Drawing.Size(370, 26);
             this.toolStripMenuItemFirst.Text = "最初のレス(&F)";
             this.toolStripMenuItemFirst.Click += new System.EventHandler(this.toolStripMenuItemFirst_Click);
             // 
@@ -891,7 +899,7 @@
             this.toolStripMenuItemPrev.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemPrev.Image")));
             this.toolStripMenuItemPrev.Name = "toolStripMenuItemPrev";
             this.toolStripMenuItemPrev.ShortcutKeys = System.Windows.Forms.Keys.F10;
-            this.toolStripMenuItemPrev.Size = new System.Drawing.Size(349, 26);
+            this.toolStripMenuItemPrev.Size = new System.Drawing.Size(370, 26);
             this.toolStripMenuItemPrev.Text = "前のレス(&P)";
             this.toolStripMenuItemPrev.Click += new System.EventHandler(this.toolStripMenuItemPrev_Click);
             // 
@@ -900,7 +908,7 @@
             this.toolStripMenuItemNext.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemNext.Image")));
             this.toolStripMenuItemNext.Name = "toolStripMenuItemNext";
             this.toolStripMenuItemNext.ShortcutKeys = System.Windows.Forms.Keys.F11;
-            this.toolStripMenuItemNext.Size = new System.Drawing.Size(349, 26);
+            this.toolStripMenuItemNext.Size = new System.Drawing.Size(370, 26);
             this.toolStripMenuItemNext.Text = "次のレス(&N)";
             this.toolStripMenuItemNext.Click += new System.EventHandler(this.toolStripMenuItemNext_Click);
             // 
@@ -909,34 +917,34 @@
             this.toolStripMenuItemLast.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemLast.Image")));
             this.toolStripMenuItemLast.Name = "toolStripMenuItemLast";
             this.toolStripMenuItemLast.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            this.toolStripMenuItemLast.Size = new System.Drawing.Size(349, 26);
+            this.toolStripMenuItemLast.Size = new System.Drawing.Size(370, 26);
             this.toolStripMenuItemLast.Text = "最後のレス(&L)";
             this.toolStripMenuItemLast.Click += new System.EventHandler(this.toolStripMenuItemLast_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(346, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(367, 6);
             // 
             // toolStripMenuItemStop
             // 
             this.toolStripMenuItemStop.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuItemStop.Image")));
             this.toolStripMenuItemStop.Name = "toolStripMenuItemStop";
             this.toolStripMenuItemStop.ShortcutKeys = System.Windows.Forms.Keys.F8;
-            this.toolStripMenuItemStop.Size = new System.Drawing.Size(349, 26);
+            this.toolStripMenuItemStop.Size = new System.Drawing.Size(370, 26);
             this.toolStripMenuItemStop.Text = "読み上げをやめる(&S)";
             this.toolStripMenuItemStop.Click += new System.EventHandler(this.toolStripMenuItemStop_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(346, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(367, 6);
             // 
             // toolStripMenuItemCopyboard
             // 
             this.toolStripMenuItemCopyboard.Name = "toolStripMenuItemCopyboard";
             this.toolStripMenuItemCopyboard.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.toolStripMenuItemCopyboard.Size = new System.Drawing.Size(349, 26);
+            this.toolStripMenuItemCopyboard.Size = new System.Drawing.Size(370, 26);
             this.toolStripMenuItemCopyboard.Text = "クリップボードの内容を読み上げる(&C)";
             this.toolStripMenuItemCopyboard.Click += new System.EventHandler(this.toolStripMenuItemCopyboard_Click);
             // 
@@ -948,39 +956,39 @@
             this.toolStripSeparator3,
             this.toolStripMenuItemAbout});
             this.toolStripMenuItemHelp.Name = "toolStripMenuItemHelp";
-            this.toolStripMenuItemHelp.Size = new System.Drawing.Size(85, 25);
+            this.toolStripMenuItemHelp.Size = new System.Drawing.Size(90, 25);
             this.toolStripMenuItemHelp.Text = "ヘルプ(&H)";
             // 
             // toolStripMenuItemGoSupportBBS
             // 
             this.toolStripMenuItemGoSupportBBS.Name = "toolStripMenuItemGoSupportBBS";
-            this.toolStripMenuItemGoSupportBBS.Size = new System.Drawing.Size(262, 26);
+            this.toolStripMenuItemGoSupportBBS.Size = new System.Drawing.Size(275, 26);
             this.toolStripMenuItemGoSupportBBS.Text = "サポート掲示板";
             this.toolStripMenuItemGoSupportBBS.Click += new System.EventHandler(this.toolStripMenuItemGoSupportBBS_Click);
             // 
             // toolStripMenuItemGoLatestRelease
             // 
             this.toolStripMenuItemGoLatestRelease.Name = "toolStripMenuItemGoLatestRelease";
-            this.toolStripMenuItemGoLatestRelease.Size = new System.Drawing.Size(262, 26);
+            this.toolStripMenuItemGoLatestRelease.Size = new System.Drawing.Size(275, 26);
             this.toolStripMenuItemGoLatestRelease.Text = "最新のバージョンを確認する";
             this.toolStripMenuItemGoLatestRelease.Click += new System.EventHandler(this.toolStripMenuItemGoLatestRelease_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(259, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(272, 6);
             // 
             // toolStripMenuItemAbout
             // 
             this.toolStripMenuItemAbout.Name = "toolStripMenuItemAbout";
-            this.toolStripMenuItemAbout.Size = new System.Drawing.Size(262, 26);
+            this.toolStripMenuItemAbout.Size = new System.Drawing.Size(275, 26);
             this.toolStripMenuItemAbout.Text = "バージョン情報(&A)";
             this.toolStripMenuItemAbout.Click += new System.EventHandler(this.toolStripMenuItemAbout_Click);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(31, 27);
+            this.toolStripLabel1.Size = new System.Drawing.Size(38, 27);
             this.toolStripLabel1.Text = "URL";
             // 
             // toolStripTextBoxURL
@@ -1062,7 +1070,7 @@
             // toolStripLabel4
             // 
             this.toolStripLabel4.Name = "toolStripLabel4";
-            this.toolStripLabel4.Size = new System.Drawing.Size(38, 22);
+            this.toolStripLabel4.Size = new System.Drawing.Size(40, 22);
             this.toolStripLabel4.Text = "Play";
             // 
             // toolStripComboBox1
@@ -1294,7 +1302,7 @@
             // toolStripLabel6
             // 
             this.toolStripLabel6.Name = "toolStripLabel6";
-            this.toolStripLabel6.Size = new System.Drawing.Size(59, 27);
+            this.toolStripLabel6.Size = new System.Drawing.Size(69, 27);
             this.toolStripLabel6.Text = "Browser";
             // 
             // toolStripButtonListToggle
@@ -1311,7 +1319,7 @@
             // toolStripLabel7
             // 
             this.toolStripLabel7.Name = "toolStripLabel7";
-            this.toolStripLabel7.Size = new System.Drawing.Size(122, 27);
+            this.toolStripLabel7.Size = new System.Drawing.Size(130, 27);
             this.toolStripLabel7.Text = "次スレキーワード";
             // 
             // toolStripTextBoxThreadKeyword
@@ -1531,6 +1539,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonZoomInResView;
         private System.Windows.Forms.ToolStripButton toolStripButtonMoveBottom;
         private System.Windows.Forms.ToolStripButton toolStripButtonOpenResCaptionForm;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxVoiceVolume;
     }
 }
 
