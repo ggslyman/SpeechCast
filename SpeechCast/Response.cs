@@ -162,7 +162,7 @@ namespace SpeechCast
 
 
         static Regex toTextRegexBr = new Regex("<br>", RegexOptions.IgnoreCase);
-        static Regex toTextRegexHref = new Regex("<a\\s+href=\".+?\".*?>(.+?)</a>", RegexOptions.IgnoreCase);
+        static Regex toTextRegexHref = new Regex("<a\\s+href=[\"|\'].+?[\"|\'].+?>(.+?)</a>", RegexOptions.IgnoreCase);
         static Regex toTextRegexFont = new Regex("<font.+?>(.+?)</font>", RegexOptions.IgnoreCase);
         static Regex toTextRegexUl = new Regex("<ul>(.+?)</ul>", RegexOptions.IgnoreCase);
         static Regex toTextRegexB = new Regex("<b>(.*?)</b>", RegexOptions.IgnoreCase);
@@ -171,6 +171,8 @@ namespace SpeechCast
         static Regex toTextRegexScript = new Regex("<script.*?>.*?</script>", RegexOptions.IgnoreCase);
         static Regex toTextRegexHr = new Regex("<hr.*?>", RegexOptions.IgnoreCase);
         static Regex toTextRegexDiv = new Regex("<div.*?>.*?</div>", RegexOptions.IgnoreCase);
+        static Regex toTextRegexAStart = new Regex("<a.*?>", RegexOptions.IgnoreCase);
+        static Regex toTextRegexAEnd = new Regex("</a>", RegexOptions.IgnoreCase);
 
         static Regex toHtmlRegexGtGt = new Regex(@"&gt;&gt;(\d+)", RegexOptions.IgnoreCase);
         static Regex toHtmlRegexUrl = new Regex(@"(http|ttp)(s)?(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)");

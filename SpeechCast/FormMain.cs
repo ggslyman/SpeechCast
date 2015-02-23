@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections.ObjectModel;
+using System.Collections;
 using System.Speech.Synthesis;
 using System.Globalization; 
 using System.Text.RegularExpressions;
@@ -936,6 +937,7 @@ namespace SpeechCast
             CurrentResNumber = resNumber;
             StartSpeaking();
         }
+        int fileNameIndex = 0;
 
         private bool isSpeaking = false;
         private string speakingText = "";
@@ -953,7 +955,6 @@ namespace SpeechCast
             if (CurrentResNumber <= responses.Count && CurrentResNumber <= Response.MaxResponseCount)
             {
                 Response res = responses[CurrentResNumber - 1];
-
                 string text = res.Text;
 
                 if (UserConfig.IncludesNGWord(res.RawText))
@@ -969,6 +970,84 @@ namespace SpeechCast
                 isSpeakingWarningMessage = false;
                 isSpeaking = true;
                 StartSpeaking(text);
+                //レスの出力処理とクリップボードコピー
+                if (UserConfig.OutputLog || UserConfig.CopyLog)
+                {
+                    //クリップボード周り
+                    if (UserConfig.CopyLog)
+                    {
+                        String LogText = UserConfig.OutputLogFormat.Replace("#Res#", res.Text);
+                        LogText = LogText.Replace("#Name#", res.Name);
+                        LogText = LogText.Replace("#No#", res.Number.ToString());
+                        LogText = LogText.Replace("#Time#", res.DateTime);
+                        Clipboard.SetDataObject(LogText, true);
+                    }
+                    //レス出力周り
+                    if (UserConfig.OutputLog)
+                    {
+                        var OutputEncoding = Encoding.GetEncoding("Shift_JIS");
+                        if (UserConfig.LogEncode == 0)
+                        {
+                            OutputEncoding = Encoding.GetEncoding("Shift_JIS");
+                        }
+                        else if (UserConfig.LogEncode == 1)
+                        {
+                            OutputEncoding = Encoding.GetEncoding("EUC-JP");
+                        }
+                        else
+                        {
+                            OutputEncoding = new System.Text.UTF8Encoding(false);
+                        }
+                        //もし改行分割なら配列に入れる
+                        ArrayList ResArray = new ArrayList();
+                        if (UserConfig.SpiltMethod == 1 || UserConfig.SpiltMethod == 2)
+                        {
+                            foreach (string tempRes in res.Text.Replace("\r\n", "\n").Split('\n'))ResArray.Add(tempRes);
+                            //さらに指定文字数分割ならそれを行って配列の整理する
+                            if (UserConfig.SpiltMethod == 2)
+                            {
+                                ArrayList tempResArray = new ArrayList(ResArray);
+                                ResArray = new ArrayList();
+                                foreach (string tempRes in tempResArray)
+                                {
+                                    int splitIndex = 0;
+                                    int splitLength = 0;
+                                    while (splitIndex < tempRes.Length)
+                                    {
+                                        if (UserConfig.ResLength > tempRes.Length - splitIndex)
+                                        {
+                                            splitLength = tempRes.Length - splitIndex;
+                                        }
+                                        else
+                                        {
+                                            splitLength = UserConfig.ResLength;
+                                        }
+                                        ResArray.Add(tempRes.Substring(splitIndex, splitLength));
+                                        splitIndex = splitIndex + splitLength;
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            ResArray.Add(res.Text);
+                        }
+                        //それを配列の数だけループ
+                        foreach (string resText in ResArray)
+                        {
+                            using (var writer = new StreamWriter(UserConfig.OutputLogPath.Replace(".", fileNameIndex.ToString() + "."), UserConfig.LogAppendMode, OutputEncoding))
+                            {
+                                var LogText = UserConfig.OutputLogFormat.Replace("#Res#", resText);
+                                LogText = LogText.Replace("#Name#", res.Name);
+                                LogText = LogText.Replace("#No#", res.Number.ToString());
+                                LogText = LogText.Replace("#Time#", res.DateTime);
+                                writer.WriteLine(LogText);
+                            }
+                            System.Threading.Thread.Sleep(UserConfig.LogOutputInterval);
+                            fileNameIndex++;
+                        }
+                    }
+                } 
                 listViewResponses.Items[CurrentResNumber - 1].Selected = true;
                 //webBrowser.Document.Window.ScrollTo(0, GetResponsesScrollY(CurrentResNumber));
             }
@@ -2202,7 +2281,7 @@ namespace SpeechCast
         {
             CaptionTextBuffer = textBoxDefaultCaption.Text;
         }
-        private void insertTextBox(TextBox targetText, string msg)
+        public void insertTextBox(TextBox targetText, string msg)
         {
             if (targetText.SelectedText.Length == 0)
             {

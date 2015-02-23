@@ -127,6 +127,26 @@ namespace SpeechCast
             this.textBoxAutoReloadAlertMessage.Text = userConfig.AutoReloadAlertMessage;
             this.checkBoxEnableMoveBottomFromBookmarks.Checked = userConfig.enableMoveBottomFromBookmarks;
             this.numericUpDownEndThreadWarningResCount.Value = userConfig.endThreadWarningResCount;
+            this.textBoxOutputLogPath.Text = userConfig.OutputLogPath;
+            this.textBoxOutputLogFormat.Text = userConfig.OutputLogFormat.Replace("\r\n","\n").Replace("\n","\r\n");
+            this.checkOutputLog.Checked = userConfig.OutputLog;
+            this.checkCopyLog.Checked = userConfig.CopyLog;
+            this.comboBoxOutputEncode.SelectedIndex = userConfig.LogEncode;
+            this.comboBoxLogReturnCode.SelectedIndex = userConfig.LogReturnCode;
+            this.comboBoxSpiltMethod.SelectedIndex = userConfig.SpiltMethod;
+            this.numericUpDownResLength.Value = userConfig.ResLength;
+            this.numericUpDownLogOutputInterval.Value = userConfig.LogOutputInterval;
+
+
+            if (userConfig.LogAppendMode)
+            {
+                this.comboBoxLogAppendMode.SelectedIndex = 1;
+            }
+            else
+            {
+                this.comboBoxLogAppendMode.SelectedIndex = 0;
+            }
+
             numericUpDownViewerYoutubePlayerHeight.Value = userConfig.ViewerYoutubePlayerHeight;
             numericUpDownViewerYoutubePlayerWidth.Value = userConfig.ViewerYoutubePlayerWidth;
             UpdateUI();
@@ -212,6 +232,29 @@ namespace SpeechCast
             userConfig.AutoReloadAlertMessage = this.textBoxAutoReloadAlertMessage.Text;
             userConfig.endThreadWarningResCount = (int)this.numericUpDownEndThreadWarningResCount.Value;
             userConfig.enableMoveBottomFromBookmarks = this.checkBoxEnableMoveBottomFromBookmarks.Checked;
+
+            userConfig.OutputLogPath = this.textBoxOutputLogPath.Text;
+            userConfig.OutputLogFormat = this.textBoxOutputLogFormat.Text.Replace("\r\n", "\n").Replace("\n", "\r\n");
+            userConfig.OutputLog = this.checkOutputLog.Checked;
+            userConfig.CopyLog = this.checkCopyLog.Checked;
+
+            userConfig.LogEncode = this.comboBoxOutputEncode.SelectedIndex;
+            userConfig.LogReturnCode = this.comboBoxLogReturnCode.SelectedIndex;
+
+            userConfig.SpiltMethod = this.comboBoxSpiltMethod.SelectedIndex;
+            userConfig.ResLength = (int)this.numericUpDownResLength.Value;
+
+            userConfig.LogOutputInterval = (int)this.numericUpDownLogOutputInterval.Value;
+
+            if (this.comboBoxLogAppendMode.SelectedIndex == 1)
+            {
+                userConfig.LogAppendMode = true;
+            }
+            else
+            {
+                userConfig.LogAppendMode = false;
+            }
+
         }
         
 
@@ -504,6 +547,42 @@ namespace SpeechCast
         {
             labelAutoScrollSpeed.Text = trackBarAutoScrollSpeed.Value.ToString();
         }
+
+        private void buttonRefernceLogFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+
+            dialog.Title = "エディターのファイルパスの指定";
+            dialog.Filter = "データファイル(*.txt,*.dat,*.log)|*.txt;*.dat;*.log|All Files (*.*)|*.*";
+            dialog.CheckFileExists = false;
+            dialog.FileName = textBoxOutputLogPath.Text;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                textBoxOutputLogPath.Text = dialog.FileName;
+            }
+
+        }
+
+        private void buttonInsertRes_Click(object sender, EventArgs e)
+        {
+            FormMain.Instance.insertTextBox(this.textBoxOutputLogFormat, "#Res#");
+        }
+
+        private void buttonInsertNo_Click(object sender, EventArgs e)
+        {
+            FormMain.Instance.insertTextBox(this.textBoxOutputLogFormat, "#No#");
+        }
+
+        private void buttonInsertName_Click(object sender, EventArgs e)
+        {
+            FormMain.Instance.insertTextBox(this.textBoxOutputLogFormat, "#Name#");
+        }
+
+        private void buttonInsertTime_Click(object sender, EventArgs e)
+        {
+            FormMain.Instance.insertTextBox(this.textBoxOutputLogFormat, "#Time#");
+        }
+
 
      }
 }

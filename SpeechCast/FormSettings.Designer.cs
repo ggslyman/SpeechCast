@@ -33,6 +33,8 @@
             this.buttonOK = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.numericUpDownEndThreadWarningResCount = new System.Windows.Forms.NumericUpDown();
+            this.label32 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.numericUpDownDefaultCaptinoDispInvervalMillsec = new System.Windows.Forms.NumericUpDown();
             this.label26 = new System.Windows.Forms.Label();
@@ -135,6 +137,25 @@
             this.label28 = new System.Windows.Forms.Label();
             this.trackBarAutoScrollSpeed = new System.Windows.Forms.TrackBar();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.numericUpDownLogOutputInterval = new System.Windows.Forms.NumericUpDown();
+            this.label34 = new System.Windows.Forms.Label();
+            this.numericUpDownResLength = new System.Windows.Forms.NumericUpDown();
+            this.label33 = new System.Windows.Forms.Label();
+            this.comboBoxSpiltMethod = new System.Windows.Forms.ComboBox();
+            this.comboBoxLogAppendMode = new System.Windows.Forms.ComboBox();
+            this.comboBoxLogReturnCode = new System.Windows.Forms.ComboBox();
+            this.comboBoxOutputEncode = new System.Windows.Forms.ComboBox();
+            this.buttonInsertNo = new System.Windows.Forms.Button();
+            this.buttonInsertName = new System.Windows.Forms.Button();
+            this.buttonInsertTime = new System.Windows.Forms.Button();
+            this.buttonInsertRes = new System.Windows.Forms.Button();
+            this.textBoxOutputLogFormat = new System.Windows.Forms.TextBox();
+            this.checkCopyLog = new System.Windows.Forms.CheckBox();
+            this.checkOutputLog = new System.Windows.Forms.CheckBox();
+            this.buttonRefernceLogFile = new System.Windows.Forms.Button();
+            this.textBoxOutputLogPath = new System.Windows.Forms.TextBox();
             this.checkBoxDebug = new System.Windows.Forms.CheckBox();
             this.buttonRefernceEditor = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -142,11 +163,10 @@
             this.buttonRunEditorAAMode = new SpeechCast.Controls.ButtonRunEditor();
             this.buttonRunEditorNGWord = new SpeechCast.Controls.ButtonRunEditor();
             this.buttonRunEditorPronounciation = new SpeechCast.Controls.ButtonRunEditor();
-            this.numericUpDownEndThreadWarningResCount = new System.Windows.Forms.NumericUpDown();
-            this.label32 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEndThreadWarningResCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDefaultCaptinoDispInvervalMillsec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownTurboSpeakingInvervalMillsec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTurboThreshold)).BeginInit();
@@ -175,7 +195,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownViewerYoutubePlayerHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarAutoScrollSpeed)).BeginInit();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEndThreadWarningResCount)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLogOutputInterval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownResLength)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -268,6 +290,34 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "音声";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDownEndThreadWarningResCount
+            // 
+            this.numericUpDownEndThreadWarningResCount.Location = new System.Drawing.Point(309, 432);
+            this.numericUpDownEndThreadWarningResCount.Margin = new System.Windows.Forms.Padding(4);
+            this.numericUpDownEndThreadWarningResCount.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownEndThreadWarningResCount.Name = "numericUpDownEndThreadWarningResCount";
+            this.numericUpDownEndThreadWarningResCount.Size = new System.Drawing.Size(100, 22);
+            this.numericUpDownEndThreadWarningResCount.TabIndex = 27;
+            this.numericUpDownEndThreadWarningResCount.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(23, 434);
+            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(254, 15);
+            this.label32.TabIndex = 26;
+            this.label32.Text = "スレ建て警告をするレス数(0で警告しない)";
             // 
             // label25
             // 
@@ -1532,6 +1582,16 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.groupBox4);
+            this.tabPage4.Controls.Add(this.buttonInsertNo);
+            this.tabPage4.Controls.Add(this.buttonInsertName);
+            this.tabPage4.Controls.Add(this.buttonInsertTime);
+            this.tabPage4.Controls.Add(this.buttonInsertRes);
+            this.tabPage4.Controls.Add(this.textBoxOutputLogFormat);
+            this.tabPage4.Controls.Add(this.checkCopyLog);
+            this.tabPage4.Controls.Add(this.checkOutputLog);
+            this.tabPage4.Controls.Add(this.buttonRefernceLogFile);
+            this.tabPage4.Controls.Add(this.textBoxOutputLogPath);
             this.tabPage4.Controls.Add(this.checkBoxDebug);
             this.tabPage4.Controls.Add(this.buttonRefernceEditor);
             this.tabPage4.Controls.Add(this.label8);
@@ -1545,15 +1605,257 @@
             this.tabPage4.Text = "その他";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label35);
+            this.groupBox4.Controls.Add(this.numericUpDownLogOutputInterval);
+            this.groupBox4.Controls.Add(this.label34);
+            this.groupBox4.Controls.Add(this.numericUpDownResLength);
+            this.groupBox4.Controls.Add(this.label33);
+            this.groupBox4.Controls.Add(this.comboBoxSpiltMethod);
+            this.groupBox4.Controls.Add(this.comboBoxLogAppendMode);
+            this.groupBox4.Controls.Add(this.comboBoxLogReturnCode);
+            this.groupBox4.Controls.Add(this.comboBoxOutputEncode);
+            this.groupBox4.Location = new System.Drawing.Point(12, 329);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(543, 86);
+            this.groupBox4.TabIndex = 19;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "オプション";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(285, 53);
+            this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(44, 15);
+            this.label35.TabIndex = 27;
+            this.label35.Text = "msec.";
+            // 
+            // numericUpDownLogOutputInterval
+            // 
+            this.numericUpDownLogOutputInterval.Location = new System.Drawing.Point(173, 51);
+            this.numericUpDownLogOutputInterval.Margin = new System.Windows.Forms.Padding(4);
+            this.numericUpDownLogOutputInterval.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numericUpDownLogOutputInterval.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownLogOutputInterval.Name = "numericUpDownLogOutputInterval";
+            this.numericUpDownLogOutputInterval.Size = new System.Drawing.Size(109, 22);
+            this.numericUpDownLogOutputInterval.TabIndex = 26;
+            this.numericUpDownLogOutputInterval.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(69, 53);
+            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(97, 15);
+            this.label34.TabIndex = 25;
+            this.label34.Text = "最低更新間隔";
+            // 
+            // numericUpDownResLength
+            // 
+            this.numericUpDownResLength.Location = new System.Drawing.Point(427, 51);
+            this.numericUpDownResLength.Margin = new System.Windows.Forms.Padding(4);
+            this.numericUpDownResLength.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDownResLength.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownResLength.Name = "numericUpDownResLength";
+            this.numericUpDownResLength.Size = new System.Drawing.Size(109, 22);
+            this.numericUpDownResLength.TabIndex = 24;
+            this.numericUpDownResLength.Value = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(337, 53);
+            this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(82, 15);
+            this.label33.TabIndex = 23;
+            this.label33.Text = "分割文字数";
+            // 
+            // comboBoxSpiltMethod
+            // 
+            this.comboBoxSpiltMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSpiltMethod.FormattingEnabled = true;
+            this.comboBoxSpiltMethod.Items.AddRange(new object[] {
+            "レス単位",
+            "レスの改行単位",
+            "レスを改行+1行を指定文字数で分割"});
+            this.comboBoxSpiltMethod.Location = new System.Drawing.Point(276, 21);
+            this.comboBoxSpiltMethod.Name = "comboBoxSpiltMethod";
+            this.comboBoxSpiltMethod.Size = new System.Drawing.Size(261, 23);
+            this.comboBoxSpiltMethod.TabIndex = 22;
+            // 
+            // comboBoxLogAppendMode
+            // 
+            this.comboBoxLogAppendMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxLogAppendMode.FormattingEnabled = true;
+            this.comboBoxLogAppendMode.Items.AddRange(new object[] {
+            "追記",
+            "上書き"});
+            this.comboBoxLogAppendMode.Location = new System.Drawing.Point(186, 21);
+            this.comboBoxLogAppendMode.Name = "comboBoxLogAppendMode";
+            this.comboBoxLogAppendMode.Size = new System.Drawing.Size(84, 23);
+            this.comboBoxLogAppendMode.TabIndex = 21;
+            // 
+            // comboBoxLogReturnCode
+            // 
+            this.comboBoxLogReturnCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxLogReturnCode.FormattingEnabled = true;
+            this.comboBoxLogReturnCode.Items.AddRange(new object[] {
+            "CRLF",
+            "LF",
+            "CR"});
+            this.comboBoxLogReturnCode.Location = new System.Drawing.Point(95, 21);
+            this.comboBoxLogReturnCode.Name = "comboBoxLogReturnCode";
+            this.comboBoxLogReturnCode.Size = new System.Drawing.Size(85, 23);
+            this.comboBoxLogReturnCode.TabIndex = 20;
+            // 
+            // comboBoxOutputEncode
+            // 
+            this.comboBoxOutputEncode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxOutputEncode.FormattingEnabled = true;
+            this.comboBoxOutputEncode.Items.AddRange(new object[] {
+            "SJIS",
+            "EUC-JP",
+            "UTF8"});
+            this.comboBoxOutputEncode.Location = new System.Drawing.Point(9, 21);
+            this.comboBoxOutputEncode.Name = "comboBoxOutputEncode";
+            this.comboBoxOutputEncode.Size = new System.Drawing.Size(80, 23);
+            this.comboBoxOutputEncode.TabIndex = 19;
+            // 
+            // buttonInsertNo
+            // 
+            this.buttonInsertNo.Location = new System.Drawing.Point(84, 179);
+            this.buttonInsertNo.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonInsertNo.Name = "buttonInsertNo";
+            this.buttonInsertNo.Size = new System.Drawing.Size(66, 29);
+            this.buttonInsertNo.TabIndex = 15;
+            this.buttonInsertNo.Text = "レス番号";
+            this.buttonInsertNo.UseVisualStyleBackColor = true;
+            this.buttonInsertNo.Click += new System.EventHandler(this.buttonInsertNo_Click);
+            // 
+            // buttonInsertName
+            // 
+            this.buttonInsertName.Location = new System.Drawing.Point(157, 179);
+            this.buttonInsertName.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonInsertName.Name = "buttonInsertName";
+            this.buttonInsertName.Size = new System.Drawing.Size(66, 29);
+            this.buttonInsertName.TabIndex = 14;
+            this.buttonInsertName.Text = "名前";
+            this.buttonInsertName.UseVisualStyleBackColor = true;
+            this.buttonInsertName.Click += new System.EventHandler(this.buttonInsertName_Click);
+            // 
+            // buttonInsertTime
+            // 
+            this.buttonInsertTime.Location = new System.Drawing.Point(230, 179);
+            this.buttonInsertTime.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonInsertTime.Name = "buttonInsertTime";
+            this.buttonInsertTime.Size = new System.Drawing.Size(66, 29);
+            this.buttonInsertTime.TabIndex = 13;
+            this.buttonInsertTime.Text = "時間";
+            this.buttonInsertTime.UseVisualStyleBackColor = true;
+            this.buttonInsertTime.Click += new System.EventHandler(this.buttonInsertTime_Click);
+            // 
+            // buttonInsertRes
+            // 
+            this.buttonInsertRes.Location = new System.Drawing.Point(10, 179);
+            this.buttonInsertRes.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonInsertRes.Name = "buttonInsertRes";
+            this.buttonInsertRes.Size = new System.Drawing.Size(66, 29);
+            this.buttonInsertRes.TabIndex = 12;
+            this.buttonInsertRes.Text = "レス";
+            this.buttonInsertRes.UseVisualStyleBackColor = true;
+            this.buttonInsertRes.Click += new System.EventHandler(this.buttonInsertRes_Click);
+            // 
+            // textBoxOutputLogFormat
+            // 
+            this.textBoxOutputLogFormat.AcceptsReturn = true;
+            this.textBoxOutputLogFormat.Location = new System.Drawing.Point(13, 215);
+            this.textBoxOutputLogFormat.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxOutputLogFormat.MaxLength = 0;
+            this.textBoxOutputLogFormat.Multiline = true;
+            this.textBoxOutputLogFormat.Name = "textBoxOutputLogFormat";
+            this.textBoxOutputLogFormat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxOutputLogFormat.Size = new System.Drawing.Size(542, 107);
+            this.textBoxOutputLogFormat.TabIndex = 11;
+            // 
+            // checkCopyLog
+            // 
+            this.checkCopyLog.AutoSize = true;
+            this.checkCopyLog.Location = new System.Drawing.Point(13, 154);
+            this.checkCopyLog.Margin = new System.Windows.Forms.Padding(4);
+            this.checkCopyLog.Name = "checkCopyLog";
+            this.checkCopyLog.Size = new System.Drawing.Size(286, 19);
+            this.checkCopyLog.TabIndex = 10;
+            this.checkCopyLog.Text = "レスを指定フォーマットでクリップボードにコピー";
+            this.checkCopyLog.UseVisualStyleBackColor = true;
+            // 
+            // checkOutputLog
+            // 
+            this.checkOutputLog.AutoSize = true;
+            this.checkOutputLog.Location = new System.Drawing.Point(13, 97);
+            this.checkOutputLog.Margin = new System.Windows.Forms.Padding(4);
+            this.checkOutputLog.Name = "checkOutputLog";
+            this.checkOutputLog.Size = new System.Drawing.Size(197, 19);
+            this.checkOutputLog.TabIndex = 9;
+            this.checkOutputLog.Text = "レスを指定フォーマットで出力";
+            this.checkOutputLog.UseVisualStyleBackColor = true;
+            // 
+            // buttonRefernceLogFile
+            // 
+            this.buttonRefernceLogFile.Location = new System.Drawing.Point(524, 120);
+            this.buttonRefernceLogFile.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonRefernceLogFile.Name = "buttonRefernceLogFile";
+            this.buttonRefernceLogFile.Size = new System.Drawing.Size(31, 29);
+            this.buttonRefernceLogFile.TabIndex = 8;
+            this.buttonRefernceLogFile.Text = "...";
+            this.buttonRefernceLogFile.UseVisualStyleBackColor = true;
+            this.buttonRefernceLogFile.Click += new System.EventHandler(this.buttonRefernceLogFile_Click);
+            // 
+            // textBoxOutputLogPath
+            // 
+            this.textBoxOutputLogPath.Location = new System.Drawing.Point(12, 124);
+            this.textBoxOutputLogPath.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxOutputLogPath.Name = "textBoxOutputLogPath";
+            this.textBoxOutputLogPath.Size = new System.Drawing.Size(503, 22);
+            this.textBoxOutputLogPath.TabIndex = 7;
+            // 
             // checkBoxDebug
             // 
             this.checkBoxDebug.AutoSize = true;
             this.checkBoxDebug.Location = new System.Drawing.Point(13, 68);
             this.checkBoxDebug.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxDebug.Name = "checkBoxDebug";
-            this.checkBoxDebug.Size = new System.Drawing.Size(163, 19);
+            this.checkBoxDebug.Size = new System.Drawing.Size(139, 19);
             this.checkBoxDebug.TabIndex = 6;
-            this.checkBoxDebug.Text = "デバッグログを出力する";
+            this.checkBoxDebug.Text = "デバッグログを出力";
             this.checkBoxDebug.UseVisualStyleBackColor = true;
             // 
             // buttonRefernceEditor
@@ -1624,34 +1926,6 @@
             this.buttonRunEditorPronounciation.TextBox = this.TextBoxPronounciations;
             this.buttonRunEditorPronounciation.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
             // 
-            // numericUpDownEndThreadWarningResCount
-            // 
-            this.numericUpDownEndThreadWarningResCount.Location = new System.Drawing.Point(309, 432);
-            this.numericUpDownEndThreadWarningResCount.Margin = new System.Windows.Forms.Padding(4);
-            this.numericUpDownEndThreadWarningResCount.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDownEndThreadWarningResCount.Name = "numericUpDownEndThreadWarningResCount";
-            this.numericUpDownEndThreadWarningResCount.Size = new System.Drawing.Size(100, 22);
-            this.numericUpDownEndThreadWarningResCount.TabIndex = 27;
-            this.numericUpDownEndThreadWarningResCount.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(23, 434);
-            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(254, 15);
-            this.label32.TabIndex = 26;
-            this.label32.Text = "スレ建て警告をするレス数(0で警告しない)";
-            // 
             // FormSettings
             // 
             this.AcceptButton = this.buttonOK;
@@ -1674,6 +1948,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEndThreadWarningResCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDefaultCaptinoDispInvervalMillsec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDownTurboSpeakingInvervalMillsec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTurboThreshold)).EndInit();
@@ -1713,7 +1988,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarAutoScrollSpeed)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEndThreadWarningResCount)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLogOutputInterval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownResLength)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1836,5 +2114,24 @@
         public System.Windows.Forms.CheckBox checkBoxEnableMoveBottomFromBookmarks;
         public System.Windows.Forms.NumericUpDown numericUpDownEndThreadWarningResCount;
         private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Button buttonRefernceLogFile;
+        private System.Windows.Forms.TextBox textBoxOutputLogPath;
+        private System.Windows.Forms.Button buttonInsertNo;
+        private System.Windows.Forms.Button buttonInsertName;
+        private System.Windows.Forms.Button buttonInsertTime;
+        private System.Windows.Forms.Button buttonInsertRes;
+        public System.Windows.Forms.TextBox textBoxOutputLogFormat;
+        private System.Windows.Forms.CheckBox checkCopyLog;
+        private System.Windows.Forms.CheckBox checkOutputLog;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ComboBox comboBoxSpiltMethod;
+        private System.Windows.Forms.ComboBox comboBoxLogAppendMode;
+        private System.Windows.Forms.ComboBox comboBoxLogReturnCode;
+        private System.Windows.Forms.ComboBox comboBoxOutputEncode;
+        private System.Windows.Forms.Label label35;
+        public System.Windows.Forms.NumericUpDown numericUpDownLogOutputInterval;
+        private System.Windows.Forms.Label label34;
+        public System.Windows.Forms.NumericUpDown numericUpDownResLength;
+        private System.Windows.Forms.Label label33;
     }
 }

@@ -341,10 +341,61 @@ namespace SpeechCast
         /// </summary>
         public string EditorFilePath = "";
 
+        /// <summary>
+        /// レス出力ログのファイルパス
+        /// </summary>
+        public string OutputLogPath = "";
+
+        /// <summary>
+        /// レス出力ログのフォーマット
+        /// </summary>
+        public string OutputLogFormat = "";
+
+        /// <summary>
+        /// レス出力ログの有無
+        /// </summary>
+        public bool OutputLog = false;
+
+        /// <summary>
+        /// レスコピーの有無
+        /// </summary>
+        public bool CopyLog = false;
+
+        /// <summary>
+        /// レスの出力エンコード(0:SJIS 1:EUC 2:UTF)
+        /// </summary>
+        public int LogEncode = 0;
+
+        /// <summary>
+        /// レスの改行コード(0:CRLF 1:LF 2:CR)
+        /// </summary>
+        public int LogReturnCode = 0;
+
+        /// <summary>
+        /// レス出力ログの分割ルール(0:レス単位 1:レス内の改行単位 2:レス内の改行+1行の文字数上限分割)
+        /// </summary>
+        public int SpiltMethod = 0;
+
+        /// <summary>
+        /// レスの分割サイズ(文字数)
+        /// </summary>
+        public int ResLength = 5000;
+
+        /// <summary>
+        /// レス出力のモード
+        /// </summary>
+        public bool LogAppendMode = false;
+
+        /// <summary>
+        /// レス出力の待機間隔
+        /// </summary>
+        public int LogOutputInterval = 50;
+
         public void UpdatePronounciations()
         {
             replacedStrings = null;
         }
+
 
         /// <summary>
         /// URL
