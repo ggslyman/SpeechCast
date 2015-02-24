@@ -136,7 +136,8 @@ namespace SpeechCast
             this.comboBoxSpiltMethod.SelectedIndex = userConfig.SpiltMethod;
             this.numericUpDownResLength.Value = userConfig.ResLength;
             this.numericUpDownLogOutputInterval.Value = userConfig.LogOutputInterval;
-
+            this.textBoxCommandLineTargetPath.Text = userConfig.CommandLineTargetPath;
+            this.textBoxCommandLineParam.Text = userConfig.CommandLineParam;
 
             if (userConfig.LogAppendMode)
             {
@@ -245,6 +246,10 @@ namespace SpeechCast
             userConfig.ResLength = (int)this.numericUpDownResLength.Value;
 
             userConfig.LogOutputInterval = (int)this.numericUpDownLogOutputInterval.Value;
+
+            userConfig.CommandLineTargetPath = this.textBoxCommandLineTargetPath.Text;
+            userConfig.CommandLineParam = this.textBoxCommandLineParam.Text;
+
 
             if (this.comboBoxLogAppendMode.SelectedIndex == 1)
             {
@@ -581,6 +586,45 @@ namespace SpeechCast
         private void buttonInsertTime_Click(object sender, EventArgs e)
         {
             FormMain.Instance.insertTextBox(this.textBoxOutputLogFormat, "#Time#");
+        }
+
+        private void buttonRefernceCommandLineTarget_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+
+            dialog.Title = "エディターのファイルパスの指定";
+            dialog.Filter = "All Files (*.*)|*.*";
+            dialog.CheckFileExists = false;
+            dialog.FileName = textBoxCommandLineTargetPath.Text;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                textBoxCommandLineTargetPath.Text = dialog.FileName;
+            }
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            FormMain.Instance.insertTextBox(this.textBoxCommandLineParam, "#Res#");
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FormMain.Instance.insertTextBox(this.textBoxCommandLineParam, "#No#");
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FormMain.Instance.insertTextBox(this.textBoxCommandLineParam, "#Name#");
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            FormMain.Instance.insertTextBox(this.textBoxCommandLineParam, "#Time#");
+
         }
 
 

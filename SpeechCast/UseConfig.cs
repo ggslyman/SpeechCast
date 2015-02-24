@@ -396,6 +396,15 @@ namespace SpeechCast
             replacedStrings = null;
         }
 
+        /// <summary>
+        /// コマンドライン送信のパス
+        /// </summary>
+        public string CommandLineTargetPath = "";
+        /// <summary>
+        /// コマンドライン送信のパラメータ
+        /// </summary>
+        public string CommandLineParam = "";
+
 
         /// <summary>
         /// URL

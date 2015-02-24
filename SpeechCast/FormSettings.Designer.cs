@@ -147,11 +147,6 @@
             this.comboBoxLogAppendMode = new System.Windows.Forms.ComboBox();
             this.comboBoxLogReturnCode = new System.Windows.Forms.ComboBox();
             this.comboBoxOutputEncode = new System.Windows.Forms.ComboBox();
-            this.buttonInsertNo = new System.Windows.Forms.Button();
-            this.buttonInsertName = new System.Windows.Forms.Button();
-            this.buttonInsertTime = new System.Windows.Forms.Button();
-            this.buttonInsertRes = new System.Windows.Forms.Button();
-            this.textBoxOutputLogFormat = new System.Windows.Forms.TextBox();
             this.checkCopyLog = new System.Windows.Forms.CheckBox();
             this.checkOutputLog = new System.Windows.Forms.CheckBox();
             this.buttonRefernceLogFile = new System.Windows.Forms.Button();
@@ -160,9 +155,23 @@
             this.buttonRefernceEditor = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxEditorFilePath = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.buttonRefernceCommandLineTarget = new System.Windows.Forms.Button();
+            this.textBoxCommandLineTargetPath = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.textBoxCommandLineParam = new System.Windows.Forms.TextBox();
             this.buttonRunEditorAAMode = new SpeechCast.Controls.ButtonRunEditor();
             this.buttonRunEditorNGWord = new SpeechCast.Controls.ButtonRunEditor();
             this.buttonRunEditorPronounciation = new SpeechCast.Controls.ButtonRunEditor();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.buttonInsertNo = new System.Windows.Forms.Button();
+            this.buttonInsertName = new System.Windows.Forms.Button();
+            this.buttonInsertTime = new System.Windows.Forms.Button();
+            this.buttonInsertRes = new System.Windows.Forms.Button();
+            this.textBoxOutputLogFormat = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -198,6 +207,8 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLogOutputInterval)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownResLength)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -1582,12 +1593,9 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.groupBox6);
+            this.tabPage4.Controls.Add(this.groupBox5);
             this.tabPage4.Controls.Add(this.groupBox4);
-            this.tabPage4.Controls.Add(this.buttonInsertNo);
-            this.tabPage4.Controls.Add(this.buttonInsertName);
-            this.tabPage4.Controls.Add(this.buttonInsertTime);
-            this.tabPage4.Controls.Add(this.buttonInsertRes);
-            this.tabPage4.Controls.Add(this.textBoxOutputLogFormat);
             this.tabPage4.Controls.Add(this.checkCopyLog);
             this.tabPage4.Controls.Add(this.checkOutputLog);
             this.tabPage4.Controls.Add(this.buttonRefernceLogFile);
@@ -1616,7 +1624,7 @@
             this.groupBox4.Controls.Add(this.comboBoxLogAppendMode);
             this.groupBox4.Controls.Add(this.comboBoxLogReturnCode);
             this.groupBox4.Controls.Add(this.comboBoxOutputEncode);
-            this.groupBox4.Location = new System.Drawing.Point(12, 329);
+            this.groupBox4.Location = new System.Drawing.Point(12, 279);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(543, 86);
             this.groupBox4.TabIndex = 19;
@@ -1717,8 +1725,8 @@
             this.comboBoxLogAppendMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxLogAppendMode.FormattingEnabled = true;
             this.comboBoxLogAppendMode.Items.AddRange(new object[] {
-            "追記",
-            "上書き"});
+            "上書き",
+            "追記"});
             this.comboBoxLogAppendMode.Location = new System.Drawing.Point(186, 21);
             this.comboBoxLogAppendMode.Name = "comboBoxLogAppendMode";
             this.comboBoxLogAppendMode.Size = new System.Drawing.Size(84, 23);
@@ -1750,77 +1758,21 @@
             this.comboBoxOutputEncode.Size = new System.Drawing.Size(80, 23);
             this.comboBoxOutputEncode.TabIndex = 19;
             // 
-            // buttonInsertNo
-            // 
-            this.buttonInsertNo.Location = new System.Drawing.Point(84, 179);
-            this.buttonInsertNo.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonInsertNo.Name = "buttonInsertNo";
-            this.buttonInsertNo.Size = new System.Drawing.Size(66, 29);
-            this.buttonInsertNo.TabIndex = 15;
-            this.buttonInsertNo.Text = "レス番号";
-            this.buttonInsertNo.UseVisualStyleBackColor = true;
-            this.buttonInsertNo.Click += new System.EventHandler(this.buttonInsertNo_Click);
-            // 
-            // buttonInsertName
-            // 
-            this.buttonInsertName.Location = new System.Drawing.Point(157, 179);
-            this.buttonInsertName.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonInsertName.Name = "buttonInsertName";
-            this.buttonInsertName.Size = new System.Drawing.Size(66, 29);
-            this.buttonInsertName.TabIndex = 14;
-            this.buttonInsertName.Text = "名前";
-            this.buttonInsertName.UseVisualStyleBackColor = true;
-            this.buttonInsertName.Click += new System.EventHandler(this.buttonInsertName_Click);
-            // 
-            // buttonInsertTime
-            // 
-            this.buttonInsertTime.Location = new System.Drawing.Point(230, 179);
-            this.buttonInsertTime.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonInsertTime.Name = "buttonInsertTime";
-            this.buttonInsertTime.Size = new System.Drawing.Size(66, 29);
-            this.buttonInsertTime.TabIndex = 13;
-            this.buttonInsertTime.Text = "時間";
-            this.buttonInsertTime.UseVisualStyleBackColor = true;
-            this.buttonInsertTime.Click += new System.EventHandler(this.buttonInsertTime_Click);
-            // 
-            // buttonInsertRes
-            // 
-            this.buttonInsertRes.Location = new System.Drawing.Point(10, 179);
-            this.buttonInsertRes.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonInsertRes.Name = "buttonInsertRes";
-            this.buttonInsertRes.Size = new System.Drawing.Size(66, 29);
-            this.buttonInsertRes.TabIndex = 12;
-            this.buttonInsertRes.Text = "レス";
-            this.buttonInsertRes.UseVisualStyleBackColor = true;
-            this.buttonInsertRes.Click += new System.EventHandler(this.buttonInsertRes_Click);
-            // 
-            // textBoxOutputLogFormat
-            // 
-            this.textBoxOutputLogFormat.AcceptsReturn = true;
-            this.textBoxOutputLogFormat.Location = new System.Drawing.Point(13, 215);
-            this.textBoxOutputLogFormat.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxOutputLogFormat.MaxLength = 0;
-            this.textBoxOutputLogFormat.Multiline = true;
-            this.textBoxOutputLogFormat.Name = "textBoxOutputLogFormat";
-            this.textBoxOutputLogFormat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxOutputLogFormat.Size = new System.Drawing.Size(542, 107);
-            this.textBoxOutputLogFormat.TabIndex = 11;
-            // 
             // checkCopyLog
             // 
             this.checkCopyLog.AutoSize = true;
-            this.checkCopyLog.Location = new System.Drawing.Point(13, 154);
+            this.checkCopyLog.Location = new System.Drawing.Point(13, 100);
             this.checkCopyLog.Margin = new System.Windows.Forms.Padding(4);
             this.checkCopyLog.Name = "checkCopyLog";
-            this.checkCopyLog.Size = new System.Drawing.Size(286, 19);
+            this.checkCopyLog.Size = new System.Drawing.Size(413, 19);
             this.checkCopyLog.TabIndex = 10;
-            this.checkCopyLog.Text = "レスを指定フォーマットでクリップボードにコピー";
+            this.checkCopyLog.Text = "レスを指定フォーマットでクリップボードに転送(転送はレス単位のみ)";
             this.checkCopyLog.UseVisualStyleBackColor = true;
             // 
             // checkOutputLog
             // 
             this.checkOutputLog.AutoSize = true;
-            this.checkOutputLog.Location = new System.Drawing.Point(13, 97);
+            this.checkOutputLog.Location = new System.Drawing.Point(12, 42);
             this.checkOutputLog.Margin = new System.Windows.Forms.Padding(4);
             this.checkOutputLog.Name = "checkOutputLog";
             this.checkOutputLog.Size = new System.Drawing.Size(197, 19);
@@ -1830,7 +1782,7 @@
             // 
             // buttonRefernceLogFile
             // 
-            this.buttonRefernceLogFile.Location = new System.Drawing.Point(524, 120);
+            this.buttonRefernceLogFile.Location = new System.Drawing.Point(525, 66);
             this.buttonRefernceLogFile.Margin = new System.Windows.Forms.Padding(4);
             this.buttonRefernceLogFile.Name = "buttonRefernceLogFile";
             this.buttonRefernceLogFile.Size = new System.Drawing.Size(31, 29);
@@ -1841,7 +1793,7 @@
             // 
             // textBoxOutputLogPath
             // 
-            this.textBoxOutputLogPath.Location = new System.Drawing.Point(12, 124);
+            this.textBoxOutputLogPath.Location = new System.Drawing.Point(12, 70);
             this.textBoxOutputLogPath.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxOutputLogPath.Name = "textBoxOutputLogPath";
             this.textBoxOutputLogPath.Size = new System.Drawing.Size(503, 22);
@@ -1850,7 +1802,7 @@
             // checkBoxDebug
             // 
             this.checkBoxDebug.AutoSize = true;
-            this.checkBoxDebug.Location = new System.Drawing.Point(13, 68);
+            this.checkBoxDebug.Location = new System.Drawing.Point(417, 42);
             this.checkBoxDebug.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxDebug.Name = "checkBoxDebug";
             this.checkBoxDebug.Size = new System.Drawing.Size(139, 19);
@@ -1860,7 +1812,7 @@
             // 
             // buttonRefernceEditor
             // 
-            this.buttonRefernceEditor.Location = new System.Drawing.Point(525, 28);
+            this.buttonRefernceEditor.Location = new System.Drawing.Point(525, 10);
             this.buttonRefernceEditor.Margin = new System.Windows.Forms.Padding(4);
             this.buttonRefernceEditor.Name = "buttonRefernceEditor";
             this.buttonRefernceEditor.Size = new System.Drawing.Size(31, 29);
@@ -1872,7 +1824,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 34);
+            this.label8.Location = new System.Drawing.Point(11, 16);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(125, 15);
@@ -1881,11 +1833,98 @@
             // 
             // textBoxEditorFilePath
             // 
-            this.textBoxEditorFilePath.Location = new System.Drawing.Point(155, 30);
+            this.textBoxEditorFilePath.Location = new System.Drawing.Point(155, 12);
             this.textBoxEditorFilePath.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxEditorFilePath.Name = "textBoxEditorFilePath";
             this.textBoxEditorFilePath.Size = new System.Drawing.Size(361, 22);
             this.textBoxEditorFilePath.TabIndex = 3;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.textBoxCommandLineParam);
+            this.groupBox5.Controls.Add(this.button3);
+            this.groupBox5.Controls.Add(this.button4);
+            this.groupBox5.Controls.Add(this.button5);
+            this.groupBox5.Controls.Add(this.button6);
+            this.groupBox5.Controls.Add(this.buttonRefernceCommandLineTarget);
+            this.groupBox5.Controls.Add(this.textBoxCommandLineTargetPath);
+            this.groupBox5.Location = new System.Drawing.Point(12, 371);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(543, 88);
+            this.groupBox5.TabIndex = 20;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "コマンドライン引渡し";
+            // 
+            // buttonRefernceCommandLineTarget
+            // 
+            this.buttonRefernceCommandLineTarget.Location = new System.Drawing.Point(505, 18);
+            this.buttonRefernceCommandLineTarget.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonRefernceCommandLineTarget.Name = "buttonRefernceCommandLineTarget";
+            this.buttonRefernceCommandLineTarget.Size = new System.Drawing.Size(31, 29);
+            this.buttonRefernceCommandLineTarget.TabIndex = 10;
+            this.buttonRefernceCommandLineTarget.Text = "...";
+            this.buttonRefernceCommandLineTarget.UseVisualStyleBackColor = true;
+            this.buttonRefernceCommandLineTarget.Click += new System.EventHandler(this.buttonRefernceCommandLineTarget_Click);
+            // 
+            // textBoxCommandLineTargetPath
+            // 
+            this.textBoxCommandLineTargetPath.Location = new System.Drawing.Point(7, 22);
+            this.textBoxCommandLineTargetPath.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxCommandLineTargetPath.Name = "textBoxCommandLineTargetPath";
+            this.textBoxCommandLineTargetPath.Size = new System.Drawing.Size(490, 22);
+            this.textBoxCommandLineTargetPath.TabIndex = 9;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(376, 52);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(53, 29);
+            this.button3.TabIndex = 19;
+            this.button3.Text = "レス番";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(431, 52);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(53, 29);
+            this.button4.TabIndex = 18;
+            this.button4.Text = "名前";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(486, 52);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(53, 29);
+            this.button5.TabIndex = 17;
+            this.button5.Text = "時間";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(321, 52);
+            this.button6.Margin = new System.Windows.Forms.Padding(4);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(53, 29);
+            this.button6.TabIndex = 16;
+            this.button6.Text = "レス";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // textBoxCommandLineParam
+            // 
+            this.textBoxCommandLineParam.Location = new System.Drawing.Point(7, 56);
+            this.textBoxCommandLineParam.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxCommandLineParam.Name = "textBoxCommandLineParam";
+            this.textBoxCommandLineParam.Size = new System.Drawing.Size(306, 22);
+            this.textBoxCommandLineParam.TabIndex = 20;
             // 
             // buttonRunEditorAAMode
             // 
@@ -1925,6 +1964,72 @@
             this.buttonRunEditorPronounciation.TabIndex = 4;
             this.buttonRunEditorPronounciation.TextBox = this.TextBoxPronounciations;
             this.buttonRunEditorPronounciation.GetEditorFilePath += new SpeechCast.Controls.GetEditorFilePathEventHandler(this.buttonRunEditor_GetEditorFilePath);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.buttonInsertNo);
+            this.groupBox6.Controls.Add(this.buttonInsertName);
+            this.groupBox6.Controls.Add(this.buttonInsertTime);
+            this.groupBox6.Controls.Add(this.buttonInsertRes);
+            this.groupBox6.Controls.Add(this.textBoxOutputLogFormat);
+            this.groupBox6.Location = new System.Drawing.Point(12, 122);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(543, 151);
+            this.groupBox6.TabIndex = 21;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "フォーマット";
+            // 
+            // buttonInsertNo
+            // 
+            this.buttonInsertNo.Location = new System.Drawing.Point(63, 18);
+            this.buttonInsertNo.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonInsertNo.Name = "buttonInsertNo";
+            this.buttonInsertNo.Size = new System.Drawing.Size(53, 29);
+            this.buttonInsertNo.TabIndex = 20;
+            this.buttonInsertNo.Text = "レス番";
+            this.buttonInsertNo.UseVisualStyleBackColor = true;
+            // 
+            // buttonInsertName
+            // 
+            this.buttonInsertName.Location = new System.Drawing.Point(118, 18);
+            this.buttonInsertName.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonInsertName.Name = "buttonInsertName";
+            this.buttonInsertName.Size = new System.Drawing.Size(53, 29);
+            this.buttonInsertName.TabIndex = 19;
+            this.buttonInsertName.Text = "名前";
+            this.buttonInsertName.UseVisualStyleBackColor = true;
+            // 
+            // buttonInsertTime
+            // 
+            this.buttonInsertTime.Location = new System.Drawing.Point(173, 18);
+            this.buttonInsertTime.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonInsertTime.Name = "buttonInsertTime";
+            this.buttonInsertTime.Size = new System.Drawing.Size(53, 29);
+            this.buttonInsertTime.TabIndex = 18;
+            this.buttonInsertTime.Text = "時間";
+            this.buttonInsertTime.UseVisualStyleBackColor = true;
+            // 
+            // buttonInsertRes
+            // 
+            this.buttonInsertRes.Location = new System.Drawing.Point(8, 18);
+            this.buttonInsertRes.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonInsertRes.Name = "buttonInsertRes";
+            this.buttonInsertRes.Size = new System.Drawing.Size(53, 29);
+            this.buttonInsertRes.TabIndex = 17;
+            this.buttonInsertRes.Text = "レス";
+            this.buttonInsertRes.UseVisualStyleBackColor = true;
+            // 
+            // textBoxOutputLogFormat
+            // 
+            this.textBoxOutputLogFormat.AcceptsReturn = true;
+            this.textBoxOutputLogFormat.Location = new System.Drawing.Point(9, 55);
+            this.textBoxOutputLogFormat.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxOutputLogFormat.MaxLength = 0;
+            this.textBoxOutputLogFormat.Multiline = true;
+            this.textBoxOutputLogFormat.Name = "textBoxOutputLogFormat";
+            this.textBoxOutputLogFormat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxOutputLogFormat.Size = new System.Drawing.Size(521, 89);
+            this.textBoxOutputLogFormat.TabIndex = 16;
             // 
             // FormSettings
             // 
@@ -1992,6 +2097,10 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLogOutputInterval)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownResLength)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2116,11 +2225,6 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Button buttonRefernceLogFile;
         private System.Windows.Forms.TextBox textBoxOutputLogPath;
-        private System.Windows.Forms.Button buttonInsertNo;
-        private System.Windows.Forms.Button buttonInsertName;
-        private System.Windows.Forms.Button buttonInsertTime;
-        private System.Windows.Forms.Button buttonInsertRes;
-        public System.Windows.Forms.TextBox textBoxOutputLogFormat;
         private System.Windows.Forms.CheckBox checkCopyLog;
         private System.Windows.Forms.CheckBox checkOutputLog;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -2133,5 +2237,19 @@
         private System.Windows.Forms.Label label34;
         public System.Windows.Forms.NumericUpDown numericUpDownResLength;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TextBox textBoxCommandLineParam;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button buttonRefernceCommandLineTarget;
+        private System.Windows.Forms.TextBox textBoxCommandLineTargetPath;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button buttonInsertNo;
+        private System.Windows.Forms.Button buttonInsertName;
+        private System.Windows.Forms.Button buttonInsertTime;
+        private System.Windows.Forms.Button buttonInsertRes;
+        public System.Windows.Forms.TextBox textBoxOutputLogFormat;
     }
 }

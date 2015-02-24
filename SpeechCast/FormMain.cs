@@ -970,6 +970,13 @@ namespace SpeechCast
                 isSpeakingWarningMessage = false;
                 isSpeaking = true;
                 StartSpeaking(text);
+                //コマンドライン引渡し
+                //ターゲット指定が空でなければ実行
+                if (UserConfig.CommandLineTargetPath != "")
+                {
+                    System.Diagnostics.Process.Start(UserConfig.CommandLineTargetPath, @UserConfig.CommandLineParam);
+                }
+
                 //レスの出力処理とクリップボードコピー
                 if (UserConfig.OutputLog || UserConfig.CopyLog)
                 {
@@ -1035,7 +1042,8 @@ namespace SpeechCast
                         //それを配列の数だけループ
                         foreach (string resText in ResArray)
                         {
-                            using (var writer = new StreamWriter(UserConfig.OutputLogPath.Replace(".", fileNameIndex.ToString() + "."), UserConfig.LogAppendMode, OutputEncoding))
+                            //using (var writer = new StreamWriter(UserConfig.OutputLogPath.Replace(".", fileNameIndex.ToString() + "."), UserConfig.LogAppendMode, OutputEncoding))
+                            using (var writer = new StreamWriter(UserConfig.OutputLogPath, UserConfig.LogAppendMode, OutputEncoding))
                             {
                                 var LogText = UserConfig.OutputLogFormat.Replace("#Res#", resText);
                                 LogText = LogText.Replace("#Name#", res.Name);
