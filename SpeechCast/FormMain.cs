@@ -154,6 +154,10 @@ namespace SpeechCast
                     openNextThread = ReadThread;
                     CurrentResNumber = 0;
                 }
+                else if (endThreadWarning)
+                {
+                    CurrentResNumber = CurrentResNumber;
+                }
                 else if (
                         CurrentResNumber <= Response.MaxResponseCount
                     &&  (speakClipboard == false && endThreadWarning == false))
@@ -945,7 +949,6 @@ namespace SpeechCast
         private void StartSpeaking()
         {
             speakClipboard = false;
-            endThreadWarning = false;
 
             if (CurrentResNumber <= 0)
             {
@@ -1267,7 +1270,7 @@ namespace SpeechCast
         private const int OpenNextThread = 1;
         // 次スレへ移動中(移動中アナウンス管理用)
         private const int SpeakAnnounce = 2;
-
+        private bool endThreadAlertFlg = false;
         private TimeSpan diff;
         private TimeSpan diffWeb;
         // 読み上げ管理用バックグラウンドプロセス
@@ -1276,6 +1279,7 @@ namespace SpeechCast
             if (UserConfig.EnableAutoScroll) webBrowser.Document.Window.ScrollTo(0, (webBrowser.Document.Body.ScrollTop + UserConfig.AutoScrollSpeed));
             diff = System.DateTime.Now - speakingCompletedTime;
             diffWeb = System.DateTime.Now - gettingWebTime;
+            if (CurrentResNumber != UserConfig.endThreadWarningResCount) endThreadWarning = false;
             // スレタイトル更新処理
             if (threadTitle.Length > 0)
             {
@@ -1375,28 +1379,39 @@ namespace SpeechCast
                     // AAモードの時のインターバルの設定
                     speakingInvervalMillsec = UserConfig.AAModeInvervalMillsec;
                 }
-
-                // スレ終了警告
-                if (UserConfig.endThreadWarningResCount > 0 && CurrentResNumber == UserConfig.endThreadWarningResCount && endThreadWarning == false)
-                {
-                    string speakText = string.Format("レスが{0}に到達しました。次スレを準備してください。", UserConfig.endThreadWarningResCount);
-                    endThreadWarning = true;
-                    isSpeakingWarningMessage = false;
-                    isSpeaking = true;
-                    StartSpeaking(speakText);
-                }
                 // 通常レス読み上げ
-                else if (
+                if (
                     diff.TotalMilliseconds >= speakingInvervalMillsec
                     && AutoUpdate
                     //&& responses.Count >= CurrentResNumber
                     )
                 {
-                    endThreadWarning = true;
                     StartSpeaking();
+                    if (CurrentResNumber == UserConfig.endThreadWarningResCount && !endThreadWarning)
+                    {
+                        endThreadWarning = true;
+                        while (isSpeaking) ;
+                        this.speakendThreadWarning();
+                    }
+                }
+                if (endThreadWarning)
+                {
+                    speakingInvervalMillsec = 40 * 1000;
+                    if (diff.TotalMilliseconds >= speakingInvervalMillsec) { 
+                        this.speakendThreadWarning();
+                    }
                 }
             }
         }
+        private void speakendThreadWarning()
+        {
+            string speakText = string.Format("レスが{0}に到達しました。次スレを準備してください。", CurrentResNumber - 1);
+            endThreadWarning = true;
+            isSpeakingWarningMessage = false;
+            isSpeaking = true;
+            StartSpeaking(speakText);
+        }
+
 
         // レス取得用バックグラウンドプロセス
         private async void timerWeb_Tick(object sender, EventArgs e)
